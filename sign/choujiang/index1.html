@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>抽奖1</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+<link rel="stylesheet" type="text/css" href="./css/index1.css"/>
+
+<!--[if IE 6]>
+<script type="text/javascript" src="./js/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix(".ie6png");
+</script>
+<![endif]-->
+<script type="text/javascript">
+	
+	//参与抽奖的人
+	var persons=[
+		{img:'./images/touxiang/0.jpg',remark:'研发部 零大神(GZ0023)',isLucky:false,id:12}//isLucky:是否已中奖
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/1.jpg',remark:'研发部 一大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/2.jpg',remark:'研发部 二大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/3.jpg',remark:'研发部 三大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/4.jpg',remark:'研发部 四大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/5.png',remark:'研发部 五大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/6.jpg',remark:'研发部 六大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/7.jpg',remark:'研发部 七大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/8.jpg',remark:'研发部 八大神(GZ0023)',isLucky:false,id:12}
+		,{img:'./images/touxiang/9.jpg',remark:'研发部 九大神(GZ0023)',isLucky:false,id:12}
+	];
+	//图片数要大于等于点数
+	var points=[[414,468],[412,453],[380,443],[352,458],[323,478],[333,500],[334,526],[351,537],[375,538],[402,536],[421,518],[422,543],[420,567],[413,598],[401,622],[385,636],[361,637],[469,518],[476,492],[496,490],[513,518],[506,539],[489,542],[472,531],[462,514],[563,400],[561,426],[559,451],[555,475],[553,498],[550,527],[550,533],[642,379],[648,397],[643,423],[645,443],[645,471],[643,494],[640,508],[629,524],[616,525],[603,525],[589,516],[596,492],[608,483],[622,475],[710,381],[706,414],[706,437],[700,468],[700,490],[701,511],[704,522],[773,410],[767,421],[756,475],[756,493],[752,505],[755,521],[758,531],[839,470],[859,484],[863,506],[847,530],[820,523],[803,510],[804,489],[825,536],[933,478],[927,500],[922,522],[921,543],[943,494],[957,475],[973,475],[987,489],[993,510],[993,532],[1000,540],[1015,539],[1033,536],[1048,522],[492,596],[511,597],[537,598],[569,598],[603,605],[638,604],[686,595],[734,590],[769,590],[811,591],[846,591],[880,586],[906,586],[935,586],[957,591],[982,596]];
+
+
+
+</script>
+</head>
+
+<body>
+
+<div id="pageContent" class="pageContent">
+	<div id="loadingBox">正在为您准备资源...</div>
+	<!-- <img src="./images/star.png" width="597" id="img0" class="qdImg qdImg-pos-0" /> -->
+
+	
+
+
+</div>
+<div id="actionBox" style="display:none;">
+	<button id="openActionBoxBt">操作面板</button>
+	<div style="text-align:right;">
+		<button id="closeActionBoxBt">x</button>
+	</div>
+	<div style="padding:10px 20px;">
+		<h3>本轮中奖人数：</h3>
+		<div style="padding:10px 0px;"><input type="text" value="5" id="selectCount" /> (最多5个)</div>
+		<button id="startBt">开 始</button>
+		<div style="padding:10px 0px;"><button id="pauseBt">开 奖</button></div>
+	</div>
+</div>
+<div id="luckMask">
+	<div id="luckShow">
+		<!-- 
+		<div class="luckItem"><img src="./images/touxiang/1.jpg" ><h3>研发部 大神三(gz333)</h3></div> -->
+	</div>
+</div>
+
+<!-- 公共的 js -->
+<script language="javascript" type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+	var imgH=30,imgW=30 //图片大小
+		,pageW=1366,pageH=768 //页面大小
+		,luckPos=[
+			{w:200,h:200,x:40,y:100}
+			,{w:200,h:200,x:440,y:100}
+			,{w:200,h:200,x:250,y:330}
+			,{w:200,h:200,x:700,y:200}
+			,{w:200,h:200,x:800,y:500}
+		]//中奖个数和位置
+		,selectCount=luckPos.length //每次抽奖选几个人
+	;
+
+	function addXY(){
+		var len=persons.length;//图
+		var len2=points.length;//点
+		if(len2<len){
+			for(var i=0;i<len;i++){
+				persons[i].x=points[i%len2][0];
+				persons[i].y=points[i%len2][1];
+			}
+		}else{
+			for(var i=0;i<len;i++){
+				persons[i].x=points[i][0];
+				persons[i].y=points[i][1];
+			}
+			var item=null;
+			for(;i<len2;i++){
+				item={
+					img:persons[i%len].img
+					,remark:persons[i%len].remark
+					,isLucky:true
+					,x:points[i][0]
+					,y:points[i][1]
+				};
+
+				persons.push(item);
+			}
+		}
+	}
+	addXY();
+
+	function LoadingRes(o){
+		var res=o.resources||[];
+		var len=res.length;
+		var curi=0;
+		var completed=o.completed||function(){
+			alert('res loading completed');
+		};
+		var loadingCallback=o.loadingCallback||function(s){
+			//console.log(s);//s百分之几
+		};
+
+		function action(ary){
+			var img;
+			if(curi>=len){
+				completed();
+				return false;
+			} else {
+				try{
+					img=new Image();
+				} catch(err){
+					completed();
+					return false;
+				}
+				
+				img.onload=function(){
+					//console.log('img loaded: '+res[curi]);
+					img=null;
+					curi++;
+					loadingCallback(parseInt((curi/len)*100,10));
+
+					action(res);//arguments.callee(res);//递归调用
+				}
+				img.onerror=function(e){
+					//console.log('img error: '+res[curi]);
+					img=null;
+					curi++;
+					loadingCallback(parseInt((curi/len)*100,10));
+
+					action(res);//arguments.callee(res);//递归调用
+				}
+				img.src=res[curi].img;
+				//log(img.src);
+			}
+		}
+
+		this.init=function(){
+			action(res);
+		}
+		this.init();
+	}
+	/**生成指定范围的随机整数*/
+	function fRandomBy(under, over){ 
+		switch(arguments.length){ 
+			case 1: return parseInt(Math.random()*under+1); 
+			case 2: return parseInt(Math.random()*(over-under+1) + under); 
+			default: return 0; 
+		} 
+	} 
+	var $loadingBox=$('#loadingBox')
+		,$imgs=[]
+	;
+	//加载图片
+	new LoadingRes({
+		resources:persons
+		,completed:function(){
+			//alert('res loading completed');
+			$loadingBox.hide();
+			addImg(persons);
+		}
+		,loadingCallback:function(s){
+			//console.log(s);//s百分之几
+			$loadingBox.text('正在为您准备资源...'+s+'%');
+		}
+	});
+
+	var $pageContent=$('#pageContent')
+	;
+
+	function generateImgHtml(url,remark,style){
+		return '<img src="'+url+'" alt="'+remark+'" class="personImgItem posInit" style="'+style+'" />';
+	}
+	function addImg(ary){
+		var i=0,len=points.length
+			,style=''
+			//,totalTime=3000 //增加图片时动画总共持续多少毫秒
+			//,imgTime=Math.floor(totalTime/len)*2
+			,html=''
+		;
+		for(;i<len;i++){
+			//if(ary[i].isLucky!=false) continue;
+			style='top:'+ary[i].y+'px;left:'+ary[i].x+'px; width:'+imgW+'px;height:'+imgH+'px;';
+			html+=generateImgHtml(ary[i].img,ary[i].remark,style);
+		}
+		$pageContent.append(html);
+		setTimeout(function(){
+			$imgs=$('.personImgItem');
+			$imgs.removeClass('posInit');
+			//$imgs.css({'-webkit-transition-duration':'200ms','-webkit-transition-delay':'0'});
+			//addOnWho();
+		},100);
+	}
+	var addTimer=null;
+	function addOnWho(){
+		var index
+			,index1
+			,index2
+			,index3
+			,index4
+			,index5
+			,index6
+			,index7
+			,index8
+		;
+		//for(var i=0,len=selectCount;i<len;i++){
+			index=fRandomBy(0,points.length-1);
+			index1=fRandomBy(0,points.length-1);
+			index2=fRandomBy(0,points.length-1);
+			index3=fRandomBy(0,points.length-1);
+			index4=fRandomBy(0,points.length-1);
+			index5=fRandomBy(0,points.length-1);
+			index6=fRandomBy(0,points.length-1);
+			index7=fRandomBy(0,points.length-1);
+			index8=fRandomBy(0,points.length-1);
+
+			$imgs.eq(index).addClass('on');
+			$imgs.eq(index1).addClass('on');
+			$imgs.eq(index2).addClass('on');
+			$imgs.eq(index3).addClass('on');
+			$imgs.eq(index4).addClass('on');			
+			$imgs.eq(index5).addClass('on');
+			$imgs.eq(index6).addClass('on');
+			$imgs.eq(index7).addClass('on');
+			$imgs.eq(index8).addClass('on');
+		//}
+		if(!!addTimer){
+			clearTimeout(addTimer);
+			addTimer=null;
+		}
+		addTimer=setTimeout(function(index,index1,index2,index3,index4,index5,index6,index7,index8){
+			return function(){
+				$imgs.eq(index).removeClass('on');
+				$imgs.eq(index1).removeClass('on');
+				$imgs.eq(index2).removeClass('on');
+				$imgs.eq(index3).removeClass('on');
+				$imgs.eq(index4).removeClass('on');
+				$imgs.eq(index5).removeClass('on');
+				$imgs.eq(index6).removeClass('on');
+				$imgs.eq(index7).removeClass('on');
+				$imgs.eq(index8).removeClass('on');
+				if(isOning){
+					addOnWho();
+				}else{
+					if(!!addTimer){
+						clearTimeout(addTimer);
+						addTimer=null;
+					}
+					selectLucky();
+				}
+				
+			};
+		}(index,index1,index2,index3,index4,index5,index6,index7,index8),100);
+	}
+	function selectLucky(){
+		var luckyAry=[];
+		var index;
+		while(luckyAry.length<selectCount){
+			index=fRandomBy(0,persons.length-1);
+			if(aryHas(luckyAry,index)||!!persons[index].isLucky){
+
+			}else{
+				luckyAry.push(index);
+				persons[index].isLucky=true;
+			}
+		}
+		var s='';
+		for(var ii=0,len=luckyAry.length;ii<len;ii++){
+			s+='<div class="luckItem init" style="width:'+luckPos[ii].w+'px;height:'+luckPos[ii].h+'px;top:'+luckPos[ii].y+'px;left:'+luckPos[ii].x+'px;"><img src="'+persons[luckyAry[ii]].img+'" alt="'+persons[luckyAry[ii]].remark+'" ></div>';
+			!!console&&console.log(persons[luckyAry[ii]].id);
+
+		}
+		//alert(luckyAry.toString());
+		$('#luckShow').html(s);
+		setTimeout(function(){
+			$('.luckItem').removeClass('init');
+		},200);
+	}
+	function aryHas(ary,v){
+		for(var i=0,len=ary;i<len;i++){
+			if(v==ary[i]){
+				return true;
+			}
+		}
+		return false;
+	}
+	$('#openActionBoxBt').on('click',function(e){
+		if(parseInt($('#actionBox').css('right'),10)==0){
+			$('#actionBox').css('right','-200px');
+		}else{
+			$('#actionBox').css({'right':'0px'});
+		}
+	});
+	$('#closeActionBoxBt').on('click',function(e){
+		$('#actionBox').css('right','-200px');
+
+	});
+	var isReTransition=false;
+	var isOning=false;
+	$('#startBt').on('click',function(e){
+		//selectCount=$('#selectCount').val();
+		if(!isReTransition){
+			//$imgs.css({'-webkit-transition-duration':'0ms','-webkit-transition-delay':'0ms','transition-delay':'0ms'});
+			isReTransition=true;
+		}
+		$('#actionBox').css('right','-200px');
+		isOning=true;
+		addOnWho();
+		$('#luckMask').hide();
+		$('#pauseBt').show();
+		$(this).hide();
+		$('#luckShow').html('');
+	});
+
+	$('#pauseBt').on('click',function(e){
+		isOning=false;
+		$('#actionBox').css('right','-200px');
+		$('#luckMask').show();
+		$('#startBt').show();
+		$(this).hide();
+	});
+
+	$(document).on('keypress',function(e){
+		//console.log(e);
+		if(e.keyCode==13||e.which==13){
+			if(!isOning){
+				$('#startBt').trigger('click');
+			}else{
+				$('#pauseBt').trigger('click');
+			}
+		}
+	});
+
+
+</script>
+
+</body>
+</html>

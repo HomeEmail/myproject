@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/idangerous.swiper.css">
+	<link rel="stylesheet" href="./css/wuhui-liuyan.css?v=9969708809" />
+	<style type="text/css">
+	</style>
+
+	<title>午会留言-begin</title>
+</head>
+<body onload="pageLoad();">
+
+
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1"> 
+	<div id="web-bg1"></div>
+</div>
+
+<div id="liuyanTitle">
+	<img src="./images/Voice-from-you.png" alt="Voice-from-you" />
+</div>
+
+<div id="liuyanContent">
+	<img id="liuyanContentBg" src="./images/liuyan-bg.png" />
+	<div id="wuhuiText">
+		<img src="./images/wuhui-text.png" />
+	</div>
+	<div id="replyContent">
+		<img id="replyBg" src="./images/text-show-bg.png" />
+		<!-- 留言列表 begin -->
+		<div class="swiper-container reply-list-wrapper">
+			<div class="reply-list-ul swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="reply-list-li clearfix">
+						<img src="./images/touxiang.jpg" class="touxiang" />
+						<div class="reply-list-li-text">
+						<span class="nicheng">昵称<br/></span>
+						劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</div>
+					
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="reply-list-li clearfix">
+						<img src="./images/touxiang.jpg" class="touxiang" />
+						<div class="reply-list-li-text">
+						<span class="nicheng">昵称<br/></span>
+						劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</div>
+					
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="reply-list-li clearfix">
+						<img src="./images/touxiang.jpg" class="touxiang" />
+						<div class="reply-list-li-text">
+						<span class="nicheng">昵称<br/></span>
+						劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</div>
+					
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="reply-list-li clearfix">
+						<img src="./images/touxiang.jpg" class="touxiang" />
+						<div class="reply-list-li-text">
+						<span class="nicheng">昵称<br/></span>
+						劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫sdfdfsd dlflkdflkd flkdf kd fkdf kdfkld fkd kfdskf kdlf lksd fkd fdkf kdlf d kf lksd fkld fkld fkdj fkd fkd fkd fk dkf kd</div>
+					
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="reply-list-li clearfix">
+						<img src="./images/touxiang.jpg" class="touxiang" />
+						<div class="reply-list-li-text">
+						<span class="nicheng">昵称<br/></span>
+						劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</div>
+					
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="reply-list-li clearfix">
+						<img src="./images/touxiang.jpg" class="touxiang" />
+						<div class="reply-list-li-text">
+						<span class="nicheng">昵称<br/></span>
+						劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</div>
+					
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- 留言列表 end -->
+	</div>
+	<form action="#" onsubmit="return false;" style="width:100%;">
+		<!--  有需要请更改action 和 onsubmit -->
+		<div id="editContent">
+			<img id="editBg" src="./images/input-bg.png" />
+			<textarea class="reply-input" id="replyTextInput" name="replyTextInput" onblur="textAreaOnblur();" placeholder="EDIT:" rows="3" cols="1"></textarea>
+		</div>
+		<div id="submitBtWrapper">
+			<button id="submitBt"></button>
+		</div>
+	</form>
+</div>
+
+
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script><script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<!-- <script type="text/javascript" src="./js/hammer.js"></script> -->
+<script src="./js/idangerous.swiper-2.1.min.js"></script>
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+var winH=getBrowserH();
+var winW=getBrowserW();
+
+// var mySwiper = new Swiper('#swiper1',{
+// 	mode:'vertical'
+// 	,mousewheelControl: true
+// 	,onSlideChangeEnd:function(o,v){
+// 		if(o.activeIndex==1){
+// 			mySwiper.destroy();
+			
+// 		}
+// 	}
+//  });
+new Swiper('.reply-list-wrapper',{
+	mode:'vertical',
+	freeMode: true,
+	freeModeFluid: true,
+	slidesPerView: 'auto'
+});
+
+//页面加载完执行的函数
+function pageLoad(){
+	
+}
+
+
+function textAreaOnblur(){
+
+}
+
+//提交留言
+$('#submitBt').on('tap',function(e){
+	alert('提交留言');
+});
+
+function getBrowserW(){
+	return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;//可见区域宽度
+}
+function getBrowserH(){
+	//alert(document.documentElement.clientHeight);
+	return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;//可见区域高度		
+}
+</script>
+
+</body>
+</html>

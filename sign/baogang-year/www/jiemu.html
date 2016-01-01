@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/jiemu.css?v=63336" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+
+	<title>我最喜爱的节目</title>
+</head>
+<body>
+<div class="bg-bottom" style="width:100%;height:100%;"><img style="width:100%;height:100%;" src="./images/jiemu-bg.jpg"></div>
+<!-- <div class="bg-top"><img src="./images/step1-bg1.jpg"></div> -->
+
+
+<div id="main">
+	<div class="toupiao-title-img-wrapper text-ac">
+		<img src="./images/jiemu-title.png" style="width:100%;">
+	</div>
+	<h1 class="jiemu-title-h1">我最喜爱的节目</h1>
+<form action="#" class="toupiaoForm" method="post" onsubmit="return false;"><!-- 更改action -->
+	<div class="toupiao-item-wrapper">
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">Hi，Goldlion Baby</div>
+			<input type="hidden" class="inputValue" id="jiemu-1" name="jiemu-1" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item"><!--  选中加上selected -->
+			<div class="toupiao-item-text">咱们屯里人</div>
+			<input type="hidden" class="inputValue" id="jiemu-2" name="jiemu-2" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">金利来好声音第二季</div>
+			<input type="hidden" class="inputValue" id="jiemu-3" name="jiemu-3" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">青春梦想秀</div>
+			<input type="hidden" class="inputValue" id="jiemu-4" name="jiemu-4" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">群星大合唱</div>
+			<input type="hidden" class="inputValue" id="jiemu-5" name="jiemu-5" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+	</div>
+
+	<div class="toupiao-desc-wrapper">
+		活动规则：每人有一次投票机会，快选择您心目中最喜爱的节目。	
+	</div>
+
+	<div class="text-ar submitOK-wrapper">
+		<button class="submitOK" id="submitOKBt"> </button>
+	</div>
+</form>
+
+</div>
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+//alert(getBrowserW());
+$('#submitOKBt').on('tap',function(e){
+	//console.log($(this));
+	alert('提交投票');
+});
+//var maxSelectCount=1;//最多选择几个
+$('.toupiao-item').on('tap',function(e){
+	var $el=$(this);
+	$('.toupiao-item.selected').removeClass('selected');
+	$('.inputValue').val(0);
+
+	var $ch=$el.children('.inputValue');
+	
+	$el.addClass('selected');
+	$ch.val(1);
+
+});
+
+</script>
+
+</body>
+</html>

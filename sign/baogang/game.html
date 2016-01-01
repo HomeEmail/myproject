@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../icon.png" />
+	<link rel="shortcut icon" href="../icon.png" />
+	<link rel="apple-touch-startup-image" href="../res/images/bg.jpg"><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	
+    <title>天天抢钢卷</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <link rel="stylesheet" href="./css/game.css?v=666" />
+    <style type="text/css"></style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    	window.shareData = {
+	        "timeLineLink": "http://www.tailg.com.cn/kz/yx/html/index.html",   
+	        "sendFriendLink": "http://www.tailg.com.cn/kz/yx/html/index.html",
+	        "weiboLink": "http://www.tailg.com.cn/kz/yx/html/index.html",
+	        "tTitle": "天天抢钢卷",
+	        "tContent": "天天抢钢卷",
+	        "fTitle": "天天抢钢卷",
+	        "fContent": "天天抢钢卷",
+	        "wContent": "天天抢钢卷"
+        };
+        function changeShareData(str){
+        	window.shareData.tTitle=str||'天天抢钢卷';
+        	window.shareData.tContent=str||'天天抢钢卷';
+        	window.shareData.fTitle=str||'天天抢钢卷';
+        	window.shareData.fContent=str||'天天抢钢卷';
+        	window.shareData.wContent=str||'天天抢钢卷';
+        }
+    </script>
+</head>
+<body style="">
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1"> 
+	<img style="position:fixed;" src="./images/game-bg.jpg" height="100%" width="100%" /> 
+</div>
+
+	<div id="welcome" style="display:none;">
+		<div class="welcomeTitle-wrapper"><img src="./images/logo-game.png" id="welcomeTitle" /></div>
+		<div class="welcomeImg-wrapper">
+			<img src="./images/start-bg.png" width="100%" id="welcomeImg" />
+			<div class="welcomeText">
+				<div style="color:#fff95d;">湛江钢铁</div>
+				<div style="color:#fff;">第一批钢卷新鲜出炉啦！</div>
+				<div style="color:#fff;font-size: 12px;"><span style="color:#fe9880;">宝钢南方</span>诚邀您通过<span style="color:#89f8ff;">敏捷平台</span></div>
+				<div style="color: #fff95d;font-size: 26px;">一起抢购吧！</div>
+
+				<div class="welcome-wrapper">
+					<img id="processImg" height="100%" src="./images/process-bg.png" />
+					<div id="welcomeBt"></div>
+				</div>
+
+				<div style="color: #fff;font-size: 12px;">30秒内点击钢卷越多，抢购也越多！</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<div id="playContent" style="display:none;">
+		<div class="playBg">
+			
+			<div id="resultWrapper" class="resultWrapper">
+				
+				<div id="resultText" style="">0000</div>
+				<div id="timeShow" style="display:none;">剩30秒</div>
+			</div>
+			<!-- star begin -->
+			<div id="starWrapper">
+				<div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div><div class="starItem"></div>
+			</div>
+			<!-- star end -->
+		</div>
+
+		
+	</div>
+	<div id="gameResultWrapper" style="display:none;">
+		<div class="welcomeTitle-wrapper"><img src="./images/logo-game.png" class="welcomeTitle" /></div>
+		<div class="gameResultText-Wrapper">
+			<img src="./images/start-bg.png" width="100%" />
+			<div id="gameResultText">
+				<div style="color: #fff95d; font-size: 36px; line-height: 50px; ">土豪</div> 
+				<div>恭喜您，抢购成功</div>
+				<div style="font-size: 18px; ">
+					<span style="color: #fff95d; " id="gameResultTextValue">500000</span> 吨钢卷,排名 <span style="color: #fff95d; " id="paimingText">-</span> 位
+				</div> 
+				<div>截至目前共有<span style="color: #fff95d; " id="totalPlayNum">4676564</span>人参与抢购</div>
+				<div style="color: #fff95d;font-size: 26px;">助力湛刚，梦想接力</div>
+				
+			</div>
+		</div>
+		<div style="position: absolute; bottom: 10px;width:100%;">
+			<div class="gameAgain-wrapper"><div id="gameAgainBt"></div></div>
+			<div class="gameShare-wrapper"><div id="gameShareBt"></div></div>
+		</div>
+	</div>
+	<div id="shareBox" style="opacity: 0; display: none;"></div>
+	<audio id="sound" style="display:none;" src="./images/ok.mp3" preload="auto">
+		您的浏览器不支持 audio 标签。
+	</audio>
+	<div id="loadingBox">
+		正在为您准备资源...2%
+	</div>
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script>
+<script type="text/javascript" src="./js/game.js?v=6666666"></script>
+
+</body>
+</html>

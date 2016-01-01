@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="640" />
+	<meta name="viewport" content="width=640, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/liuyan.css?v=88" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+
+
+	<title>我要留言</title>
+</head>
+<body>
+<!-- <div class="bg-top"><img src="./images/step1-bg1.jpg"></div>
+<div class="bg-bottom"><img src="./images/step1-bg2.jpg"></div> -->
+
+<div id="main">
+<script type="text/javascript">
+	var tplId=location.hash.replace('#','');
+	if(!!!tplId){
+		tplId=2;
+	}
+	document.writeln('<img src="./images/tpl'+tplId+'-mask.png" id="tplMaskImg" style="display: none;">');
+	document.writeln('<div id="tplMask-wrapper" style="background-image: url(./images/tpl'+tplId+'-mask.png);"></div>');
+</script>
+
+<div id="tplContent" class=""><!--tpl1Content-wrapper-->
+	<div id="tplBox1" class="tplBox-wrapper">
+		<div class="tplImgBox">
+			<div id="selectImgBt1-wrapper" class="selectImgBt-wrapper">
+				<div class="selectImgBt" id="selectImgBt1">Click here to enter your picture</div>
+				
+				<input id="fileSelectInput1" name="fileSelectInput1" class="fileSelectInput" type="file" accept="image/x-png,image/jpeg" value="" required="" style="" onchange="fileChange(this,1);">
+				<br/>
+				<div id="selectImgBt1Tips" class="text-ac"></div>
+			</div>
+			<img src="" id="img1SelectSrc" onload="step1ImgSelectShowLoad(this,1);" style="display:none;">
+			<img src="" id="img1Select" class="imgSelect" style="display:none;">
+		</div>
+	</div>
+	<div id="tplBox1Action" style="" onclick="" class="tplBoxAction-wrapper"></div>
+
+	<div id="tplBox2" class="tplBox-wrapper">
+		<div class="tplImgBox">
+			<div id="selectImgBt2-wrapper" class="selectImgBt-wrapper">
+				<div class="selectImgBt" id="selectImgBt2"><!-- 点击上传照片 -->Click here to enter your picture</div>
+				
+				<input id="fileSelectInput2" name="fileSelectInput2" class="fileSelectInput" type="file" accept="image/x-png,image/jpeg" value="" required="" style="" onchange="fileChange(this,2);">
+				<br/>
+				<div id="selectImgBt2Tips" class="text-ac"></div>
+			</div>
+			<img src="" id="img2SelectSrc" onload="step1ImgSelectShowLoad(this,2);" style="display:none;">
+			<img src="" id="img2Select" class="imgSelect" style="display:none;">
+		</div>
+	</div>
+	<div id="tplBox2Action" onclick="" style="" class="tplBoxAction-wrapper"></div>
+
+	<textarea id="liuyanTextBox" oninput="textInputCheck(this);" class="liuyanTextBox" placeholder="点击输入留言" style=""></textarea>
+	<input id="liuyanName" class="inputBottomBox1" oninput="liuyanNameCheck(this);" placeholder="Name" />
+	<input id="liuyanDepartment" class="inputBottomBox1" oninput="liuyanDepartmentCheck(this);" placeholder="Department" />
+</div>
+
+<div class="previewImgBt-wrapper">
+	<button class="bt" id="previewImgBt">预 览</button>
+</div>
+</div>
+
+
+<div id="previewBox" style="display:none;">
+	<div id="generateBtTips" class="text-ac">正在生成图片, 请稍等...</div>
+	<div class="previewOK-wrapper">
+		<button id="previewCancelBt">取消</button>
+		<button id="previewOKBt">已预览，确定提交</button>
+	</div>
+	<div id="previewImgBox"></div>
+</div>
+
+<div id="testDiv"></div>
+
+<script type="text/javascript" src="./js/liuyan.js"></script>
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+// var tpl2Mask=document.getElementById('tpl2Mask');
+// var crop_canvas = document.createElement('canvas');
+	
+// //画布宽高
+// crop_canvas.width = 640;
+// crop_canvas.height = 914;
+// var ctx=crop_canvas.getContext('2d');
+// //画图
+// ctx.drawImage(document.getElementById('imgSelectSrc'), 0, 0, crop_canvas.width, 300);
+// //画遮罩
+// ctx.drawImage(tpl2Mask, 0, 0, crop_canvas.width, crop_canvas.height);
+// document.getElementById('testDiv').appendChild(crop_canvas);
+
+</script>
+
+</body>
+</html>

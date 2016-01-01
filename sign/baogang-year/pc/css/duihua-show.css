@@ -1,0 +1,47 @@
+.pageContent{
+	width: 1366px;
+	height: 768px;
+	overflow: hidden;
+	background: #fff url(../images/duihua-show.jpg) no-repeat left center;
+	margin: 0 auto;
+	color: red;
+}
+
+.item-duihua-wrapper{
+  padding-top: 119px;
+    padding-left: 165px;
+    padding-right: 165px;
+}
+.item-duihua{
+	font-size: 20px;
+    line-height: 30px;
+    height: 120px;
+    
+    position: relative;
+}
+
+.touxiang-item{
+	border-radius: 50px;
+	height: 50px;
+	width: 50px;
+	display: block;
+	position: absolute;
+box-shadow: 0px 0px 0px 4px #FFA800;
+}
+.item-text{
+	display: block;
+    height: 60px;
+    overflow: hidden;
+    padding-top: 13px;
+}
+.left-item .touxiang-item{
+	left: -80px;
+    top: 13px;
+}
+.right-item .touxiang-item{
+	right: -95px;
+    top: 9px;
+}
+.right-item h1{
+	text-align: right;
+}

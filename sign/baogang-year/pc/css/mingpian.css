@@ -1,0 +1,158 @@
+
+#body{
+	height: 768px;
+	width: 1024px;
+	background: #f9ead9;
+	position: relative;
+	overflow: hidden;
+	-webkit-perspective:0; 
+	-webkit-perspective-origin: 50% 50%;
+}
+
+.pageBody{
+	height: 100%;
+	width: 100%;
+	background: url(../images/mingpian-bg.jpg) no-repeat;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*transform: scale(1,1) translate3d(0px,0px,0px);*/
+	-webkit-transform: scale(1,1) translate3d(0px,0px,0px);
+	z-index: 10;
+}
+.imgItem{
+	position: absolute;
+	left: 45px;
+    top: 38px;
+	width: 90px;
+	height: 90px;
+	border-radius: 90px;
+	border:1px #C50303 solid;
+}
+.usernameItem{
+	position: absolute;
+	left: 200px;
+	top: 35px;
+
+}
+.bumenItem{
+	position: absolute;
+	left: 333px;
+	top: 35px;
+
+}
+.liuyanItem{
+	
+    width: 240px;
+    height: 82px;
+    position: absolute;
+    left: 161px;
+    top: 50px;
+    line-height: 20px;
+}
+.yunImg{
+	position: absolute;
+	left: 102px;
+    top: 96px;
+	width: 50px;
+	transform: rotateY(180deg);
+}
+
+.personImgItem{
+	display: inline-block;
+	width: 453px;
+	height: 173px;
+	/*transform: rotateY(0deg) scale(1,1) translate3d(0px,0px,0px);*/
+	-webkit-transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(0px,0px,0px);
+	position: absolute;
+	z-index: 11;
+	/*-webkit-transition-property: all;
+	-webkit-transition-timing-function: ease-in; 
+	-webkit-transition-duration: 3000ms; 
+	-webkit-transition-delay: 0ms;*/
+	background: url(../images/mingpian-item-bg.png) no-repeat;
+	color: red;
+	font-size: 12px;
+}
+.personImgItem.pos-1{
+	top: 80px;
+	left: 50px;
+	-webkit-transition:-webkit-transform 2s linear 0s;
+}
+.personImgItem.pos-1.on{
+ 	/*transform: rotateY(300deg) scale(2,2) translate3d(5000px,2000px,10px);*/
+ 	/*top: 600px;
+ 	left: 800px;*/
+	-webkit-transform: rotateY(240deg) rotateX(240deg) rotateZ(240deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(600px,305px,0px);
+}
+
+.personImgItem.pos-2{
+	top: 80px;
+	right: 50px;
+	-webkit-transition:-webkit-transform 2s linear 0s;
+}
+.personImgItem.pos-2.on{
+ 	/*transform: rotateY(300deg) scale(2,2) translate3d(5000px,2000px,10px);*/
+ 	/*top: 600px;
+ 	left: 800px;*/
+	-webkit-transform: rotateY(270deg) rotateX(40deg) rotateZ(180deg) skewX(0deg) skewY(5deg) scale(1,1) translate3d(0px,-700px,0px);
+}
+
+
+
+
+.personImgItem.pos-3{
+	top: 278px;
+	left: 50px;
+	-webkit-transition:-webkit-transform 2s linear 0s;
+}
+
+.personImgItem.pos-4{
+	top: 278px;
+	right: 50px;
+	-webkit-transition:-webkit-transform 2s linear 0s;
+}
+
+.personImgItem.pos-5{
+	top: 478px;
+	left: 50px;
+	-webkit-transition:-webkit-transform 2s linear 0s;
+}
+
+.personImgItem.pos-6{
+	top: 478px;
+	right: 50px;
+	-webkit-transition:-webkit-transform 2s linear 0s;
+}
+
+
+
+
+.personImgItem.pos-3.on{
+ 	/*transform: rotateY(300deg) scale(2,2) translate3d(5000px,2000px,10px);*/
+ 	/*top: 600px;
+ 	left: 800px;*/
+	-webkit-transform: rotateY(90deg) rotateX(180deg) rotateZ(0deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(2000px,-300px,0px);
+}
+.personImgItem.pos-4.on{
+ 	/*transform: rotateY(300deg) scale(2,2) translate3d(5000px,2000px,10px);*/
+ 	/*top: 600px;
+ 	left: 800px;*/
+	-webkit-transform: rotateY(0deg) rotateX(180deg) rotateZ(220deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(800px,0px,0px);
+}
+.personImgItem.pos-5.on{
+ 	/*transform: rotateY(300deg) scale(2,2) translate3d(5000px,2000px,10px);*/
+ 	/*top: 600px;
+ 	left: 800px;*/
+	-webkit-transform: rotateY(180deg) rotateX(0deg) rotateZ(45deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(-750px,100px,0px);
+}
+.personImgItem.pos-6.on{
+ 	/*transform: rotateY(300deg) scale(2,2) translate3d(5000px,2000px,10px);*/
+ 	/*top: 600px;
+ 	left: 800px;*/
+	-webkit-transform: rotateY(0deg) rotateX(180deg) rotateZ(180deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(900px,-130px,0px);
+}
+
+
+
+

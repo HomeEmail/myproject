@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/step1.css?v=66" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+
+
+	<title>我要签到</title>
+</head>
+<body>
+<div class="bg-top"><img src="./images/step1-bg1.jpg"></div>
+<div class="bg-bottom"><img src="./images/step1-bg2.jpg"></div>
+
+<div id="main">
+	<div class="imgBox-wrapper">
+		<div class="selectImgBt-wrapper">
+			<button id="selectImgBt">Click here to enter your picture</button>
+			
+			<input id="fileSelectInput" name="fileSelectInput" type="file" accept="image/x-png,image/jpeg" value="" required style="" onChange="fileChange(this);" />
+			<br/>
+			<div id="selectImgBtTips" class="text-ac"></div>
+			<br/>
+		</div>
+		<!-- 高大于宽，设宽120px,反之设高120px ;width;clientWidth;naturalWidth; css width;-->
+		<div id="imgBox" style="">
+			<img id="imgSelectSrc" onload="step1ImgSelectShowLoad(this);" src="" data-src="./images/test.jpg" style="display: none;" alt="" />
+			<img id="imgSelect" height="" width="" src="" data-src="./images/test.jpg" style="display: none;" alt="" />
+			<canvas id="imgCanvasShow" width="320" height="480" style="display: none;">
+				Your browser does not support the canvas element.
+			</canvas>
+			<canvas id="imgCanvas" width="320" height="480" style="display: none;">
+				Your browser does not support the canvas element.
+			</canvas>
+			<!-- <div id="selectAreaBox" style="width:120px;height:120px;display: none;"></div> -->
+		</div>
+	</div>
+	<div class="step1-input-text-wrapper">
+		<div class="step1-input-text-item" id="textBox1-wrapper"><input type="text" id="textBox1" placeholder="输入姓名" value="" /></div>
+		<div class="step1-input-text-item" id="textBox2-wrapper"><input type="text" id="textBox2" placeholder="输入部门" value="" /></div>
+	</div>
+	
+	<div class="text-ac" id="generateBt-wrapper"><button id="generateBt"></button></div>
+
+</div>
+<div id="previewBox" style="display:none;">
+	<div id="generateBtTips" class="text-ac">正在生成图片, 请稍等...</div>
+	<div class="previewOK-wrapper">
+		<button id="previewCancelBt">取消</button>
+		<button id="previewOKBt">已预览，确定提交</button>
+	</div>
+	<div id="previewImgBox"></div>
+</div>
+<div id="testDiv"></div>
+
+<script type="text/javascript" src="./js/main1.js"></script>
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+</script>
+
+</body>
+</html>

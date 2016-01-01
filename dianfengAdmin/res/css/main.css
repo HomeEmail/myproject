@@ -1,0 +1,60 @@
+#Headbox{
+	height: 100px;
+}
+#bleftBox{
+	background-color: #f39857;
+	float: left;
+}
+#brightBox{
+	float: left;
+}
+.main-title{
+	width: 200px;
+	height: 98px;
+	background-color: #f39857;
+	color: #7d4e2d;
+	float: left;
+	border-bottom: 2px #f3b385 solid;
+}
+.main-title h1{
+	font-size: 22px;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 10px;
+}
+.main-title h3{
+	text-align: right;
+	font-size: 14px;
+	color: #888;
+	padding: 0px 20px;
+}
+.header-bt-bar{
+	float: right;
+
+}
+
+.header-bt{
+	color: #888;
+	line-height: 36px;
+	font-size: 16px;
+	margin-right: 20px;display: inline-block;
+    height: 36px;
+}
+.logout-bt{
+	width: 80px;
+	height: 30px;
+	margin-top: 10px;
+	border:1px #666 solid;
+	text-align: center;
+	line-height: 28px;
+}
+
+
+
+
+
+
+
+
+
+

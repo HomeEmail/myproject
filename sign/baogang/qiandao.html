@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../icon.png" />
+	<link rel="shortcut icon" href="../icon.png" />
+	<link rel="apple-touch-startup-image" href="../res/images/bg.jpg"><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	
+    <title>签到</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <style type="text/css">
+	#web_bg{
+		background: url(./images/qiandao-bg.jpg) no-repeat top center;
+		background-size: cover;
+
+	}
+	.formWrapper{
+		text-align: center;
+		padding-top: 15px;
+	}
+	input.formText{
+		border-radius: 6px;
+		border:1px #fefefe solid;
+		background: #fff;
+		padding: 0px 10px;
+		width: 70%;
+		height: 40px;
+		line-height: 40px;
+		margin-bottom: 10px;
+		text-align: left;
+
+	}
+	.inputTips{
+  font-size: 14px;
+  color: #fff;
+  width: 70%;
+  padding-top: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 16px;
+  display: inline-block;
+	}
+	.formSubmit{
+		height: 33px;
+		width:168px;
+		background: url(./images/qiandao-bt.png) no-repeat center center;
+		background-size: contain;
+
+	}
+	.subTitle{
+		text-align: center;font-size: 18px;color: #fff;padding-top: 70%;
+
+	}
+    </style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    	
+    </script>
+</head>
+<body style="">
+<div id="web_bg" style="position:fixed; width:100%; height:100%; z-index:-1"> 
+	
+</div>
+<div class="subTitle" style="">
+广州宝钢南方贸易有限公司<br/>2015年用户座谈会暨20周年庆典活动
+</div>
+<div class="formWrapper">
+<form action="#" method="post"><!-- 提交地址 -->
+	<input type="text" placeholder="姓名" id="username" name="username" class="formText" />
+	<input type="text" placeholder="公司" id="gongsi" name="gongsi" class="formText" />
+	<div class="inputTips">
+		（将获取您的微信帐号、头像、姓名、公司等信息，于大屏幕显示。）
+	</div>
+	<div style="text-align: center;"><button class="formSubmit"> </button></div>
+</form>
+</div>
+	
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<script type="text/javascript">
+	$("form").submit(function(e){
+		e.preventDefault();
+	});
+	$('.formSubmit').on('tap',function(e){
+		var datas={
+			username : $('#username').val()
+			,gongsi : $('#gongsi').val()
+		};
+		if($.trim(datas.username)=='' || $.trim(datas.gongsi)==''){
+			alert('请先输入姓名和公司');
+			return;
+		}
+		$.ajax({
+		  type: 'POST',
+		  url: 'test.aspx',
+		  // data to be added to query string:
+		  data: datas,
+		  // type of data we are expecting in return:
+		  dataType: 'json',//(“json”, “jsonp”, “xml”, “html”, or “text”)
+		  success: function(data){
+		  	
+		  	$('#submitting').html('');
+		  },
+		  error: function(xhr, type){
+		   
+		   $('#submitting').html('提交失败，请重试！');
+		  }
+		});
+		if($('#submitting').length<=0){
+			$('body').append('<div id="submitting" style="padding:20px;text-align:center;color:red;">提交中...</div>');
+		} else {
+			$('#submitting').html('提交中...');
+		}
+		
+	});
+</script>
+
+</body>
+</html>

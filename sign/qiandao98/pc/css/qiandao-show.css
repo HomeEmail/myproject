@@ -1,0 +1,19 @@
+.pageContent{
+	width: 1366px;
+	height: 768px;
+	overflow: hidden;
+	background: #000033 url(../images/qd-bg.jpg) no-repeat left center;
+	margin: 0 auto;
+	color: #fff;
+	position: relative;
+}
+.qdImg{
+	position: absolute;
+	left: 300px;
+	top: 100px;
+	display: block;
+}
+.qdImg-pos-0{
+	left: 300px;
+	top: 100px;
+}

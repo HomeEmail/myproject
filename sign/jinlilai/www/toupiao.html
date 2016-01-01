@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/toupiao.css?v=63336" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+
+	<title>我要投票</title>
+</head>
+<body>
+<div class="bg-bottom" style="width:100%;height:100%;"><img style="width:100%;height:100%;" src="./images/sign-bg.jpg"></div>
+<!-- <div class="bg-top"><img src="./images/step1-bg1.jpg"></div> -->
+
+
+<div id="main">
+	<div class="toupiao-title-img-wrapper text-ac">
+		<img src="./images/toupiao-title.png" style="width:100%;">
+	</div>
+
+<form action="#" class="toupiaoForm" method="post"><!-- 更改action -->
+	<div class="toupiao-item-wrapper">
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-1" name="jiemu-1" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item"><!--  选中加上selected -->
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-2" name="jiemu-2" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+	</div>
+	<div class="toupiao-item-wrapper">
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-3" name="jiemu-3" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-4" name="jiemu-4" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-5" name="jiemu-5" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+	</div>
+	<div class="toupiao-item-wrapper">
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-6" name="jiemu-6" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+		<div class="toupiao-item">
+			<div class="toupiao-item-text">习大大</div>
+			<img class="toupiao-item-img" src="./images/9.jpg" alt="img" />
+ 			<input type="hidden" class="inputValue" id="jiemu-7" name="jiemu-7" value="0" /><!-- 0:未选中 1:选中 -->
+		</div>
+	</div>
+
+	<div class="toupiao-desc-wrapper">
+	今晚的节目精彩吗？快拿起手机选出您最喜欢的Talent show吧？活动规则：每人有3票的投票机会，但不能重复投给同一个Talent show，赶快行动吧。
+	</div>
+
+	<div class="text-ar submitOK-wrapper">
+		<button class="submitOK" id="submitOKBt"> </button>
+	</div>
+</form>
+
+</div>
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+//alert(getBrowserW());
+$('#submitOKBt').on('tap',function(e){
+	//console.log($(this));
+	alert('提交投票');
+});
+//var maxSelectCount=1;//最多选择几个
+$('.toupiao-item').on('tap',function(e){
+	var $el=$(this);
+	$('.toupiao-item.selected').removeClass('selected');
+	$('.inputValue').val(0);
+
+	var $ch=$el.children('.inputValue');
+	
+	$el.addClass('selected');
+	$ch.val(1);
+
+});
+
+</script>
+
+</body>
+</html>

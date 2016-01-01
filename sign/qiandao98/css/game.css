@@ -1,0 +1,211 @@
+body,html{
+	width: 100%;
+	/*height: 100%;*/
+}
+body{
+	background: #17181D;
+}
+
+#loadingBox{
+
+  color: #ffffff;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 48%;
+}
+
+#welcome{
+	background: url(../images/game-step1-bg.png) no-repeat top center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+
+}
+.welcome-wrapper{
+	position: absolute;
+	top: 80%;
+	text-align: center;
+	width: 100%;
+}
+#welcomeBt{
+	display: inline-block;
+	width: 114px;
+	height: 44px;
+	background: url(../images/game-start.png) no-repeat top center;
+	background-size: cover;
+}
+#welcomeBt:active{
+	background-image: url(../images/game-start-on.png);
+}
+
+#playLogo{
+	background: url(../images/play-top.png) no-repeat top center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+
+}
+
+#playLetsGo{
+	background: url(../images/play-top.png) no-repeat top center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+
+}
+
+
+.titleWrapper{
+	margin-top: 42%;
+}
+#ruleTitle{
+	text-align: center;
+	width: 100%;
+}
+#ruleTitle img{
+	height: 36px;
+}
+#resultTitle{
+	width: 100%;
+	text-align: center;
+
+}
+#resultTitle img{
+	height: 36px;
+}
+
+.playBg{
+	position: relative;
+}
+#playBgImg{
+	/*height: 291px;*/
+	width: 100%;
+
+}
+#playBgImgLetsGo{
+	/*height: 291px;*/
+	width: 100%;
+
+}
+
+.ruleTextWrapper{
+	width: 100%;
+	text-align: center;
+	padding-top: 15px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.resultWrapper{
+	width: 100%;
+	text-align: center;
+	padding-top: 0px;
+	position: absolute;
+	left: 0px;
+	top: -33px;
+}
+#ruleText {
+	height: 82px;
+}
+#resultText{
+	height: 55px;
+	margin-top: 12px;
+	margin-bottom: 15px;
+	text-align: center;
+	color: red;
+	background: url(../images/score-bg.png) no-repeat top center;
+	
+  background-size: 50% 100%;
+  line-height: 48px;
+  font-size: 22px;
+  text-shadow: 1px 1px #2A0000;
+}
+
+
+.btplay{
+	width: 100%;
+	text-align: center;
+
+  margin-top: -30px;
+  position: relative;
+  z-index: 99;
+}
+#letsgoBt{
+	display: inline-block;
+	width: 88px;
+	height: 33px;
+	background: url(../images/LetsGo.png) no-repeat top center;
+	background-size: cover;
+	
+}
+#letsgoBt{
+	background-image: url(../images/LetsGo-on.png);
+	
+}
+#againBt{
+	display: inline-block;
+	width: 88px;
+	height: 33px;
+	background: url(../images/game-again.png) no-repeat top center;
+	background-size: cover;
+	
+}
+#againBt{
+	background-image: url(../images/game-again-on.png);
+	
+}
+
+#starWrapper{
+	  position: absolute;
+  top: 55px;
+  left: 0px;
+  width: 100%;
+  font-size: 0px;
+  height: 325px;
+}
+
+#starWrapperLetsGo{
+	position: absolute;
+	top: 100px;
+	left: 0px;
+	width: 100%;
+	font-size: 0px;
+	height: 140px;
+}
+.starItem{
+	width: 25%;
+	height: 50%;
+	display: inline-block;
+	background: url(../images/game-star.png) no-repeat top center;
+	background-size: contain;
+}
+#starWrapper .starItem{
+	height: 25%;
+}
+.starItem:active{
+	background-image: url(../images/game-star-on.png);
+}
+
+#timeShow{
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	right: 10px;
+	font-size: 18px;
+	color:red;
+	top: 33px;
+	text-shadow: 1px 1px rgb(97, 4, 4);
+}
+#playContent{
+	  padding-top: 10%;
+}

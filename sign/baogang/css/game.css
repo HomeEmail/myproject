@@ -1,0 +1,302 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: url(../images/game-bg.jpg) no-repeat top center;
+	background-size: cover;
+}
+
+#loadingBox{
+
+  color: #ffffff;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 48%;
+}
+#web_bg{
+	/*background: url(../images/loading-bg.png) no-repeat bottom center;
+	background-size: cover;*/
+}
+
+#welcomeTitle,.welcomeTitle{
+	width: 260px;
+
+}
+.welcomeTitle-wrapper{
+	text-align: center;
+	padding-top: 26%;
+	padding-bottom: 0;
+}
+#welcome{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+
+}
+.welcome-wrapper{
+	text-align: center;
+	width: 100%;
+	  height: 66px;
+}
+.welcomeImg-wrapper{
+	position: relative;
+}
+.welcomeText{
+	position: absolute;
+	text-align: center;
+
+  top: 0px;
+  width: 100%;
+  padding-top: 10%;
+  line-height: 26px;
+}
+@media screen and (min-width: 375px) {
+   .welcomeText{
+  	line-height: 32px;
+   }
+}
+@media screen and (min-width: 414px){
+	.welcomeText {
+	  line-height: 36px;
+	  font-size: 18px;
+	}
+}
+#welcomeBt{
+	display: inline-block;
+	width: 158px;
+	height: 75px;
+	background: url(../images/game-begin.png) no-repeat top center;
+	background-size: cover;
+	display: none;
+}
+#welcomeBt:active{
+	background-image: url(../images/game-begin.png);
+}
+
+#playLogo{
+	background: url(../images/play-top.png) no-repeat top center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+
+}
+
+
+.titleWrapper{
+	margin-top: 42%;
+}
+#ruleTitle{
+	text-align: center;
+	width: 100%;
+}
+#ruleTitle img{
+	height: 36px;
+}
+#resultTitle{
+	width: 100%;
+	text-align: center;
+
+}
+#resultTitle img{
+	height: 36px;
+}
+
+.playBg{
+	position: relative;
+}
+#playBgImg{
+	/*height: 291px;*/
+	width: 100%;
+
+}
+
+
+.ruleTextWrapper{
+	width: 100%;
+	text-align: center;
+	padding-top: 15px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.resultWrapper{
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+    padding-bottom: 5px;
+}
+#ruleText {
+	height: 82px;
+}
+#resultText{
+  height: 60px;
+  text-align: center;
+  color: red;
+  background: url(../images/store-bg.png) no-repeat top center;
+  background-size: 90% 100%;
+  line-height: 52px;
+  font-size: 22px;
+  text-shadow: 1px 1px #2A0000;
+}
+
+
+.btplay{
+	width: 100%;
+	text-align: center;
+
+  margin-top: -30px;
+  position: relative;
+  z-index: 99;
+}
+
+#againBt{
+	display: inline-block;
+	width: 88px;
+	height: 33px;
+	background: url(../images/again.png) no-repeat top center;
+	background-size: cover;
+	
+}
+#againBt{
+	background-image: url(../images/again.png);
+	
+}
+
+#starWrapper{
+  width: 100%;
+  font-size: 0px;
+  height: 320px;
+  width: 90%;
+  margin-left: 5%;
+
+  background-color: rgba(255,255,255,0.8);
+  box-shadow: 0px 0px 35px 16px rgba(255,255,255,0.75);
+  border-radius: 8px;
+}
+@media screen and (min-width: 370px) { 
+  #starWrapper{
+    height: 450px;
+  }
+}
+
+.starItem{
+	width: 25%;
+	height: 50%;
+	display: inline-block;
+	background: url(../images/game-star.png) no-repeat top center;
+	background-size: contain;
+}
+#starWrapper .starItem{
+	height: 25%;
+}
+.starItem:active{
+	background-image: url(../images/game-star-on.png);
+}
+
+#timeShow{
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: red;
+  text-shadow: 1px 1px rgb(97, 4, 4);
+  text-align: right;
+  padding-right: 5%;
+}
+#playContent{
+	 width: 100%;
+	 height: 100%;
+	 background-size: cover;
+	 background: url(../images/game-bg.jpg) no-repeat top center;
+
+	  position: absolute;
+	  top: 0px;
+	  left: 0px;
+}
+
+#gameResultWrapper{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../images/game-bg.jpg) no-repeat top center;
+	 background-size: cover;
+}
+.gameResultText-Wrapper{
+	position: relative;
+}
+#gameResultText{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 10%;
+	line-height: 42px; color: #fff; 
+}
+@media screen and (max-width: 320px) { 
+  #gameResultText{
+    line-height: 34px; 
+  }
+}
+#gameResultTextValue{
+	color: red;
+	  font-weight: bold;
+}
+
+.gameAgain-wrapper{
+	width: 100%;
+	text-align: center;
+}
+#gameAgainBt{
+	height: 65px;
+	background: url(../images/again.png) no-repeat center center;
+	background-size: contain;
+}
+#gameAgainBt:active{
+	background: url(../images/again.png) no-repeat center center;
+	background-size: contain;
+}
+
+.gameShare-wrapper{
+	width: 100%;
+	text-align: center;
+}
+#gameShareBt{
+	height: 65px;
+	background: url(../images/share.png) no-repeat center center;
+	background-size: contain;
+}
+#gameShareBt:active{
+	background: url(../images/share.png) no-repeat center center;
+	background-size: contain;
+}
+
+
+
+#gameResultWrapper .welcomeTitle-wrapper{
+	padding-top: 12%;
+}
+@media screen and (max-width: 320px) { 
+  #gameResultWrapper .welcomeTitle-wrapper{
+    padding-top: 6%;
+  }
+}
+
+
+#shareBox {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(../images/guide.png) no-repeat center top;
+    background-color: rgba(0,0,0,.88);
+    background-size: contain;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    text-align: center
+}

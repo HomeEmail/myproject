@@ -1,0 +1,131 @@
+
+#main,body,html{
+  position: relative; 
+  width: 100%;
+  /*height: 100%;
+  overflow: hidden;*/
+  /*background-image: url(../images/step1-bg1.jpg);*/
+    
+}
+.bg-top{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.bg-top img,.bg-bottom img{
+  width: 100%;
+}
+.bg-bottom{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#main{
+  /*padding: 4%;*/
+}
+
+.submitOK {
+  display: inline-block;
+  width: 124px;
+  height: 30px;
+  padding: 3px 0px;
+  text-align: center;
+  border: 0;
+  background: none;
+  background-image: url(../images/submit-qiandao-bt.png);
+  background-repeat: no-repeat;
+  background-size: 124px 27px;
+}
+.submitOK:active {
+  background-image: url(../images/submit-qiandao-bt-on.png);
+}
+.toupiao-desc-wrapper{
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.submitOK-wrapper{
+  padding: 0px 10px;
+  padding-bottom: 40px;
+}
+@media (min-width: 360px) {
+  .toupiao-desc-wrapper{
+      
+  }
+}
+.toupiao-item-wrapper{
+  margin-top: 10px;
+  text-align: center;
+}
+.toupiao-item{
+  text-align: center;
+  display: inline-block;
+  font-size: 0px;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  border:2px #fff solid;
+  overflow: hidden;
+  margin: 0px 4px;
+  position: relative;
+}
+.toupiao-item.selected{
+  border-color:yellow;
+  box-shadow: 0px 0px 10px 0px yellow;
+}
+@media (min-width: 360px) {
+  .toupiao-item{
+    
+  }
+}
+.toupiao-item-text{
+  font-size: 22px;
+  font-weight: bold;
+  color: #2f6baa;
+  padding: 8px 15px;
+    text-shadow: 0px 0px 2px #16E587;
+}
+.selected .toupiao-item-text{
+  color: red;
+}
+.toupiao-title-img-wrapper{
+  /*margin-top: 37%;*/
+}
+.toupiao-item-img{
+width: 100%;
+    height: 100%;
+    display: block;
+}
+.toupiaoForm{
+  margin-top: -88px;
+}
+
+.toupiao-item-text{
+  display: none;
+  width: 100%;
+  height: 100%;
+  line-height: 63px;
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+}
+.selected .toupiao-item-text{
+  display: block;
+  color: #fff;
+}
+
+
+

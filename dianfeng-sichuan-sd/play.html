@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>巅峰手游</title>
+<style>
+html,body{
+	padding: 0;margin: 0;
+	font-size: 12px;
+	color: #fff;
+}
+</style>
+<script type="text/javascript" src="./js/utv.js"></script>
+<script type="text/javascript" src="./js/tvc.js"></script>
+<script type="text/javascript" src="./js/config.js"></script>
+<script type="text/javascript" src="./js/player.js"></script>
+<script type="text/javascript" src="./js/play.js"></script>
+<script type="text/javascript">
+
+
+</script>
+
+</head>
+
+<body onunload="pageUnload();" onload="pageLoad();" style="background:url(images/play-bg.png) no-repeat;width:640px;height:526px;background-color:transparent;">
+
+<!-- logo -->
+	<img src="./images/logo.png" width="70" style="position:absolute;left:15px;top:15px;">
+	
+	<!-- play area -->
+	<div style="position:absolute;left: 20px;top: 68px;width: 440px;height: 344px;background-color:rgba(255,255,255,0.2);"></div>
+	<!-- desc -->
+	<div style="position:absolute;left: 484px;top: 68px;width: 134px;line-height: 16px;height: 158px;overflow: hidden;background:url(./images/cover.png);-webkit-border-radius:5px;">
+		<div style="color:#ba742b;padding: 5px;font-size: 14px;padding-bottom: 0px;">[游戏描述]</div>
+		<div style="font-size:12px;line-height: 16px;padding:5px;">
+			熊出没（贺岁版）2016是一款射击类游戏，游戏中你将要扮演熊大、熊二和翠花你为了不让被光头破坏森林，你只能反击并且躲 过不同的障碍，打倒光头强和人类的高科技武器。
+		</div>
+	</div>
+
+	<div style="position:absolute;left:20px;top:440px;width:440px;height:26px;background:url(./images/cover.png);-webkit-border-radius:5px;">
+		<div style="background-color:#ba742b;width:60px;height:26px;line-height:26px;position:absolute;top:0px;left:0px;-webkit-border-radius:3px;text-align:center;">名 称</div>
+		<!-- name -->
+		<div style="position:absolute;left: 66px;top: 6px;width: 138px;font-size: 14px;">
+			<marquee id="marquee_name" behavior="scroll" direction="left" >熊出没（贺岁版）2016</marquee>
+		</div>
+		<div style="background-color:#ba742b;width:60px;height:26px;line-height:26px;position:absolute;top:0px;left:220px;-webkit-border-radius:3px;text-align:center;">系 统</div>
+		<div style="position:absolute;left: 296px;top: 6px;text-align: center;width: 126px;font-size: 14px;">安 卓</div>
+	</div>
+
+	
+	
+
+	<div style=" 484px;top: 253px;     width: 134px;     line-height: 16px;     height: 158px;position: absolute;left: 484px;background: url(./images/cover.png);     -webkit-border-radius: 5px;">
+		<div style="color:#ba742b;padding: 5px;font-size: 14px;padding-bottom: 0px;">[扫码下载]</div><a onclick="" style="display:block;text-align: center;padding-top: 18px;"><img src="./images/qr.jpg" id="qrImg" style="
+    width: 100px;
+"></a>
+	</div>
+
+	<div id="bigQrImgWrapper" style="display:none;position:absolute;left:0px;top:0px;background:url(./images/cover2.png);width:640px;height:526px;z-index:10;">
+		<img src="./images/qr.jpg" id="qrImgBig" width="300" style="position:absolute;left: 110px;top: 86px;" />
+		<div style="position:absolute;left:440px;top:322px;">［返回］关闭二维码</div>
+	</div>
+
+	
+	<!-- bottom tips -->
+	<div style="position:absolute;left:30px;top:494px;color:#fff;">
+		温馨小提示：要想下载手游中心中提供的游戏,只需要用手机扫描屏幕中的二维码即可免费下载
+	</div>
+</body>
+</html>

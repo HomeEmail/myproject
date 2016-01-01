@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test canvas</title>
+</head>
+
+<body id="Body" onload="winLoad();">
+<img src="./images/star-mask.png" id="starMask" style="display: none;" />
+<img src="./images/star-bg.png" id="starBg" style="display:none;" />
+<img src="./images/test.jpg" id="testImg" style="display:none;" />
+
+<div id="renderImg">
+	
+</div>
+</body>
+<script type="text/javascript">
+function $(str){
+	return document.getElementById(str);
+}
+	function winLoad(){
+		var starMaskImg=$('starMask');
+		var starBgImg=$('starBg');
+		var testImg=$('testImg');
+		var crop_canvas = document.createElement('canvas');
+		//画布宽高
+	    crop_canvas.width = 597;
+	    crop_canvas.height = 552;
+		var ctx=crop_canvas.getContext('2d');
+		ctx.drawImage(starBgImg, 0, 0, 597, 552);//bg
+		ctx.globalCompositeOperation = 'source-in';
+		ctx.drawImage(testImg, 0, 0, 597, 552);//bg
+		ctx.globalCompositeOperation = 'source-over';
+		ctx.drawImage(starMaskImg, 0, 0, 597, 552);//mask
+		$('renderImg').appendChild(crop_canvas);
+	}
+</script>
+
+</html>

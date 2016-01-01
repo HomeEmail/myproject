@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<style type="text/css">
+		*{
+			padding: 0;margin: 0;
+		}
+		.fileinput{
+			display: block;
+			border:1px #333 solid;
+			background-color: #ccc;
+			color: #000;
+			width: 200px;
+			height: 50px;
+		}
+		#file2{
+			opacity: 0;
+		}
+		
+		#bt2{
+			margin-top: -50px
+		}
+		#file3{
+			opacity: 0;
+			position: absolute;
+			left: 0px;
+			top:0px;
+			width: 100%;
+			height: 100%;
+			z-index: 99;
+
+		}
+		#bt3{
+			position: absolute;
+			left: 0px;
+			top:0px;
+			width: 100%;
+			height: 100%;
+			z-index: 100;
+		}
+
+		#file4{
+			position: absolute;
+			left: 0px;
+			top:0px;
+			width: 100%;
+			height: 100%;
+			z-index: 99;
+
+		}
+	</style>
+	
+
+
+	<title>签名测试</title>
+</head>
+<body>
+<div id="main">
+	<div>
+		<h2>test1</h2>
+		<input type="file" id="file1" class="fileinput" />
+	</div>
+	<div>
+		<h2>test2</h2>
+		<input type="file" id="file2" class="fileinput" />
+		<button id="bt2" class="fileinput">选择文件</button>
+	</div>
+
+	<div>
+		<h2>test3</h2>
+		<div style="width:300px;height:200px;position: relative;">
+			<input type="file" id="file3" class="fileinput" />
+			<button id="bt3" onclick="document.getElementById('file3').click();" class="fileinput">选择文件</button>
+		</div>
+	</div>
+
+	<div>
+		<h2>test4</h2>
+		<div style="width:300px;height:200px;position: relative;">
+			<input type="file" id="file4" class="fileinput" />
+		</div>
+	</div>
+	<!-- <div>
+		<h2>test3</h2>
+		<input type="file" id="file3" class="fileinput" />
+	</div> -->
+</div>
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>

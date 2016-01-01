@@ -1,0 +1,217 @@
+
+
+/******** content *******/
+
+#main,body,html{
+  position: relative; 
+  width: 100%;
+  /*height: 100%;
+  overflow: hidden;*/
+  /*background-image: url(../images/step1-bg1.jpg);*/
+    
+}
+.bg-top{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.bg-top img,.bg-bottom img{
+  width: 100%;
+}
+.bg-bottom{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.imgBox-wrapper{
+  width: 90%;
+  margin-top: 38%;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px #aaa solid;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px 0px #888 inset;
+  -webkit-box-shadow: 0px 0px 6px 0px #888 inset;
+  /*min-height: 40%;initial*/
+}
+@media (min-width: 360px) {
+  .imgBox-wrapper{
+      margin-top: 52%;
+  }
+}
+.imgBox-wrapper:after{
+}
+#imgBox{
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+}
+#imgSelect{
+
+}
+#imgCanvas{
+
+}
+#selectAreaBox{
+  border:1px red solid;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 110;
+}
+
+.selectImgBt-wrapper{
+  padding: 10px;
+  text-align: center;
+  position: relative;
+    margin-top: 5%;
+}
+@media (min-width: 360px) {
+  .selectImgBt-wrapper{
+      margin-top: 22%;
+  }
+}
+#selectImgBt{
+  display: inline-block;
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  color: #bbb;
+  position: relative;
+  z-index: 99;
+  background-color: #fff;
+  border: 0;
+  font-size: 16px;
+}
+#selectImgBt:active{
+  color:rgb(0, 163, 0);
+}
+#fileSelectInput{
+  position: absolute;
+  height: 30px;
+  width: 70%;
+  top: 0px;
+  left: 15%;
+  z-index: 100;
+  background: none;
+  border: 0;
+  margin-top: 14px;
+  opacity: 0;
+}
+
+.step1-input-text-wrapper{
+  padding: 10px 0px;
+  text-align: center;
+  width: 90%;
+  margin-left: 5%;
+}
+.step1-input-text-item{
+  padding-left: 80px;
+   margin-bottom: 10px;
+  background-repeat: no-repeat;
+  background-size: 79px 40px;
+  height: 40px;
+}
+#textBox1-wrapper{
+  background-image: url(../images/xm-name.png);
+}
+#textBox2-wrapper{
+  background-image: url(../images/bm-name.png);
+    padding-left: 80px;
+  background-size: 60px 40px;
+}
+.step1-input-text-wrapper input{
+   box-shadow: 0px 0px 5px 0px #aaa inset;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa inset;
+  display: inline-block;
+  width: 100%;
+  padding: 0px 3px;
+  line-height: 38px;
+  height: 40px;
+  border: 1px #ddd solid;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+#testDiv{
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  background-color: red;
+  color: #fff;
+}
+#previewBox{
+  position: fixed;
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  padding: 10px;
+}
+#generateBt-wrapper{
+  margin-left: 5%;
+  width: 90%;
+  text-align: right;
+}
+#generateBt{
+  display: inline-block;
+  width: 124px;
+  height: 30px;
+  padding: 3px 0px;
+  text-align: center;
+  border:0;
+  background: none;
+  background-image: url(../images/submit-qiandao-bt.png);
+  background-repeat: no-repeat;
+  background-size: 124px 27px;
+}
+#generateBt:active{
+  background-image: url(../images/submit-qiandao-bt-on.png);
+}
+
+#generateBtTips{
+  color: #fff;
+  display: none;
+  margin-top: 50%;
+}
+.previewOK-wrapper{
+    position: absolute;
+  bottom: 5%;
+  text-align: center;
+  width: 100%;
+}
+#previewOKBt{
+  background-color: green;
+  padding: 10px 20px;
+}
+#previewOKBt:active{
+  background-color:rgb(9, 207, 9);
+}
+#previewBox canvas{
+  display: inline-block;
+}
+#previewImgBox{
+  width: 100%;
+  text-align: center;
+}
+#previewCancelBt{
+  background-color: rgb(247, 56, 56);
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+#previewCancelBt:active{
+  background-color: red;
+}

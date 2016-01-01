@@ -2,6 +2,7 @@
 /.idea/
 /node_modules/
 
+*node_modules
 *.js-master
 *.zip
 *.rar
@@ -9,3 +10,4 @@
 *.tmp
 *.err
 *.idea
+*.svn

@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>投票结果显示</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+<link rel="stylesheet" type="text/css" href="./css/toupiao1-show.css"/>
+
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="./js/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix(".ie6png");
+</script>
+<![endif]-->
+
+</head>
+
+<body>
+
+<div class="pageContent">
+<!-- 
+	<div class="xinxin-wrapper clearfix">
+		<div class="xinxin-item" id="xinxin-item1"></div>
+		<div class="xinxin-item" id="xinxin-item2"></div>
+		<div class="xinxin-item" id="xinxin-item3"></div>
+		<div class="xinxin-item" id="xinxin-item4"></div>
+		<div class="xinxin-item" id="xinxin-item5"></div>
+	</div> -->
+<div class="group1">
+	<div class="rect-item clearfix" id="rect-item-1">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp1"></div>
+		<div class="xinxin-item" id="xinxin-item1">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-2">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp2"></div>
+		<div class="xinxin-item" id="xinxin-item2">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-3">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp3"></div>
+		<div class="xinxin-item" id="xinxin-item3">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-4">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp4"></div>
+		<div class="xinxin-item" id="xinxin-item4">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-5">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp5"></div>
+		<div class="xinxin-item" id="xinxin-item5">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-6">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp6"></div>
+		<div class="xinxin-item" id="xinxin-item6">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-7">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp7"></div>
+		<div class="xinxin-item" id="xinxin-item7">0</div>
+	</div>
+</div>
+
+
+<div class="group2">
+	<div class="rect-item clearfix" id="rect-item-8">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp8"></div>
+		<div class="xinxin-item" id="xinxin-item8">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-9">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp9"></div>
+		<div class="xinxin-item" id="xinxin-item9">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-10">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp10"></div>
+		<div class="xinxin-item" id="xinxin-item10">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-11">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp11"></div>
+		<div class="xinxin-item" id="xinxin-item11">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-12">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp12"></div>
+		<div class="xinxin-item" id="xinxin-item12">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-13">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp13"></div>
+		<div class="xinxin-item" id="xinxin-item13">0</div>
+	</div>
+	<div class="rect-item clearfix" id="rect-item-14">
+		<div class="rect-item-name">Manish Choudhary</div>
+		<div class="rect-item-sharp" id="rectItemSharp14"></div>
+		<div class="xinxin-item" id="xinxin-item14">0</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+<!-- 公共的 js -->
+<script language="javascript" type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+//柱状图 dom
+var rect1=$('#rectItemSharp1')
+	,rect2=$('#rectItemSharp2')
+	,rect3=$('#rectItemSharp3')
+	,rect4=$('#rectItemSharp4')
+	,rect5=$('#rectItemSharp5')
+	,rect6=$('#rectItemSharp6')
+	,rect7=$('#rectItemSharp7')
+	,rect8=$('#rectItemSharp8')
+	,rect9=$('#rectItemSharp9')
+	,rect10=$('#rectItemSharp10')
+	,rect11=$('#rectItemSharp11')
+	,rect12=$('#rectItemSharp12')
+	,rect13=$('#rectItemSharp13')
+	,rect14=$('#rectItemSharp14')
+;
+
+//票数 dom
+var xx1=$('#xinxin-item1')
+	,xx2=$('#xinxin-item2')
+	,xx3=$('#xinxin-item3')
+	,xx4=$('#xinxin-item4')
+	,xx5=$('#xinxin-item5')
+	,xx6=$('#xinxin-item6')
+	,xx7=$('#xinxin-item7')
+	,xx8=$('#xinxin-item8')
+	,xx9=$('#xinxin-item9')
+	,xx10=$('#xinxin-item10')
+	,xx11=$('#xinxin-item11')
+	,xx12=$('#xinxin-item12')
+	,xx13=$('#xinxin-item13')
+	,xx14=$('#xinxin-item14')
+;
+
+
+//定时器
+var timer1=null
+	,timer2=null
+	,timer3=null
+	,timer4=null
+	,timer5=null
+	,timer6=null
+	,timer7=null
+	,timer8=null
+	,timer9=null
+	,timer10=null
+	,timer11=null
+	,timer12=null
+	,timer13=null
+	,timer14=null
+;
+
+/**
+改变柱状图高度
+index:那个柱状图
+h:高度
+*/
+function changeRectH(index,h){
+	window['rect'+index].width(h);
+}
+/**
+改变票数
+index:那个柱状图的票数
+num:票数
+**/
+function changeTicketNum(index,num){
+	window['xx'+index].html(num);
+}
+
+/**
+	
+	index:那个柱状图
+	h:宽度，最大270px
+	num: 票数
+	step:每次改变高度的步长,默认1
+**/
+function rectAnimate(index,h,num,step){
+	var index=index;
+	var h=h;
+	var step=step||1;
+	var num=num;
+	changeRectH(index,0);//重置宽度
+	changeTicketNum(index,'');//重置票数
+	var elH=0;//元素高度累计
+	var elNum=0;//元素票数累计
+
+	!!window['timer'+index]&&clearInterval(window['timer'+index]);
+	window['timer'+index]=setInterval(function(){
+			
+			if(elH>=h){
+				changeRectH(index,h);
+				clearInterval(window['timer'+index]);
+				window['timer'+index]=null;
+				changeTicketNum(index,num)
+			} else {
+				elH+=step;
+				elNum++;
+				changeRectH(index,elH);
+				changeTicketNum(index,elNum)
+			}
+		},16);
+}
+
+function testAnimate(){
+	/*
+	index:那个柱状图
+	h:宽度，最大270px
+	num: 票数
+	step:每次改变高度的步长,默认1
+	*/
+	//传入第二，和第三参数,请先根据百分比计算出宽度和票数，宽度最高270px
+	rectAnimate(1,200,232,2);
+	rectAnimate(2,100,132,2);
+	rectAnimate(3,260,332,2);
+	rectAnimate(4,50,82,2);
+	rectAnimate(5,160,122,2);
+	rectAnimate(6,200,232,2);
+	rectAnimate(7,100,132,2);
+	rectAnimate(8,260,332,2);
+	rectAnimate(9,50,82,2);
+	rectAnimate(10,160,122,2);
+	rectAnimate(11,160,122,2);
+	rectAnimate(12,200,232,2);
+	rectAnimate(13,260,332,2);
+	rectAnimate(14,50,82,2);
+
+}
+testAnimate();//测试动画
+
+</script>
+
+</body>
+</html>

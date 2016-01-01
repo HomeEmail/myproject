@@ -1,0 +1,37 @@
+.pageContent{
+	width: 1366px;
+	height: 768px;
+	overflow: hidden;
+	background: #fff url(../images/duihua-show.jpg) no-repeat left center;
+	margin: 0 auto;
+	color: #fff;
+}
+
+.item-duihua-wrapper{
+  padding-top: 198px;
+  padding-left: 195px;
+  padding-right: 195px;
+}
+.item-duihua{
+	/*background-color: #666;*/
+	font-size: 18px;
+	line-height: 24px;
+  height: 72px;
+  overflow: hidden;
+}
+
+.item-duihua h1{
+	font-size: 20px;
+}
+
+.left-item{
+	margin-bottom: 12px;
+	padding-right: 200px;
+}
+.right-item{
+	margin-bottom: 13px;
+	padding-left: 200px;
+}
+.right-item h1{
+	text-align: right;
+}

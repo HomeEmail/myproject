@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>签到结果显示</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+<link rel="stylesheet" type="text/css" href="./css/qiandao-show.css"/>
+
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="./js/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix(".ie6png");
+</script>
+<![endif]-->
+
+</head>
+
+<body>
+
+<div id="pageContent" class="pageContent">
+	
+	<!-- <img src="./images/star.png" width="597" id="img0" class="qdImg qdImg-pos-0" /> -->
+
+	
+
+
+</div>
+
+
+
+
+<!-- 公共的 js -->
+<script language="javascript" type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+var imgPosInit=[
+	[-945,143]
+	,[-747,255]
+	,[-273,83]
+	,[-714,14]
+	,[-512,300]
+	,[-296,370]
+	,[-160,553]
+	,[-1011,637]
+	,[-816,453]
+	,[-402,521]
+];//图片初始位置left,top和最多显示的图片个数
+var imgSpeed=[
+	15000
+	,13000
+	,10000
+	,14000
+	,10000
+	,18000
+	,10000
+	,12000
+	,10000
+	,20000
+];//各个图片运动的时间，毫秒
+var $imgs=[];//存储各个图片$对象
+
+var imgLiuyan=[
+	'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+	,'./images/star.png'
+];//存储留言图片地址
+
+var currentImgIndex=0;//当前轮到哪个图片加入显示队列
+
+
+var $pageContent=$('#pageContent')
+	,timerIds=[]//图片运动控制计时器id,0表示没有图片，其他数值表示图片正在运动
+;
+function htmlInit(){
+	for(var i=0,len=imgPosInit.length;i<len;i++){
+		timerIds.push(0);
+		$imgs.push(null);
+	}
+	//totalImgNum=imgLiuyan.length;
+	//var s='';
+	// for(var i=0,len=imgPosInit.length;i<len;i++){
+	// 	s+='<img src="./images/star.png" width="160" id="img'+i+'" class="qdImg qdImg-pos-'+i+'" style="left:'+(imgPosInit[i][0]+1160)+'px;top:'+imgPosInit[i][1]+'px;" />'
+	// }
+	//$pageContent.html(s);
+}
+htmlInit();
+
+
+function execShowImg(){
+	
+	var s='';
+	for(var i=0,len=timerIds.length;i<len;i++){
+		if(!!!timerIds[i] && !!imgLiuyan[currentImgIndex]){
+			(function(i){
+				var i=i;
+				s='<img src="'+imgLiuyan[currentImgIndex]+'" width="160" id="img'+i+'" class="qdImg qdImg-pos-'+i+'" style="left:'+imgPosInit[i][0]+'px;top:'+imgPosInit[i][1]+'px;" />'
+				$imgs[i]=$(s);
+				$pageContent.append($imgs[i]);
+				timerIds[i]=1;
+				$imgs[i].animate({
+					left:1366+'px',
+					top:imgPosInit[i][1]+'px'
+				},imgSpeed[i],'linear',function(el){
+					$imgs[i].remove();
+					$imgs[i]=null;
+					timerIds[i]=0;
+				});
+				//break;
+				currentImgIndex++;
+			})(i);
+		}
+		
+	}
+
+	if(currentImgIndex>=imgLiuyan.length){
+		setTimeout(function(){
+			currentImgIndex=0;
+			alert('全部图片显示完成');
+			// $.getJSON("demo_ajax_json.js",function(result){
+			//     //result是个数组
+			//     imgLiuyan=result;
+			//     timerLoop=setInterval(execShowImg,800);
+			// });
+		},12000);
+		clearInterval(timerLoop);
+		return;
+	}
+
+}
+var timerLoop=setInterval(execShowImg,800);
+
+</script>
+
+</body>
+</html>

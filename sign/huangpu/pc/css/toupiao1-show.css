@@ -1,0 +1,113 @@
+.pageContent{
+	width: 1366px;
+	height: 768px;
+	overflow: hidden;
+	background: #fff url(../images/toupiao1-bg.jpg) no-repeat left center;
+	margin: 0 auto;
+	color: #fff;
+	position: relative;
+}
+.xinxin-wrapper{
+	margin-top: 220px;
+	padding-left: 70px;
+}
+.xinxin-item{
+  width: 100px;
+    height: 100px;
+    background: url(../images/xingxing.png) no-repeat;
+    background-size: contain;
+    float: left;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 100px;
+    margin-left: 18px;
+    text-shadow: 0px 1px 1px #222;
+    margin-top: -30px;
+    font-weight: bold;
+	
+}
+
+.rect-wrapper{
+	position: absolute;
+	top: 200px;
+	left: 40px;
+}
+.group1{
+	position: absolute;
+	top: 256px;
+	left: 60px;
+}
+.group2{
+	position: absolute;
+	top: 256px;
+	left: 702px;
+}
+.rect-item{
+  height: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+/*
+#rect-item-1{
+	top: 0px;
+}
+#rect-item-2{
+	top: 30px;
+}
+#rect-item-3{
+	top: 60px;
+}
+#rect-item-4{
+	top: 525px;
+}
+#rect-item-5{
+	top: 605px;
+}
+#rect-item-6{
+	top: 685px;
+}*/
+
+
+.rect-item-name{
+      font-size: 16px;
+    line-height: 40px;
+    padding: 0px 0px;
+    text-shadow: 1px 1px 0px #fff;
+    color: #2465B5;
+    height: 100%;
+    width: 210px;
+    float: left;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: left;
+}
+.rect-item-sharp{
+	/*height: 270px;*/
+	width: 1px;
+	height: 100%;
+	  box-shadow: 0px 0px 15px 5px #eee;
+	  float: left;
+}
+#rectItemSharp1,#rectItemSharp8{
+	background-color: #ed1551;
+
+}
+#rectItemSharp2,#rectItemSharp9{
+	background-color: #60c9df;
+}
+#rectItemSharp3,#rectItemSharp10{
+	background-color: #fff200;
+}
+#rectItemSharp4,#rectItemSharp11{
+	background-color: #71bf44;
+}
+#rectItemSharp5,#rectItemSharp12{
+	background-color: #f5821f;
+}
+#rectItemSharp6,#rectItemSharp13{
+	background-color: #a2228e;
+}
+#rectItemSharp7,#rectItemSharp14{
+	    background-color: aquamarine;
+}
