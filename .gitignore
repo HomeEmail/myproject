@@ -1,0 +1,11 @@
+/three.js-master/
+/.idea/
+/node_modules/
+
+*.js-master
+*.zip
+*.rar
+*.via
+*.tmp
+*.err
+*.idea
