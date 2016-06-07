@@ -47,6 +47,7 @@
 
 	<!-- 游戏开始界面  -->
 	<div id="main" style="">
+		<div class="logoImg"></div>
 		<div id="mainText"></div>
 
 		<div class="bt-wrapper">
@@ -60,6 +61,7 @@
 	</div>
 
 	<div id="playReady" style="display:none;">
+		<div class="logoImg"></div>
 		<!--<div class="playing-top"></div>-->
 		<!-- <div id="playReadyTips">3</div>
 		<div class="">准备摇动手机</div> -->
@@ -70,9 +72,10 @@
 		<div id="readyText"></div>
 		<div id="readyRen"></div>
 	</div>
-
+	
 	<!-- 玩游戏界面 -->
 	<div id="playing" style="display:none;">
+		<div class="logoImg"></div>
 		<!--<div class="playing-top"></div>-->
 		<!--<div class="playing-bottom-bg"></div>-->
 		<div class="playing-bottom-img-wrapper">
@@ -90,7 +93,7 @@
 	</div>
 
 	<div id="resultBox" style="display:none;">
-
+		<div class="logoImg"></div>
 		<div class="luckResultImg">
 			<div class="scoreWrapper">游戏得分<span id="myScore">0</span></div>
 			<div id="myCodeBtWrapper" style="">
@@ -102,6 +105,8 @@
 		<div id="shareBt">分享到朋友圈可获得兑奖卷</div> -->
 
 	</div>
+
+
 
 
 	<img src="./images/zg-bx.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
@@ -229,7 +234,7 @@
 				isVibrate=true;
 				$('#calTime').hide();
 				setTimeout(function(){
-					var totalNum=num1+num3+num5+num7;
+					var totalNum=num1+num2+num3+num4+num5+num6+num7+num8;
 					var title='摇到'+totalNum+'分，手机差点飞出去了！';
 					//var s='恭喜您<br/>获得<br/>'+num1+'个柠檬<br/>通关成功！';
 					if(totalNum>=30){
@@ -283,7 +288,7 @@
 		var typeId=fRandomBy(0,7);
 		switch (typeId){
 			case 0: {
-				num1++;
+				num1＝num1+2;
 				break;
 			}
 			case 1: {
