@@ -1,0 +1,85 @@
+.login-body,html,body{
+	background: #e96f18 url(../images/login-bg.jpg) no-repeat top center;
+	height: 100%;
+}
+
+.footer-copyright{
+	height: 94px;
+	background: url(../images/copyright-bg.png);
+	color: #fff;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+.footer-copyright-box{
+	padding-top: 20px;
+	text-align: center;
+	line-height: 30px;
+}
+
+
+.login-logo-wrapper{
+	padding-top: 100px;
+}
+.login-logo{
+	height: 400px;
+}
+.login-form-wrapper{
+	position: absolute;
+	right: 50px;
+	top: 100px;
+	color: #fff;
+}
+.login-form-wrapper h1{
+	text-align: center;
+	font-size: 22px;
+	margin-bottom: 15px;
+}
+.input-item{
+	width: 380px;
+	height: 50px;
+	margin-bottom: 15px;
+	border: 1px #fff solid;
+}
+.input-button{
+	border: 0;
+}
+.input-item i{
+	float: left;
+	width: 40px;
+	height: 50px;
+}
+.input-box{
+	float: right;
+	width: 340px;
+	height: 50px;
+	line-height: 50px;
+	border: 0;
+	background: none;
+	color: #fff;
+}
+.person-icon{
+	background: url(../images/icon/person.png) no-repeat center center;
+}
+.lock-icon{
+	background: url(../images/icon/lock.png) no-repeat center center;
+}
+.login-bt{
+	color: #e58201;
+	background-color: #fff;
+	width: 380px;
+	height: 40px;
+	border: 0;
+	font-size: 16px;
+	box-shadow: 0px 3px 3px 0px #333;
+	-webkit-box-shadow: 0px 3px 3px 0px #333;
+	-moz-box-shadow: 0px 3px 3px 0px #333;
+	-o-box-shadow: 0px 3px 3px 0px #333;
+}
+
+
+
+
+
+
+

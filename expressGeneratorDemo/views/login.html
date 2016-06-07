@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<% include style_common.html %>
+</head>
+<body>
+	<h1><%= title %></h1>
+	<form action="./login" method="post">
+		<div><label><span>username:</span><input type="text" id="username" name="username" /></label></div>
+		<div><label><span>password:</span><input type="password" id="pwd" name="pwd" /></label></div>
+		<div><button id="submitBt">login</button></div>
+	</form>
+</body>
+</html>

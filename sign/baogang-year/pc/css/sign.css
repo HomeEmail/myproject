@@ -1,0 +1,151 @@
+
+#body{
+	height: 768px;
+	width: 1024px;
+	background: #f9ead9;
+	position: relative;
+	overflow: hidden;
+	-webkit-perspective:0; 
+	-webkit-perspective-origin: 50% 50%;
+}
+
+.pageBody{
+	height: 100%;
+	width: 100%;
+	background: url(../images/sign-body-bg.jpg) no-repeat;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*transform: scale(1,1) translate3d(0px,0px,0px);*/
+	-webkit-transform: scale(1,1) translate3d(0px,0px,0px);
+	z-index: 10;
+}
+
+.xinItem{
+	position: absolute;
+	-webkit-transition:-webkit-transform 5s linear 0s;
+
+}
+.xinItem img{
+	width: 252px;
+	/*height: 217px;*/
+	-webkit-transform: rotateY(0deg) rotateX(0deg) rotateZ(5deg) skewX(0deg) skewY(0deg) scale(1,1) translate3d(0px,0px,0px);
+}
+
+.pos1{
+	top: 50px;
+	left: 98px;
+	-webkit-transform: rotateY(0deg) rotateZ(-20deg);
+	z-index: 12;
+}
+
+.pos2{
+	top: 30px;
+	left: 330px;
+	-webkit-transform: rotateY(0deg) rotateZ(10deg);
+}
+.pos2 img{
+	width: 210px;
+}
+
+.pos3{
+	top: 30px;
+	left: 508px;
+	-webkit-transform: rotateY(0deg) rotateZ(10deg);
+}
+.pos3 img{
+	width: 180px;
+}
+.pos4{
+	top: 78px;
+	left: 681px;
+	-webkit-transform: rotateY(0deg) rotateZ(-20deg);
+}
+.pos4 img{
+	width: 180px;
+}
+
+
+.pos5{
+	top: 222px;
+	left: 770px;
+	-webkit-transform: rotateY(0deg) rotateZ(-2deg);
+}
+.pos5 img{
+	width: 180px;
+}
+
+.pos6{
+	top: 381px;
+	left: 772px;
+	-webkit-transform: rotateY(0deg) rotateZ(-10deg);
+}
+.pos6 img{
+	width: 180px;
+}
+
+.pos7{
+	top: 505px;
+	left: 695px;
+	-webkit-transform: rotateY(0deg) rotateZ(-10deg);
+}
+.pos7 img{
+	width: 180px;
+}
+
+.pos8{
+	top: 506px;
+	left: 445px;
+	-webkit-transform: rotateY(0deg) rotateZ(-5deg);
+}
+.pos8 img{
+	
+}
+
+.pos9{
+	top: 486px;
+	left: 188px;
+	-webkit-transform: rotateY(0deg) rotateZ(15deg);
+	z-index: 12;
+}
+.pos9 img{
+	
+}
+
+
+.pos10{
+	top: 406px;
+	left: 55px;
+	-webkit-transform: rotateY(0deg) rotateZ(-15deg);
+}
+.pos10 img{
+	width: 210px;
+}
+
+
+
+.pos11{
+	top: 286px;
+	left: 27px;
+	-webkit-transform: rotateY(0deg) rotateZ(8deg);
+}
+.pos11 img{
+	width: 160px;
+}
+
+
+
+.pos12{
+	top: 186px;
+	left: 28px;
+	-webkit-transform: rotateY(0deg) rotateZ(-10deg);
+}
+.pos12 img{
+	width: 160px;
+}
+
+
+
+
+
+

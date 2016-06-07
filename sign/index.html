@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<style type="text/css">
+		*{
+			padding: 0;margin: 0;
+		}
+		#main,body,html{
+			position: relative; 
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		#contentCanvas{
+			position: absolute;
+			left: 0px;
+			top:0px;
+		}
+	</style>
+	
+
+
+	<title>签名测试</title>
+</head>
+<body>
+<div id="main">
+	<canvas id="contentCanvas" width="320" height="480">
+		Your browser does not support the canvas element.
+	</canvas>
+</div>
+<script type="text/javascript">
+var main=document.getElementById('main');
+var el=document.getElementById('contentCanvas');
+var ctx=el.getContext("2d");
+
+// ctx.rect(20,20,150,100);
+// ctx.stroke();
+
+// ctx.beginPath();
+// ctx.moveTo(0,0);
+// ctx.lineTo(300,150);
+// ctx.stroke();
+function getBrowserW(){
+	return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;//可见区域宽度
+}
+function getBrowserH(){
+	//alert(document.documentElement.clientHeight);
+	return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;//可见区域高度		
+}
+function drawLine(){
+	
+	ctx.beginPath();
+	ctx.moveTo(beginX,beginY);
+	ctx.lineTo(endX,endY);
+	ctx.stroke();
+	
+}
+function setCanvasWH(){
+	var w=getBrowserW(),h=getBrowserH();
+	el.setAttribute('width',w);
+	el.setAttribute('height',h);
+	el.style.width=w+'px';
+	el.style.height=h+'px';
+}
+setCanvasWH();
+var beginX=-1,beginY=-1,endX=-1,endY=-1;
+
+el.addEventListener('touchstart',function(e){
+	var touches=e.touches,touch=null,x=-1,y=-1;
+	console.log('start '+e.touches);
+	if(touches.length==1){
+		touch=touches[0];
+		endX=beginX=x=touch.pageX;
+		endY=beginY=y=touch.pageY;
+		console.log(beginX+' '+x);
+		drawLine();
+	}
+});
+el.addEventListener('touchmove',function(e){
+	var touches=e.touches,touch=null,x=-1,y=-1;
+	console.log('move '+e.touches);
+	if(touches.length==1){
+		touch=touches[0];
+		beginX=endX;
+		beginY=endY;
+		endX=x=touch.pageX;
+		endY=y=touch.pageY;
+		console.log(endX+' '+x);
+		drawLine();
+	}
+	
+});
+el.addEventListener('touchend',function(e){
+	var touches=e.touches,touch=null,x=-1,y=-1;
+	console.log('end '+e.touches);
+	if(touches.length==1){
+		touch=touches[0];
+		beginX=endX;
+		beginY=endY;
+		endX=x=touch.pageX;
+		endY=y=touch.pageY;
+		console.log(endX+' '+x);
+		drawLine();
+	}
+	
+});
+el.addEventListener('touchcancel',function(e){
+	var touches=e.touches,touch=null,x=-1,y=-1;
+	console.log('cancel '+e.touches);
+	if(touches.length==1){
+		touch=touches[0];
+		beginX=endX;
+		beginY=endY;
+		endX=x=touch.pageX;
+		endY=y=touch.pageY;
+		console.log(endX+' '+x);
+		drawLine();
+	}
+	
+});
+ // 修复 Android 4.0.X 触摸事件的 Bug
+// 参考：Android Issue 19827、152913
+// https://code.google.com/p/android/issues/detail?id=19827
+// https://code.google.com/p/chromium/issues/detail?id=152913
+main.addEventListener('touchstart', function(e) {
+    // e.preventDefault();
+});
+main.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+});
+main.addEventListener('touchend', function(e) {});
+
+
+</script>
+
+</body>
+</html>

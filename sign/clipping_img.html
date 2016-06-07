@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<style type="text/css">
+		*{
+			padding: 0;margin: 0;
+		}
+		#main,body,html{
+			position: relative; 
+			width: 100%;
+			/*height: 100%;*/
+			/*overflow: hidden;*/
+		}
+		#imgBox{
+			margin: 0 auto;
+			height: 400px;
+			/*width: 200px;*/
+			border:1px red solid;
+			position: relative;
+			overflow: hidden;
+			background-color: #888;
+		}
+		#imgBox:after{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			content:'请拖动图像';
+			margin-left: -30px; 
+			color: #000;
+			z-index: 90;
+		}
+		#imgSelect{
+			cursor: move;
+		}
+		#imgCanvas{
+			position: absolute;
+			left: 0px;
+			top:0px;
+			cursor: move;
+			z-index: 100;
+			transform-origin:0% 0% 0px;
+			-moz-transform-origin: 0% 0% 0px;
+			-webkit-transform-origin: 0% 0% 0px;
+			-o-transform-origin: 0% 0% 0px;
+			-ms-transform-origin: 0% 0% 0px;
+		}
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+
+
+	<title>剪裁图片测试8</title>
+</head>
+<body>
+<div id="main">
+	<div id="imgBox">
+		<img id="imgSelect" src="./test.jpg" style="display:none;" alt="test img" />
+		<canvas id="imgCanvas" width="320" height="480" style="display: none;">
+			Your browser does not support the canvas element.
+		</canvas>
+	</div>
+	<div>
+		<button id="scale1Bt">放大</button><button id="scale0Bt">缩小</button>
+	</div>
+	<br/>
+	<input type="text" id="textBox" value="我是美女" />
+	<button id="clippingBt">剪裁图片</button>
+	<div id="testDiv"></div>
+</div>
+<script type="text/javascript">
+var main=document.getElementById('main');
+var imgBox=document.getElementById('imgBox');
+var imgEl=document.getElementById('imgSelect');
+var canvasEl=document.getElementById('imgCanvas');
+var ctx=canvasEl.getContext("2d");
+var clippingBt=document.getElementById('clippingBt');
+var textBox=document.getElementById('textBox');
+var curScaleVal=1;
+var tempImg=new Image();
+// ctx.rect(20,20,150,100);
+// ctx.stroke();
+
+// ctx.beginPath();
+// ctx.moveTo(0,0);
+// ctx.lineTo(300,150);
+// ctx.stroke();
+function getBrowserW(){
+	return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;//可见区域宽度
+}
+function getBrowserH(){
+	//alert(document.documentElement.clientHeight);
+	return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;//可见区域高度		
+}
+function setCanvasWH(el,w,h){
+	var w=w||getBrowserW(),h=h||getBrowserH();
+	el.setAttribute('width',w);
+	el.setAttribute('height',h);
+	el.style.width=w+'px';
+	el.style.height=h+'px';
+}
+imgEl.onload=function(){
+	var w=imgEl.width||imgEl.clientWidth,h=imgEl.height||imgEl.clientHeight;
+	setCanvasWH(canvasEl,w,h);
+	ctx.drawImage(imgEl,0,0,w,h);//http://www.w3school.com.cn/tags/canvas_drawimage.asp
+	imgEl.style.display='none';
+	canvasEl.style.display='block';
+	// tempImg.src=canvasEl.toDataURL("image/png");
+	// tempImg.width=w;
+	// tempImg.height=h;
+	//alert('loaded');
+}
+var $canvasEl=$(canvasEl);
+function scaleCanvas(val,type){
+	var oldScaleVal=curScaleVal;
+	var val=val||1;
+	if(type=='pinchin'){
+		curScaleVal=curScaleVal-0.01;
+	} else if(type=='pinchout'){
+		curScaleVal=curScaleVal+0.01;
+	} else {
+		return;
+	}
+	if(curScaleVal<=0.01){
+		curScaleVal=0.01;
+		//return;
+	}
+	//curScaleVal=val;
+	//$canvasEl.css({'transform-origin':'0% 0% 0px'});
+	$canvasEl.animate({'scale':curScaleVal+','+curScaleVal},26,'linear');
+	var top=parseInt(canvasEl.style.top||0,10);
+    var left=parseInt(canvasEl.style.left||0,10);
+	var w=canvasEl.width||canvasEl.clientWidth,h=canvasEl.height||canvasEl.clientHeight;
+	var boxW=imgBox.width||imgBox.clientWidth;
+    var boxH=imgBox.height||imgBox.clientHeight;
+    var willW=parseInt(w*curScaleVal,10);
+    var willH=parseInt(h*curScaleVal,10);
+    if(willW<=boxW){
+    	left=Math.abs(left+parseInt(left/oldScaleVal*(oldScaleVal-curScaleVal),10));
+    	 if(left>=(boxW-willW)){
+	    	left=boxW-willW;
+	    }
+	    if(left<=2){
+	    	left=0;
+	    }
+    } else {
+    	left=-Math.abs(left-parseInt(left/oldScaleVal*(oldScaleVal-curScaleVal),10));
+    	if(left<=-(willW-boxW)){
+	    	left=-(willW-boxW);
+	    }
+	    if(left>=2){
+	    	left=0;
+	    }
+    }
+     if(willH<=boxH){
+    	top=Math.abs(top+parseInt(top/oldScaleVal*(oldScaleVal-curScaleVal),10));
+    	if(top>=(boxH-willH)){
+	    	top=boxH-willH;
+	    }
+	    if(top<=2){
+	    	top=0;
+	    }
+    } else {
+    	top=-Math.abs(top-parseInt(top/oldScaleVal*(oldScaleVal-curScaleVal),10));
+    	if(top<=-(willH-boxH)){
+	    	top=-(willH-boxH);
+	    }
+	    if(top>=2){
+	    	top=0;
+	    }
+    }
+
+ //    var p=w/h;
+ //    var pp=boxW/w;
+	// w=parseInt(w*curScaleVal,10);
+	// h=parseInt(h*curScaleVal,10);
+	// setCanvasWH(canvasEl,w,h);
+	// ctx.scale(curScaleVal,curScaleVal);
+	// ctx.drawImage(imgEl,0,0,w,h);
+	
+    // canvasEl.style.top=top+'px';
+    // canvasEl.style.left=left+'px';
+    $canvasEl.animate({'top':top+'px','left':left+'px'},26,'linear');
+	document.getElementById('testDiv').innerHTML=$canvasEl.attr('style');
+}
+function clippingImg(left,top,width,height){
+	var cW=0;
+    var cH=0;
+    var imgW=imgEl.width||imgEl.clientWidth,imgH=imgEl.height||imgEl.clientHeight;
+    cW=parseInt(imgW*curScaleVal,10);
+    cH=parseInt(imgH*curScaleVal,10);
+    var crop_temp_canvas=document.createElement('canvas');
+    crop_temp_canvas.width = cW;
+    crop_temp_canvas.height = cH;
+    var ctx_temp=crop_temp_canvas.getContext('2d')
+    ctx_temp.drawImage(canvasEl, 0, 0, cW, cH);
+
+
+	var crop_canvas = document.createElement('canvas');
+	if(left<=0) width=cW;
+	if(top<=0) height=cH;
+    crop_canvas.width = width;
+    crop_canvas.height = height;
+    var ctx=crop_canvas.getContext('2d')
+    ctx.drawImage(crop_temp_canvas, left, top, width, height, 0, 0, width, height);
+    addText(ctx);
+
+    var data=crop_canvas.toDataURL("image/png");
+    //删除字符串前的提示信息 "data:image/png;base64,"  
+	//data = data.substring(22); 
+    //console.log(data);
+    main.appendChild(crop_canvas);
+    
+    crop_canvas=null;
+    ctx=null;
+    crop_temp_canvas=null;
+    ctx_temp=null;
+}
+function addText(ctx){
+	ctx.font="30px Microsoft YaHei";
+	var text=textBox.value||'Hello 美女!';
+	ctx.textAlign="center";
+	ctx.fillStyle="#0000ff";
+	ctx.fillText(text,10,50);
+}
+clippingBt.addEventListener('click',function(e){
+    var boxW=imgBox.width||imgBox.clientWidth;
+    var boxH=imgBox.height||imgBox.clientHeight;
+    //var imgW=imgEl.width||imgEl.clientWidth,imgH=imgEl.height||imgEl.clientHeight;
+    //console.log(boxW);
+    var top=parseInt(canvasEl.style.top||0,10);
+    var left=parseInt(canvasEl.style.left||0,10);
+    if(left<=0){
+    	left=0-left;
+    } else {
+    	left=0;
+    }
+    if(top<=0){
+    	top=0-top;
+    } else {
+    	top=0;
+    }
+    
+    //left=parseInt(left*curScaleVal,10);
+    //top=parseInt(top*curScaleVal,10);
+	clippingImg(left,top,boxW,boxH);
+
+});
+document.getElementById('scale1Bt').onclick=function(){
+	scaleCanvas(curScaleVal+0.2,'pinchout');
+}
+document.getElementById('scale0Bt').onclick=function(){
+	scaleCanvas(curScaleVal-0.2,'pinchin');
+}
+
+var hammertime = new Hammer(imgBox);
+hammertime.on('pan', function(ev) {
+    console.log(ev);
+    var boxW=imgBox.width||imgBox.clientWidth;
+    var boxH=imgBox.height||imgBox.clientHeight
+    //var imgW=imgEl.width||imgEl.clientWidth,imgH=imgEl.height||imgEl.clientHeight;
+    var imgW=canvasEl.width||canvasEl.clientWidth,imgH=canvasEl.height||canvasEl.clientHeight;
+    //console.log(boxW);
+    var top=parseInt(canvasEl.style.top||0,10);
+    var left=parseInt(canvasEl.style.left||0,10);
+    var willW=parseInt(imgW*curScaleVal,10);
+    var willH=parseInt(imgH*curScaleVal,10);
+
+    var deltaY=ev.deltaY<0? -6:6;
+	var deltaX=ev.deltaX<0? -6:6;
+	// if(willW<=boxW){
+	// 	var deltaX=ev.deltaX<0? -10:10;
+	// } else {
+	// 	// var deltaY=ev.deltaY<0? -1:1;
+	// 	// var deltaX=ev.deltaX<0;? -1:1
+
+	   
+	//     var deltaX=0;
+	//     if(ev.deltaX>0){
+	//     	deltaX=(ev.deltaX-10)<0 ? 1:ev.deltaX-10;
+	//     } else {
+	//     	deltaX=(10+ev.deltaX)<0 ? -1:10+ev.deltaX;
+	//     }
+	// }
+	// if(willH<=boxH){
+
+	// 	var deltaY=ev.deltaY<0? -10:10;
+	// } else{
+	// 	 var deltaY=0;
+	//     if(ev.deltaY>0){
+	//     	deltaY=(ev.deltaY-10)<0 ? 1:ev.deltaY-10;
+	//     } else {
+	//     	deltaY=(10+ev.deltaY)<0 ? -1:10+ev.deltaY;
+	//     }
+	// }
+
+    // var deltaY=ev.deltaY;
+    // var deltaX=ev.deltaX;
+    
+    top=top+deltaY;
+    left=left+deltaX;
+
+    if(willW<=boxW){
+    	left=Math.abs(left);
+	    if(left>=(boxW-willW)){
+	    	left=boxW-willW;
+	    }
+	    if(left<=2){
+	    	left=0;
+	    }
+    } else{
+    	left=-Math.abs(left);
+    	if(left<=-(willW-boxW)){
+	    	left=-(willW-boxW);
+	    }
+	    if(left>=2){
+	    	left=0;
+	    }
+    }
+     if(willH<=boxH){
+    	top=Math.abs(top);
+	    if(top>=(boxH-willH)){
+	    	top=boxH-willH;
+	    }
+	    if(top<=2){
+	    	top=0;
+	    }
+    } else{
+    	top=-Math.abs(top);
+    	if(top<=-(willH-boxH)){
+	    	top=-(willH-boxH);
+	    }
+	    if(top>=2){
+	    	top=0;
+	    }
+    }
+
+   
+    // canvasEl.style.top=top+'px';
+    // canvasEl.style.left=left+'px';
+    $canvasEl.animate({'top':top+'px','left':left+'px'},26,'linear');
+    document.getElementById('testDiv').innerHTML='boxW:'+boxW+'willW:'+willW+'left:'+left;
+
+});
+hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
+imgBox.addEventListener('touchmove', function(e) {
+	e.stopPropagation();
+    e.preventDefault();
+});
+
+hammertime.get('pinch').set({ enable: true });
+hammertime.on('pinchin',function(ev){
+	//alert('pinchin');
+	console.log('pinchin');
+	console.log(ev.scale);
+	scaleCanvas(ev.scale,ev.type);
+	//document.getElementById('testDiv').innerHTML=ev.scale+' '+ev.type;
+
+	// var s='',key;
+	// for(key in ev){
+	// 	s+=key+' => '+ev[key]+'<br/>';
+	// }
+	// document.getElementById('testDiv').innerHTML=document.getElementById('testDiv').innerHTML+'<br/>pinchin<br/>'+s;
+});
+hammertime.on('pinchout',function(ev){
+	//alert('pinchout');
+	console.log('pinchout');
+	console.log(ev.scale);
+	scaleCanvas(ev.scale,ev.type);
+	//document.getElementById('testDiv').innerHTML=ev.scale+' '+ev.type;
+
+	// var s='',key;
+	// for(key in ev){
+	// 	s+=key+' => '+ev[key]+'<br/>';
+	// }
+	// document.getElementById('testDiv').innerHTML=document.getElementById('testDiv').innerHTML+'<br/>pinchout<br/>'+s;
+});
+
+ // 修复 Android 4.0.X 触摸事件的 Bug
+// 参考：Android Issue 19827、152913
+// https://code.google.com/p/android/issues/detail?id=19827
+// https://code.google.com/p/chromium/issues/detail?id=152913
+// main.addEventListener('touchstart', function(e) {
+//     // e.preventDefault();
+// });
+// main.addEventListener('touchmove', function(e) {
+//     e.preventDefault();
+// });
+// main.addEventListener('touchend', function(e) {});
+
+
+</script>
+
+</body>
+</html>

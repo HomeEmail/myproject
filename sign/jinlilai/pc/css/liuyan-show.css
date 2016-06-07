@@ -1,0 +1,117 @@
+.pageContent{
+	width: 1024px;
+	height: 768px;
+	overflow: hidden;
+	background: #fff url(../images/liuyan-bg.jpg) no-repeat left center;
+	margin: 0 auto;
+	color: #fff;
+	position: relative;
+}
+.diandian{
+	position: absolute;
+	left: 200px;
+	top: 200px;
+	width: 19px;
+	height: 19px;
+	z-index: 10;
+	background: url(../images/diandian.png) no-repeat center center;
+}
+.diandian.on{
+	background-image: url(../images/diandian-on.png);
+	background-size: cover;
+}
+#gz{
+  left: 688px;
+  top: 625px;
+}
+#xg{
+  left: 717px;
+  top: 632px;
+}
+#tw{
+  left: 806px;
+  top: 610px;
+}
+#cs{
+  left: 658px;
+  top: 529px;
+}
+#cd{
+  left: 500px;
+  top: 484px;
+}
+#xa{
+  left: 610px;
+  top: 400px;
+}
+#nj{
+  left: 758px;
+  top: 430px;
+}
+#tc{
+  left: 782px;
+  top: 450px;
+}
+#tj{
+  left: 713px;
+  top: 307px;
+}
+#sy{
+  left: 793px;
+  top: 255px;
+}
+
+
+.liuyanImg{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 5;
+}
+
+/***点点 动画***/
+
+.ani{
+  animation: animLoading 1s linear 0s infinite normal;
+/* Firefox: */
+-moz-animation: animLoading 1s linear 0s infinite normal;
+/* Safari 和 Chrome: */
+-webkit-animation: animLoading 1s linear 0s infinite normal;
+/* Opera: */
+-o-animation: animLoading 1s linear 0s infinite normal;
+}
+@keyframes animLoading
+{
+0%   {transform: scale(1); opacity: 1.0;}
+25%  {transform: scale(1.1); opacity: 0.9;}
+50%  {transform: scale(1.2); opacity: 0.8;}
+75%  {transform: scale(1.1); opacity: 0.9;}
+100% {transform: scale(1); opacity: 1.0;}
+}
+
+@-moz-keyframes animLoading /* Firefox */
+{
+0%   {-moz-transform: scale(1); opacity: 1.0;}
+25%  {-moz-transform: scale(1.1); opacity: 0.9;}
+50%  {-moz-transform: scale(1.2); opacity: 0.8;}
+75%  {-moz-transform: scale(1.1); opacity: 0.9;}
+100% {-moz-transform: scale(1); opacity: 1.0;}
+}
+
+@-webkit-keyframes animLoading /* Safari 和 Chrome */
+{
+0%   {-webkit-transform: scale(1); opacity: 1.0;}
+25%  {-webkit-transform: scale(1.1); opacity: 0.9;}
+50%  {-webkit-transform: scale(1.2); opacity: 0.8;}
+75%  {-webkit-transform: scale(1.1); opacity: 0.9;}
+100% {-webkit-transform: scale(1); opacity: 1.0;}
+}
+
+@-o-keyframes animLoading /* Opera */
+{
+0%   {-o-transform: scale(1); opacity: 1.0;}
+25%  {-o-transform: scale(1.1); opacity: 0.9;}
+50%  {-o-transform: scale(1.2); opacity: 0.8;}
+75%  {-o-transform: scale(1.1); opacity: 0.9;}
+100% {-o-transform: scale(1); opacity: 1.0;}
+}

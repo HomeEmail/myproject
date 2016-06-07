@@ -1,0 +1,55 @@
+.pageContent{
+	width: 1366px;
+	height: 768px;
+	overflow: hidden;
+	background: #fff url(../images/bg.jpg) no-repeat left center;
+	margin: 0 auto;
+	color: #fff;
+	position: relative;
+}
+
+.titleWrapper{
+	width: 100%;
+	text-align: center;
+}
+
+.liuyan-item{
+	width: 1025px;
+	height: 134px;
+	margin: 0 auto;
+	background: url(../images/item-bg1.png) no-repeat;
+	position: relative;
+}
+.liuyan-fenge{
+	height: 2px;
+}
+.liuyan-item:nth-of-type(even){
+	background: url(../images/item-bg2.png) no-repeat;
+}
+.liuyan-item.odd{
+	background: url(../images/item-bg2.png) no-repeat;
+}
+
+
+.touxiang{
+  position: absolute;
+  top: 17px;
+  left: 18px;
+  width: 84px;
+  height: 84px;
+}
+.reply-list-li-text{
+  padding-left: 115px;
+  padding-right: 15px;
+  color: #0033ff;
+  float: left;
+  height: 90px;
+  margin-top: 13px;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.nicheng{
+	color: #222;
+}

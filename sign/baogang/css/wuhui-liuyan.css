@@ -1,0 +1,159 @@
+
+#web_bg{
+   background: url(../images/game-bg.jpg) no-repeat top center;
+  background-size: cover;
+}
+#web-bg1{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: url(../images/game-bg-1.png) no-repeat top center;
+  background-size: cover;
+}
+
+#liuyanTitle{
+	padding-top:15px;
+	padding-bottom: 5px;
+	text-align: center;
+	width: 100%;
+}
+#liuyanTitle img{
+	height: 35px;
+}
+
+#liuyanContent{
+	position: relative;
+	height: 400px;
+}
+#liuyanContentBg{
+	height: 400px;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+}
+#wuhuiText{
+	text-align: center;
+	width: 100%;
+  position: relative;
+  z-index: 110;
+  padding-top: 13px;
+  padding-bottom: 8px;
+}
+#wuhuiText img{
+	height: 105px;
+}
+
+#replyContent{
+	width: 100%;
+  position: relative;
+  z-index: 110;
+height: 163px;
+  margin-bottom: 6px;
+}
+#replyBg{
+
+	height: 163px;
+	width: 86%;
+	position: absolute;
+	top: 0px;
+	left: 7%;
+	z-index: 110;
+}
+.reply-list-wrapper{
+	
+  position: relative;
+	height: 150px;
+	width: 82%;
+	top: 6px;
+	left: 0px;
+	z-index: 120;
+}
+.reply-list-ul{
+
+}
+.swiper-slide {
+  width: 100%;
+}
+.reply-list-li{
+	/*height: 44px;*/
+	  min-height: 44px;
+	background: url(../images/text-item-bg.png) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+	  margin-bottom: 10px;
+}
+.touxiang{ 
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 10px;
+  top: 26%;
+}
+.reply-list-li-text{
+  font-size: 12px;
+  padding-left: 40px;
+  /*height: 24px;*/
+  margin-top: 8px;
+  float: left;
+  padding-right: 10px;
+  overflow: hidden;
+  color: #0033ff;
+  padding-bottom: 10%;
+  padding-top: 2%;
+  line-height: 14px;
+}
+.nicheng{
+	color: #222;
+}
+#editContent{
+	width: 100%;
+  position: relative;
+  z-index: 110;
+height: 65px;
+
+}
+#editBg{
+
+	height: 65px;
+	width: 86%;
+	position: absolute;
+	top: 0px;
+	left: 7%;
+	z-index: 110;
+}
+#replyTextInput{
+	height: 65px;
+	width: 86%;
+	position: absolute;
+	top: 0px;
+	left: 7%;
+	z-index: 111;
+	display: block;
+	border:0px;
+	background: none;
+  padding: 5px;
+
+}
+
+#submitBtWrapper{
+text-align: center;
+	width: 100%;
+  position: relative;
+  z-index: 110;
+  margin-top: 15px;
+}
+#submitBt{
+display: inline-block;
+width: 87px;
+height: 34px;
+
+	background: url(../images/OK.png) no-repeat top center;
+  background-size: contain;
+}
+#submitBt:active{
+	background-image: url(../images/OK-on.png);
+}

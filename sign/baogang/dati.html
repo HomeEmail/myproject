@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../icon.png" />
+	<link rel="shortcut icon" href="../icon.png" />
+	<link rel="apple-touch-startup-image" href="../res/images/bg.jpg"><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	
+    <title>答题</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <style type="text/css">
+    body,html{
+    	color: #fff; 
+    }
+	.lihe-title-img{
+		width: 130px;
+		height: 60px;
+		background: url(./images/dati-title.png) no-repeat left center;
+		background-size: contain;
+	}
+	.dati-tips{
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 20px;
+		  font-size: 14px;
+	}
+	.ques-item{
+		width: 70%;
+		margin-left: 15%;
+		margin-bottom: 10px;
+	}
+	.ques-title{
+		padding-bottom: 10px;
+	}
+	.ans-item{
+		padding:10px;
+		padding-left: 36px;
+		background: url(./images/dati-item.png) no-repeat left center;
+		
+  background-size: auto 50%;
+  background-position: 10px center;
+	}
+	.ans-item.on{
+		background-color: rgba(255,255,255,0.7);
+		border-radius: 6px;
+		background-image: url(./images/dati-item-on.png);
+		color:#333;
+	}
+	.formSubmit{
+		height: 33px;
+		width:168px;
+		background: url(./images/qiandao-bt.png) no-repeat center center;
+		background-size: contain;
+
+	}
+	.getAwardBt{
+		height: 45px;
+		width:217px;
+		background: url(./images/dati-result-bt.png) no-repeat center center;
+		background-size: contain;
+	}
+	#resultWrapper{
+	text-align: center;
+	display: none;
+	}
+	.awardTips{
+  color: #666;
+  font-size: 26px;
+  padding-top: 42%;
+  line-height: 46px;
+	}
+	#okNumEl{
+
+	}
+	#awardName{
+		color: red;
+	}
+
+    </style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body style="">
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1"> 
+	<img style="position:fixed;" id="datiBg" src="./images/dati-bg.jpg" height="100%" width="100%" /> 
+	<img style="position:fixed;display: none;" id="resultBg" src="./images/dati-result.jpg" height="100%" width="100%" /> 
+	
+</div>
+
+<!-- 结果 beign -->
+<div id="resultWrapper">
+	<div class="awardTips">
+		恭喜答对<span id="okNumEl">0</span>道题，获得<br/>
+		“<span id="awardName">一等奖</span>”
+	</div>
+	<div style="padding: 12% 0px;">领取奖品</div>
+	<div id="" style="text-align: center;padding: 10px 0px;padding-bottom: 50px;"><button class="getAwardBt"> </button></div>
+
+	<div style="margin-bottom: 90%;">往上拉查看答案</div>
+</div>
+<!-- 结果 end -->
+
+<div class="lihe-title-img"></div>
+
+<div class="dati-wrapper">
+	<div class="dati-tips">答对1-3道得三等奖，4-5道为二等奖，6道为一等奖</div>
+	<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+		<div class="ques-title">1.问题问题维他奶问天德隆食府</div>
+		<div class="ans-item ans-true">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+	</div>
+	<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+		<div class="ques-title">2.问题问题维他奶问天德隆食府</div>
+		<div class="ans-item ans-true">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+	</div>
+	<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+		<div class="ques-title">3.问题问题维他奶问天德隆食府</div>
+		<div class="ans-item ans-true">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+	</div>
+	<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+		<div class="ques-title">4.问题问题维他奶问天德隆食府</div>
+		<div class="ans-item ans-true">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+	</div>
+	<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+		<div class="ques-title">5.问题问题维他奶问天德隆食府</div>
+		<div class="ans-item ans-true">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+	</div>
+	<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+		<div class="ques-title">6.问题问题维他奶问天德隆食府</div>
+		<div class="ans-item ans-true">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+		<div class="ans-item">答案3奋斗奋斗</div>
+	</div>
+</div>
+
+<div id="formSubmitWrapper" style="text-align: center;padding: 10px 0px;padding-bottom: 50px;"><button class="formSubmit"> </button></div>
+
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<script type="text/javascript">
+	var totalNum=$('.ques-item').length;//共有几题
+	var okNum=0;//答对数量
+	var awardText='';
+	$('.ans-item').on('tap',function(e){
+		var $el=$(this);
+		$el.siblings('.on').removeClass('on');
+		$el.addClass('on');
+		$el=null;
+	});
+
+	$('.formSubmit').on('tap',function(e){
+		//计算得分
+		var $on=$('.ans-item.on')
+		;
+		if($on.length<=0){
+			alert('您还没有答题，请先答题再提交。');
+			return;
+		}
+		okNum=0;
+		$on.each(function(i,el){
+			if($(el).hasClass('ans-true')){
+				okNum++;
+			}
+			$(el).removeClass('on');
+		});
+		if(okNum<=3 && okNum>=1){
+			awardText='三等奖';
+		}
+		if(okNum>3 && okNum<=5){
+			awardText='二等奖';
+		}
+		if(okNum==6){
+			awardText='一等奖';
+		}
+
+		$('#datiBg').hide();
+		$('#resultBg').show();
+		$('.dati-tips').hide();
+		$('.lihe-title-img').hide();
+		$('#formSubmitWrapper').hide();
+		//alert(awardText);
+		$('.ans-item').not('.ans-true').hide();
+
+		$('#okNumEl').html(okNum);
+		$('#awardName').html(awardText);
+		$('#resultWrapper').show();
+
+		window.scrollTo(0,0);
+
+	});
+
+
+	$('.getAwardBt').on('tap',function(e){
+		//alert(okNum);alert(awardText);//领取奖品处理
+		var datas={
+			okNum : okNum
+			,awardName : awardText
+			,account : '这里需要你补充帐号信息'
+		};
+		$.ajax({
+		  type: 'POST',
+		  url: 'test.aspx',
+		  // data to be added to query string:
+		  data: datas,
+		  // type of data we are expecting in return:
+		  dataType: 'json',//(“json”, “jsonp”, “xml”, “html”, or “text”)
+		  success: function(data){
+		  	
+		  	$('#submitting').html('提交成功');
+		  },
+		  error: function(xhr, type){
+		   
+		   $('#submitting').html('提交失败，请重试！');
+		  }
+		});
+		if($('#submitting').length<=0){
+			$('.getAwardBt').parent().append('<div id="submitting" style="padding:20px;text-align:center;color:red;">提交中...</div>');
+		} else {
+			$('#submitting').html('提交中...');
+		}
+	});
+
+</script>
+</body>
+</html>

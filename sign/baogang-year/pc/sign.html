@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<title>名片</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+<link rel="stylesheet" type="text/css" href="./css/sign.css"/>
+<script type="text/javascript">
+	
+
+
+</script>
+</head>
+<body>
+<div id="body">
+	
+	<div id="pageBody" class="pageBody">
+		<img src="./images/sign-bg.png" style="position:absolute;top:240px;left:209px;width:565px;" />
+		
+		<!-- <div id="img1" class="xinItem pos1"><img id="img-1" src="./images/xin.png" /></div>
+		<div id="img2" class="xinItem pos2"><img id="img-2" src="./images/xin.png" /></div>
+		<div id="img3" class="xinItem pos3"><img id="img-3" src="./images/xin.png" /></div>
+		<div id="img4" class="xinItem pos4"><img id="img-4" src="./images/xin.png" /></div>
+		<div id="img5" class="xinItem pos5"><img id="img-5" src="./images/xin.png" /></div>
+		<div id="img6" class="xinItem pos6"><img id="img-6" src="./images/xin.png" /></div>
+		<div id="img7" class="xinItem pos7"><img id="img-7" src="./images/xin.png" /></div>
+		<div id="img8" class="xinItem pos8"><img id="img-8" src="./images/xin.png" /></div>
+		<div id="img9" class="xinItem pos9"><img id="img-9" src="./images/xin.png" /></div>
+		<div id="img10" class="xinItem pos10"><img id="img-10" src="./images/xin.png" /></div>
+		<div id="img11" class="xinItem pos11"><img id="img-11" src="./images/xin.png" /></div>
+		<div id="img12" class="xinItem pos12"><img id="img-12" src="./images/xin.png" /></div>
+ -->
+	</div>
+</div>
+</body>
+
+<!-- 公共的 js -->
+<script language="javascript" type="text/javascript" src="./js/jquery-1.8.2.js"></script>
+
+<script type="text/javascript">
+	
+
+	function LoadingRes(o){
+		var res=o.resources||[];
+		var len=res.length;
+		var curi=0;
+		var completed=o.completed||function(){
+			alert('res loading completed');
+		};
+		var loadingCallback=o.loadingCallback||function(s){
+			//console.log(s);//s百分之几
+		};
+
+		function action(ary){
+			var img;
+			if(curi>=len){
+				completed();
+				return false;
+			} else {
+				try{
+					img=new Image();
+				} catch(err){
+					completed();
+					img=null;
+					return false;
+				}
+				
+				img.onload=function(){
+					//console.log('img loaded: '+res[curi]);
+					img=null;
+					curi++;
+					loadingCallback(parseInt((curi/len)*100,10));
+
+					action(res);//arguments.callee(res);//递归调用
+				}
+				img.onerror=function(e){
+					//console.log('img error: '+res[curi]);
+					img=null;
+					curi++;
+					loadingCallback(parseInt((curi/len)*100,10));
+
+					action(res);//arguments.callee(res);//递归调用
+				}
+				img.src=res[curi].img;
+				//log(img.src);
+			}
+		}
+
+		this.init=function(){
+			action(res);
+		}
+		this.init();
+	}
+	/**生成指定范围的随机整数*/
+	function fRandomBy(under, over){ 
+		switch(arguments.length){ 
+			case 1: return parseInt(Math.random()*under+1); 
+			case 2: return parseInt(Math.random()*(over-under+1) + under); 
+			default: return 0; 
+		} 
+	} 
+	
+	var $body=$('#pageBody');
+	
+		//加载图片
+		// new LoadingRes({
+		// 	resources:persons
+		// 	,completed:function(){
+		// 		//alert('res loading completed');
+				
+		// 	}
+		// 	,loadingCallback:function(s){
+		// 		//console.log(s);//s百分之几
+				
+		// 	}
+		// });
+	var imgCount=12;
+	var counts=1;
+	var aryDeg=[
+		0,0,0,0,0,0,0,0,0,0,0,0
+	];
+	var rotateZs=[
+		'rotateZ(-20deg)'
+		,'rotateZ(10deg)'
+		,'rotateZ(10deg)'
+		,'rotateZ(-20deg)'
+		,'rotateZ(-2deg)'
+		,'rotateZ(-10deg)'
+		,'rotateZ(-10deg)'
+		,'rotateZ(-5deg)'
+		,'rotateZ(15deg)'
+		,'rotateZ(-15deg)'
+		,'rotateZ(8deg)'
+		,'rotateZ(-10deg)'
+	];
+	// setTimeout(function(){
+	// 	aryDeg[11]+=360;
+	// 	changeImgOn(11);
+	// },300);
+
+	function changeImgOn(index){
+		$('#img'+(index+1)).css('-webkit-transform','rotateY('+aryDeg[index]+'deg) '+rotateZs[index]);
+	}
+	function generateImg(count,img){
+		return '<div id="img'+count+'" class="xinItem pos'+count+'"><img id="img-'+count+'" src="'+img+'" /></div>';
+	}
+	//./images/xin.png
+
+	function addImg(src){
+		if(!!!src) return;
+		var current=counts%imgCount;
+		if(current==0){
+			current=imgCount;
+		}
+		if(!!!document.getElementById('img'+current)){
+			$body.append($(generateImg(current,src)));
+			document.getElementById('img'+current).addEventListener('webkitTransitionEnd', animateEnd, false);//注意：webkitTransitionEnd事件将在元素的每个样式属性值发生改变之后触发一次
+			setTimeout(function(){
+				aryDeg[current-1]+=360;
+				changeImgOn(current-1);
+			},200);
+		}else{
+			document.getElementById('img-'+current).src=src;
+			aryDeg[current-1]+=360;
+			changeImgOn(current-1);
+		}
+		counts++;
+
+	}
+	function animateEnd(e){
+
+	}	
+
+	//5s 执行一次
+	function getPersonInfo(){
+		//更改接口，请求个人信息，每次只拿一个人的
+		$.ajax('./getPersonInfo.php',{
+			success:function(data){
+				//data 个人信息
+
+				var person=data;
+				person=[{
+					img:'./images/xin.png'
+				}];
+
+				if(person.length<=0){//没有个人信息了
+					person=null;
+					setTimeout(function(){
+						getPersonInfo();
+					},5000);
+					return null;
+				}
+				//加载图片
+				new LoadingRes({
+					resources:person
+					,completed:function(){
+						//alert('res loading completed');
+						addImg(person[0].img);
+						person=null;
+						setTimeout(function(){
+							getPersonInfo();
+						},5000);
+					}
+					,loadingCallback:function(s){
+						//console.log(s);//s百分之几
+						
+					}
+				});
+				return null;
+				
+			}
+			,error:function(){
+				setTimeout(function(){
+					getPersonInfo();
+				},5000);
+			}
+		});
+	}
+
+
+	getPersonInfo();
+	
+	
+
+
+	
+</script>
+</html>

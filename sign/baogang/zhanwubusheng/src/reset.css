@@ -1,0 +1,21 @@
+
+*{padding:0; margin:0; font-family:
+	'Helvetica Neue',Arial,'Liberation Sans',FreeSans,'宋体','Hiragino Sans GB',sans-serif;
+	}
+a{text-decoration:none; color:#2E73CF}
+img{border:none}
+ul,ol{list-style:none; margin: 0;}
+html,body{overflow-x:hidden; font-size:13px;}
+html{ overflow:scroll;overflow-x:hidden;}
+label{display:inline-block;}
+pre { display:block;overflow:auto;white-space: pre-wrap;word-wrap: break-word;}
+::-webkit-input-placeholder { font-size:12px}
+option[disabled]{color:#ccc;}
+
+input[type=checkbox],input[type=radio]{display:inline-block; cursor:pointer;vertical-align:middle;}
+
+
+select{font-size:12px; cursor:pointer;}
+option{cursor:pointer;}
+
+

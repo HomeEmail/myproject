@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>web work</title>
+<script src="js/modernizr.js"></script>
+
+</head>
+
+<body>
+<h1>web work</h1>
+<button onClick="start();">start</button>
+<button onClick="stop();">stop</button>
+<h2 id="msg"></h2>
+</body>
+<script>
+var w;
+function supportWorker(){
+	if(!!Worker){
+		return true;
+	}
+	return false;
+}
+function start(){
+	//if(supportWorker()){
+	if(Modernizr.webworkers){
+		if(!!!w){
+			w=new Worker("js/demo_workers.js");
+			w.onmessage = function (event) {
+				document.getElementById("msg").innerHTML=event.data;
+			};
+		}
+	} else {
+		document.getElementById('msg').innerHTML='Your browser do not support web Worder!';
+	}
+}
+function stop(){
+	if(!!w){
+		w.terminate();
+		w.onmessage=null;
+	}
+	w=null;	
+}
+
+</script>
+</html>
