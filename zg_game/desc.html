@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="yes">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="360-fullscreen" content="true">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="touch-fullscreen" content="yes"/>
+<!-- 去移动端自动探测电话号码问题 -->
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
+
+<link rel="stylesheet" href="./base.css?v=77" />
+<link rel="stylesheet" href="./index.css?v=77" />
+<title>游戏规则</title>
+<!-- 联系信息css-->
+<style type="text/css">
+
+	#main_desc{
+		position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    height: 100%;
+	    width: 100%;
+	    background: url(./images/zg-rule-text.png) no-repeat top center;
+	    background-size: contain;
+	    z-index: 110;
+	}
+	@media (min-width: 400px){
+		
+	}
+
+
+	#backBt{
+		width: 145px;
+		height: 44px;
+		background: url(./images/zg-back-bt.png) no-repeat center center;
+		background-size: contain;
+		display: inline-block;
+	}
+	.backBtWrapper{
+		position: absolute;
+		left: 0px;
+		top: 76%;
+		width: 100%;
+		text-align: center;
+		z-index: 111;
+	}
+	@media (min-width:375px){
+
+		#backBt{
+			width: 160px;
+			height: 50px;
+		}
+	}
+</style>
+
+</head>
+<body onload="pageLoad();">
+	<!-- 分享 图 -->
+	<img src="./images/share.jpg" width="450" style="display:none;" />
+
+
+	<div id="main_desc" style="">	
+	</div>
+	<div class="backBtWrapper"><div id="backBt"></div></div>
+
+</body>
+<script type="text/javascript" src="./zepto-1.1.6.js"></script>
+<script type="text/javascript">
+	function pageLoad(){
+		
+		
+
+	}
+	
+	$('#backBt').tap(function(e){
+		window.history.back();
+	});
+	/**生成指定范围的随机整数*/
+	function fRandomBy(under, over){ 
+	    switch(arguments.length){ 
+	        case 1: return parseInt(Math.random()*under+1); 
+	        case 2: return parseInt(Math.random()*(over-under+1) + under); 
+	        default: return 0; 
+	    } 
+	} 
+	
+
+</script>
+</html>
+

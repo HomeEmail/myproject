@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="yes">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="360-fullscreen" content="true">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="touch-fullscreen" content="yes"/>
+<!-- 去移动端自动探测电话号码问题 -->
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
+
+<link rel="stylesheet" href="./base.css?v=77" />
+<link rel="stylesheet" href="./index.css?v=77" />
+<style type="text/css"></style>
+<title>湛江钢铁－摇出欢乐动力</title>
+<!-- 联系信息css-->
+<style type="text/css">
+
+
+</style>
+
+</head>
+<body onload="pageLoad();">
+	<!-- 分享 图 -->
+	<img src="./images/share.jpg" width="450" height="450" style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+
+
+
+	<!-- 游戏开始界面  -->
+	<div id="main" style="">
+		<div id="mainText"></div>
+
+		<div class="bt-wrapper">
+			<!-- 按钮 -->
+			<div class="gameBeginBt"><!-- 开始游戏 --></div>
+			<div>
+				<div class="gameDesc"></div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div id="playReady" style="display:none;">
+		<!--<div class="playing-top"></div>-->
+		<!-- <div id="playReadyTips">3</div>
+		<div class="">准备摇动手机</div> -->
+		<div id="readyBg">
+			<img src="./images/zg-ready-title.png" class="readyTitle" /><br/>
+			<img src="./images/zg-ready-icon.png" class="readyIcon" />
+		</div>
+		<div id="readyText"></div>
+		<div id="readyRen"></div>
+	</div>
+
+	<!-- 玩游戏界面 -->
+	<div id="playing" style="display:none;">
+		<!--<div class="playing-top"></div>-->
+		<!--<div class="playing-bottom-bg"></div>-->
+		<div class="playing-bottom-img-wrapper">
+			<div id="playingBottomImg" class="playing-bottom-img"></div>
+		</div>
+		<!-- <img src="./images/logo.png" class="logo" style="" />
+		<img src="./images/product.png" class="product" style="" /> -->
+		<!-- <div class="lemon lemon1" style="">
+			<div class="text">+1</div>
+		</div>
+		<div class="ye ye1" style="">
+			<div class="text">+1</div>
+		</div> -->
+		<div id="calTime">剩余10秒</div>
+	</div>
+
+	<div id="resultBox" style="display:none;">
+
+		<div class="luckResultImg">
+			<div class="scoreWrapper">游戏得分<span id="myScore">0</span></div>
+			<div id="myCodeBtWrapper" style="">
+				<div id="playAgain"></div>
+				<div id="shareBt"></div>
+			</div>
+		</div>
+		<!-- <div id="resultText">恭喜您<br/>获得<br/>22个柠檬<br/>33块茶叶</div>
+		<div id="shareBt">分享到朋友圈可获得兑奖卷</div> -->
+
+	</div>
+
+
+	<img src="./images/zg-bx.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-gj.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-kt.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-lj.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-rsq.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-luck-box.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-lucky-bg.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-ready-icon.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-ready-ren.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-ready-text.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-ready-title.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-share-bt.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-wbl.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-xyj.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+	<img src="./images/zg-ysj.png"  style="visibility:hidden;position:absolute;left:0px;top:0px;" />
+
+
+</body>
+<script type="text/javascript" src="./zepto-1.1.6.js"></script>
+<script type="text/javascript" src="./fx.js"></script>
+<script type="text/javascript" src="./fx_methods.js"></script>
+<script type="text/javascript">
+	function pageLoad(){
+		
+
+	}
+
+	var winW=$(window).width()
+		,winH=$(window).height()
+	;
+	$('#readyRen').css('left',-(winW+10)+'px');
+	$('#readyText').css('left',(winW+10)+'px');
+	$('.gameDesc').tap(function(e){
+		window.location.href='desc.html';//去说明页
+	});
+	//开始按钮
+	$('.gameBeginBt').on('mousedown',function(e){
+		e.stopPropagation();
+		//alert(0);
+		$('#main').hide();
+		gotoPlay();
+		return 0;
+	});
+
+
+	function gotoPlay(){
+
+		gameStart();
+	}
+
+	function gameStart(){
+		//开始游戏
+		//alert('begin');
+
+		$('#playReady').show();
+	
+
+		$('#readyRen').animate({
+				left : 0+'px'
+		    }, 1500);
+		$('#readyText').animate({
+				left : 0+'px'
+		    }, 1500);
+		var count=2;
+		var timer=setInterval(function(){
+			if(count<=0){
+				clearInterval(timer);
+				timer=null;
+				$('#readyRen').animate({
+						left :-(winW+10)+'px'
+				    }, 500,'ease-in',function(){
+				});
+				$('#readyText').animate({
+						left : (winW+10)+'px'
+				    }, 500,'ease-in',function(){
+				    $('#playReady').hide();
+				    $playing.show();
+					//alert('1');
+					startCalcTime();//开始计时
+					topH=$('.playing-bottom-img').offset().top-8;
+					runGame();//运行游戏 
+				});
+			}
+			count--;
+			// $('#playReadyTips').html(count);
+
+		},1000);
+	}
+	//去我的兑换码按钮
+	$('#myCodeBt').tap(function(e){
+		window.location.href='luck.html';//去查看 我的兑奖券
+	});
+	//alert(winW);
+	//分享按钮
+	$('#shareBt').tap(function(e){
+		//根据 luckId 来确定 中了什么奖
+		alert('做分享动作');
+	});
+	//再玩一次
+	$('#playAgain').tap(function(e){
+		isVibrate=false;
+		totalTime=10;
+		timeover=false;
+		num1=0;num2=0;num3=0;num4=0;num5=0;num6=0;num7=0;num8=0;
+		$('#resultBox').hide();
+		gameStart();
+	});
+	var luckId=0;//中了什么奖，0分享奖，1幸运奖
+	var totalTime=10;
+	var calTimerId=null;
+	function startCalcTime(){
+		init();
+		totalTime=10;//游戏限时 时间 秒
+		$('#calTime').show();
+		$('#calTime').html('剩余'+totalTime+'秒');
+		runGame();
+		calTimerId=setInterval(function(){
+			if(totalTime<=0){
+				$playingBottomImg.css({'-webkit-transform':'rotate(0deg)'});
+
+				clearInterval(calTimerId);
+				timeover=true;
+				isVibrate=true;
+				$('#calTime').hide();
+				setTimeout(function(){
+					var totalNum=num1+num3+num5+num7;
+					var title='摇到'+totalNum+'分，手机差点飞出去了！';
+					//var s='恭喜您<br/>获得<br/>'+num1+'个柠檬<br/>通关成功！';
+					if(totalNum>=30){
+						luckId=1;
+						$('.luckResultImg').css('background-image','url(./images/zg-lucky-bg.png)');
+					}else{
+						luckId=0;
+						$('.luckResultImg').css('background-image','url(./images/zg-bad-bg.png)');
+					}
+					document.title=title;//分享文案
+					$('#myScore').html(totalNum);
+					$playing.hide();
+					$('#resultBox').show();
+
+					//$('#resultText').show();
+					//$('#resultText').html(s);
+					//$('#shareBt').show();
+				},500);	
+			}
+			totalTime--;
+			$('#calTime').html('剩余'+totalTime+'秒');
+		},1000);
+	}
+
+	var area=[[winW*0.1,winW*0.25],[winW*0.25,winW*0.45],[winW*0.45,winW*0.65]];
+	var $playing=$('#playing');
+	var num1=0,num2=0,num3=0,num4=0,num5=0,num6=0,num7=0,num8=0;//钢卷出现个数，冰箱出现个数，空调出现个数,零件，热水器，微波炉，洗衣机，压缩机
+	var timeover=false;//是否超时
+	var dd=-1;//瓶子摇动的角度
+	var $playingBottomImg=$('#playingBottomImg');
+	var topH=winH/5*3;
+	var topW=winW/2 - 50;
+	function runGame(){
+		//alert('runGame');
+		if(!!timeover){
+
+			//alert(title);
+			
+			return;//超时
+		}
+		var s='',
+			size=0//大小
+		;
+
+		//哪列 
+		var col=fRandomBy(0,2);
+		//随机 left
+		var left=fRandomBy(area[col][0],area[col][1]);
+
+
+		var typeId=fRandomBy(0,7);
+		switch (typeId){
+			case 0: {
+				num1++;
+				break;
+			}
+			case 1: {
+				num2++;
+				break;
+			}
+			case 2:{
+				num3++;
+				break;
+			}
+			case 3:{
+				num4++;
+				break;
+			}
+			case 4:{
+				num5++;
+				break;
+			}
+			case 5 :{
+				num6++;
+				break;
+			}
+			case 6 : {
+				num7++;
+				break;
+			}
+			case 7 :{
+				num8++;
+				break;
+			}
+			default :{
+				break;
+			}
+		}
+		s='<div class="animate1 lemon lemonItem'+typeId+' lemon'+col+'" style="left:'+left+'px;top:0px;"> <div class="text">+1</div> </div>';
+
+		var $el=$(s);
+		$playing.append($el);
+
+		/*
+$el[0].addEventListener('webkitTransitionEnd', function(e){
+			//console.log(e);
+			$(e.target).remove();
+	    	//$el=null;
+		}, false);//注意：webkitTransitionEnd事件将在元素的每个样式属性值发生改变之后触发一次
+		setTimeout(function(){$el.css({'top':winH/5*3+'px'});$el=null;},300);
+*/
+		// setTimeout(function(){
+		// 	$el.children('.text').animate({
+		// 		opacity : 0
+		//     }, 300,'ease-out');
+		// },300);
+		setTimeout(function(){
+			$el.animate({
+				top : topH+'px'
+				,left : topW+'px'
+				,'-webkit-transform' : 'scale(0.2,0.2)'
+		    }, 1500,'ease-in',function(){
+		    	$el.remove();
+		    	$el=null;
+		    });
+		},0);
+		if(dd==-1){
+			dd=1;
+		}else{
+			dd=-1;
+		}
+		$playingBottomImg.css({'-webkit-transform':'rotate('+dd+'deg)'});
+
+	}
+
+	//是否在震动
+	var isVibrate=false;
+
+	//摇一摇 控制代码
+	var SHAKE_THRESHOLD = 500;//越小越敏感，5个等级
+	var SHAKE_THRESHOLD2 = 6000;
+	var SHAKE_THRESHOLD3 = 12000;
+	var SHAKE_THRESHOLD4 = 10000;
+	var SHAKE_THRESHOLD5 = 12000;
+    var last_update = 0;
+    var x = y = z = last_x = last_y = last_z = 0;
+    function init() {
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        } else {
+            alert('not support mobile event');
+        }
+        var vibrateSupport = "vibrate" in navigator;  
+        if (!!vibrateSupport) { //兼容不同的浏览器  
+            navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;  
+        }else{
+            navigator.vibrate=function(){};
+        }
+    }
+    function deviceMotionHandler(eventData) {
+        var acceleration = eventData.accelerationIncludingGravity;
+        var curTime = new Date().getTime();
+        if ((curTime - last_update) > 100) {
+            var diffTime = curTime - last_update;
+            last_update = curTime;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+            if (speed > SHAKE_THRESHOLD) {
+                //alert("摇动了");
+                runGame();//运行游戏
+                if(!!!isVibrate&&!!!timeover){
+		            navigator.vibrate(500);//震动
+		            isVibrate=true;
+		            setTimeout(function(){
+		            	isVibrate=false;
+		            },1500);
+		        }
+            }
+            if (speed > SHAKE_THRESHOLD2) {
+                //alert("摇动了");
+                runGame();//运行游戏
+
+            }
+            if (speed > SHAKE_THRESHOLD3) {
+                //alert("摇动了");
+                runGame();//运行游戏
+
+	            
+            }
+            if (speed > SHAKE_THRESHOLD4) {
+                //alert("摇动了");
+                //runGame();//运行游戏
+            }
+            if (speed > SHAKE_THRESHOLD5) {
+                //alert("摇动了");
+                //runGame();//运行游戏
+            }
+            last_x = x;
+            last_y = y;
+            last_z = z;
+        }
+    }
+
+
+	/**生成指定范围的随机整数*/
+	function fRandomBy(under, over){ 
+	    switch(arguments.length){ 
+	        case 1: return parseInt(Math.random()*under+1); 
+	        case 2: return parseInt(Math.random()*(over-under+1) + under); 
+	        default: return 0; 
+	    } 
+	} 
+	
+
+</script>
+</html>
+

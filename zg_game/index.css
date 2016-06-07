@@ -1,0 +1,362 @@
+	body,html{
+		background: #7DDCDE url(./images/zg-bg.png) no-repeat bottom center;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	body *{
+		transform: translateZ(0px);
+		-webkit-transform: translateZ(0px);
+	}
+	#main{
+		height: 100%;
+		width: 100%;
+		background: url(./images/zg-index-bg1.png) no-repeat bottom right;
+		background-size: contain;
+		position: relative;
+		overflow: hidden;
+	}
+	#mainText{
+		height: 100%;
+		width: 100%;
+		background: url(./images/zg-index-logo.png) no-repeat center top;
+		background-size: contain;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		overflow: hidden;
+	}
+	.bt-wrapper{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		bottom: 12%;
+	}
+	.gameBeginBt{
+		color: #000000;
+		width: 148px;
+		height: 42px;
+		line-height: 42px;
+		text-align: center;
+		background: url(./images/zg-start-bt.png) no-repeat center center;
+		margin-bottom: 10px;
+		background-size: contain;
+		display: inline-block;
+	}
+	.gameBeginBt:active{
+		color: #FBFB0F;
+	}
+	.gameDesc{
+		color: #000000;
+		width: 69px;
+		height: 26px;
+		background: url("./images/zg-rule-bt.png") no-repeat center center;
+		background-size: contain;
+    	display: inline-block;
+	}
+	.gameDesc:active{
+		color: #FBFB0F;
+	}
+	@media (min-width: 375px){
+
+	}
+	@media (min-width: 400px){
+		.gameBeginBt{
+			margin-bottom: 20px;
+		}
+
+	}
+
+
+	#playing{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background: #7DDCDE url(./images/zg-bg.png) no-repeat bottom center;
+		background-size: cover;
+		
+	}
+	.playing-bottom-img-wrapper{
+		z-index: 98;
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		width: 100%;
+		text-align: center;
+	}
+	.playing-bottom-img{
+		display: inline-block;
+		width: 165px;
+		height: 155px;
+		background: url(./images/zg-luck-box.png) no-repeat bottom center;
+		background-size: contain;
+		transform: rotate(0deg);
+    	transform-origin: bottom;
+		transition: transform 0.4s;
+		-webkit-transform: rotate(0deg);
+    	-webkit-transform-origin: bottom;
+		-webkit-transition: -webkit-transform 0.4s;
+		-moz-transform: rotate(0deg);
+    	-moz-transform-origin: bottom;
+		-moz-transition: -moz-transform 0.4s;
+	}
+
+	.lemon{
+		position: absolute;
+		z-index: 99;
+	}
+	.lemon .text{
+		font-size: 13px;
+		color: red;
+		text-align: center;
+	}
+
+	.lemonItem0{
+		background: url(./images/zg-gj.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem1{
+		background: url(./images/zg-bx.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem2{
+		background: url(./images/zg-kt.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem3{
+		background: url(./images/zg-lj.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem4{
+		background: url(./images/zg-rsq.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem5{
+		background: url(./images/zg-wbl.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem6{
+		background: url(./images/zg-xyj.png) no-repeat;
+		background-size: contain;
+	}
+	.lemonItem7{
+		background: url(./images/zg-ysj.png) no-repeat;
+		background-size: contain;
+	}
+
+
+	.lemon0{
+		width:100px;
+		height: 80px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.lemon1{
+		width:80px;
+		height: 70px;
+		transform:rotate(80deg);
+		-webkit-transform:rotate(80deg);
+	}
+	.lemon2{
+		width:140px;
+		height: 100px;
+		transform:rotate(120deg);
+		-webkit-transform:rotate(120deg);
+	}
+
+
+
+	.animate{
+		transition: all 1s;
+		-webkit-transition: all 1s;
+	}
+
+
+
+	#playReady{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		font-size: 22px;
+		background: url(./images/zg-bg.png) no-repeat bottom center;
+		background-size: cover;
+		z-index: 100;
+	}
+
+	#readyBg,.readyBg{
+		position: absolute;
+		top: 10%;
+		left: 0px;
+		width: 100%;
+
+		text-align: center;
+
+	}
+	.readyTitle{
+		height: 60px;
+		margin-bottom: 10px;
+	}
+	.readyIcon{
+		height: 171px;
+	}
+	@media (min-width: 375px){
+		#readyBg,.readyBg{
+
+			top: 15%;
+
+		}
+		.readyTitle{
+			height: 90px;
+			margin-bottom: 20px;
+		}
+		.readyIcon{
+			height: 210px;
+		}
+	}
+
+	#readyRen{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		transform:translateX(0px);
+		width: 100%;
+		height: 100%;
+		background: url(./images/zg-ready-ren.png) no-repeat bottom center;
+		background-size: 100%;
+	}
+	#readyText{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		transform:translateX(0px);
+		width: 100%;
+		height: 100%;
+		background: url(./images/zg-ready-text.png) no-repeat bottom center;
+		background-size: 100%;
+	}
+
+	#playReadyTips{
+		text-align: center;
+		font-size: 60px;
+		color: red;
+		padding: 10px;
+	}
+	#resultBox{
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		z-index: 100;
+		background: url(./images/zg-bg.png) no-repeat bottom center;
+		background-size: cover;
+		left:0px;
+		top: 0px;
+	}
+	#resultText{
+		color: #ffffff;
+		font-size: 22px;
+		line-height: 30px;
+		text-align: center;
+		padding-bottom: 20px;
+		display: none;
+	}
+	#myCodeBtWrapper{
+		width: 100%;
+	    position: absolute;
+	    top: 79%;
+	    left: 0px;
+	    text-align: center;
+	    z-index: 111;
+	}
+	.scoreWrapper{
+		width: 100%;
+		position:absolute;
+		top:57%;
+		left:0px;
+		text-align: center;
+		z-index: 111;
+		color: red;
+		font-size: 16px;
+	}
+	#myScore{
+		font-size: 22px;
+	}
+	@media (min-width: 375px){
+		.scoreWrapper{
+			font-size: 20px;
+		}
+		#myScore{
+			font-size: 24px;
+		}
+
+	}
+
+	#playAgain{
+	    width: 92px;
+	    height: 44px;
+	    background: url(./images/zg-again-bt.png) no-repeat center center;
+	    background-size: contain;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	#shareBt{
+		width: 92px;
+		height: 44px;
+		background: url(./images/zg-share-bt.png) no-repeat center center;
+		background-size: contain;
+		display: inline-block;
+		margin-left: 10px;
+	}
+	#shareBt:active{
+		color: #e60111;
+	}
+
+	.logo{
+		position:absolute;left:20px;top:30px;
+		width: 60px;
+	}
+	.product{
+		position:absolute;left:20px;bottom:-66px;
+		width: 88px;
+	}
+	#calTime{
+		font-size: 14px;
+		color: red;
+		position: absolute;
+		right: 20px;
+		top: 40px;
+		display: none;
+	}
+	.luckResultImg{
+		position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    height: 90%;
+	    width: 100%;
+	    background: url(./images/zg-bad-bg.png) no-repeat top center;
+	    background-size: cover;
+	    z-index: 110;
+	}
+	@media (min-width: 400px){
+		.logo{
+			width: 80px;
+		}
+		.product{
+			width: 100px;
+		}
+		#calTime{
+			font-size: 18px;
+		}
+		
+	}
+	@media (min-width: 375px){
+		#playAgain,#shareBt{
+		    width: 100px;
+		    height: 48px;
+		}
+
+	}
