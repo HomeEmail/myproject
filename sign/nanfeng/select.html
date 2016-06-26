@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/step1.css?v=66" />
+	<style type="text/css">
+		.meeting-title{
+			margin-top: 45%;
+		}
+		@media (max-width: 320px){
+			.meeting-title{
+				margin-top: 40%;
+			}
+		}
+		.meeting-tbl{
+			border: 1px #ffffff solid;
+			color: #ffffff;
+			background: #3873b9;
+			width: 90%;
+		    margin-left: auto;
+		    margin-right: auto;
+    		font-size: 12px;
+    		margin-bottom: 15px;
+		}
+		.meeting-tbl th,.meeting-tbl td{
+			padding: 3px 1px;
+			border: 1px #ffffff solid;
+			text-align: center;
+		}
+		.select-bt{
+			background: url(./images/join.png) no-repeat center center;
+			background-size: contain;
+			width: 80px;
+			height: 20px;
+		}
+		.select-bt.on,.select-bt:active{
+			background: url(./images/join-on.png) no-repeat center center;
+			background-size: contain;
+		}
+		.col-1{
+			width: 60px;
+		}
+		table .select{
+			color: red;
+		}
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+
+
+	<title>我要签到</title>
+</head>
+<body>
+<div class="bg-top" style="width:100%;height:100%;"><img src="./images/bg.jpg" style="width:100%;height:100%;"></div>
+
+<div id="main">
+	<img class="meeting-title" src="./images/select-meeting-title.png" />
+
+	<table class="meeting-tbl" cellpadding="0" cellspacing="0" border="0">
+		<thead>
+			<tr>
+				<th>Strategy and Group</th>
+				<th>ROUND</th>
+				<th>JOIN</th>
+				<th>OPEN QUOTA</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="3" class="col-1" id="meeting-name-1">E-com</td>
+				<td class="meeting-name-1 meeting-time-1">4:30 - 5:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,1,1);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-1 meeting-time-2">5:00 - 5:30</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,1,2);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-1 meeting-time-3">5:30 - 6:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,1,3);"></button></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td rowspan="3" class="col-1" id="meeting-name-2">SCS</td>
+				<td class="meeting-name-2 meeting-time-1">4:30 - 5:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,2,1);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-2 meeting-time-2">5:00 - 5:30</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,2,2);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-2 meeting-time-3">5:30 - 6:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,2,3);"></button></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td rowspan="3" class="col-1" id="meeting-name-3">iPlanning</td>
+				<td class="meeting-name-3 meeting-time-1">4:30 - 5:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,3,1);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-3 meeting-time-2">5:00 - 5:30</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,3,2);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-3 meeting-time-3">5:30 - 6:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,3,3);"></button></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td rowspan="3" class="col-1" id="meeting-name-4">IWS</td>
+				<td class="meeting-name-4 meeting-time-1">4:30 - 5:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,4,1);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-4 meeting-time-2">5:00 - 5:30</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,4,2);"></button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="meeting-name-4 meeting-time-3">5:30 - 6:00</td>
+				<td><button class="select-bt" onmousedown="selectMeeting(this,4,3);"></button></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="text-ac" id="generateBt-wrapper" style="margin-bottom:20px;">
+	<button id="generateBt" onmousedown="submitOK();"></button>
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+//会议和时间段标志,数组顺序就是meetingId-1 和 timeId-1; 0:表示未选中，1表示选中 
+var data=[
+	[0,0,0],//会议1
+	[0,0,0],//会议2
+	[0,0,0],//会议3
+	[0,0,0]//会议4 
+];
+/*
+el:按钮
+meetingId:会议id，从1开始
+timeId:时间段id，从1开始
+*/
+function selectMeeting(el,meetingId,timeId){
+	
+	if($(el).hasClass('on')){
+		//取消
+		$(el).removeClass('on');
+		$('#meeting-name-'+meetingId).removeClass('select');
+		$('.meeting-name-'+meetingId+'.meeting-time-'+timeId).removeClass('select');
+
+		//改变数据标志
+		data[meetingId-1][timeId-1]=0;
+
+	}else{
+		if($('#meeting-name-'+meetingId).hasClass('select')){
+			alert('同一会议只能选择一个时间段，请先取消此会议已选择的时间段！');
+			return;
+		}
+		var select=false;
+		$('.meeting-time-'+timeId).each(function(i,n){
+			if($(n).hasClass('select')){
+				select=true;
+			}
+		});
+		if(select){
+			alert('同一个时间段只能选择一个会议，请先取消此时间段已选择的会议！');
+			return;
+		}
+
+		//添加
+		$(el).addClass('on');
+		$('#meeting-name-'+meetingId).addClass('select');
+		$('.meeting-name-'+meetingId+'.meeting-time-'+timeId).addClass('select');
+		//改变数据标志
+		data[meetingId-1][timeId-1]=1;
+
+	}
+
+	
+}
+function submitOK(){
+	//ok 提交
+	console&&console.log(data);
+	var isSelect=false;
+	for (var i = data.length - 1; i >= 0; i--) {
+		for(var j = data[i].length-1; j>=0; j--){
+			if (data[i][j]==1) {
+				isSelect=true;
+			};
+		}
+	};
+	if (isSelect) {
+		//已选择会议和时间段 
+	}else{
+		//未选择
+		alert('你还没有选择任何会议和时间段，无法提交！');
+	};
+}
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -217,7 +217,7 @@ listContent.renderHTML=function(menuIndex){
 	}
 	//文字不要超过5个中文字
 	for(var i=0;i<len;i++){
-		s+='<div class="" style="display:inline-block;margin-left:36px;margin-top:20px;position:relative;"><div style="width:98px;height:98px;"><img src="'+this.datas[menuIndex][i].img+'" /><div class="focusDiv" style=""></div></div><div style="height:30px;line-height:30px;width:98px;text-align:center;overflow:hidden;font-size:16px;">'+this.datas[menuIndex][i].text+'</div><a href="'+this.datas[menuIndex][i].href+'" class="linkGo"><!-- 跳转连接地址 --></a></div>';
+		s+='<div class="" style="display:inline-block;margin-left:36px;margin-top:20px;position:relative;vertical-align: top;float:left;"><div style="width:98px;height:98px;"><img src="'+this.datas[menuIndex][i].img+'" /><div class="focusDiv" style=""></div></div><div style="height:30px;line-height:30px;width:98px;text-align:center;overflow:hidden;font-size:16px;">'+this.datas[menuIndex][i].text+'</div><a href="'+this.datas[menuIndex][i].href+'" class="linkGo"><!-- 跳转连接地址 --></a></div>';
 	}
 	$('listContent').html(s);
 };
