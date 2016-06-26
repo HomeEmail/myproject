@@ -82,7 +82,7 @@ button:active {
 <!-- 
 <div id="info"><a href="http://threejs.org" target="_blank">three.js css3d</a> - 元素周期表. <a href="http://www.htmleaf.com/" target="_blank">info</a>.</div> -->
 
-<div id="menu" style="display:none;">
+<div id="menu" style="display:block;">
 	<button id="table">TABLE</button>
 	<button id="sphere">SPHERE</button>
 	<button id="helix">HELIX</button>
@@ -259,7 +259,8 @@ function init() {
 
 		transform( targets.table, 5000 );
 		setTimeout(function(){
-			new TWEEN.Tween( camera.position ).to({z:800,x:0,y:0},2000).start();
+			new TWEEN.Tween( camera.position ).to({z:800,x:0,y:0},4000).start();
+			setTimeout(function(){document.getElementById( 'sphere' ).click();},4000);
 		},6000);
 
 	}, false );
@@ -269,7 +270,15 @@ function init() {
 
 		transform( targets.sphere, 5000 );
 		setTimeout(function(){
-			new TWEEN.Tween( camera.position ).to({z:3000,x:1000,y:1000},3000).start();
+			new TWEEN.Tween( camera.position ).to({z:0,x:2224.989697644447,y:718.2004473884141},4000).start();
+			setTimeout(function(){
+				new TWEEN.Tween( camera.position ).to({z:-1880.047556634021,x:168.48000041515996,y:1379.647314173943},4000).start();
+				setTimeout(function(){
+					new TWEEN.Tween( camera.position ).to({z:-1594.758623950923,x:-651.6179412578055,y:-1580.6739155239682},10000).start();
+					setTimeout(function(){document.getElementById( 'helix' ).click();},10000);
+
+				},4000);
+			},4000);
 		},6000);
 
 	}, false );
@@ -279,7 +288,12 @@ function init() {
 
 		transform( targets.helix, 5000 );
 		setTimeout(function(){
-			new TWEEN.Tween( camera.position ).to({z:2000,x:1000,y:1000},3000).start();
+			new TWEEN.Tween( camera.position ).to({z:-2231.617329232538,x:-251.11518389867032,y:647.6147912105408},2000).start();
+			setTimeout(function(){
+				new TWEEN.Tween( camera.position ).to({z:426.0856847137824,x:2297.4412740868725,y:-52.860561047379996},10000).start();
+				setTimeout(function(){document.getElementById( 'grid' ).click();},10000);
+			},2000);
+
 		},6000);
 
 	}, false );
@@ -289,19 +303,18 @@ function init() {
 
 		transform( targets.grid, 5000 );
 		setTimeout(function(){
-			new TWEEN.Tween( camera.position ).to({z:0,x:0,y:0},6000).start();
+			new TWEEN.Tween( camera.position ).to({z:2267.6306967197997,x:-244.06877143500157,y:503.82513484148166},6000).start();
+			setTimeout(function(){
+				new TWEEN.Tween( camera.position ).to({z:49.75161789494694,x:-3.3068165864827255,y:3.720414076223126},10000).start();
+				setTimeout(function(){document.getElementById( 'table' ).click();},6000);
+
+			},6000);
+			
 		},6000);
 
 	}, false );
 
-	transform( targets.table, 5000 );
-
-	setTimeout(function(){
-		new TWEEN.Tween( camera.position ).to({z:800,x:0,y:0},2000).start();
-	},6000);
-
-	//图形自动变
-	autoMove();
+	document.getElementById( 'table' ).click();
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
@@ -317,7 +330,7 @@ function fRandomBy(under, over){
         default: return 0; 
     } 
 } 
-var cameraTimerId=null;
+/*var cameraTimerId=null;
 function autoMove(){
 	setTimeout(function(){
 		
@@ -333,14 +346,10 @@ function autoMove(){
 		document.getElementById(currentShap).click();
 
 		autoMove();
-		// clearInterval(cameraTimerId);
-		// cameraTimerId=null;
-		// cameraTimerId=setInterval(function(){
-		// 	camera.position.y+=1;
-		// },16);
+		
 		
 	},10000);
-}
+}*/
 
 function transform( targets, duration ) {
 
