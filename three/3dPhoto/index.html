@@ -82,7 +82,7 @@ button:active {
 <!-- 
 <div id="info"><a href="http://threejs.org" target="_blank">three.js css3d</a> - 元素周期表. <a href="http://www.htmleaf.com/" target="_blank">info</a>.</div> -->
 
-<div id="menu" style="display:block;">
+<div id="menu" style="display:none;">
 	<button id="table">TABLE</button>
 	<button id="sphere">SPHERE</button>
 	<button id="helix">HELIX</button>
@@ -148,9 +148,17 @@ var targets = { table: [], sphere: [], helix: [], grid: [] };
 init();
 animate();
 
+function updateImg(){
+	var imgs=document.getElementsByTagName('img');
+	for(var i=0,len=imgs.length;i<len;i++){
+		imgs[i].src=table[i*4]||table[0];
+	}
+}
+
+
 function init() {
 
-	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 10000 );
 	camera.position.z = 2000;
 
 	scene = new THREE.Scene();
