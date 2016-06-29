@@ -150,7 +150,7 @@ animate();
 
 function init() {
 
-	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 10000 );
 	camera.position.z = 2000;
 
 	scene = new THREE.Scene();
@@ -259,9 +259,10 @@ function init() {
 
 		transform( targets.table, 5000 );
 		setTimeout(function(){
-			new TWEEN.Tween( camera.position ).to({z:800,x:0,y:0},4000).start();
-			setTimeout(function(){document.getElementById( 'sphere' ).click();},4000);
-		},6000);
+			//new TWEEN.Tween( camera.position ).to({z:800,x:0,y:0},4000).start();
+			//setTimeout(function(){document.getElementById( 'sphere' ).click();},4000);
+			document.getElementById( 'sphere' ).click();
+		},5000);
 
 	}, false );
 
@@ -300,15 +301,20 @@ function init() {
 
 	document.getElementById( 'grid' )
 	.addEventListener( 'click', function ( event ) {
-
+		//new TWEEN.Tween( camera.position ).to({z:1171.4307209910285,x:-29.556150850900465,y:-33.1754700652115},3000).start();
+		
 		transform( targets.grid, 5000 );
 		setTimeout(function(){
-			new TWEEN.Tween( camera.position ).to({z:2267.6306967197997,x:-244.06877143500157,y:503.82513484148166},6000).start();
+			//new TWEEN.Tween( camera.position ).to({z:2267.6306967197997,x:-244.06877143500157,y:503.82513484148166},2000).start();
+			new TWEEN.Tween( camera.position ).to({z:1667.5278447602223,x:18.432353551763935,y:76.23263164922767},3000).start();
 			setTimeout(function(){
-				new TWEEN.Tween( camera.position ).to({z:49.75161789494694,x:-3.3068165864827255,y:3.720414076223126},10000).start();
-				setTimeout(function(){document.getElementById( 'table' ).click();},6000);
+				//				
+				new TWEEN.Tween( camera.position ).to({z:0,x:0,y:0},10000).start();
 
-			},6000);
+				//new TWEEN.Tween( camera.position ).to({z:49.75161789494694,x:-3.3068165864827255,y:3.720414076223126},10000).start();
+				setTimeout(function(){document.getElementById( 'table' ).click();},10000);
+
+			},3000);
 			
 		},6000);
 
