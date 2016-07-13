@@ -307,6 +307,7 @@ function ajaxGetData(_currpage,_type){
 		return;
 	}
 	showLoadingDiv();
+
 	req = ajax({
 		url: serverUrl +'listajax?page='+ _currpage +'&size=18&type='+ _type,
 			type: "GET", //HTTP 请求类型,GET或POST
@@ -327,7 +328,7 @@ function ajaxGetData(_currpage,_type){
 			},
 	        post:"",  
 	        timeout:7000  
-	});	
+	});
 }
 </script>
 </head>
