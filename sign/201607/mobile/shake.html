@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/step1.css?v=66" />
+	<style type="text/css">
+		.meeting-title{
+			margin-top: 45%;
+			display: none;
+		}
+		@media (max-width: 320px){
+			.meeting-title{
+				margin-top: 40%;
+			}
+		}
+		.playAgainBt-wrapper{
+			text-align: center;
+			padding-top: 15px;
+		}
+		.playAgainBt{
+			width: 200px;
+			height: 40px;
+			background: url(./images/again-bt.png) no-repeat center center;
+			background-size: contain;
+			display: inline-block;
+		}
+
+		.playStartBt-wrapper{
+			text-align: center;
+			padding-top: 15px;
+		}
+		.playStartBt{
+			width: 200px;
+			height: 35px;
+			background: url(./images/start-bt.png) no-repeat center center;
+			background-size: contain;
+			display: inline-block;
+		}
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+
+
+	<title>摇一摇抢答</title>
+</head>
+<body>
+<div class="bg-top" style="width:100%;height:100%;"><img src="./images/bg.jpg" style="width:100%;height:100%;"></div>
+
+<div id="main">
+	<div class="meeting-title" id="gameStartView">
+		<img src="./images/yyy-start-title.png" />
+		<div class="text-ac playStartBt-wrapper"  style="margin-bottom:20px;">
+			<button class="playStartBt" onmousedown="playStart();"></button>
+		</div>
+	</div>
+	<div class="meeting-title" id="gameIngView">
+		<img src="./images/yyy-ing-title.png" />
+	</div>
+	<div class="meeting-title" id="gameLuckView">
+		<img src="./images/luck-title.png" />
+		<div class="text-ac playAgainBt-wrapper"  style="margin-bottom:20px;">
+			<button class="playAgainBt" onmousedown="playAgain();"></button>
+		</div>
+	</div>
+	<div class="meeting-title" id="gameFailView">
+		<img src="./images/fail-title.png" />
+		<div class="text-ac playAgainBt-wrapper"  style="margin-bottom:20px;">
+			<button class="playAgainBt" onmousedown="playAgain();"></button>
+		</div>
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+function showStart(){
+	isInPlayView=false;
+	$('.meeting-title').hide();
+	$('#gameStartView').show();
+}
+function showIng(){
+	isInPlayView=true;
+	$('.meeting-title').hide();
+	$('#gameIngView').show();
+}
+function showLuck(){
+	isInPlayView=false;
+	$('.meeting-title').hide();
+	$('#gameLuckView').show();
+}
+function showFail(){
+	isInPlayView=false;
+	$('.meeting-title').hide();
+	$('#gameFailView').show();
+}
+showStart();
+
+function playStart(){
+	showIng();
+}
+function playAgain(){
+	playStart();
+}
+//ajax 摇动结果
+function ajaxResult(){
+	if(isAjaxing) return;
+	/*
+	isAjaxing=$.ajax({
+	  type: 'GET',
+	  url: '/projects',
+	  // data to be added to query string:
+	  data: { name: 'Zepto.js' },
+	  // type of data we are expecting in return:
+	  dataType: 'json',
+	  success: function(data){
+	    isAjaxing=null;
+	    //你的业务数据代码
+	    //showLuck();//获得答题机会
+	    //showFail();//错过
+	  },
+	  error: function(xhr, type){
+	    isAjaxing=null;
+	  }
+	});
+*/
+
+	//以下是测试代码，请删除
+	isAjaxing=true;
+	setTimeout(function(){
+		isAjaxing=null;
+		showLuck();//获得答题机会
+	},5000);
+}
+
+
+
+
+//是否在震动
+var isVibrate=false;
+var isAjaxing=false;//ajax是否正在请求
+var isInPlayView=false;
+//摇一摇 控制代码
+var SHAKE_THRESHOLD = 500;//越小越敏感，5个等级
+var SHAKE_THRESHOLD2 = 1000;
+var SHAKE_THRESHOLD3 = 12000;
+var SHAKE_THRESHOLD4 = 10000;
+var SHAKE_THRESHOLD5 = 12000;
+var last_update = 0;
+var x = y = z = last_x = last_y = last_z = 0;
+function init() {
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', deviceMotionHandler, false);
+    } else {
+        alert('not support mobile event');
+    }
+    var vibrateSupport = "vibrate" in navigator;  
+    if (!!vibrateSupport) { //兼容不同的浏览器  
+        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;  
+    }else{
+        navigator.vibrate=function(){};
+    }
+}
+function deviceMotionHandler(eventData) {
+	if(!!!isInPlayView) return;
+    var acceleration = eventData.accelerationIncludingGravity;
+    var curTime = new Date().getTime();
+    if ((curTime - last_update) > 100) {
+        var diffTime = curTime - last_update;
+        last_update = curTime;
+        x = acceleration.x;
+        y = acceleration.y;
+        z = acceleration.z;
+        var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+        if (speed > SHAKE_THRESHOLD2) {
+            //alert("摇动了");
+            ajaxResult();//拿摇动结果
+            if(!!!isVibrate){
+	            navigator.vibrate(500);//震动
+	            isVibrate=true;
+	            setTimeout(function(){
+	            	isVibrate=false;
+	            },1500);
+	        }
+        }
+        
+        last_x = x;
+        last_y = y;
+        last_z = z;
+    }
+}
+init();
+
+
+
+/**生成指定范围的随机整数*/
+function fRandomBy(under, over){ 
+    switch(arguments.length){ 
+        case 1: return parseInt(Math.random()*under+1); 
+        case 2: return parseInt(Math.random()*(over-under+1) + under); 
+        default: return 0; 
+    } 
+} 
+
+</script>
+
+</body>
+</html>
