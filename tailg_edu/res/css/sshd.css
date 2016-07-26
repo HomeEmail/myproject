@@ -1,0 +1,62 @@
+
+.sshd-list-top-nav{
+	line-height: 50px;
+	height: 50px;
+	border-bottom: 1px #ddd solid;
+	margin-bottom:25px;
+}
+.sshd-list-tbl{
+	width: 100%;
+}
+.sshd-list-tbl td{
+	text-align: center;
+	font-size: 16px;
+  padding: 10px;
+  line-height: 22px;
+  vertical-align: middle;
+}
+.sshd-list-tbl a{
+	color: #333;
+}
+.sshd-list-tbl a:hover{
+	color: #ffcd34;
+}
+.sshd-list-tbl tr:nth-child(even){
+	background-color: #fafafa;
+}
+
+.sshd-topic{
+	line-height: 22px;
+	  padding: 20px 0px;
+}
+.sshd-topic-renImg{
+	width: 72px;
+	overflow: hidden;
+	float: left;
+}
+.sshd-topic-text{
+	float: left;
+}
+.sshd-topic-title{
+	font-size: 18px;
+}
+
+#sshdInputText{
+	width: 1088px;
+	height: 120px;
+	margin-bottom: 20px;
+	color:#333;
+	border: 1px #ddd solid;
+	border-radius: 5px;
+	padding: 5px;
+}
+#sshdInputReplyLimitNum{
+  line-height: 42px;
+  padding-right: 10px;
+}
+.sshd-topic-reply-item{
+	border-bottom: 1px #ddd solid;
+}
+.sshd-topic-reply-item .sshd-topic-title{
+	font-size: 16px;
+}

@@ -1,0 +1,375 @@
+
+.xkcs-top{
+	height: 498px;
+	background: #d1dfea url(../images/xkcs-top-bg.jpg) no-repeat top center;
+}
+.xkcsMyHome-content{
+
+}
+.xkcsMyHome-left,.xkcsMyHome-right{
+	margin: 40px 0px;
+}
+
+.xkcsMyHome-person-info-wrapper{
+	margin-bottom: 15px;
+}
+.xkcsMyHome-person-img{
+	float: left;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	margin-right: 40px;
+}
+.xkcsMyHome-person-info{
+	float: left;
+}
+.xkcsMyHome-person-info-content{
+
+}
+.xkcsMyHome-person-info-item{
+	font-size: 16px;
+  line-height: 25px;
+  color: #666;
+}
+.xkcsMyHome-person-info-item-name{
+
+}
+.xkcsMyHome-person-info-item-value{
+
+}
+.xkcsMyNote-content{
+	border: 1px #ddd solid;
+	padding: 20px;
+}
+.xkcsMyNote-content-title{
+	color: #0067af;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.xkcsMyExam-title{
+	font-size: 26px;
+	color: #0067af;
+	line-height: 30px;
+	text-align: center;
+}
+.xkcsMyExam-subTitle{
+	font-size: 18px;
+	color: #464646;
+	line-height: 26px;
+	text-align: center;
+}
+.xkcsMyExam-class-nav{
+	margin: 20px 0px;
+}
+
+.xkcsMyExam-list-content{
+  padding-left: 3px;
+}
+.xkcsMyExam-list-item{
+	float: left;
+	display: block;
+	width: 264px;
+	border: 1px #ddd solid;
+  margin-right: 18px;
+  margin-bottom: 30px;
+}
+.xkcsMyExam-list-item-img{
+	width: 264px;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+.xkcsMyExam-list-item-img-cover{
+	display: none;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #222;
+}
+.xkcsMyExam-list-item:hover .xkcsMyExam-list-item-img-cover{
+	display: block;
+}
+.xkcsMyExam-list-item-img-bt{
+	display: none;
+	position: absolute;
+  left: 84px;
+  top: 84px;
+  z-index: 11;
+}
+.xkcsMyExam-list-item:hover .xkcsMyExam-list-item-img-bt{
+	display: block;
+}
+.xkcsMyExam-list-item-name{
+	font-size: 14px;
+	line-height: 40px;
+	height: 40px;
+	border-top: 1px #ddd solid;
+	text-align: center;
+	overflow: hidden;
+	color: #888;
+}
+.xkcsMyExam-list-item:hover .xkcsMyExam-list-item-name{
+	color: #a40000;
+}
+
+
+.xkcsMyCourse-title{
+	font-size: 32px;
+	color: #0067af;
+	line-height: 40px;
+	text-align: center;
+}
+.xkcsMyCourse-subTitle{
+	font-size: 18px;
+	color: #464646;
+	line-height: 26px;
+	text-align: center;
+}
+.xkcsMyCourse-class-nav{
+	margin: 20px 0px;
+}
+.xkcsMyCourse-class-nav .tab1-item{
+	margin-right: 20px;
+}
+.xkcsMyCourse-class-nav .tab1-wrapper{
+  
+}
+.xkcsMyCourse-class-nav .tab1-item{
+  width: 132px;
+}
+.xkcsMyCourse-class-nav .tab1-item-text{
+  width: 130px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  color: #555;
+}
+
+.xkcsMyCourse-list-content{
+  padding-left: 0px;
+}
+.xkcsMyCourse-list-item{
+	float: left;
+	display: block;
+	width: 198px;
+	border: 1px #ddd solid;
+  margin-right: 13px;
+  margin-bottom: 30px;
+}
+.xkcsMyCourse-list-item-img{
+	width: 198px;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+.xkcsMyCourse-list-item-img-cover{
+	display: none;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #222;
+}
+.xkcsMyCourse-list-item:hover .xkcsMyCourse-list-item-img-cover{
+	display: block;
+}
+.xkcsMyCourse-list-item-img-bt{
+	display: none;
+	position: absolute;
+  left: 64px;
+  top: 84px;
+  z-index: 11;
+  background-color: #ffcc33;
+}
+.xkcsMyCourse-list-item:hover .xkcsMyCourse-list-item-img-bt{
+	display: block;
+}
+.xkcsMyCourse-list-item-name{
+	font-size: 14px;
+	line-height: 40px;
+	height: 40px;
+	border-top: 1px #ddd solid;
+	text-align: center;
+	overflow: hidden;
+	color: #455562;
+}
+.xkcsMyCourse-list-item:hover .xkcsMyCourse-list-item-name{
+	color: #ffcc33;
+}
+
+.xkcsMyCourse-tbl{
+	width: 100%;
+	margin-bottom: 30px;
+}
+.xkcsMyCourse-tbl td,.xkcsMyCourse-tbl th{
+	border: 1px #f2f2f2 solid;
+	padding: 10px;
+	vertical-align: middle;
+	color: #555;
+	text-align: center;
+}
+.xkcsMyCourse-tbl .gray{
+	background-color: #eaeaea;
+	color: #222;
+}
+.xkcsMyCourse-tbl .bg-blue{
+	background-color: #0067af;
+	color: #fff;
+}
+
+
+
+
+.exam-header-top{
+	height: 35px;
+	background-color: #006fbc;
+	line-height: 35px;
+	color: #fff;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 20;
+}
+.exam-icon{
+	padding-left: 10px;
+	background: url(../images/exam-icon1.png) no-repeat left center;
+	padding-right: 50px;
+}
+
+.exam-content-wrapper{
+	position: relative;
+	width: 1100px;
+	margin: 0 auto;
+  padding-top: 35px;
+  padding-bottom: 50px;
+	margin-bottom: 50px;
+}
+.exam-content-header{
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px #ddd solid;
+	padding: 10px 0px;
+	text-align: center;
+	line-height: 26px;
+}
+.exam-content-header h1{
+	font-size: 18px;
+}
+.exam-content-body{
+	background-color: #fff;
+	padding: 10px;
+	line-height: 26px;
+}
+
+.exam-footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	color: #222;
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #ebebeb;
+}
+.exam-time-show{
+	padding-left: 26px;
+	background: url(../images/clock-icon2.png) no-repeat left center;
+	margin-left: 30px;
+}
+#submitExamBt{
+	cursor: pointer;
+}
+
+
+
+.exam-que-type-name{
+	font-size: 16px;
+}
+.exam-que-item{
+
+}
+.exam-que-name{
+
+}
+.exam-que-ans-item{
+	padding-left: 20px;
+	cursor: pointer;
+}
+.exam-que-ans-item.selected{
+	color: red;
+}
+.exam-que-ans-item:hover{
+	
+}
+.exam-que-ans-item-name{
+	padding-right: 10px;
+}
+.exam-que-ans-item-value{
+
+}
+.exam-my-ans{
+	padding-left: 20px;
+}
+
+
+
+
+.exam-result-header{
+  border-bottom: 2px #006fbc solid;
+  text-align: center;
+  height: 40px;
+}
+.exam-result-header-wrapper{
+	padding-bottom: 30px;
+
+}
+.exam-result-user-info{
+	line-height: 30px;
+	font-size: 16px;
+	border-bottom: 1px #ddd solid;
+	padding-bottom: 20px;
+}
+.exam-result-que-info{
+	padding: 20px 0px;
+}
+.exam-result-que-type-name{
+	padding-bottom: 10px;
+	font-size: 16px;
+}
+
+.exam-result-footer-wrapper{
+	padding: 10px 0px;
+	border-top: 1px #ddd solid;
+	text-align: center;
+}
+.exam-result-footer-wrapper .jcsp-desc-name{
+	font-size: 20px;
+	padding: 8px 20px;
+	cursor: pointer;
+}
+.exam-result-status-text-wrapper{
+	font-size: 30px;
+	color: #006fbc;
+	vertical-align: middle;
+}
+.exam-result-status-text-wrapper span{
+	vertical-align: middle;
+}
+.exam-result-ans-tbl{
+	
+
+  margin-left: 30px;
+ 	margin-bottom: 20px;
+}
+.exam-result-ans-tbl td,.exam-result-ans-tbl th{
+	width: 26px;
+}

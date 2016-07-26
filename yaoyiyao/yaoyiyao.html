@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>摇一摇功能</title>
+    <script type="text/javascript">
+        //Javascript
+    </script>
+    <script type="text/javascript" src="./zepto-1.1.6.js"></script>
+</head>
+<body onload="init()">
+	<p>用力摇一摇你手机ll 22oo</p>
+    <button onclick="vibrateTest();">震动</button>
+	<div id="test"></div>
+	
+	<audio id="sound" src="./yaoyiyao.mp3" style="opacity:0;" preload="auto">
+		您的浏览器不支持 audio 标签。
+	</audio>
+    <audio id="soundResult" src="./yaoyiyao-result.mp3" style="opacity:0;" preload="auto">
+        您的浏览器不支持 audio 标签。
+    </audio>
+</body>
+<script type="text/javascript">
+	var media= document.getElementById('sound');
+	//media.src='./yaoyiyao.mp3';
+    var mediaResult=document.getElementById('soundResult');
+    mediaResult.load();
+    mediaResult.pause();
+	media.load();
+	media.pause();
+	var SHAKE_THRESHOLD = 3000;
+    var last_update = 0;
+    var x = y = z = last_x = last_y = last_z = 0;
+    function init() {
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        } else {
+            alert('not support mobile event');
+        }
+        var vibrateSupport = "vibrate" in navigator;  
+        if (!!vibrateSupport) { //兼容不同的浏览器  
+            navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;  
+        }else{
+            navigator.vibrate=function(){};
+        }
+        //navigator.vibrate([300,200,300,200,300]);//震动300ms 隔200ms 
+    }
+    function vibrateTest(){
+        // if ((navigator.vibrate || navigator.webkitVibrate) && window.webkitNotifications) {      
+        //     // 用户授权是否允许发布系统消息：
+        //     if(window.webkitNotifications.checkPermission() != 0) {
+        //           window.webkitNotifications.requestPermission(function () {});
+        //     }
+        // } else {
+        //    //提示浏览器不支持此api
+        //    alert('not support');
+        // }
+        if (navigator.vibrate) {
+            navigator.vibrate(2000);
+        } else if (navigator.webkitVibrate) {
+            navigator.webkitVibrate(2000);
+        }else{
+            alert('not support vibrate');
+        }
+    }
+    function deviceMotionHandler(eventData) {
+        var acceleration = eventData.accelerationIncludingGravity;
+        var curTime = new Date().getTime();
+        if ((curTime - last_update) > 100) {
+            var diffTime = curTime - last_update;
+            last_update = curTime;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+            if (speed > SHAKE_THRESHOLD) {
+                try{
+                    navigator.vibrate(1000);//震动
+                }catch(err){
+                    alert('aa');
+                }
+                //alert("摇动了");
+                document.getElementById('test').innerHTML+=speed+' ..oo. <br/>';
+                //try{triggerEvent(document,'touchstart');}catch(err){}
+                try{media.play();}catch(err){}  
+                setTimeout(function(){
+                    try{mediaResult.play();}catch(err){}
+                },2000);
+                //$('#sound').trigger('play');
+                
+            }
+            last_x = x;
+            last_y = y;
+            last_z = z;
+        }
+    }
+    // media.addEventListener('touchstart',function(e){
+    // 	media.play();
+    // });
+    var isPlayOnce=false;
+    document.addEventListener('touchstart', function () {
+	    if(!!isPlayOnce) return;
+	    media.play();
+	    media.pause();
+        mediaResult.play();
+        mediaResult.pause();
+	    isPlayOnce=true;
+	    //media.pause();
+	});
+    /****
+	trigger given event on element
+	demo: triggerEvent(document.getElementById('google'),'resize');
+	note: element not support window object
+	***/
+	function triggerEvent(ele,eventType){
+		if( document.createEvent) { 
+			try{
+				var event = document.createEvent ("HTMLEvents"); 
+				event.initEvent(eventType, true, true); 
+				ele.dispatchEvent(event); 
+			} catch(err){}
+		} else if(document.createEventObject){ 
+			ele.fireEvent("on"+eventType); 
+		} 
+	}
+
+
+</script>
+</html>
