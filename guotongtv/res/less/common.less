@@ -1,0 +1,597 @@
+/**base reset css**/
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+
+
+a{
+	text-decoration:none;
+}
+
+
+body,h1,h2,h3,h4,h5,h6,p,dd,dl,ul,ol,th,td,fieldset,legend,form,texterea,select,input{padding:0; margin:0;}
+img{border:none; vertical-align:top;}
+
+body,html{
+	font-family: "Microsoft YaHei","微软雅黑","SimHei","黑体","SimSun","宋体",sans-serif;
+}
+
+
+/****common css ******/
+.fl{
+    float: left;
+}
+.fr{
+	float: right;
+}
+
+.none{
+	display: none;
+}
+.block{
+	display: block;
+}
+.inline-block{
+	display: inline-block;
+}
+.hide{
+	visibility: hidden;
+}
+.visible{
+	visibility: visible;
+}
+
+.text-center{
+	text-align:center;
+}
+
+.pr{
+	position:relative;
+}
+.pa{
+	position:absolute;
+}
+/**溢出...**/
+.ellipsis{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.clearfix{}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content: " ";clear:both;height:0;}
+.clearperfect{ clear: both; height: 0px;overflow: hidden; }
+
+/**margin**/
+.ml30{
+    margin-left: 30px;
+}
+.mr30{
+	margin-right:30px;
+}
+.mt30{
+	margin-top:30px;
+}
+.mb30{
+	margin-bottom:30px;
+}
+.mh30{
+	.mr30;
+	.ml30;
+}
+.mv30{
+	.mt30;
+	.mb30;
+}
+.mg30{
+	.mh30;
+	.mv30;
+}
+
+
+.ml20{
+    margin-left: 20px;
+}
+.mr20{
+	margin-right:20px;
+}
+.mt20{
+	margin-top:20px;
+}
+.mb20{
+	margin-bottom:20px;
+}
+.mh20{
+	.mr20;
+	.ml20;
+}
+.mv20{
+	.mt20;
+	.mb20;
+}
+.mg20{
+	.mh20;
+	.mv20;
+}
+
+
+
+.ml10{
+    margin-left: 10px;
+}
+.mr10{
+	margin-right:10px;
+}
+.mt10{
+	margin-top:10px;
+}
+.mb10{
+	margin-bottom:10px;
+}
+.mh10{
+	.mr10;
+	.ml10;
+}
+.mv10{
+	.mt10;
+	.mb10;
+}
+.mg10{
+	.mh10;
+	.mv10;
+}
+
+
+
+.ml-small{
+	.ml10;
+}
+.mr-small{
+	.mr10;
+}
+.mt-small{
+	.mt10;
+}
+.mb-small{
+	.mb10;
+}
+.mh-small{
+	.mh10;
+}
+.mv-small{
+	.mv10;
+}
+.mg-small{
+	.mg10;
+}
+
+
+
+
+
+.ml-normal{
+	.ml20;
+}
+.mr-normal{
+	.mr20;
+}
+.mt-normal{
+	.mt20;
+}
+.mb-normal{
+	.mb20;
+}
+.mh-normal{
+	.mh20;
+}
+.mv-normal{
+	.mv20;
+}
+.mg-normal{
+	.mg20;
+}
+
+
+.ml-large{
+	.ml30;
+}
+.mr-large{
+	.mr30;
+}
+.mt-large{
+	.mt30;
+}
+.mb-large{
+	.mb30;
+}
+.mh-large{
+	.mh30;
+}
+.mv-large{
+	.mv30;
+}
+.mg-large{
+	.mg30;
+}
+
+
+
+/**padding**/
+.pl30{
+    padding-left: 30px;
+}
+.pr30{
+	padding-right:30px;
+}
+.pt30{
+	padding-top:30px;
+}
+.pb30{
+	padding-bottom:30px;
+}
+.ph30{
+	.pr30;
+	.pl30;
+}
+.pv30{
+	.pt30;
+	.pb30;
+}
+.pg30{
+	.ph30;
+	.pv30;
+}
+
+
+.pl20{
+    padding-left: 20px;
+}
+.pr20{
+	padding-right:20px;
+}
+.pt20{
+	padding-top:20px;
+}
+.pb20{
+	padding-bottom:20px;
+}
+.ph20{
+	.pr20;
+	.pl20;
+}
+.pv20{
+	.pt20;
+	.pb20;
+}
+.pg20{
+	.ph20;
+	.pv20;
+}
+
+
+
+.pl10{
+    padding-left: 10px;
+}
+.pr10{
+	padding-right:10px;
+}
+.pt10{
+	padding-top:10px;
+}
+.pb10{
+	padding-bottom:10px;
+}
+.ph10{
+	.pr10;
+	.pl10;
+}
+.pv10{
+	.pt10;
+	.pb10;
+}
+.pg10{
+	.ph10;
+	.pv10;
+}
+
+
+
+.pl-small{
+	.pl10;
+}
+.pr-small{
+	.pr10;
+}
+.pt-small{
+	.pt10;
+}
+.pb-small{
+	.pb10;
+}
+.ph-small{
+	.ph10;
+}
+.pv-small{
+	.pv10;
+}
+.pg-small{
+	.pg10;
+}
+
+
+
+
+
+.pl-normal{
+	.pl20;
+}
+.pr-normal{
+	.pr20;
+}
+.pt-normal{
+	.pt20;
+}
+.pb-normal{
+	.pb20;
+}
+.ph-normal{
+	.ph20;
+}
+.pv-normal{
+	.pv20;
+}
+.pg-normal{
+	.pg20;
+}
+
+
+.pl-large{
+	.pl30;
+}
+.pr-large{
+	.pr30;
+}
+.pt-large{
+	.pt30;
+}
+.pb-large{
+	.pb30;
+}
+.ph-large{
+	.ph30;
+}
+.pv-large{
+	.pv30;
+}
+.pg-large{
+	.pg30;
+}
+
+
+.cl-white{
+	color:#ffffff;
+}
+.cl-black{
+	color:#000000;
+}
+.cl-red{
+	color:red;
+}
+.cl-333{
+	color:#333;
+}
+.cl-ccc{
+	color:#ccc;
+}
+.cl-666{
+	color:#666;
+}
+.bgcl-white{
+	background-color:#ffffff;
+}
+.bgcl-black{
+	background-color:#000000;
+}
+.bgcl-red{
+	background-color:red;
+}
+.bgcl-333{
+	background-color:#333;
+}
+.bgcl-ccc{
+	background-color:#ccc;
+}
+.bgcl-666{
+	background-color:#666;
+}
+
+
+
+
+
+
+
+
+
+
+/************/
