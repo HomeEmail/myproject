@@ -1,0 +1,575 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,  minimal-ui" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="touch-fullscreen" content="yes"/>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/apple-touch-icon-114x114-smartone.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/apple-touch-icon-72x72-smartone.png" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/apple-touch-icon-57x57-smartone.png" />
+<link rel="shortcut icon" href="Images/apple-touch-icon-smartone.png" />
+<link rel="apple-touch-startup-image" href="Images/startup.png"><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+<title>心心相印</title>
+<link rel="stylesheet" type="text/css" href="reset.css">
+<style>
+body{padding:0px;}
+.uploadItem{
+	display:inline-block;
+	width:88px;
+	height:88px;
+	border:1px #fff solid;
+	box-shadow:0px 0px 5px 0px rgba(0,0,0,0.6);
+	margin:7px 0px;
+	overflow:hidden;
+	line-height: 86px;
+	text-align:center;
+	margin-left:13px;
+	position:relative;
+	border-radius: 3px;
+}
+.uploadItem img{
+	width:86px;
+	vertical-align: middle;
+}
+.table{
+	display:table;
+}
+.table-cell{
+	display:table-cell;
+}
+#uploadList{
+	width:100%;
+	height:400px;
+	overflow:auto;
+	-webkit-overflow-scrolling: touch;
+}
+#landscapeTips{
+	position:fixed;
+	left:0px;
+	top:0px;
+	z-index:999999;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.66);
+	color:#fff;
+	font-size:16px;
+	text-align: center;
+	padding: 100px 10px;
+	line-height: 26px;
+}
+#loadingTips{
+	position:fixed;
+	left:45%;
+	top:45%;
+	z-index:999999;
+	width:60px;;
+	height:60px;
+	background-color:rgba(0,0,0,0.68);
+	color:#fff;
+	font-size:14px;
+	text-align: center;
+	line-height:60px;
+	border-radius:6px;
+}
+
+.processBox{
+	position:absolute;
+	width:60px;
+	height:10px;
+	left:14px;
+	bottom:3px;
+	border-radius:8px;
+	background-color:rgba(0, 0, 0, 0.6);	
+	color: #fff;
+	font-size: 10px;
+	text-align: center;
+	line-height: 10px;
+}
+.processBar{
+	position:absolute;
+	width:0px;
+	height:10px;
+	left:14px;
+	bottom:3px;
+	border-radius:8px;
+	background-color:#090;
+	background: -webkit-linear-gradient(top,rgba(11, 252, 11, 0.5),rgba(9, 155, 9, 0.5));
+	background: -moz-linear-gradient(top,rgba(11, 252, 11, 0.5),rgba(9, 155, 9, 0.5));
+	background: linear-gradient(top,rgba(11, 252, 11, 0.5),rgba(9, 155, 9, 0.5));
+}
+#showImgBox{
+	position:fixed;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	-webkit-overflow-scrolling: touch;
+	background-color:rgba(0, 0, 0, 0.6);	
+	left: 0px;
+	top: 0px;
+	text-align:center;
+}
+#showImg{
+	box-shadow: 0px 0px 8px 2px #222;
+}
+#uploadBt{
+	padding:20px;
+	background:#ccc;
+	color:#fff;
+	font-size:24px;
+}
+
+#uploadBtBox{
+	position:relative;
+}
+#fileInput{
+	width: 136px;
+	height: 68px;
+	position: absolute;
+	opacity: 0;
+}
+</style>
+<script>
+function error(msg,url,line){
+   var REPORT_URL = "API_LogError.jsp?s="; // 收集上报数据的信息
+   var m =[msg, url, line, navigator.userAgent, +new Date];// 收集错误信息，发生错误的脚本文件网络地址，用户代理信息，时间
+   var url = REPORT_URL + 'Error():'+m.join('||');// 组装错误上报信息内容URL
+   //var img = new Image;
+   //img.onload = img.onerror = function(){
+     // img = null;
+   //};
+   //img.src = url;// 发送数据到后台cgi
+   alert(url);
+}
+// 监听错误上报
+window.onerror = function(msg,url,line){
+   error(msg,url,line);
+}
+</script>
+</head>
+
+<body>
+<div id="header">
+    <h2>心心相印</h2>
+    <div id="uploadBtBox">
+    <form action="javascript:void(0);" onSubmit="return false;" method="post" id="uplaodForm" enctype="multipart/form-data">
+        <input id="fileInput" name="fileInput" type="file" accept="image/x-png,image/tiff,image/jpeg,image/gif" value="" multiple required onChange="fileChange(this);" />
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="5000000" /><!--5M-->
+        <input type="submit" id="uploadBt" value="我要上傳" />
+    </form>
+    </div>
+</div>
+
+<div id="uploadList">
+</div>
+
+<div id="loadingTips" style="display:none;">Loading ...</div>
+<div id="landscapeTips" style="display:none;">為了獲得更好的用戶體驗<br/>請使用豎屏模式！</div>
+<div id="showImgBox" style="display:none;" onMouseDown="this.style.display='none';"><img id="showImg" src="" /></div>
+
+</body>
+<script>
+window.URL = window.URL || window.webkitURL;//处理兼容
+
+var uploadBt=document.getElementById('uploadBt'),
+	fileElem=document.getElementById('fileInput');
+	
+uploadBt.addEventListener("click", function (e) {
+	if (fileElem) {
+		//fileElem.click();
+		triggerEvent(fileElem,'click');
+	}
+	e.preventDefault(); // prevent navigation to "#"
+}, false);
+
+document.getElementById('landscapeTips').addEventListener('touchstart',function(ev){
+	ev.stopPropagation();
+	ev.preventDefault();
+},false);
+function isDeviceOk(){
+	return !!window.URL && !!window.FileReader && !!new FormData() &&new XMLHttpRequest();	
+}
+/****
+trigger given event on element
+demo: triggerEvent(document.getElementById('google'),'resize');
+note: element not support window object
+***/
+function triggerEvent(ele,eventType){
+	if( document.createEvent) { 
+		try{
+			var event = document.createEvent ("HTMLEvents"); 
+			event.initEvent(eventType, true, true); 
+			ele.dispatchEvent(event); 
+		} catch(err){}
+	} else if(document.createEventObject){ 
+		ele.fireEvent("on"+eventType); 
+	} 
+}
+
+function init(){
+	document.getElementById('uploadList').style.height=getBrowserH()-getEleH('header')+'px';
+	if(!isDeviceOk()){
+		document.getElementById('uploadList').innerHTML='本软件不支持你的设备，因你的设备不支持相关功能！';
+	}
+	OrientationChangeExecutor(function(){
+		document.getElementById('landscapeTips').style.display='none';		
+	},function(){
+		document.getElementById('landscapeTips').style.display='block';	
+	});
+	
+}
+window.onload=init();
+
+var count=0,aryReader=[],aryFile=[],aryComplete=[];
+var iWhoUploading=0;
+function generateUploadInit(aryFiles,callback){
+	var loadingImg='img/loading.gif';
+	var el;
+	var oFragment = document.createDocumentFragment();
+	
+	for(var i=0,len=aryFiles.length;i<len;i++){
+		aryFile.push(aryFiles[i]);
+		el=null;
+		el=document.createElement('div');
+		el.className="uploadItem";
+		el.id="uploadItem_"+count;
+		el.innerHTML='<div class="table"><div class="table-cell"><img class="uploadImgItem" id="uploadImg_'+count+'" src="'+loadingImg+'" /></div></div><div class="processBox" id="'+'processBox_'+count+'">等待上传</div><div class="processBar" id="'+'processBar_'+count+'"></div>';
+		count++;
+    	oFragment.appendChild(el);
+	}
+	//img.src = window.URL.createObjectURL(aryFiles[i]);
+	document.getElementById('uploadList').appendChild(oFragment);
+	
+	el=null;
+	oFragment=null;
+	
+	console.log(aryFile);
+	for(var i=0,len=aryFiles.length;i<len;i++){
+		//callback(aryFiles[i]);//base on objectURL
+		uploadListBase64Init(aryFiles[i],callback);	//base on base64
+	}
+	
+	if(!!!singleUploading){
+		singleUploading=true;
+		UploadFile(aryFile[iWhoUploading]);
+	}
+	
+}
+
+document.getElementById('uploadList').addEventListener('mousedown',function(ev){
+	if(ev.target.className.indexOf('uploadImgItem')!=-1){
+		showImg(ev.target);	
+	}
+},false);
+function showImg(el){
+	document.getElementById('showImgBox').style.display='block';
+	document.getElementById('showImg').src=el.src;	
+}
+
+var singleUploading=false;
+
+/**以createObjectURL方式读取图片实现预览***/
+function generateUploadListObjectURL(file){
+	for(var i=0,len=aryFile.length; i<len; i++){
+		if(file==aryFile[i]){
+			document.getElementById('uploadImg_'+i).src=window.URL.createObjectURL(aryFile[i])
+			
+			
+			break;	
+		}
+	}
+	//loadingTipsHide();
+	return;
+}
+
+
+function uploadListBase64Init(file,callback){
+	aryReader.push(new FileReader());  
+	//onprogress
+	aryReader[aryReader.length-1].onloadend = function (evt) {
+		//console.log(this);
+		//console.log(evt);  
+		if (evt.target.readyState == FileReader.DONE) { 
+			//callback(decode_base64(evt.target.result.split(',')[1]));  
+			callback(evt.target); 
+			
+		}  
+	}  
+
+	aryReader[aryReader.length-1].readAsDataURL(file);		
+}
+/**以base64方式读取图片实现预览***/
+function generateUploadListBase64(oFileReader){
+	for(var i=0,len=aryReader.length; i<len; i++){
+		if(oFileReader==aryReader[i]){
+			document.getElementById('uploadImg_'+i).src=oFileReader.result;
+			
+			//document.getElementById('uploadImg_'+i).style.display='none';
+			//document.getElementById('uploadItem_'+i).style.backgroundImage='url('+oFileReader.result+')';//此法好卡
+			
+			break;	
+		}
+	}
+	return;
+}
+
+function loadingTipsHide(el){
+	document.getElementById('loadingTips').style.display='none';
+}
+function loadingTipsShow(el){
+	document.getElementById('loadingTips').style.display='block';
+}
+function fileChange(el){
+	//loadingTipsShow();
+	//alert('aa');
+	console.log(el);
+	console.log(el.value);
+	console.log(el.files);
+	document.getElementById('loadingTips').style.display='none';
+	//getFileContent(el,generateUploadListObjectURL);
+	getFileContent(el,generateUploadListBase64);
+}
+/*  
+* @description: read local text file via the html5 FileReader  
+**/  
+function getFileContent(fileInput, callback) {  
+	if (fileInput.files && fileInput.files.length > 0 && fileInput.files[0].size > 0) {
+		
+		generateUploadInit(fileInput.files,callback);
+		
+			  
+	} else {
+		alert('Please select a file!');	
+	}
+}  
+
+/*function fileSelected() {
+	var file = document.getElementById('fileToUpload').files[0];
+	if (file) {
+		var fileSize = 0;
+		if (file.size > 1024 * 1024)
+			fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+		else
+			fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+
+		document.getElementById('fileName').innerHTML = 'Name: ' + file.name;
+		document.getElementById('fileSize').innerHTML = 'Size: ' + fileSize;
+		document.getElementById('fileType').innerHTML = 'Type: ' + file.type;
+	}
+}*/
+
+
+function UploadFile(file) {
+	var isFound=false;
+	if(iWhoUploading>=aryFile.length) return;
+	for(var i=0,len=aryFile.length; i<len; i++){
+		if(file==aryFile[i]){
+			//can find it in file list
+			iWhoUploading=i;
+			isFound=true;
+			for(var j=0,len=aryComplete.length; j<len; j++){
+				if(iWhoUploading==aryComplete[j]){
+					//is completed
+					UploadFile(aryFile[++iWhoUploading]);
+					return;
+				} else {
+					//will upload it
+					if(aryFile.length==aryComplete.length){
+						//is lastest,all file have uploaded	
+						singleUploading=false;
+						alert('图片全部上传完毕！');
+						return;
+					} else {
+						//document.getElementById('processBox_'+iWhoUploading).innerHTML='上传中';
+					}
+				}
+			}
+			//document.getElementById('processBox_'+iWhoUploading).innerHTML='上传中';
+			break;	
+		} 
+	}
+	//can not find it in file list
+	if(!!!isFound) return;
+	
+	var fd = new FormData();
+	var xhr = new XMLHttpRequest();
+	/*
+	upload: XMLHttpRequestUpload
+		onabort: null
+		onerror: null
+		onload: null
+		onloadend: null
+		onloadstart: null
+		onprogress: null
+		ontimeout: null
+	*/
+	//alert(xhr.upload);
+	xhr.upload.addEventListener("progress", uploadProgress, false);
+	xhr.upload.addEventListener("loadend", uploadComplete, false);
+	
+	xhr.addEventListener("loadend", uploadCompleteReturn, false);
+	
+	xhr.addEventListener("error", uploadFailed, false);
+	xhr.addEventListener("abort", uploadCanceled, false);
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			// Handle response.
+			//alert(xhr.responseText); // handle response.
+			uploadComplete();
+		}
+	};
+	
+	xhr.open("POST", "./uploadAction.php");
+	fd.append("myFile", file);
+	xhr.send(fd);
+}
+
+function uploadProgress(evt) {
+	
+	if (evt.lengthComputable) {
+		document.getElementById('processBox_'+iWhoUploading).innerHTML='上传中';
+		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+		document.getElementById('processBar_'+iWhoUploading).style.width = percentComplete/100*60 + 'px';
+	} else {
+		document.getElementById('processBox_'+iWhoUploading).innerHTML = '请稍等';
+	}
+}
+
+function uploadComplete(evt) {
+	
+	document.getElementById('processBar_'+iWhoUploading).style.width = '60px';
+	document.getElementById('processBox_'+iWhoUploading).innerHTML = '已完成';
+	/* This event is raised when the server send back a response */
+	//console.log(evt.returnValue);
+	
+}
+
+function uploadCompleteReturn(evt) {
+	aryComplete.push(iWhoUploading);
+	/* This event is raised when the server send back a response */
+	console.log(evt.target.responseText);
+	if(aryFile.length==aryComplete.length){
+		//is lastest,all file have uploaded	
+		singleUploading=false;
+		alert('图片全部上传完毕！');
+		return;
+	}
+	UploadFile(aryFile[++iWhoUploading]);
+}
+
+function uploadFailed(evt) {
+	alert("There was an error attempting to upload the file.");
+	UploadFile(aryFile[0]);
+}
+
+function uploadCanceled(evt) {
+	alert("The upload has been canceled by the user or the browser dropped the connection.");
+}
+
+
+function getBrowserW(){
+	return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;//可见区域宽度
+}
+function getBrowserH(){
+	//alert(document.documentElement.clientHeight);
+	return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;//可见区域高度		
+}
+function getEleW(ele){
+	if(typeof ele == 'string'){
+		return 	document.getElementById(ele).offsetWidth;
+	} else {
+		return ele.offsetWidth;	
+	}
+}
+function getEleH(ele){
+	if(typeof ele == 'string'){
+		return 	document.getElementById(ele).offsetHeight;
+	} else {
+		return ele.offsetHeight;	
+	}
+}
+/* Detect whether device supports orientationchange event
+*para:portraitFunc:portrait callback function; landscapeFunc:landscape callback function
+demo: var oce=new OrientationChangeExecutor(func1,func2);
+*/
+function OrientationChangeExecutor(portraitFunc,landscapeFunc){
+	var supportsOrientationChange = "onorientationchange" in window;
+	
+	if(supportsOrientationChange){	
+		window.addEventListener('orientationchange', function() {
+			if(Math.abs(window.orientation) == 90){
+				//alert('landscape');
+				//$('container_wrapper').focus();
+				if(!!landscapeFunc) landscapeFunc();
+			} else {
+				//alert('portrait');
+				//$('container_wrapper').focus();
+				if(!!portraitFunc) portraitFunc();
+			}
+		}, false);
+	} else {
+		//alert('your browser do not support orientationchange');	
+	}
+}
+
+/*  
+* @description: read local text file via the html5 FileReader  
+**/  
+function getFileContentByDrag(fileList, callback) {  
+	if (fileList.length > 0 && fileList[0].size > 0) {  
+		var file = fileList[0];  
+		if (window.FileReader) {  
+			var reader = new FileReader();  
+
+			reader.onloadend = function (evt) {  
+				if (evt.target.readyState == FileReader.DONE) { 
+					//console.log(evt.target.result);
+					callback(evt.target.result);  
+				}  
+			}  
+
+			reader.readAsText(file);  
+		}  
+	} else {
+		alert('Please drag and drop a file!');	
+	}
+} 
+/***
+*base64解碼，返回：字符串
+**/
+function decode_base64(s) {
+	var e = {}, i, k, v = [], r = '', w = String.fromCharCode;
+	var n = [[65, 91], [97, 123], [48, 58], [43, 44], [47, 48]];
+	for (z in n) {
+		for (i = n[z][0]; i < n[z][1]; i++) {
+			v.push(w(i));
+		}
+	}
+	for (i = 0; i < 64; i++) {
+		e[v[i]] = i;
+	}
+	for (i = 0; i < s.length; i += 72) {
+		var b = 0, c, x, l = 0, o = s.substring(i, i + 72);
+		for (x = 0; x < o.length; x++) {
+			c = e[o.charAt(x)];
+			b = (b << 6) + c;
+			l += 6;
+			while (l >= 8) {
+				r += w((b >>> (l -= 8)) % 256);
+			}
+		}
+	}
+	return r;
+}
+</script>
+</html>
