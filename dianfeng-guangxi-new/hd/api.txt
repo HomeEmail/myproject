@@ -31,3 +31,8 @@ http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=check_play_aut
 
 拿播放串
 http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=104734528&nns_video_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
+
+拿内容详细信息
+http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_content&id=dfsy0000000000000000000000000631
+
+
