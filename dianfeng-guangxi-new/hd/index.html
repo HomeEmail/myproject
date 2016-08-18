@@ -79,6 +79,98 @@ function grabEvent(_event){
 	}
 }
 
+var aipBase='http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?';
+var cp_id='dfsy';
+var user_id='104734528';
+//var video_id='dfsy0000000000000000000000000631';
+function getAuth(video_id){
+	ajax({
+		url: aipBase +'nns_func=check_play_auth'+'&nns_user_id='+user_id+'&nns_video_id='+ video_id+'&nns_cp_id='+cp_id,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			//json = eval("(" + html + ")");
+			
+		},
+		onComplete : function(){
+			
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:30000  
+	});
+}
+var req=null;
+function getPlayUrl(video_id){
+	if(!!req){
+		req.abort();
+		req=null;
+	}
+	showLoadingDiv();
+	req=ajax({
+		url: aipBase +'nns_func=get_play_url'+'&nns_user_id='+user_id+'&nns_video_id='+ video_id+'&nns_cp_id='+cp_id,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			req=null;
+			hideLoadingDiv();
+			//json = eval("(" + html + ")");
+			var xml=parseXML(html);
+			var state=getXMLnodeAttr(xml.getElementsByTagName('media')[0],'state');
+			if(parseInt(state,10)==0){
+				var url=getXMLnodeAttr(xml.getElementsByTagName('media')[0],'url');
+				location.href=url;
+			}else{
+				alert(getXMLnodeAttr(xml.getElementsByTagName('media')[0],'reason'));
+			}
+		},
+		onComplete : function(){
+			req=null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			req=null;
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:30000  
+	});
+}
+
+function parseXML(s){
+	var xmlDoc=null;
+	try {
+		xmlDoc=new ActiveXObject("Microsoft.XMLDOM");//Internet Explorer
+		xmlDoc.async="false";
+		xmlDoc.loadXML(s);
+	}catch(e){
+		try {
+			parser=new DOMParser();
+			xmlDoc=parser.parseFromString(s,"text/xml");//Firefox, Mozilla, Opera, etc.
+		}catch(e){
+			alert(e.message);
+			return;
+		}
+	}
+	return xmlDoc;//xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+}
+//getXMLnodeAttr(xml.getElementsByTagName('result')[0],'ret');
+function getXMLnodeAttr (xmlNode,attrName){
+    if(!xmlNode)return "" ;
+    if(!xmlNode.attributes) return "" ;   
+    if(xmlNode.attributes[attrName]!=null) return xmlNode.attributes[attrName].value ;
+    if(xmlNode.attributes.getNamedItem(attrName)!=null)  return xmlNode.attributes.getNamedItem(attrName).value ;
+    return "" ;
+}
+function getXMLnodeValue(xmlNode){
+	if(!xmlNode) return "" ;
+	return xmlNode.nodeValue||'';
+}
+
 window.onload = init;
 function init(){
 	loadingDiv = $('loadingDiv');
@@ -266,7 +358,8 @@ var control = {
 		if(this.focusArea == 0){
 			this.menuObj.doSelect();
 		}else if(this.focusArea == 1){
-			window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
+			//window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
+			getPlayUrl(this.subList.pageDataList[this.subList.dataPos].flv);
 		}
 	},
 	clickTop : function(){

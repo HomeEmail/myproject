@@ -1,0 +1,20 @@
+
+/**for img footer-icons.png**/
+
+
+.down-tips-icon{ background-position: 0 0; width: 25px; height: 16px; } 
+.number-enter-icon{ background-position: 0 -66px; width: 105px; height: 27px; } 
+.opration-tips-icon{ background-position: 0 -143px; width: 37px; height: 37px; } 
+.page-down-icon{ background-position: 0 -230px; width: 56px; height: 20px; } 
+.page-up-icon{ background-position: 0 -300px; width: 56px; height: 20px; } 
+.quick-icon-green{ background-position: 0 -370px; width: 25px; height: 25px; } 
+.quick-icon-red{ background-position: 0 -445px; width: 25px; height: 25px; } 
+.quick-icon-yellow{ background-position: 0 -520px; width: 25px; height: 25px; } 
+.up-tips-icon{ background-position: 0 -595px; width: 25px; height: 16px; } 
+
+/***
+
+#container li {
+    background: url(footer-icons.png) no-repeat top left;
+}
+**/

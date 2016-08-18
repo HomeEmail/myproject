@@ -1,0 +1,19 @@
+/**for img index-item-small.png**/
+
+.index-item-small-icon-1{ background-position: 0 0; width: 109px; height: 33px; } 
+.index-item-small-icon-2{ background-position: 0 -83px; width: 109px; height: 33px; } 
+.index-item-small-icon-3{ background-position: 0 -166px; width: 109px; height: 33px; } 
+.index-item-small-icon-4{ background-position: 0 -249px; width: 109px; height: 33px; } 
+.index-item-small-icon-5{ background-position: 0 -332px; width: 109px; height: 33px; } 
+.index-item-small-icon-6{ background-position: 0 -415px; width: 109px; height: 33px; } 
+.index-item-small-icon-7{ background-position: 0 -498px; width: 109px; height: 33px; } 
+.index-item-small-icon-8{ background-position: 0 -581px; width: 109px; height: 33px; } 
+.index-item-small-icon-9{ background-position: 0 -664px; width: 109px; height: 33px; } 
+
+
+/***
+
+#container li {
+    background: url(index-item-small.png) no-repeat top left;
+}
+**/

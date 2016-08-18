@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /><!--, minimal-ui  -->
+	<!--<meta name="viewport" content="width=device-width, user-scalable=no ,target-densitydpi=device-dpi ,initial-scale= 0.5"/>--><!--IOS对target-densitydpi不支持，所以我们只能设置 initial-scale=0.5 直接让iphone页面缩小一半。-->
+	<!--<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">--><!--minimal-ui 设置iphone safiri 隐藏工具bar-->
+	<!--<meta name="viewport" content="width=640, user-scalable=0"/>-->
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/apple-touch-icon-114x114-smartone.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/apple-touch-icon-72x72-smartone.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/apple-touch-icon-57x57-smartone.png" />
+	<link rel="shortcut icon" href="Images/apple-touch-icon-smartone.png" />
+	<link rel="apple-touch-startup-image" href="Images/startup.png"> --><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	<link rel="stylesheet" href="../res/css/base.css?v=2" />
+	<link rel="stylesheet" href="../res/css/idangerous.swiper.css?v=2" />
+	<link rel="stylesheet" href="../res/css/list.css?v=2" />
+	<link rel="stylesheet" href="../res/css/detail.css?v=2" />
+
+
+	<style type="text/css">
+	</style>
+
+	<title>国通购物</title>
+	
+	<!-- <script id="others_zepto_1-1-6" type="text/javascript" class="library" src="http://zeptojs.com/zepto.min.js"></script> -->
+	<script type="text/javascript" src='../res/js/zepto-1.1.6.js?v=22'></script>
+	<!-- <script type="text/javascript" src='../res/js/iscroll.js?v=22'></script> -->
+	<script type="text/javascript" src='../res/js/idangerous.swiper.js?v=22'></script>
+
+	</head>
+	<body>
+		
+		<div id="Body">
+			<div id="Main">
+				<!--顶部固定条 begin-->
+				<div id="Header">
+					<div style="" id="backBt">
+						<div class="arrow rotate-90"></div>
+					</div>
+					<div class="header-title"><span>确认订单</span></div>
+					<!-- <div class="search-wrapper" style="">
+						<div class="search-box">
+							<input id="searchInput" type="text" placeholder="中央渔港" />
+						</div>
+					</div> -->
+
+				</div>
+				<!--顶部固定条 end-->
+				<div id="Content" class="order-content">
+					<button id="goToPayBt">去支付</button>
+					<form action="http://horsesky.wicp.net/wechat/wechat-goLogin/GoLogin" method="post" name="wxLoginForm" id="wxLoginForm">
+						<input type="hidden" id="after_login_url" name="after_login_url" value="http://192.168.1.32/guotongshop/guotongwx/html/index.html">
+						<br/>
+						<input type="submit" id="goToLoginBt" value="微信登陆"></button>
+					</form>
+				</div>
+				<!--底部固定条 begin-->
+				<div id="Footer">
+					<div id="menu">
+						<div class="menu-item">
+							<a href="index.html"><div class="menu-img">
+								<img src="../res/images/menu-home.png" alt="home" />
+								<!-- <div class="menu-img-box menu-home"></div> -->
+							</div>
+							<span class="menu-text">首页</span>
+							</a>
+						</div><div class="menu-item">
+							<a href="fenlei.html"><div class="menu-img">
+								<img src="../res/images/menu-type.png" alt="type" />
+								<!-- <div class="menu-img-box menu-type"></div> -->
+							</div>
+							<span class="menu-text">分类</span>
+							</a>
+						</div><div class="menu-item on">
+							<a href="cart.html"><div class="menu-img">
+								<img src="../res/images/menu-cart-on.png" alt="cart" />
+								<!-- <div class="menu-img-box menu-cart"></div> -->
+							</div>
+							<span class="menu-text">购物车</span>
+							</a>
+						</div><div class="menu-item">
+							<a href="person_center.html"><div class="menu-img">
+								<img src="../res/images/menu-person.png" alt="person" />
+								<!-- <div class="menu-img-box menu-person"></div> -->
+							</div>
+							<span class="menu-text">个人中心</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--底部固定条 end-->
+			</div>
+		</div>
+
+		
+
+	</body>
+	<script type="text/javascript" src='../res/js/main.js?v=33'></script>
+
+	<script type="text/javascript">
+		$('#goToLoginBt').on('tap',function(e){
+			//location.href='http://horsesky.wicp.net/wechat/wechat-goLogin/GoLogin?after_login_url=http://www.ivanme.com'
+			// $.ajax({
+			// 	type:'POST'
+			// 	,url:'http://horsesky.wicp.net/wechat/wechat-goLogin/GoLogin'
+			// 	,data:{after_login_url:'http://www.ivanme.com'}
+			// 	success: function(data){
+			// 		console.log(data);
+			// 	},
+			// 	error: function(xhr, type){
+			// 		alert('Ajax error!')
+			// 	}
+			// });
+		});
+
+		$('#goToPayBt').on('tap',function(e){
+			/*
+			xmlMsg = "<xml><out_trade_no><![CDATA["+strRandom+"]]></out_trade_no>"
+		    +"<body><![CDATA[新鲜食材]]></body>"
+		    +"<detail><![CDATA[新鲜食材]]></detail>"	
+		    +"<total_fee>1</total_fee>"	
+		    +"<successUrl><![CDATA[新鲜食材]]></successUrl>"	
+		    +"<errorUrl><![CDATA[新鲜食材]]></errorUrl>"	
+		    +"<cancelUrl><![CDATA[新鲜食材]]></cancelUrl>"	
+		    +"<openid><![CDATA[markup]]></openid>"	
+	        +"</xml>";
+			*/
+			//请求调用微信支付
+			$.ajax({
+			  type: 'POST',
+			  url: 'http://horsesky.wicp.net/wechat/wechat-goPay/GoPay',
+			  // data to be added to query string:
+			  data: { 
+			  	out_trade_no: '6656256352'
+			  	,body:'订单333'
+			  	,detail:'三文鱼刺身400g'
+			  	,total_fee:10000//单位是分
+			  	,successUrl:'http://www.ivanme.com'
+			  	,errorUrl:'http://www.baidu.com'
+			  	,cancelUrl:'http://www.baidu.com'
+			  	,openid:'222'
+			  },
+			  // type of data we are expecting in return:
+			  dataType: 'xml',
+			  jsonp:'callbackwx',
+			  success: function(data){
+			  	console.log(data);
+			  },
+			  error: function(xhr, type){
+			    alert('Ajax error!')
+			  }
+			});
+		});
+
+
+	</script>
+</html>

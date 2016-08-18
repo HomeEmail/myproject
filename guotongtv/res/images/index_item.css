@@ -1,0 +1,17 @@
+
+/**for img index-item.png**/
+
+.index_item_1_icon{ background-position: 0 0; width: 132px; height: 41px; } 
+.index_item_2_icon{ background-position: 0 -91px; width: 132px; height: 41px; } 
+.index_item_3_icon{ background-position: 0 -182px; width: 132px; height: 41px; } 
+.index_item_4_icon{ background-position: 0 -273px; width: 132px; height: 41px; } 
+.index_item_5_icon{ background-position: 0 -364px; width: 132px; height: 41px; } 
+.index_item_6_icon{ background-position: 0 -455px; width: 132px; height: 41px; } 
+
+
+/***
+
+#container li {
+    background: url(index-item.png) no-repeat top left;
+}
+**/
