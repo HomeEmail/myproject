@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=AE359c6f94e8581ec706ebe9c141e024&v=1.0"></script>
+	<title>经纬度获得省市</title>
+</head>
+<body>
+<h1>经纬度获得省市</h1>
+<div id="location"></div>
+
+<script>
+
+	/**百度地图 y,经度，x，纬度****/
+function getAdressNameByCoordinate(y,x){
+	//var y=113.369016,x=23.135632;
+	var myGeo = new BMap.Geocoder(); 
+	// 根据坐标得到地址描述    
+	myGeo.getLocation(new BMap.Point(y, x), function(result){     
+	    if (result){    
+	    	//console.log(result);  
+	        alert(result.addressComponents.province+' '+result.addressComponents.city);  
+	        
+	       //var provinceEls=$('#zmdcxProvince option');
+	       //var cityEls=$('#zmdcxCity option');
+	       
+	    }    
+	});
+}
+/****html5得到地理位置*****/
+function getLocation(){
+	var nav = navigator.geolocation || navigator.webkitGeolocation;
+  if (nav){
+    nav.getCurrentPosition(showPosition,showError,{
+						enableHighAccuracy : true});
+  }else{
+		alert("Geolocation is not supported by this browser.");
+	}
+}
+
+
+/**地理位置成功获得后*/
+function showPosition(position){
+	getAdressNameByCoordinate(position.coords.longitude,position.coords.latitude);
+	alert("<div class='text-ac'>Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude+'</div>');
+	
+}
+function showError(error){
+	//console.log(error);
+	//alert(error.code);
+	switch(error.code){
+	    case error.PERMISSION_DENIED:
+	      alert("<div class='text-ac'>User denied the request for Geolocation.</div>");
+			//alert('允许网站获得你的位置，请为此app打开定位服务');
+				
+	      break;
+	    case error.POSITION_UNAVAILABLE:
+	      alert("<div class='text-ac'>Location information is unavailable.</div>");
+			
+	      break;
+	    case error.TIMEOUT:
+	      alert("<div class='text-ac'>The request to get user location timed out.</div>");
+				
+	      break;
+	    case error.UNKNOWN_ERROR:
+	      alert("<div class='text-ac'>An unknown error occurred.</div>");
+				
+	    break;
+	}
+}
+getLocation();
+
+</script>
+</body>
+</html>

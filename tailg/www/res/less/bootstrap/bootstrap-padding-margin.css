@@ -1,0 +1,294 @@
+/***padding and margin***/
+.offset-pt-none{
+	padding-top: 0px;
+}
+.offset-pb-none{
+	padding-bottom: 0px;
+}
+.offset-pl-none{
+	padding-left: 0px;
+}
+.offset-pr-none{
+	padding-right: 0px;
+}
+.offset-ptb-none{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.offset-plr-none{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.offset-ptblr-none{
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.offset-pt-xs{
+	padding-top: 6px;
+}
+.offset-pb-xs{
+	padding-bottom: 6px;
+}
+.offset-pl-xs{
+	padding-left: 6px;
+}
+.offset-pr-xs{
+	padding-right: 6px;
+}
+.offset-ptb-xs{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+.offset-plr-xs{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+.offset-ptblr-xs{
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+
+.offset-mt-none{
+	margin-top: 0px;
+}
+.offset-mb-none{
+	margin-bottom: 0px;
+}
+.offset-ml-none{
+	margin-left: 0px;
+}
+.offset-mr-none{
+	margin-right: 0px;
+}
+.offset-mtb-none{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.offset-mlr-none{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.offset-mtblr-none{
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.offset-mt-xs{
+	margin-top: 6px;
+}
+.offset-mb-xs{
+	margin-bottom: 6px;
+}
+.offset-ml-xs{
+	margin-left: 6px;
+}
+.offset-mr-xs{
+	margin-right: 6px;
+}
+.offset-mtb-xs{
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+.offset-mlr-xs{
+	margin-left: 6px;
+	margin-right: 6px;
+}
+.offset-mtblr-xs{
+	margin-left: 6px;
+	margin-right: 6px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+
+
+@media (min-width: 768px) {
+	.offset-pt-sm{
+		padding-top: 8px;
+	}
+	.offset-pt-sm{
+		padding-top: 8px;
+	}
+	.offset-pb-sm{
+		padding-bottom: 8px;
+	}
+	.offset-pl-sm{
+		padding-left: 8px;
+	}
+	.offset-pr-sm{
+		padding-right: 8px;
+	}
+	.offset-ptb-sm{
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+	.offset-plr-sm{
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+	.offset-ptblr-sm{
+		padding-left: 8px;
+		padding-right: 8px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+	
+	.offset-mt-sm{
+		margin-top: 8px;
+	}
+	.offset-mb-sm{
+		margin-bottom: 8px;
+	}
+	.offset-ml-sm{
+		margin-left: 8px;
+	}
+	.offset-mr-sm{
+		margin-right: 8px;
+	}
+	.offset-mtb-sm{
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+	.offset-mlr-sm{
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+	.offset-mtblr-sm{
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+
+}
+@media (min-width: 992px) {
+	.offset-pt-md{
+		padding-top: 10px;
+	}
+	.offset-pt-md{
+		padding-top: 10px;
+	}
+	.offset-pb-md{
+		padding-bottom: 10px;
+	}
+	.offset-pl-md{
+		padding-left: 10px;
+	}
+	.offset-pr-md{
+		padding-right: 10px;
+	}
+	.offset-ptb-md{
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.offset-plr-md{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.offset-ptblr-md{
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	.offset-mt-md{
+		margin-top: 10px;
+	}
+	.offset-mb-md{
+		margin-bottom: 10px;
+	}
+	.offset-ml-md{
+		margin-left: 10px;
+	}
+	.offset-mr-md{
+		margin-right: 10px;
+	}
+	.offset-mtb-md{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.offset-mlr-md{
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.offset-mtblr-md{
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+@media (min-width: 1200px) {
+	.offset-pt-lg{
+		padding-top: 12px;
+	}
+	.offset-pt-lg{
+		padding-top: 12px;
+	}
+	.offset-pb-lg{
+		padding-bottom: 12px;
+	}
+	.offset-pl-lg{
+		padding-left: 12px;
+	}
+	.offset-pr-lg{
+		padding-right: 12px;
+	}
+	.offset-ptb-lg{
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+	.offset-plr-lg{
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+	.offset-ptblr-lg{
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+	
+	.offset-mt-lg{
+		margin-top: 12px;
+	}
+	.offset-mb-lg{
+		margin-bottom: 12px;
+	}
+	.offset-ml-lg{
+		margin-left: 12px;
+	}
+	.offset-mr-lg{
+		margin-right: 12px;
+	}
+	.offset-mtb-lg{
+		margin-top: 12px;
+		margin-bottom: 12px;
+	}
+	.offset-mlr-lg{
+		margin-left: 12px;
+		margin-right: 12px;
+	}
+	.offset-mtblr-lg{
+		margin-left: 12px;
+		margin-right: 12px;
+		margin-top: 12px;
+		margin-bottom: 12px;
+	}
+}
+
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}

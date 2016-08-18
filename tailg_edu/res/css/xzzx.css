@@ -1,0 +1,104 @@
+.xzzx-top{
+	height: 500px;
+	background: url(../images/download-centen-top-bg.jpg) no-repeat top center;
+}
+.xzzx-left,.xzzx-right {
+
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.xzzx-list1-box{
+	margin-bottom: 20px;
+}
+.xzzx-list1-box li{
+	display: block;
+	height: 262px;
+	overflow: hidden;
+	padding: 10px 0px;
+	padding-bottom: 6px;
+	border-bottom: 1px #eee solid;
+  padding-top: 18px;
+}
+.xzzx-list1-item{
+	text-align: center;
+	color: #333;
+	display: block;
+	float: left;
+	width: 200px;
+	font-size: 12px;
+}
+.xzzx-list1-item:hover{
+	color: #ffcd34;
+}
+.xzzx-list1-item p{
+	height: 35px;
+	line-height: 35px;
+	text-indent: 0;
+
+  margin-bottom: 0;
+}
+.xzzx-list1-item-space{
+	float: left;
+	height: 212px;
+  width: 18px;
+}
+
+
+.xzzx-list2-box{
+	margin-bottom: 20px;
+}
+.xzzx-list2-box li{
+	width: 360px;
+	float: left;
+	height: 45px;
+	line-height: 45px;
+	border-bottom: 1px #ccc dashed;
+}
+.xzzx-list2-box li a{
+	color: #666;
+	display: block;
+	width: 230px;
+	padding-right: 30px;
+	height: 100%;
+	  font-size: 15px;
+	  float: left;
+}
+.xzzx-list2-box li a:hover{
+	color: #f39800;
+}
+.xzzx-list2-item-date{
+	float: right;
+	  font-size: 15px;
+}
+.xzzx-list2-box li.odd{
+  margin-left: 135px;
+}
+
+.xzzx-detail-top-nav{
+	line-height: 50px;
+	height: 50px;
+	border-bottom: 1px #ddd solid;
+	margin-bottom:25px;
+}
+.xzzx-detail-showImg{
+	width: 100%;
+	overflow: auto;
+}
+.xzzx-detail-desc{
+	font-size: 18px;
+	line-height: 26px;
+	padding: 20px 0px;
+}
+
+.xzzx-detail-attr-wrapper{
+	border-bottom: 1px #ddd solid;
+	margin-bottom: 100px;
+	padding: 20px 0px;
+}
+.xzzx-detail-attr-item{
+	padding-left: 20px;
+	line-height: 22px;
+	color: #ccc;
+	background: url(../images/ok1.jpg) no-repeat left center;
+}

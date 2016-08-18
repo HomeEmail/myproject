@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /><!--, minimal-ui  -->
+	<!--<meta name="viewport" content="width=device-width, user-scalable=no ,target-densitydpi=device-dpi ,initial-scale= 0.5"/>--><!--IOS对target-densitydpi不支持，所以我们只能设置 initial-scale=0.5 直接让iphone页面缩小一半。-->
+	<!--<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">--><!--minimal-ui 设置iphone safiri 隐藏工具bar-->
+	<!--<meta name="viewport" content="width=640, user-scalable=0"/>-->
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/apple-touch-icon-114x114-smartone.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/apple-touch-icon-72x72-smartone.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/apple-touch-icon-57x57-smartone.png" />
+	<link rel="shortcut icon" href="Images/apple-touch-icon-smartone.png" />
+	<link rel="apple-touch-startup-image" href="Images/startup.png"> --><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	<link rel="stylesheet" href="../res/css/base.css?v=2" />
+	<link rel="stylesheet" href="../res/css/idangerous.swiper.css?v=2" />
+	<link rel="stylesheet" href="../res/css/list.css?v=2" />
+
+
+
+	<style type="text/css">
+	</style>
+
+	<title>国通购物</title>
+	
+	<!-- <script id="others_zepto_1-1-6" type="text/javascript" class="library" src="http://zeptojs.com/zepto.min.js"></script> -->
+	<script type="text/javascript" src='../res/js/zepto-1.1.6.js?v=22'></script>
+	<!-- <script type="text/javascript" src='../res/js/iscroll.js?v=22'></script> -->
+	<script type="text/javascript" src='../res/js/idangerous.swiper.js?v=22'></script>
+
+	</head>
+	<body>
+		
+		<div id="Body">
+			<div id="Main">
+				<!--顶部固定条 begin-->
+				<div id="Header">
+					<div style="" id="backBt">
+						<div class="arrow rotate-90"></div>
+					</div>
+					
+					<div class="search-wrapper" style=""><!--有返回键加上style属性-->
+						<div class="search-box">
+							<input id="searchInput" type="text" placeholder="中央渔港" />
+						</div>
+					</div>
+				</div>
+				<!--顶部固定条 end-->
+				<div id="Content">
+					<!-- 顶部nav begin -->
+					<div id="personCenterTab" class="orderby-nav clearfix">
+						<div class="orderby-item"><a href="my_allorder.html"><span>全部订单</span></a></div>
+						<div class="orderby-item"><a href="#"><span>待付款</span></a></div>
+						<div class="orderby-item"><a href="#"><span>配送中</span></a></div>
+						<div class="orderby-item"><a href="#"><span>退换货</span></a></div>
+					</div>
+					<!-- 顶部nav end -->
+					<!-- 列表 begin-->
+					<div class="personCenterListBox bgcl-f4">
+						<div class="personCenterList-group">
+							<div class="personCenterList-item">
+							<a href="cart.html"><span class="personCenterList-item-text">我的购物车</span>
+							<div style="" class="personCenterList-item-arrow">
+								<div class="arrow rotate90"></div>
+							</div>
+							</a>
+							</div>
+							<div class="personCenterList-item"><a href="#"><span class="personCenterList-item-text">我的收藏</span>
+							<div style="" class="personCenterList-item-arrow">
+								<div class="arrow rotate90"></div>
+							</div></a></div>
+							<div class="personCenterList-item"><a href="#"><span class="personCenterList-item-text">我的浏览记录</span>
+							<div style="" class="personCenterList-item-arrow">
+								<div class="arrow rotate90"></div>
+							</div></a></div>
+						</div>
+						<div class="personCenterList-group">
+							<div class="personCenterList-item">
+							<a href="contact.html"><span class="personCenterList-item-text">收货管理设置</span>
+							<div style="" class="personCenterList-item-arrow">
+								<div class="arrow rotate90"></div>
+							</div>
+							</a>
+							</div>
+							<div class="personCenterList-item"><a href="#"><span class="personCenterList-item-text">帮助中心</span>
+							<div style="" class="personCenterList-item-arrow">
+								<div class="arrow rotate90"></div>
+							</div></a></div>
+						</div>
+
+					</div>
+					<!-- 列表 end-->
+
+				</div>
+				<!--底部固定条 begin-->
+				<div id="Footer">
+					<div id="menu">
+						<div class="menu-item">
+							<a href="index.html"><div class="menu-img">
+								<img src="../res/images/menu-home.png" alt="home" />
+								<!-- <div class="menu-img-box menu-home"></div> -->
+							</div>
+							<span class="menu-text">首页</span>
+							</a>
+						</div><div class="menu-item">
+							<a href="fenlei.html"><div class="menu-img">
+								<img src="../res/images/menu-type.png" alt="type" />
+								<!-- <div class="menu-img-box menu-type"></div> -->
+							</div>
+							<span class="menu-text">分类</span>
+							</a>
+						</div><div class="menu-item">
+							<a href="cart.html"><div class="menu-img">
+								<img src="../res/images/menu-cart.png" alt="cart" />
+								<!-- <div class="menu-img-box menu-cart"></div> -->
+							</div>
+							<span class="menu-text">购物车</span>
+							</a>
+						</div><div class="menu-item on">
+							<a href="person_center.html"><div class="menu-img">
+								<img src="../res/images/menu-person-on.png" alt="person" />
+								<!-- <div class="menu-img-box menu-person"></div> -->
+							</div>
+							<span class="menu-text">个人中心</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--底部固定条 end-->
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src='../res/js/main.js?v=22'></script>
+</html>

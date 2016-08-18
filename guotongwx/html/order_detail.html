@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /><!--, minimal-ui  -->
+	<!--<meta name="viewport" content="width=device-width, user-scalable=no ,target-densitydpi=device-dpi ,initial-scale= 0.5"/>--><!--IOS对target-densitydpi不支持，所以我们只能设置 initial-scale=0.5 直接让iphone页面缩小一半。-->
+	<!--<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">--><!--minimal-ui 设置iphone safiri 隐藏工具bar-->
+	<!--<meta name="viewport" content="width=640, user-scalable=0"/>-->
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/apple-touch-icon-114x114-smartone.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/apple-touch-icon-72x72-smartone.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/apple-touch-icon-57x57-smartone.png" />
+	<link rel="shortcut icon" href="Images/apple-touch-icon-smartone.png" />
+	<link rel="apple-touch-startup-image" href="Images/startup.png"> --><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	<link rel="stylesheet" href="../res/css/base.css?v=2" />
+	<link rel="stylesheet" href="../res/css/idangerous.swiper.css?v=2" />
+	<link rel="stylesheet" href="../res/css/list.css?v=2" />
+	<link rel="stylesheet" href="../res/css/detail.css?v=2" />
+
+
+	<style type="text/css">
+	</style>
+
+	<title>国通购物</title>
+	
+	<!-- <script id="others_zepto_1-1-6" type="text/javascript" class="library" src="http://zeptojs.com/zepto.min.js"></script> -->
+	<script type="text/javascript" src='../res/js/zepto-1.1.6.js?v=22'></script>
+	<!-- <script type="text/javascript" src='../res/js/iscroll.js?v=22'></script> -->
+	<script type="text/javascript" src='../res/js/idangerous.swiper.js?v=22'></script>
+
+	</head>
+	<body>
+		
+		<div id="Body">
+			<div id="Main">
+				<!--顶部固定条 begin-->
+				<div id="Header">
+					<div style="" id="backBt">
+						<div class="arrow rotate-90"></div>
+					</div>
+					<div class="header-title"><span>订单详情</span></div>
+					<!-- <div class="search-wrapper" style="">
+						<div class="search-box">
+							<input id="searchInput" type="text" placeholder="中央渔港" />
+						</div>
+					</div> -->
+
+				</div>
+				<!--顶部固定条 end-->
+				<div id="Content" class="order-content">
+					<div class="cart-top-nav order-item order-contact" data-hasContact="true">
+						<a href="contact.html">
+						<span class="cl-66 order-contact-text">配送至：张三，15622358988，广东省佛山市顺德区红旗路3号</span>
+						<!-- <span class="cl-66 order-contact-text"><img src="../res/images/warn-black.png" width="24" height="24" style="vertical-align:middle;" align="absmiddle" /> 请填写联系方式</span> -->
+						<div style="" class="personCenterList-item-arrow order-item-arrow">
+						<div class="arrow rotate90"></div>
+						</div>
+						</a>
+					</div>
+					<div class="cart-top-nav order-item order-peisongType" data-hasContact="true">
+						<span class="cl-66">配送方式</span>
+						<span class="cl-66 order-peisongType-text">快递：免运费</span>
+						<select class="order-select-box" id="orderPeisonType">
+							<option value="1" selected="true">快递：免运费</option>
+						</select>
+						<div style="" class="personCenterList-item-arrow order-item-arrow">
+						<div class="arrow rotate90"></div>
+						</div>
+					</div>
+					<div class="cart-top-nav order-item order-fapiaoXinxi" data-hasContact="true">
+						<span class="cl-66">发票信息</span>
+						<span class="cl-66 order-fapiaoXinxi-text">个人 明细</span>
+						<select class="order-select-box" id="orderFapiaoXinxi">
+							<option value="0" selected="true">请选择</option>
+							<option value="1">个人 明细</option>
+							<option value="3">公司 明细</option>
+						</select>
+						<div style="" class="personCenterList-item-arrow order-item-arrow">
+						<div class="arrow rotate90"></div>
+						</div>
+					</div>
+
+					<!-- 商品 begin -->
+					<h2 class="cl-66 order-item order-goods-title">商品信息</h2>
+					<div class="list-box cart-list order-goods-list">
+						<!--item 1 begin-->
+						<div class="list-item clearfix cart-list-item-11">
+							
+							<div class="list-img"><img src="../res/images/index/show1.jpg"></div>
+							<div class="list-text">
+								<a href="detail.html"><span class="list-pro-name">HITOMORROW 三文鱼刺身400g 去皮纯肉 挪威进口海鲜 冰鲜生鱼片</span>
+									<div style="" class="personCenterList-item-arrow cartList-item-arrow">
+									<div class="arrow rotate90"></div>
+									</div>
+								</a>
+								<div><span class="list-price">￥22.00</span><span class="list-yunfei">运费￥8</span></div>
+								<!--数量 begin-->
+								<div class="detail-goods-count cart-goods-count">
+									<div class="detail-goods-count-title cl-99">数量：1</div>
+								</div>
+								<!--数量 end-->
+								<div class="list-diandian">...</div>
+							</div>
+						</div>
+						<!-- item 1 end -->
+						<!-- item 2 begin -->
+						<div class="list-item clearfix cart-list-item-22">
+							
+							<div class="list-img"><img src="../res/images/index/show1.jpg"></div>
+							<div class="list-text">
+								<a href="detail.html"><span class="list-pro-name">HITOMORROW 三文鱼刺身400g 去皮纯肉 挪威进口海鲜 冰鲜生鱼片</span>
+									<div style="" class="personCenterList-item-arrow cartList-item-arrow">
+									<div class="arrow rotate90"></div>
+									</div>
+								</a>
+								<div><span class="list-price">￥168.00</span><span class="list-yunfei">运费￥8</span></div>
+								<!--数量 begin-->
+								<div class="detail-goods-count cart-goods-count">
+									<div class="detail-goods-count-title cl-99">数量：10</div>
+								</div>
+								<!--数量 end-->
+								<div class="list-diandian">...</div>
+							</div>
+						</div>
+						<!-- item 2 end -->
+					</div>
+					<!-- 商品 end -->
+					
+					<!-- 总计nav begin -->
+					<div class="cartTotalNavBox">
+						<div class="cartTotalNavBox-item text-l">
+							<!-- <div class="allSelectCartGoods">
+								<span class="checkBox selected">&radic;</span>
+								<span class="cl-66">全选</span>
+							</div> -->
+							<div class="totalGoodsWrapper">
+								<span class="totalCartPriceWrapper cl-66">
+									总计:
+								<span class="cl-red" id="totalCartPrice">￥168.00</span></span>
+								<br/>
+								<span class="totalCartGoodsNumWrapper cl-99">(共<span id="totalCartGoodsNum">2</span>件商品，不含运费)</span>
+							</div>
+							<button class="bt fr">去支付</button>
+						</div>
+							
+					</div>
+					<!-- 总计nav end -->
+				</div>
+				<!--底部固定条 begin-->
+				<div id="Footer">
+					<div id="menu">
+						<div class="menu-item">
+							<a href="index.html"><div class="menu-img">
+								<img src="../res/images/menu-home.png" alt="home" />
+								<!-- <div class="menu-img-box menu-home"></div> -->
+							</div>
+							<span class="menu-text">首页</span>
+							</a>
+						</div><div class="menu-item">
+							<a href="fenlei.html"><div class="menu-img">
+								<img src="../res/images/menu-type.png" alt="type" />
+								<!-- <div class="menu-img-box menu-type"></div> -->
+							</div>
+							<span class="menu-text">分类</span>
+							</a>
+						</div><div class="menu-item on">
+							<a href="cart.html"><div class="menu-img">
+								<img src="../res/images/menu-cart-on.png" alt="cart" />
+								<!-- <div class="menu-img-box menu-cart"></div> -->
+							</div>
+							<span class="menu-text">购物车</span>
+							</a>
+						</div><div class="menu-item">
+							<a href="person_center.html"><div class="menu-img">
+								<img src="../res/images/menu-person.png" alt="person" />
+								<!-- <div class="menu-img-box menu-person"></div> -->
+							</div>
+							<span class="menu-text">个人中心</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--底部固定条 end-->
+			</div>
+		</div>
+
+		<!--发票抬头 overlay begin-->
+		<div class="overlay-mask"></div>
+		<div class="overlay-box" style="padding:30px;" id="orderFapiaoTaitouTips">
+
+			<br/>
+			<div style="line-height:30px;">
+				发票抬头：(填写人名或公司名)<br/>
+				<input type="text" id="orderFapiaoTaitouValue" placeholder="输入发票抬头" />
+			</div>
+			<br/>
+			<a href="javascript:void(0);" class="bt" id="orderFapiaoTaitouBt">确认</a>
+			&nbsp;&nbsp;
+			<a href="javascript:void(0);" class="bt bt-gray" id="orderFapiaoTaitouCloseBt">关闭</a>
+		</div>
+		<!--发票抬头 overlay end-->
+		
+	</body>
+	<script type="text/javascript" src='../res/js/main.js?v=33'></script>
+
+	<script type="text/javascript">
+	//发票抬头提示功能js
+		var orderFapiaoTaitouTips=new overlay({
+			overlayId:'orderFapiaoTaitouTips'
+		});
+		$('#orderFapiaoXinxi').on('change',function(e){
+			var el=$(this)
+
+			;
+			if(el.val()==0){
+				$('#orderFapiaoTaitouValue').val('');
+				return;//没选中值
+			}
+			orderFapiaoTaitouTips.show();
+		});
+		$('#orderFapiaoTaitouTips .bt').on('tap',function(e){
+			e.stopPropagation();
+			orderFapiaoTaitouTips.hide();
+			return false;
+		});
+		
+		var goodsMapObj={}
+			//,goodOrderCountObjAry=[]
+		
+		;
+		//java 输出以下数据
+		goodsMapObj={
+			'11':{
+				price:22.00
+				,count:1
+				,yunfei:8.00
+				,name:'螃蟹'
+				,weight:'500g'
+				,selected:true
+			}
+			,'22':{
+				price:168.00
+				,count:10
+				,yunfei:8.00
+				,name:'三文鱼刺身400g'
+				,weight:'null'
+				,selected:true
+			}
+		};
+		//计算总价格
+		function calculateTotalPrice(){
+			var total=0;
+			for(key in goodsMapObj){
+				//console.log(key);
+				if(goodsMapObj[key].selected===true){
+					total+=goodsMapObj[key].price*goodsMapObj[key].count;
+				}
+			}
+			//show
+			console.log(total);
+			$('#totalCartPrice').text('￥'+parseFloat(total).toFixed(2));
+		}
+		calculateTotalPrice();
+
+
+	</script>
+</html>

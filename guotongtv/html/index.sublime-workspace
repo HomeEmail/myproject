@@ -1,0 +1,589 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"di",
+				"dirDownToWhereId"
+			],
+			[
+				"fo",
+				"findFocus"
+			],
+			[
+				"foc",
+				"focusLabelEnd"
+			],
+			[
+				"_data",
+				"_dataItem"
+			],
+			[
+				"_dat",
+				"_dataItem"
+			],
+			[
+				"sle",
+				"selectedAry"
+			],
+			[
+				"pagee",
+				"pageEventHandler"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"go",
+				"goBack"
+			],
+			[
+				"ani",
+				"aniStatus"
+			],
+			[
+				"getElme",
+				"getElementById"
+			],
+			[
+				"set",
+				"setTimeout"
+			],
+			[
+				"getEl",
+				"getElementById"
+			],
+			[
+				"update",
+				"updateData"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"to",
+				"toDom"
+			],
+			[
+				"get",
+				"getElem"
+			],
+			[
+				"getE",
+				"getElementsByName"
+			],
+			[
+				"hide",
+				"hideDiv"
+			],
+			[
+				"su",
+				"successDiv"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 391.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: l",
+				"Package Control: List Packages"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"page",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 414.0
+	},
+	"console":
+	{
+		"height": 58.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/mywork/国通/tv_shop.sublime.session",
+		"/C/Users/Administrator/Desktop/mywork/tv购物添加优惠券涉及的文件.sublime.session",
+		"/D/Program Files/Sublime Text 3/Data/Packages/Default/Preferences.sublime-settings",
+		"/D/Program Files/Sublime Text 3/Data/Packages/User/Distraction Free.sublime-settings",
+		"/D/Program Files/Sublime Text 3/Data/Packages/User/Preferences.sublime-settings",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/shop/shop_mypoint.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/shop/shop_point.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/shop/shop_common.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/shop/shop_detail.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/shop/shop_cart.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/shop/shop_myorder.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/WEB-INF/tvutvgo/quicksearch/play_youku.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/js/album.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/player/player_js/TvBoxPlayer.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/js/quickSearchPlay.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/systemcheck.js",
+		"/D/云盘同步文件夹/angularjs/demo/expression.html",
+		"/C/Users/Administrator/Desktop/systemcheck.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/js/utv.js",
+		"/C/Users/Administrator/Desktop/test.js",
+		"/E/work/nginx-1.6.0/conf/nginx.conf",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/list.js",
+		"/E/work/utvgo对应目录.txt",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop/shop_common.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/detail.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop/shop_detail.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/tvc.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/index.js",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/less/index.less",
+		"/C/Users/Administrator/Desktop/Being a leader - Chinese/course.html",
+		"/C/Users/Administrator/Desktop/angular2_currency2.html",
+		"/E/work/相关项目.txt",
+		"/C/Users/Administrator/nodetest/htmlparser.js",
+		"/C/Users/Administrator/Desktop/Being a leader - Chinese/index.html",
+		"/C/Users/Administrator/Desktop/app.js",
+		"/C/Users/Administrator/Desktop/Being a leader - Chinese/commoncontents/js/lib/modernizr-latest.js",
+		"/C/Users/Administrator/Desktop/Being a leader - Chinese/commoncontents/js/lc_libs.js",
+		"/E/work/升级.txt",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/css/lib/bootstrap.css",
+		"/F/yangyi/yangyi/自写插件/sku动态选择.html",
+		"/C/Users/Administrator/Downloads/config.json",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/less/var.less",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/greetingcard/detail.js",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/js/data/index.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/topic/lucky/common.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/jsp/telOrder.jsp",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/tpl/gradeList.html",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/js/data-src/index.js",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/Gulpfile.js",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/less/common.less",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/css/common.css",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/js/data-src/a.js",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/js/data/a.js",
+		"/C/Users/Administrator/Desktop/box/box.js",
+		"/C/Users/Administrator/Desktop/dong/order.html",
+		"/C/Users/Administrator/Desktop/筛选.txt",
+		"/C/Users/Administrator/Desktop/dong/apply.html",
+		"/D/我的文档/Tencent Files/498544831/FileRecv/PG影院预览版150214说明.txt",
+		"/D/我的文档/Tencent Files/498544831/FileRecv/PlayGlass_V1530_公测版必读.txt",
+		"/D/Program Files/Sublime Text 3/changelog.txt",
+		"/E/work/cz.txt",
+		"/D/J2EE/workspace/utvgo/wap-card/src/main/webapp/res/js/data/gCard_detail.js",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/tpl/appList.html",
+		"/D/J2EE/workspace/utvgo/wap-utvgo/src/main/webapp/res/css/index.css",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/centerMyPoint.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop/shop_myorder.js",
+		"/C/Users/Administrator/Desktop/head.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/less/topic/packet.less",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/topic/redPacket/gift.jsp",
+		"/E/work/命令.txt",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/topic/redPacket/index.jsp",
+		"/E/work/sql.txt",
+		"/C/Users/Administrator/Desktop/dong/detail.html",
+		"/C/Users/Administrator/Desktop/dong/uindex.html",
+		"/C/Users/Administrator/Desktop/dong/res/main.css",
+		"/C/Users/Administrator/Downloads/游友移动-境外移动上网 便宜不限流量_files/dateinput.css",
+		"/C/Users/Administrator/Downloads/游友移动-境外移动上网 便宜不限流量.html",
+		"/E/work/nat_ngrok/ngrok.txt",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/WEB-INF/tvutvgo/greetingCards/toCardsDetail.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/orderSure.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/WEB-INF/tvutvgo/greetingCards/toCardsSure.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/player.js",
+		"/D/J2EE/workspace/utvgo/wap-card/src/main/webapp/res/js/data/gCard.js",
+		"/D/J2EE/workspace/utvgo/wap-card/src/main/webapp/res/js/config.js",
+		"/D/J2EE/workspace/utvgo/wap-card/src/main/webapp/res/tpl/gCard_detail.html",
+		"/C/Users/Administrator/nodetest/httpget.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/cart.html",
+		"/C/Users/Administrator/Desktop/demo/res/main.css",
+		"/C/Users/Administrator/Desktop/demo/res/device.css",
+		"/C/Users/Administrator/Desktop/demo/mange.html",
+		"/C/Users/Administrator/Desktop/dong/index.html",
+		"/C/Users/Administrator/Desktop/demo/index.html",
+		"/C/Users/Administrator/Desktop/dong/v.html",
+		"/C/Users/Administrator/Desktop/index.jsp",
+		"/C/Users/Administrator/Desktop/dong/login.html",
+		"/C/Users/Administrator/Desktop/st.sh",
+		"/C/Users/Administrator/Desktop/startTomcat.sh",
+		"/C/Users/Administrator/Desktop/tailLog.sh",
+		"/C/Users/Administrator/nodetest/request.js",
+		"/C/Users/Administrator/nodetest/proxy.js",
+		"/D/74/config.properties",
+		"/D/74/11/config.properties",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/order.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop/shop_order_detail.js",
+		"/C/Users/Administrator/nodetest/async/app.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/centerOrderDetail.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop/shop_order.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/centerServiceInfo.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop/shop_cart.js",
+		"/C/Users/Administrator/nodetest/parser.js",
+		"/C/Users/Administrator/Desktop/sign.java",
+		"/C/Users/Administrator/AppData/Local/Temp/360zip$Temp/360$0/sha1.js",
+		"/C/Users/Administrator/nodetest/parser3.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/js/greetingCards.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/WEB-INF/tvutvgo/greetingCards/toMiniCards.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/centerMyorder.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/shopxx/html/list.html",
+		"/C/Users/Administrator/Desktop/manage.txt",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/upgrade.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/WEB-INF/tvutvgo/upgradeTips/detail.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/topic/redPacket/exchange.jsp",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/index_tpl.js",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop_common.js",
+		"/C/Users/Administrator/Desktop/upgrade/shopxx/html/detail.html",
+		"/D/J2EE/workspace/utvgo/utvgoWeb/src/main/webapp/tvutvgo/res/src_js/shop_cart.js",
+		"/C/Users/Administrator/Desktop/demo.html",
+		"/C/Users/Administrator/Desktop/demo",
+		"/C/Users/Administrator/Desktop/dome/index.html"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 96.0,
+		"where_history":
+		[
+			"E:\\workspace\\utvgo\\utvgoWeb\\src\\main\\webapp\\tvutvgo\\res\\js",
+			"E:\\接受文件\\2014-3-10\\Desktop\\优互动界面_ui\\js",
+			"E:\\workspace\\utvgo\\utvgoWeb\\src\\main\\webapp\\tvutvgo\\",
+			"E:\\workspace\\utvgo\\utvgoWeb\\src\\main\\webapp\\tvutvgo\\res\\js"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"greenFontColor",
+			"ajax",
+			"coupon_btn_container",
+			"init",
+			"initUI",
+			"useCouponTipsBox",
+			"dirDownToWhereId",
+			"keO",
+			"read",
+			"testOnfocus",
+			"findFocus",
+			"topupShow",
+			"renderListUI",
+			"selectedAry",
+			"chgTotalPrice",
+			"chgTotalPriceWithConpon",
+			"exPoint",
+			"orderComInfo",
+			"chgTotalPriceWithConpon",
+			"selectedAry",
+			"selectCouponClick",
+			"focusLabel",
+			"chgTotalPriceWithConpon",
+			"totalPrice",
+			"orderComInfo",
+			"chgTotalPriceWithConpon",
+			"useCouponTipsBox",
+			"console",
+			"chgTotalPriceWithConpon",
+			"findDataById",
+			"money",
+			"totalPrice",
+			"totalPrice_box",
+			"couponMtips",
+			"calCoupon",
+			";\">",
+			"toFixed",
+			"pageGuideCoupon",
+			"pageNo",
+			"jumpPages",
+			"PopUpPagesNum",
+			"hasPrev",
+			"chgPage",
+			"pageModule",
+			"update",
+			"contentRem",
+			"tvPad",
+			"orderId",
+			"updateOrder",
+			"orderId",
+			"requestForm",
+			"orderId",
+			"sendOrderInfo",
+			".html",
+			"sure",
+			"tvPad",
+			"keObs",
+			"selectCouponClick",
+			"console",
+			"input",
+			"contactNoneBox",
+			"console.log",
+			"totalNum",
+			"console",
+			"console.",
+			"each",
+			"selectCouponClick",
+			"each",
+			"CouponNum",
+			"arr_com",
+			"right",
+			"nextPage",
+			"}\n",
+			"intCheckBillInfo",
+			"checkBillInfo",
+			"reCheckOnline",
+			"checkUpdate",
+			"checkUpdateInfo",
+			"checkonline",
+			"turnLeft",
+			"PopUpPagesNum",
+			"jumpPages",
+			"PopUpPagesNum",
+			"intCheckBillInfo",
+			"checkBillInfo",
+			"弹窗",
+			"elemSearch",
+			"tvUpgrade.checkUpdate()",
+			"tvUpgrade",
+			"utv.keyboard.back",
+			"addE",
+			"limitNum",
+			"utv.animate",
+			"219.136.253.74",
+			"display-menu",
+			".js",
+			"file://",
+			"Pager",
+			"menu",
+			"limitNum",
+			"刷新",
+			"skin",
+			"packminus",
+			"priceDays",
+			"pageSize",
+			"管理员备注",
+			"<%=base%>/",
+			"../images/",
+			"active",
+			"YOYO",
+			"./企业资料-用户中心-游友移动-境外移动上网 便宜不限流量_files",
+			"./游友移动-境外移动上网 便宜不限流量_files",
+			"checkRegionCode",
+			"firstExcPw",
+			"../images/",
+			"pushSession",
+			"create_timestamp",
+			"showBtnClass",
+			"limitNum",
+			"prom",
+			"opoc",
+			"addCookie",
+			"Cookie",
+			"7292",
+			"opoc",
+			"_label",
+			"init",
+			"shipBtn "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			"res",
+			"../../images/shop",
+			"javascript",
+			"../res/images",
+			"src",
+			"isInit",
+			"#list .detail_con .pro_detail",
+			"shopxx/sd/",
+			"../../images",
+			"shopxx/sd",
+			"../../images",
+			"href",
+			"index",
+			"yy",
+			"dy",
+			"blueFontColor",
+			"",
+			"res",
+			"usrPoint",
+			"@borderColor",
+			"sliderObj",
+			"typename",
+			" .",
+			".img_slide",
+			".nav li",
+			"div.search_result ",
+			".search_result ",
+			"$",
+			"yewu-table",
+			"function(n,i)",
+			"utv.Attr",
+			"utv.className.remove",
+			"utv.className.add",
+			"</a>",
+			"<a href='javascript:;' data-value",
+			".search_result .info_right .info_list",
+			">=",
+			"function(i,n)",
+			"../res/images"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"c",
+				"Package Control Messages"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
