@@ -105,14 +105,14 @@ function getAuth(video_id){
 	});
 }
 var req=null;
-function getPlayUrl(video_id){
+function getPlayUrl(content_id){
 	if(!!req){
 		req.abort();
 		req=null;
 	}
 	showLoadingDiv();
 	req=ajax({
-		url: aipBase +'nns_func=get_play_url'+'&nns_user_id='+user_id+'&nns_video_id='+ video_id+'&nns_cp_id='+cp_id,
+		url: aipBase +'nns_func=get_play_url'+'&nns_user_id='+user_id+'&nns_content_id='+ content_id+'&nns_cp_id='+cp_id,
 		type: "GET", //HTTP 请求类型,GET或POST
 		dataType: "html", //请求的文件类型html/xml
 		onSuccess: function(html){ //请求成功后执行[可选]
