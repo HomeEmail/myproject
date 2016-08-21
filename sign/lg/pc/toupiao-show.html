@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>投票结果显示</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+<link rel="stylesheet" type="text/css" href="./css/toupiao-show.css"/>
+
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="./js/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix(".ie6png");
+</script>
+<![endif]-->
+
+</head>
+
+<body>
+
+<div class="pageContent">
+	
+	<div id="rectBox">
+		<div class="rect-item" id="rect-item-1">
+			<div id="xinxin-item1" class="xinxin-item"></div>
+			<div class="rect-item-sharp" id="rectItemSharp1"></div>
+			<div class="rect-item-name">
+				<div class="people-name">North DC – Wild African Drum</div>
+			</div>
+		</div>
+		<div class="rect-item" id="rect-item-2">			
+			<div id="xinxin-item2" class="xinxin-item"></div>
+			<div class="rect-item-sharp" id="rectItemSharp2"></div>
+			<div class="rect-item-name">
+				<div class="people-name">CP&E & Capability Team – Runway Show</div>
+			</div>
+		</div>
+		<div class="rect-item" id="rect-item-3">			
+			<div id="xinxin-item3" class="xinxin-item"></div>
+			<div class="rect-item-sharp" id="rectItemSharp3"></div>
+			<div class="rect-item-name">
+				<div class="people-name">South DC - Wahaha</div>
+			</div>
+		</div>
+		<div class="rect-item" id="rect-item-4">
+			<div id="xinxin-item4" class="xinxin-item"></div>
+			<div class="rect-item-sharp" id="rectItemSharp4"></div>
+			<div class="rect-item-name">
+				<div class="people-name">I Trade &Central GO – Songs Relay </div>
+			</div>
+		</div>
+		<div class="rect-item" id="rect-item-5">
+			<div id="xinxin-item5" class="xinxin-item"></div>
+			<div class="rect-item-sharp" id="rectItemSharp5"></div>
+			<div class="rect-item-name">
+				<div class="people-name">PSC – Goodnight Kiss</div>
+			</div>
+		</div>
+		<div class="rect-item" id="rect-item-6">
+			<div id="xinxin-item6" class="xinxin-item"></div>
+			<div class="rect-item-sharp" id="rectItemSharp6"></div>
+			<div class="rect-item-name">
+				<div class="people-name">East Team – All in to happy </div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+<!-- 公共的 js -->
+<script language="javascript" type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+//柱状图 dom
+var rect1=$('#rectItemSharp1')
+	,rect2=$('#rectItemSharp2')
+	,rect3=$('#rectItemSharp3')
+	,rect4=$('#rectItemSharp4')
+	,rect5=$('#rectItemSharp5')
+	,rect6=$('#rectItemSharp6')
+;
+
+//票数 dom
+var xx1=$('#xinxin-item1')
+	,xx2=$('#xinxin-item2')
+	,xx3=$('#xinxin-item3')
+	,xx4=$('#xinxin-item4')
+	,xx5=$('#xinxin-item5')
+	,xx6=$('#xinxin-item6')
+;
+
+
+//定时器
+var timer1=null
+	,timer2=null
+	,timer3=null
+	,timer4=null
+	,timer5=null
+	,timer6=null
+;
+
+/**
+改变柱状图高度
+index:那个柱状图
+h:高度
+*/
+function changeRectH(index,h){
+	window['rect'+index].height(h);
+}
+/**
+改变票数
+index:那个柱状图的票数
+num:票数
+**/
+function changeTicketNum(index,num){
+	window['xx'+index].html(num);
+}
+
+/**
+	
+	index:那个柱状图
+	h:高度，最大300px
+	num: 票数
+	step:每次改变高度的步长,默认1
+**/
+function rectAnimate(index,h,num,step){
+	var index=index;
+	var h=h;
+	var step=step||1;
+	var num=num;
+	changeRectH(index,0);//重置高度
+	changeTicketNum(index,'');//重置票数
+	var elH=0;//元素高度累计
+	var elNum=0;//元素票数累计
+
+	!!window['timer'+index]&&clearInterval(window['timer'+index]);
+	window['timer'+index]=setInterval(function(){
+			
+			if(elH>=h){
+				changeRectH(index,h);
+				clearInterval(window['timer'+index]);
+				window['timer'+index]=null;
+				changeTicketNum(index,num);
+				// if(index==isKing){
+				// 	$('#rect-item-'+index).find('.first-icon').show();
+				// }
+			} else {
+				elH+=step;
+				elNum++;
+				changeRectH(index,elH);
+				changeTicketNum(index,elNum);
+			}
+		},16);
+}
+
+//var isKing=3;//第几个人是冠军
+
+
+function testAnimate(){
+	//第二个参数，代表高度：请先根据百分比计算出高度，高度最高300px
+	//第三个参数,表示票数
+	rectAnimate(1,200,232,2);
+	rectAnimate(2,100,132,2);
+	rectAnimate(3,300,332,2);
+	rectAnimate(4,50,82,2);
+	rectAnimate(5,160,122,2);
+	rectAnimate(6,120,100,2);
+}
+testAnimate();//测试动画
+
+</script>
+
+</body>
+</html>
