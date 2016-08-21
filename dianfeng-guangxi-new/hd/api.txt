@@ -29,14 +29,61 @@ http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=check_play_aut
 <?xml version="1.0" encoding="UTF-8"?><nn_api><result seqno="1000" ret="100" reason="Error Not Found Content"/></nn_api>
 
 
-拿播放串
-http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=104734528&nns_video_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
-
-http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=104734528&nns_video_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
-
-<media id="" url="rtsp://10.0.15.4:554/.ts^^^?&startTime=&endTime=&areaCode=&npv=gx_starcor&userId=104734528&productId=&id=&provider=coship&cms=V157b5a4f7244e53d784b8a12e5b1dd020" state="0" reason="ok"/>
+拿播放串请求：
+http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=104734528&nns_content_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
+拿播放串返回：
+<media id="" url="rtsp://10.0.15.4:554/dfsy0000000000000000000000000631.ts^^^?&startTime=&endTime=&areaCode=&npv=gx_starcor&userId=104734528&productId=&id=dfsy0000000000000000000000000631&provider=coship&cms=V157b67b49130935b79ad8106fc521d693" state="0" reason="ok"/>
 
 拿内容详细信息
 http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_content&id=dfsy0000000000000000000000000631
+
+
+
+
+
+
+
+
+
+
+广西那边给的接口样例：
+注入调用：
+http://10.1.15.38:9882/nn_core_cp/nn_pub_api/nn_pub_api.php?func=add_content_by_cdn_policy&user=ttjk&nonce=20160420150555&auth=5838dc285c59c944d087a3e8f3e1ef90&id=TTJKce00c4c5b96da0255555f1e25355&name=注入测试视频2&url=/ttjk/121sp1016042002.ts&live=0&filetype=ts&impl=std&cdn_policy_id=VOD_B4_TO_TTJK&cp=TTJK&from=btttjk
+注入返回：
+<nn_api>
+<result seqno="" ret="0" reason="ok"/>
+<content id="TTJKce00c4c5b96da0255555f1e25355"/>
+</nn_api>
+
+
+删除调用：
+http://10.1.15.38:9882/nn_core_cp/nn_pub_api/nn_pub_api.php?func=delete_content&user=ttjk&nonce=20160420160555&auth=4b39983b20b1fa553e2c49e71e80ce82&id=TTJKce00c4c5b96da0255555f1e25355&live=0
+删除返回：
+<nn_api>
+<result seqno="" ret="0" reason="ContentDelete Ok"/>
+</nn_api>
+
+鉴权调用：
+http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_user_id=104734528&nns_func=check_play_auth&nns_product_id=IDC_month
+鉴权返回：
+<auth state="0" reason="有权限"/>
+
+
+获取播放串调用：
+http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_user_id=104734528&nns_func=get_play_url&nns_product_id=IDC_month&nns_content_id=TTJKce00c4c5b96da0255555f1e25355&nns_video_type=0&nns_play_style=gxcatv
+获取播放串返回：
+<media id="" url="rtsp://10.0.15.4:554/TTJKce00c4c5b96da0255555f1e25355.ts^^^?&startTime=&endTime=&areaCode=&npv=gx_starcor&userId=104734528&productId=IDC_month&id=TTJKce00c4c5b96da0255555f1e25355&provider=coship&cms=V1571752c238fd98c5cb740a26b20cda27" state="0" reason="ok"/>
+
+
+询价调用：
+http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_user_id=104734528&nns_func=get_product_info&nns_product_id=IDC_month
+询价返回：
+<products>
+<product id="404580060860" name="广电测试包月产品" fee_id="281841" price="1.00" bill_type="包月(按日)" boss_tags=""/>
+</products>
+
+
+
+
 
 
