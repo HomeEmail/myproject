@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/idangerous.swiper.css">
+	<link rel="stylesheet" href="./css/duihua.css?v=9969708809" />
+	<link rel="stylesheet" href="./css/animate.css?v=66" />
+	<style type="text/css">
+	</style>
+
+	<title>对话-begin</title>
+</head>
+<body onload="pageLoad();">
+<div class="swiper-container" id="swiper1" style="visibility: hidden;">
+    <div class="swiper-wrapper">
+		<div class="swiper-slide" id="body-step1">
+			<div id="body-step1-tips-wrapper">
+				<img src="./images/pullup-icon.png" width="122" class="anim-tipsFadeShow" id="body-step1-tips" />
+			</div>
+		</div>
+		<div class="swiper-slide" id="body-step2">
+			<div class="bg-top"><img src="./images/step1-bg1.jpg"></div>
+			<div class="bg-bottom"><img src="./images/step1-bg2.jpg"></div>
+			<div class="bg-content">
+				<div class="swiper-container reply-list-wrapper">
+					<div class="reply-list-ul swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="reply-list-li">
+							<p>劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</p>
+							
+							<span class="triangleL"></span>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="reply-list-li">
+							<p>劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</p>
+							
+							<span class="triangleL"></span>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="reply-list-li">
+							<p>劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</p>
+							
+							<span class="triangleL"></span>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="reply-list-li reply-list-li-my">
+							<p>劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</p>
+							
+							<span class="triangleR"></span><!-- 注意这里是triangleR -->
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="reply-list-li">
+							<p>劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</p>
+							
+							<span class="triangleL"></span>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="reply-list-li reply-list-li-my">
+							<p>劳神费力大肆泛滥的发生的方式妇科大夫诗圣杜甫</p>
+							
+							<span class="triangleR"></span><!-- 注意这里是triangleR -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<form action="#" onsubmit="return false;">
+					<!--  有需要请更改action 和 onsubmit -->
+					<textarea class="reply-input" id="replyTextInput" name="replyTextInput" onblur="textAreaOnblur();" rows="3" cols="1"></textarea>
+					<div class="reply-bt-wrapper text-ar" style="padding-bottom:10px;">
+						<img src="./images/xm-name.png" height="30"><input id="replyName" class="input-name" type="text" />
+					</div>
+					<div class="reply-bt-wrapper text-ar">
+						<button class="reply-bt" id="replySubmitBt"> </button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script><script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<!-- <script type="text/javascript" src="./js/hammer.js"></script> -->
+<script src="./js/idangerous.swiper-2.1.min.js"></script>
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+var winH=getBrowserH();
+var winW=getBrowserW();
+var swiper1=$('#swiper1');
+swiper1.width(winW);
+swiper1.height(winH);
+var duihuaSwiper=null;
+var mySwiper = new Swiper('#swiper1',{
+	mode:'vertical'
+	,mousewheelControl: true
+	,onSlideChangeEnd:function(o,v){
+		if(o.activeIndex==1){
+			mySwiper.destroy();
+			duihuaSwiper=new Swiper('.reply-list-wrapper',{
+				mode:'vertical',
+				freeMode: true,
+	    		freeModeFluid: true,
+	    		slidesPerView: 'auto'
+			});
+			//这里放ajax，加载对话数据，ajax成功后执行，duihuaSwiper.reInit();
+		}
+	}
+ });
+
+function textAreaOnblur(){
+
+	// $('#body-step2').width(getBrowserW()+1);
+	// $('#body-step2').height(getBrowserH()+1);
+	// setTimeout(function(){
+	// 	$('#body-step2').width(getBrowserW());
+	// 	$('#body-step2').height(getBrowserH());
+	// },200);
+}
+//页面加载完执行的函数
+function pageLoad(){
+	$('#swiper1').css({'visibility':'visible'});
+}
+
+
+
+//提交留言
+$('#replySubmitBt').on('tap',function(e){
+	var s=$('#replyTextInput').val();
+	var name=$('#replyName').val();
+
+	alert('提交留言:'+name+':'+s);
+});
+
+function getBrowserW(){
+	return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;//可见区域宽度
+}
+function getBrowserH(){
+	//alert(document.documentElement.clientHeight);
+	return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;//可见区域高度		
+}
+</script>
+
+</body>
+</html>

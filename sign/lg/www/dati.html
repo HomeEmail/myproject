@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	
+    <title>答题</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <style type="text/css">
+    body,html{
+    	color: #fff; 
+    }
+	.ques-item{
+		width: 70%;
+		margin-left: 15%;
+		margin-bottom: 10px;
+	}
+	.ques-title{
+		padding-bottom: 10px;
+	}
+	.ans-item{
+		padding:10px;
+		padding-left: 36px;
+		background: url(./images/dati-item.png) no-repeat left center;
+		
+  background-size: 20px;
+  background-position: 10px center;
+	}
+	.ans-item.on{
+		background-color: rgba(255,255,255,0.7);
+		border-radius: 6px;
+		background-image: url(./images/dati-item-on.png);
+		color:#333;
+	}
+	.formSubmit{
+		height: 33px;
+		width:168px;
+		background: url(./images/qiandao-bt.png) no-repeat center center;
+		background-size: contain;
+
+	}
+	.getAwardBt{
+		height: 45px;
+		width:217px;
+		background: url(./images/dati-result-bt.png) no-repeat center center;
+		background-size: contain;
+	}
+	#datiWrapper{
+		padding-top: 39%;
+	}
+	.groupTitle{
+		color: #fff;
+		text-shadow:1px 1px 1px #34a4a2;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		padding-bottom: 15px;
+	}
+	#gameStart{
+		text-align: center;
+		padding-top: 78%;
+	}
+	#gameStart img{
+		margin-bottom: 15px;
+	}
+	.dati-wrapper{
+		display: none;
+	}
+	.groupOk,.groupFail{
+		text-align: center;
+		font-size: 22px;
+
+	    padding-top: 39%;
+	    line-height: 30px;
+	}
+	.groupOk img,.groupFail img{
+		margin-bottom: 15px;
+	}
+	.datiResult{
+		font-size: 22px;
+		text-align: center;
+		line-height: 50px;
+		padding-top: 46%;
+	}
+	.datiResultXX{
+		padding: 10px 20px;
+	}
+	.datiResultXX img{
+		width: 33.33%;
+		margin-bottom: 10px;
+	}
+
+    </style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body style="">
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1"> 
+	<img style="position:fixed;display:block;" id="datiStart" src="./images/pullup-bg.jpg" height="100%" width="100%" /> 
+	<img style="position:fixed;display: none;" id="datiIng" src="./images/dati-bg.jpg" height="100%" width="100%" /> 
+	
+</div>
+
+<div id="gameStart">
+	<img id="startBt" src="./images/dati-start.png" height="40"><br/>
+	<img id="ruleBt" src="./images/dati-rule-bt.png" height="40">
+</div>
+
+<div id="datiWrapper" style="display:none;">
+	<div class="dati-wrapper datiGroup1">
+		<div class="groupTitle">Stretegy1</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">1.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">2.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">3.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋独立房间的反垄断法里看到发大发大发多少奖斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+	</div>
+	<div class="dati-wrapper datiGroup2">
+		<div class="groupTitle">Stretegy2</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">1.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">2.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">3.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋独立房间的反垄断法里看到发大发大发多少奖斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+	</div>
+	<div class="dati-wrapper datiGroup3">
+		<div class="groupTitle">Stretegy3</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">1.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">2.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">3.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋独立房间的反垄断法里看到发大发大发多少奖斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+	</div>
+	<div class="dati-wrapper datiGroup4">
+		<div class="groupTitle">Stretegy4</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">1.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">2.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">3.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋独立房间的反垄断法里看到发大发大发多少奖斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+	</div>
+	<div class="dati-wrapper datiGroup5">
+		<div class="groupTitle">Stretegy5</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">1.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">2.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+		<div class="ques-item"><!-- 选中加类on 答案加类ans-true -->
+			<div class="ques-title">3.问题问题维他奶问天德隆食府</div>
+			<div class="ans-item ans-true">答案3奋斗奋独立房间的反垄断法里看到发大发大发多少奖斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+			<div class="ans-item">答案3奋斗奋斗</div>
+		</div>
+	</div>
+	<div id="formSubmitWrapper" style="text-align: center;padding: 10px 0px;padding-bottom: 50px;"><button class="formSubmit"> </button></div>
+</div>
+
+<div class="groupOk" style="display:none;">
+	<p>恭喜<br/>回答完全正确<br/>奖励一颗星星</p>
+	<img src="./images/xingxing.png" width="140"><br/>
+	<img class="nextBt" src="./images/next-bt.png" height="40">
+</div>
+<div class="groupFail" style="display:none;">
+	<p>Sorry!<br/>您没有回答正确<br/>请继续努力</p>
+	<br/><br/><br/><br/><br/><br/>
+	<img class="nextBt" src="./images/next-bt.png" height="40">
+</div>
+<div class="datiResult" style="display:none;">
+	<p>个人成绩</p>
+	<div class="datiResultXX">
+		<!-- <img src="./images/xingxing.png" /><img src="./images/xingxing.png" /><img src="./images/xingxing.png" /><img src="./images/xingxing.png" /><img src="./images/xingxing.png" /> -->
+	</div>
+</div>
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<script type="text/javascript">
+	var starNum=0;//获得星星的数量
+	var currentGroup=1;
+	$('.ans-item').on('tap',function(e){
+		var $el=$(this);
+		$el.siblings('.on').removeClass('on');
+		$el.addClass('on');
+		$el=null;
+	});
+	$('#startBt').on('tap',function(e){
+		$('#datiStart').hide();
+		$('#gameStart').hide();
+		$('#datiWrapper').show();
+		$('#datiIng').show();
+		$('.datiGroup1').show();
+	});
+	$('#ruleBt').on('tap',function(e){
+		location.href='dati-rule.html';
+	});
+
+	$('.formSubmit').on('tap',function(e){
+
+		var els=$('.datiGroup'+currentGroup+' .ans-item.on');
+		if(els.length<3){
+			alert('请先答题完整');
+			return;
+		}
+		var okNum=0;
+		els.each(function(i,n){
+			if($(n).hasClass('ans-true')){
+				okNum++;
+			}
+		});
+		$('#datiWrapper').hide();
+		$('.datiGroup'+currentGroup).hide();
+
+		if(okNum==3){
+			//alert('ok');
+			$('.groupOk').show();
+			starNum++;
+		}else{
+			$('.groupFail').show();
+		}
+		currentGroup++;
+		if(currentGroup>5){
+			//到最后一题了
+			$('.groupOk').hide();
+			$('.groupFail').hide();
+			$('.datiResult').show();
+			var str='',s='<img src="./images/xingxing.png" />';
+			for(var j=0;j<starNum;j++){
+				str=str+s;
+			}
+			$('.datiResultXX').html(str);
+			//这里可以ajax提交成绩,starNum就是获得的星星数量
+
+			return;
+		}
+	});
+
+	$('.nextBt').on('tap',function(e){
+		$('.groupOk').hide();
+		$('.groupFail').hide();
+		$('#datiWrapper').show();
+		$('.datiGroup'+currentGroup).show();
+	});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.pageContent{
+	width: 1366px;
+	height: 768px;
+	background: #fff url(../images/duihua-show.jpg) no-repeat left top;
+	margin: 0 auto;
+	overflow: hidden;
+	color: #fff;
+	background-size: 100%;
+}
+.item-duihua-wrapper{
+	position: absolute;
+    left: 298px;
+    top: 338px;
+    width: 1066px;
+}
+.item-duihua{
+	float: left;
+    width: 186px;
+    height: 170px;
+    line-height: 20px;
+    margin-left: 25px;
+}
+.item1{
+	
+}
+.item2{
+	
+	
+}
+.item3{
+	
+	
+}
+.item4{
+	
+	
+}
+.item5{
+	
+	
+}
