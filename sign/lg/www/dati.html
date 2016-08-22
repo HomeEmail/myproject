@@ -32,6 +32,7 @@
     <style type="text/css">
     body,html{
     	color: #fff; 
+    	height: 100%;
     }
 	.ques-item{
 		width: 70%;
@@ -69,7 +70,14 @@
 		background-size: contain;
 	}
 	#datiWrapper{
-		padding-top: 39%;
+		top: 35%;
+		height: 65%;
+		width: 100%;
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
 	}
 	.groupTitle{
 		color: #fff;
@@ -81,7 +89,7 @@
 	}
 	#gameStart{
 		text-align: center;
-		padding-top: 78%;
+		padding-top: 112%;
 	}
 	#gameStart img{
 		margin-bottom: 15px;
@@ -93,7 +101,7 @@
 		text-align: center;
 		font-size: 22px;
 
-	    padding-top: 39%;
+	    padding-top: 60%;
 	    line-height: 30px;
 	}
 	.groupOk img,.groupFail img{
@@ -103,7 +111,7 @@
 		font-size: 22px;
 		text-align: center;
 		line-height: 50px;
-		padding-top: 46%;
+		padding-top: 66%;
 	}
 	.datiResultXX{
 		padding: 10px 20px;
@@ -247,7 +255,7 @@
 </div>
 <div class="groupFail" style="display:none;">
 	<p>Sorry!<br/>您没有回答正确<br/>请继续努力</p>
-	<br/><br/><br/><br/><br/><br/>
+	<br/><br/>
 	<img class="nextBt" src="./images/next-bt.png" height="40">
 </div>
 <div class="datiResult" style="display:none;">
@@ -325,6 +333,7 @@
 		$('.groupFail').hide();
 		$('#datiWrapper').show();
 		$('.datiGroup'+currentGroup).show();
+		$('#datiWrapper').scrollTop(0);
 	});
 
 </script>

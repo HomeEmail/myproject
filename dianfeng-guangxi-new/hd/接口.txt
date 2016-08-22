@@ -70,3 +70,35 @@ root / rjkj@rjkj@123
 这个实际是 sftp的跳板....
 
 然后 实际的 文件路径是（手动输入）  /var/www/html
+
+
+
+正式接口
+
+
+ftp账号和地址：dfsy/gxcatv_987_dfsy      10.0.3.137    
+
+
+1、注入/删除注入信息接口地址 
+http://10.1.15.38:9882/nn_core_cp/nn_pub_api/nn_pub_api.php? 
+注入删除授权账号：dfsy/gxcatv_987_dfsy
+
+CP_ID=DFSY
+cdn_policy_id=VOD_B4_TO_DFSY
+内容ID=DFSY开头的32位字符串
+url=/dfsy/xxxx/xxxx.ts  （xxxx/xxxx.ts为ftp上传片源的绝对路径，url请勿使用中文）
+
+
+2、鉴权接口 
+http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php? 
+
+3、获取播放串接口地址 
+http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?
+
+4、询价接口
+http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?
+
+测试产品包id：
+IDC_CP_TEST_MON    包月
+IDC_CP_TEST_DP     单片
+IDC_CP_TEST_YEAR   包年
