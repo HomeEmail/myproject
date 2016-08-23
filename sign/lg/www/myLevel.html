@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	
+    <title>我的目前阶段</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <style type="text/css">
+    body,html{
+    	color: #fff; 
+    }
+	.rule-wrapper{
+		text-align: center;
+		top: 28%;
+		height: 72%;
+		width: 100%;
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		text-align: center;
+	}
+	.myLevelItems{
+		padding: 0px 15%;
+		text-align: left;
+	}
+	.myLevelItem{
+		height: 60px;
+		padding: 10px;
+		border-radius: 4px;
+	}
+	.myLevelItem img{
+		max-height: 40px;
+	}
+	.myLevelItem.on{
+		background-color: rgba(255,255,255,0.6);
+		border:1px #fff solid;
+	}
+	.reply-bt {
+	    display: inline-block;
+	    width: 124px;
+	    height: 30px;
+	    padding: 3px 0px;
+	    text-align: center;
+	    border: 0;
+	    background: none;
+	    background-image: url(./images/submit-qiandao-bt.png);
+	    background-repeat: no-repeat;
+	    background-size: 124px 27px;
+	}
+	.reply-bt-wrapper{
+		padding-bottom: 20px;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+    </style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body style="">
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1"> 
+	<img style="position:fixed;display: block;" id="datiIng" src="./images/dati-bg.jpg" height="100%" width="100%" /> 
+</div>
+<div class="rule-wrapper">
+	<img src="./images/myLevel-title.png" height="26" style="margin-bottom:10px;" />
+	<div class="myLevelItems">
+		<div class="myLevelItem"><img src="./images/level1-name.png" ></div>
+		<div class="myLevelItem"><img src="./images/level2-name.png" ></div>
+	
+		<div class="myLevelItem"><img src="./images/level3-name.png" ></div>
+	
+		<div class="myLevelItem"><img src="./images/level4-name.png" ></div>
+	
+	</div>
+	<div class="reply-bt-wrapper text-ar">
+		<button class="reply-bt" id="replySubmitBt"> </button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<script type="text/javascript">
+	var myLevel=0;
+	$('.myLevelItem').on('tap',function(e){
+		if($(this).hasClass('on')){
+			return;
+		}
+		$('.myLevelItem.on').removeClass('on');
+		$(this).addClass('on');
+		myLevel=$(this).index()+2;
+		if(myLevel>=4){
+			myLevel=4;
+		}
+	});
+	$('#replySubmitBt').on('tap',function(e){
+		if($('.myLevelItem.on').length<=0){
+			alert('请选择你的目前阶段');
+			return;
+		}
+		//location.href='goLevel.html?v='+myLevel;
+		location.replace('goLevel.html#'+myLevel);
+	});
+
+</script>
+</body>
+</html>
