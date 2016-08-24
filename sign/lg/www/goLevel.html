@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	
+    <title>我的目标阶段</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <style type="text/css">
+    body,html{
+    	color: #fff; 
+    }
+	.rule-wrapper{
+		text-align: center;
+		top: 45%;
+		height: 55%;
+		width: 100%;
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		text-align: center;
+	}
+	.myLevelItems{
+		padding: 0px 5%;
+		text-align: left;
+	}
+	.myLevelItem{
+		
+	    padding: 5px;
+	    padding-left: 26px;
+	    border-radius: 4px;
+	    margin-bottom: 10px;
+	    color: #ffffff;
+	    text-shadow: 1px 1px 1px #25ac9e;
+	    font-size: 16px;
+	    line-height: 20px;
+	    position: relative;
+	}
+	.myLevelItem.on{
+		background-color: rgba(255,255,255,0.6);
+		border:1px #fff solid;
+	}
+	.myLevelItem:after{
+		content: '';
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		width: 10px;
+		height: 10px;
+		background-color: #fff;
+	}
+	.myLevelItem.on:after{
+		background-color: red;
+	}
+	.reply-bt {
+	    display: inline-block;
+	    width: 124px;
+	    height: 30px;
+	    padding: 3px 0px;
+	    text-align: center;
+	    border: 0;
+	    background: none;
+	    background-image: url(./images/submit-qiandao-bt.png);
+	    background-repeat: no-repeat;
+	    background-size: 124px 27px;
+	}
+	.reply-bt-wrapper{
+		padding-bottom: 20px;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.titleWrapper{
+		padding: 20px 10%;
+	}
+	.titleWrapper img{
+		max-height: 70px;
+		margin-bottom:10px;
+	}
+	@media (min-width:375px){
+		.titleWrapper img{
+			max-height: 88px;
+			margin-bottom:30px;
+		}
+	}
+    </style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body style="">
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1"> 
+	<img style="position:fixed;display: block;" id="datiIng" src="./images/goLevel-bg.jpg" height="100%" width="100%" /> 
+</div>
+<div class="titleWrapper">
+</div>
+
+<div class="rule-wrapper">
+	
+	<div class="myLevelItems">
+		<!-- <div class="myLevelItem">精通本部门Core2/Advanced以上技能</div>
+		<div class="myLevelItem">熟练运用UPS/WPI/BDE/QIE等工具消除损失</div>
+	
+		<div class="myLevelItem">培训他人能力</div>
+	
+		<div class="myLevelItem">制定和管理标准</div>	
+		<div class="myLevelItem">PDCA持续提高系统和结果</div> -->
+	
+	</div>
+	<div class="reply-bt-wrapper text-ar">
+		<button class="reply-bt" id="replySubmitBt"> </button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<script type="text/javascript">
+	var goLevel=location.hash.replace('#','');
+	if(!!goLevel){
+		goLevel=parseInt(goLevel,10);
+	}else{
+		alert('参数不对');
+	}
+	var planData={
+		'level2':[
+			'精通本部门Core2/Advanced以上技能'
+			,'熟练运用UPS/WPI/BDE/QIE等工具消除损失'
+			,'培训他人能力'
+			,'制定和管理标准'
+			,'PDCA持续提高系统和结果'
+		]
+		,'level3':[
+			'熟练运用GSUM， STO等工具进行项目管理'
+			,'变更管理和风险评估'
+			,'Capital和Cost 管理'
+			,'OPM管理高效能组织'
+		]
+		,'level4':[
+			'消费者研究'
+			,'自动化和数字化设计'
+			,'创新与设计'
+			,'全球沟通能力'
+			,'未来组织架构设计'
+		]
+	};
+	function init(goLevel){
+		$('.titleWrapper').html('<img src="./images/goLevel-title'+goLevel+'.png" style="" /> <div style="text-align:center;"><img src="./images/goLevel-title.png" style=""></div>');
+
+		var s='';
+		var items=planData['level'+goLevel];
+		for(var i=0,len=items.length;i<len;i++){
+			s+='<div class="myLevelItem">'+items[i]+'</div>';
+		}
+
+		$('.myLevelItems').html(s);
+	}
+	init(goLevel);
+
+	var plans=[];//存3项能力计划
+	$('.myLevelItems').on('tap','.myLevelItem',function(e){
+		if($(this).hasClass('on')){
+			$(this).removeClass('on');
+		}else{	
+			if($('.myLevelItem.on').length>=3){
+				alert('最多选择3个');
+				return;
+			}	
+			$(this).addClass('on');
+		}
+		plans=[];
+		$('.myLevelItem.on').each(function(i,n){
+			plans.push($(n).html());
+		});
+	});
+	$('#replySubmitBt').on('tap',function(e){
+		if($('.myLevelItem.on').length!=3){
+			alert('请选择3个能力建设计划');
+			return;
+		}
+		//这里ajax提交，数据都放在plans数组里
+		/*$.ajax({
+			type: 'POST',
+			url: 'http://182.254.201.33/201506/handupload.ashx',
+			// data to be added to query string:
+			data: { plans: plans.join('=') },//=号来分隔计划项
+			// type of data we are expecting in return:
+			dataType: 'json',//(“json”, “jsonp”, “xml”, “html”, or “text”)
+			success: function(data){
+				//提交成功
+				location.replace('level-submit.html');//跳去星星页
+			},
+			error: function(xhr, type){
+				alert('失败,请重试');
+			}
+		});*/
+		//下面一行代码是测试用，正式ajax后请注释
+		location.replace('level-submit.html');//跳去星星页
+	});
+
+</script>
+</body>
+</html>
