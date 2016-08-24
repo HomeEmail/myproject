@@ -38,9 +38,10 @@ http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&n
 http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_content&id=dfsy0000000000000000000000000631
 
 
-
-
-
+正式：拿播放串请求：
+http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=104734528&nns_content_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
+返回：
+<media id="" url="rtsp://10.0.15.4:554/dfsy0000000000000000000000000631.ts^^^?&startTime=&endTime=&areaCode=&npv=gx_starcor&userId=104734528&productId=&id=dfsy0000000000000000000000000631&provider=coship&cms=V157bbab064e82dc867f34ee198ca833c5" state="0" reason="ok"/>
 
 
 
