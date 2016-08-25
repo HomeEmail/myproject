@@ -68,9 +68,11 @@ function grabEvent(_event){
 			control.doSelect();
 			return 0;
 			break;
+		case "KEY_NUMBER0":
 		case "KEY_EXIT":
 		case "KEY_BACK":
 			//window.location.href = "../index.html";
+			window.history.back();
 			return false;
 			break;
 		default:
@@ -83,7 +85,7 @@ var aipBase='http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?';//测试
 aipBase='http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?';//正式
 
 var cp_id='dfsy';
-var user_id='104734528';
+var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
 //var video_id='dfsy0000000000000000000000000631';
 function getAuth(video_id){
 	ajax({
@@ -113,19 +115,28 @@ function getPlayUrl(content_id){
 		req=null;
 	}
 	showLoadingDiv();
+	var url=serverUrl +'ajax?id='+content_id+'&user_id='+user_id;//aipBase +'nns_func=get_play_url'+'&nns_user_id='+user_id+'&nns_content_id='+ content_id+'&nns_cp_id='+cp_id
 	req=ajax({
-		url: aipBase +'nns_func=get_play_url'+'&nns_user_id='+user_id+'&nns_content_id='+ content_id+'&nns_cp_id='+cp_id,
+		url: url,
 		type: "GET", //HTTP 请求类型,GET或POST
 		dataType: "html", //请求的文件类型html/xml
 		onSuccess: function(html){ //请求成功后执行[可选]
 			req=null;
 			hideLoadingDiv();
-			//json = eval("(" + html + ")");
-			var xml=parseXML(html);
+			var json = eval("(" + html + ")");
+			if(!json.bool){
+				alert(json.result);
+				return;
+			}
+			if(!json.result.playurl){
+				alert('播放地址获取失败');
+				return;
+			}
+			var xml=parseXML(json.result.playurl);
 			var state=getXMLnodeAttr(xml.getElementsByTagName('media')[0],'state');
 			if(parseInt(state,10)==0){
 				var url=getXMLnodeAttr(xml.getElementsByTagName('media')[0],'url');
-				location.href=url;
+				window.location.href=url;
 			}else{
 				alert(getXMLnodeAttr(xml.getElementsByTagName('media')[0],'reason'));
 			}
@@ -361,7 +372,7 @@ var control = {
 			this.menuObj.doSelect();
 		}else if(this.focusArea == 1){
 			//window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
-			getPlayUrl(this.subList.pageDataList[this.subList.dataPos].flv);
+			getPlayUrl(this.subList.pageDataList[this.subList.dataPos].id);
 		}
 	},
 	clickTop : function(){
@@ -432,6 +443,8 @@ function ajaxGetData(_currpage,_type){
 <div style="position:absolute; top:0px; left:0px; width:1280px; height:100px;">
 	<!--<img id="logo" src="images/logo.png" width="300" height="33" style="position:absolute; top:35px; left:65px;" />-->
 </div>
+<img src="./images/df-tips-icon.png" style="position:absolute;top: 60px;left: 1040px;height: 64px;width: auto;">
+
 <div id="Menu" style="position:absolute; top:95px; left:0px; width:1280px; height:70px;">
 	<div id="menu_0" class="menu" style="position:absolute; top:98px; left:140px; width:100px; height:50px;">全&nbsp;&nbsp;部</div>
 	<div id="menu_1" class="menu" style="position:absolute; top:156px; left:140px; width:100px; height:50px;">手机网游</div>
