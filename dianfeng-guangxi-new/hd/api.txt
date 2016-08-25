@@ -39,9 +39,12 @@ http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_content&id
 
 
 正式：拿播放串请求：
-http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=104734528&nns_content_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
+http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=108601998&nns_content_id=dfsy0000000000000000000000000631&nns_cp_id=dfsy
+
+http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_func=get_play_url&nns_user_id=108601998&nns_content_id=dfsy0000000000000000000000000634&nns_cp_id=dfsy
+
 返回：
-<media id="" url="rtsp://10.0.15.4:554/dfsy0000000000000000000000000631.ts^^^?&startTime=&endTime=&areaCode=&npv=gx_starcor&userId=104734528&productId=&id=dfsy0000000000000000000000000631&provider=coship&cms=V157bbab064e82dc867f34ee198ca833c5" state="0" reason="ok"/>
+<media id="" url="rtsp://10.0.15.4:554/dfsy0000000000000000000000000631.ts^^^?&startTime=&endTime=&areaCode=&npv=gx_starcor&userId=108601998&productId=&id=dfsy0000000000000000000000000631&provider=coship&cms=V157bbab064e82dc867f34ee198ca833c5" state="0" reason="ok"/>
 
 
 
@@ -88,3 +91,12 @@ http://10.0.15.33/nn_cms/nn_cms_view/gxcatv20/n301_a.php?nns_user_id=104734528&n
 
 
 
+首页入口
+http://10.0.4.46/html/hd/index.html
+
+
+从小象去到我们的主页时，地址上是携带了这三个参数
+user_id=107346602&device_id=10290000005&area_code=0423
+
+
+http://10.0.4.46/index/ajax?id=dfsy0000000000000000000000000633&user_id=108601998

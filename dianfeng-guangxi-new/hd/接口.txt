@@ -102,3 +102,8 @@ http://10.1.15.38:9881/nn_cms/nn_cms_view/gxcatv20/n301_a.php?
 IDC_CP_TEST_MON    包月
 IDC_CP_TEST_DP     单片
 IDC_CP_TEST_YEAR   包年
+
+
+
+
+@巅峰-孔工 @研发部-陈文杰 可以让孔工开一个接口：我请求孔工的接口，孔工再请求广电的拿播放地址的接口，返回给我
