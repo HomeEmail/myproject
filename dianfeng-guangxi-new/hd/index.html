@@ -240,6 +240,41 @@ var control = {
 			}
 		}
 	},
+	topTipsList:{
+		menuPos : 0,
+		menuList :[1037,1092,1147],
+		init : function(){
+			this.menuPos = 0;
+			this.focus();
+		},
+		focus : function(){
+
+			$("topTipsFocus").style.visibility = "visible";
+		},
+		blur : function(){
+
+			$("topTipsFocus").style.visibility = "hidden";
+		},
+		changeFocus : function(_num){
+			if(this.menuPos == 0 && _num < 0)return;
+			if(this.menuPos == 2 && _num > 0)return;
+			this.menuPos += _num;
+			$("topTipsFocus").style.left = this.menuList[this.menuPos] +"px";
+
+		},
+		doSelect : function(){
+
+			if(this.menuPos == 0){
+				//首页
+			}else if(this.menuPos == 1){
+				//主页
+			}else if(this.menuPos == 2){
+				//返回
+			}
+			window.location.href='http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
+
+		}
+	},
 	subList : {
 		x : 0,
 		y : 0,
@@ -375,12 +410,26 @@ var control = {
 		}else if(this.focusArea == 1){
 			//window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
 			getPlayUrl(this.subList.pageDataList[this.subList.dataPos].id);
+		}else if(this.focusArea==2){
+			this.topTipsList.doSelect();
 		}
 	},
 	clickTop : function(){
 		if(this.focusArea == 0){
+			if(this.menuObj.menuPos<=0){
+				this.focusArea=2;
+				this.menuObj.blur();
+				this.topTipsList.focus();
+				return;
+			}
 			this.menuObj.changeFocus(-1);
 		}else if(this.focusArea == 1){
+			if(this.subList.currPage<=1&&this.subList.x<=5&&this.subList.y<=0){
+				this.focusArea=2;
+				this.subList.blur();
+				this.topTipsList.focus();
+				return;
+			}
 			this.subList.changeY(-1);
 		}
 	},
@@ -389,6 +438,10 @@ var control = {
 			this.menuObj.changeFocus(1);
 		}else if(this.focusArea == 1){
 			this.subList.changeY(1);
+		}else if(this.focusArea==2){
+			this.topTipsList.blur();
+			this.focusArea=0;
+			this.menuObj.focus();
 		}
 	},
 	clickLeft : function(){
@@ -396,6 +449,14 @@ var control = {
 			//
 		}else if(this.focusArea == 1){
 			this.subList.changeX(-1);
+		}else if(this.focusArea==2){
+			if(this.topTipsList.menuPos<=0){
+				this.topTipsList.blur();
+				this.focusArea=0;
+				this.menuObj.focus();
+				return;
+			}
+			this.topTipsList.changeFocus(-1);
 		}
 	},
 	clickRight : function(){
@@ -405,6 +466,8 @@ var control = {
 			this.subList.focus();
 		}else if(this.focusArea == 1){
 			this.subList.changeX(1);
+		}else if(this.focusArea==2){
+			this.topTipsList.changeFocus(1);
 		}
 	}
 }
@@ -422,7 +485,8 @@ function ajaxGetData(_currpage,_type){
 			dataType: "html", //请求的文件类型html/xml
 			onSuccess: function(html){ //请求成功后执行[可选]
 				hideLoadingDiv();
-				json = eval("(" + html + ")");
+				var html='';
+				var json = eval("(" + html + ")");
 				//if(json.bool){
 				control.subList.init(json.result);
 				//}
@@ -437,16 +501,18 @@ function ajaxGetData(_currpage,_type){
 	        post:"",  
 	        timeout:7000  
 	});
+
+
 }
 </script>
 </head>
 
-<body style="background:url(images/bg.jpg) no-repeat; width:1280px; height:720px; overflow:hidden;">
+<body style="background:url(images/bg.jpg) no-repeat; width:1280px; height:720px;">
 <div style="position:absolute; top:0px; left:0px; width:1280px; height:100px;">
 	<!--<img id="logo" src="images/logo.png" width="300" height="33" style="position:absolute; top:35px; left:65px;" />-->
 </div>
 <img src="./images/df-tips-icon.png" style="position:absolute;top: 60px;left: 1040px;height: 64px;width: auto;">
-
+<div id="topTipsFocus" style="position: absolute;top: 60px;left: 1037px;height: 56px;x;width: 50px;border: 3px #f7d035 solid;visibility: hidden;border-radius: 6px;"></div>
 <div id="Menu" style="position:absolute; top:95px; left:0px; width:1280px; height:70px;">
 	<div id="menu_0" class="menu" style="position:absolute; top:98px; left:140px; width:100px; height:50px;">全&nbsp;&nbsp;部</div>
 	<div id="menu_1" class="menu" style="position:absolute; top:156px; left:140px; width:100px; height:50px;">手机网游</div>
