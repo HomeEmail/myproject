@@ -128,17 +128,19 @@ function getPlayUrl(content_id){
 				alert(json.result);
 				return;
 			}
-			if(!json.result.playurl){
+			if(!json.result.play){
 				alert('播放地址获取失败');
 				return;
 			}
-			var xml=parseXML(json.result.playurl);
-			var state=getXMLnodeAttr(xml.getElementsByTagName('media')[0],'state');
+			var play=json.result.play;
+			var state=play.state;
+
 			if(parseInt(state,10)==0){
-				var url=getXMLnodeAttr(xml.getElementsByTagName('media')[0],'url');
+				var url=play.url;//getXMLnodeAttr(xml.getElementsByTagName('media')[0],'url');
 				window.location.href=url;
 			}else{
-				alert(getXMLnodeAttr(xml.getElementsByTagName('media')[0],'reason'));
+				//alert(getXMLnodeAttr(xml.getElementsByTagName('media')[0],'reason'));
+				alert(play.reason);
 			}
 		},
 		onComplete : function(){
