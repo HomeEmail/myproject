@@ -486,7 +486,7 @@ function ajaxGetData(_currpage,_type){
 			dataType: "html", //请求的文件类型html/xml
 			onSuccess: function(html){ //请求成功后执行[可选]
 				hideLoadingDiv();
-				var html='';
+				//var html='';
 				var json = eval("(" + html + ")");
 				//if(json.bool){
 				control.subList.init(json.result);
