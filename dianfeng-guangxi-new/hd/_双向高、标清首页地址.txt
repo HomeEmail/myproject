@@ -1,5 +1,0 @@
-
-http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd  //双向高清首页
-
-http://10.1.15.43/nn_cms/nn_cms_view/gxcatv/go_idc_v1.1.php?page=linux_home  //双向标清首页
-
