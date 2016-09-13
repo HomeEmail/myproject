@@ -290,14 +290,14 @@ var control = {
 		totalPage : 1,
 		dataPos : 0,
 		rightTouchout : true,
-		init : function(_arr){
+		init : function(_arr,totalpage){
 			this.x = 0;
 			this.y = 0;
 			this.pageDataList = _arr;
 			this.pageDataLength = this.pageDataList.length > 18 ? 18 : this.pageDataList.length;
 			this.yLength = (this.pageDataLength%6 == 0) ? parseInt(this.pageDataLength/6 - 1) : parseInt(this.pageDataLength/6);
 			//this.currPage = 1; //每次切换数据保留当前页码
-			this.totalPage = json.totalpage;
+			this.totalPage = totalpage;
 			
 			this.initPlace();
 			this.showData();
@@ -489,7 +489,7 @@ function ajaxGetData(_currpage,_type){
 				//var html='';
 				var json = eval("(" + html + ")");
 				//if(json.bool){
-				control.subList.init(json.result);
+				control.subList.init(json.result,json.totalpage);
 				//}
 			},
 			onComplete : function(){
