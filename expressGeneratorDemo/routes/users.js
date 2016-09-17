@@ -1,20 +1,40 @@
 var express = require('express');
 var router = express.Router();
-
+var http = require('http');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 router.get('/:name',function(req,res,next){
 	console.log(req.params.name);
-	res.send(JSON.stringify({
+	http.get({
+		hostname: 'localhost',
+		port: 80,
+		path: '/nodejs_test.php',
+		agent: false  // create a new agent just for this one request
+	}, function(response){
+	  	// Do stuff with response
+	  	var s='';
+	  	response.on('data', function(chunk){
+	  		console.log('receive data:'+chunk);
+			s+=chunk;
+		});
+		response.on('end', function(){
+			//console.log('No more data in response.')
+	  		res.send(JSON.stringify(s));
+		});
+	}).on('error',function(e){
+		console.log('problem with request: ${e.message}');
+	});
+
+	/*res.send(JSON.stringify({
 		name:req.params.name
 		,id:3343
 		,email:'homeemail@qq.com'
 		,address:'广州市'
 		,phone:156222317639
 		,disable:false
-	}));
+	}));*/
 
 });
 /*
