@@ -27,14 +27,14 @@
 <script type="text/javascript" src="js/showTips.js"></script>
 <script type="text/javascript">
 document.onkeydown = grabEvent;
-if(document.onkeypress!==null){
-	document.onkeypress = grabEvent;
-}
-document.onsystemevent = grabEvent;
+// if(document.onkeypress!==null){
+// 	document.onkeypress = grabEvent;
+// }
+//document.onsystemevent = grabEvent;
 function grabEvent(_event){
-	if(_event.type=='keydown'){
-		document.onkeypress = null;
-	}
+	// if(_event.type=='keydown'){
+	// 	document.onkeypress = null;
+	// }
 	var code = Event(_event);
 	switch(code){
 		case "KEY_UP": //
@@ -72,7 +72,7 @@ function grabEvent(_event){
 		case "KEY_EXIT":
 		case "KEY_BACK":
 			//window.location.href = "../index.html";
-			window.history.back();
+			//window.history.back();
 			return false;
 			break;
 		default:
@@ -139,7 +139,7 @@ function getPlayUrl(content_id){
 			var play=json.result.play;
 			var state=play.state;
 			if(parseInt(state,10)==0){
-				var url=play.url;//getXMLnodeAttr(xml.getElementsByTagName('media')[0],'url');
+				var url='play.html?url='+encodeURIComponent(play.url);//getXMLnodeAttr(xml.getElementsByTagName('media')[0],'url');
 				window.location.href=url;
 			}else{
 				//alert(getXMLnodeAttr(xml.getElementsByTagName('media')[0],'reason'));
@@ -293,8 +293,8 @@ var control = {
 				return;
 			}else if(this.menuPos == 2){
 				//返回
-				history.back();
-				return;
+				//history.back();
+				return 0;
 			}
 			window.location.href='http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
 
