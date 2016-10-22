@@ -1,5 +1,5 @@
 //JavaScript Document
-var hostUrl = "http://222.68.210.60";
+var hostUrl = "http://222.68.210.136";
 var serverUrl  = hostUrl +":81/shanghai/index/";
 var imgBasePath = hostUrl +":81/shanghai/";  //基于首页栏目的图片
 var req = null; // ajax requset对象
