@@ -83,6 +83,10 @@
 <script type="text/javascript" src="./fx.js"></script>
 <script type="text/javascript" src="./fx_methods.js"></script>
 <script type="text/javascript">
+
+/**实现与pc端同样的el:active效果只需要额外添加下面一行代码即可**/
+document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }); 
+
 	function pageLoad(){
 		setTimeout(function(){
 			gotoPlay();
