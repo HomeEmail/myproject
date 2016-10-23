@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cn">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+		<title></title>
+	</head>
+
+	<style>
+		body {
+			background-color: #000000;
+			background-image: url(img/1.jpg);
+			background-repeat: no-repeat;
+			background-size: auto;
+			width: 640px;
+			height: 530px;
+			color: white;
+			font-size: 12px;
+			padding: 0;
+			margin: 0;
+		}
+		
+		.container {
+			width: 640px;
+			height: 530px;
+			background-image: url(img/1.jpg);
+			background-repeat: no-repeat;
+			background-size: auto;
+			padding-left: 22px;
+		}
+		
+		.title {
+			height: 80px;
+			padding-top: 22px;
+		}
+		
+		
+		
+		.banner {
+			height: 47px;
+			padding-left: 40px;
+			line-height: 47px;
+			background-image: url(img/3.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			color: white;
+			font-size: 12px;
+		}
+		
+		.banner table {
+			width: 480px;
+		}
+		
+		
+		.banner table,.banner td{ height: 22px;text-align: center;}
+		.banner a { line-height: 22px;
+			text-align: center;			
+			text-decoration: none;
+			color: white;
+			 font-weight: bold;
+			
+		}
+		.banner a:hover,.banner a:focus {
+			color: #FF7F01;
+		  font-weight: bold;
+		}
+		
+		
+		.body {
+			height: 353px;
+			background-image: url(img/7.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			padding-left: 32px;
+		}
+		
+		.list {
+			width: 580px;
+		}
+		
+		.col .caption {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		
+		.col a {
+			display: inline-block;
+			text-align: center;
+			z-index: 100;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.col a:visited,
+		.col a:link {
+			color: white;
+			text-decoration: none;
+		}
+		
+		.col a:hover {
+			background-color: gray;
+		}
+		
+		.col {
+			margin-top: 12px;
+			width: 90px;
+			height: 100px;
+			float: left;
+			color: white;
+			text-align: center;
+		}
+		
+		.col img {
+			margin-top: 5px;
+		}
+		
+		.msg {
+			width: 100%;
+			height: 23px;
+			font-size: 17px;
+			position: absolute;
+			top: 510px;
+			left: 50px;
+		}
+	</style>
+
+	<body style="background-Repeat:no-repeat" width="640" height="530">
+		<div class="container">
+			<div class="title">
+				<img src="img/2.png" />
+			</div>
+			<div class="banner">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td><a id="all" href="#" >全&nbsp;&nbsp;&nbsp;部</a></td>
+						<td><a id="web" href="#" >手机网游</a></td>
+						<td><a id="sin" href="#" >手游单机</a></td>
+
+					</tr>
+
+				</table>
+			</div>
+			<div class="body">
+				<div class="list main">
+					<!--<div class="col">
+						<a href="#">
+							<img src="img/icon.png" alt="...">
+							<div class="caption">
+								demo
+							</div>
+						</a>
+					</div>-->
+					
+
+				</div>
+
+			</div>
+			<div class="msg">温馨提示:免费下载手游,请用手机扫描屏幕中的二维码!</div>
+					<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+	var datas=[
+ {"name":"暴风城之怒","img":"img/BFCZN.png","url":"BFCZN.html","type":"1"},
+ {"name":"太极熊猫2","img":"img/TJXM2.png","url":"TJXM2.html","type":"1"},
+ {"name":"我欲封天","img":"img/WYFT.png","url":"WYFT.html","type":"1"},
+ {"name":"跟着贝尔去冒险","img":"img/GZBRQLV.png","url":"GZBRQLV.html","type":"2"},
+ {"name":"密室逃脱8","img":"img/MSTT8.png","url":"MSTT8.html","type":"2"},
+ {"name":"皮卡丘PK数码兽","img":"img/PKQPKSMS.png","url":"PKQPKSMS.html","type":"1"},
+ {"name":"呆萌小怪物","img":"img/DMXGW.png","url":"DMXGW.html","type":"2"},
+ {"name":"疯狂坦克大战","img":"img/FKTKDZ.png","url":"FKTKDZ.html","type":"2"},
+ {"name":"植物大战僵尸全明星","img":"img/ZWDZJSQMX.png","url":"ZWDZJSQMX.html","type":"2"},
+ {"name":"一骑当千-千军斩","img":"img/YQDQQQZ.png","url":"YQDQQQZ.html","type":"1"},
+ {"name":"幻想军团","img":"img/HXJT.png","url":"HXJT.html","type":"1"},
+ {"name":"涂鸦上帝-闪电","img":"img/TYSDSD.png","url":"TYSDSD.html","type":"2"},
+ {"name":"功夫全明星","img":"img/GFQMX.png","url":"GFQMX.html","type":"2"},
+ {"name":"英雄冲冲冲","img":"img/YXCCC.png","url":"YQDQQQZ.html","type":"2"},
+ {"name":"猪猪侠之五灵守卫者","img":"img/ZZXZWLSWZ.png","url":"ZZXZWLSWZ.html","type":"2"},
+ {"name":"希望之光","img":"img/XWZG.png","url":"XWZG.html","type":"1"},
+ {"name":"奥特曼系列OL","img":"img/OTMXIOL.png","url":"OTMXIOL.html","type":"1"},
+ {"name":"蛋糕消消乐","img":"img/DGXXL.png","url":"DGXXL.html","type":"2"}
+ ];
+
+
+
+
+
+
+
+function setlist(types){
+
+var d=new Array();
+
+for (var i = 0; i < datas.length; i++) {
+
+	if(types=="0" || datas[i].type==types){
+		d.push(datas[i]); 
+	}
+	 
+	
+}var html = "";
+	var count=d.length>18?18:d.length;
+		for (var i = 0; i < count; i++) {
+
+			
+			html += '<div class="col"><a href="'+d[i].url+'" >';
+			html += '<img src="'+d[i].img+'">';
+			html += '<div class="caption">';
+			html += d[i].name;
+			html += '</div>';
+			html += '</a></div>';
+
+			
+
+		}
+		$(".main").html(html);
+}
+
+
+setlist("0");
+
+$("#all").focusin(function(){
+	
+	
+	setlist("0");
+	
+	
+});
+
+
+
+
+$("#web").focusin(function(){
+	
+	
+	setlist("1");
+});
+$("#sin").focusin(function(){
+	
+	
+	setlist("2");
+});
+
+
+	
+	
+</script>
+
+			
+
+		</div>
+
+	</body>
+
+</html>

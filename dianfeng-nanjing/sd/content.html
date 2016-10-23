@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title> </title>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+document.onsystemevent = grabEvent;
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			//
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			//
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			//
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			//
+			return 0;
+			break;		
+		case "KEY_SELECT": //	
+			window.location.href = "index.html";
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			window.location.href = "index.html";
+			return false;
+			break;
+		default:
+			//
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+	var contentId = Q.getDecoded("contentId");
+	ajaxGetData(contentId);
+}
+
+function ajaxGetData(_id){
+	if(req != null){
+		return;
+	}
+	showLoadingDiv();
+	req = ajax({
+		url: serverUrl +'ajax?id='+ _id,
+			type: "GET", //HTTP 请求类型,GET或POST
+			dataType: "html", //请求的文件类型html/xml
+			onSuccess: function(html){ //请求成功后执行[可选]
+				hideLoadingDiv();
+				var json = eval("(" + html + ")");
+				$("info").innerText = json.result.info;
+				$("qrcode").src = imgBasePath + json.result.scan;
+				$("name").innerText = json.result.name;
+			},
+			onComplete : function(){
+				req = null;
+			},
+			onError:function(){ //请求失败后执行[可选]
+				showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			},
+	        post:"",  
+	        timeout:7000  
+	});	
+}
+</script>
+</head>
+
+<body style="background:url(images/content_bg.png) no-repeat; width:640px; height:530px; overflow:hidden;">
+<div id="video" style="position:absolute; top:145px; left:30px; width:413px; height:258px;">
+<script language="javascript">
+	var epgdomain = Authentication.CTCGetConfig( "EPGDomain" );            
+	var last = epgdomain.lastIndexOf("/");
+	var host = epgdomain.substr( 0, last );
+	document.write( "<iframe name=\"if_smallscreen\" width=\"413\" height=\"258\" src=\"" );
+	document.write( host );
+	document.write( "/MediaService/SmallScreen?ContentID="+"00000009000000010000000000140846"+"&Left=30&Top=145&Width=413&Height=258&CycleFlag=1\" " );
+	document.write( " frameborder=\"no\" scrolling=\"no\"></iframe>" );
+</script>
+</div>
+<div style="position:absolute; top:105px; left:455px; width:300px; height:524px;">
+	<div id="info" style="position:absolute; top:62px; left:20px; width:135px; height:58px; font-size:12px; color:#ffffff; overflow:hidden;"></div>
+	<img id="qrcode" width="130" height="130" src="images/tm.gif" style="position:absolute; top:168px; left:22px;" />
+</div>
+
+<div id="name" style="position:absolute; top:432px; left:100px; width:135px; height:35px; font-size:16px; font-weight:bold; line-height:35px; color:#FFFFFF;"></div>
+<div id="systemName" style="position:absolute; top:432px; left:330px; width:70px; height:35px; font-size:16px; font-weight:bold; line-height:35px; color:#FFFFFF;">安卓</div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:640px; height:530px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:640px; height:530px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:140px; left:30px; width:580px; height:260px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:50px; line-height:50px; color:#d82d28; font-size:18px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:200px; padding-top:50px; line-height:35px; color:#ffffff; text-align:center; font-size:18px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="loadingDiv" style="position:absolute; top:240px; left:260px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
+	<img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />
+</div>
+</body>
+</html>
