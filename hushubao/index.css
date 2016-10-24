@@ -147,6 +147,36 @@
 		height: 260px;
 		background: url(./images/yiy-icon.png) no-repeat center center;
 		background-size: 30%;
+		animation:mymove 0.5s infinite;
+		-webkit-animation:mymove 0.5s infinite; /* Safari 和 Chrome */
+
+		transform: rotate(0deg);
+		transform-origin: center;
+		/*transition: transform 0.4s;*/
+		/*-webkit-transform: rotate(0deg);*/
+		/*-webkit-transform-origin: center;*/
+		/*-webkit-transition: -webkit-transform 0.4s;*/
+		/*-moz-transform: rotate(0deg);*/
+		/*-moz-transform-origin: center;*/
+		/*-moz-transition: -moz-transform 0.4s;*/
+	}
+
+	@keyframes mymove
+	{
+		0% {transform: rotate(0deg);}
+		25% {transform: rotate(4deg);}
+		50% {transform: rotate(0deg);}
+		75% {transform: rotate(-4deg);}
+		100% {transform: rotate(0deg);}
+	}
+
+	@-webkit-keyframes mymove /*Safari and Chrome*/
+	{
+		0% {-webkit-transform: rotate(0deg);}
+		25% {-webkit-transform: rotate(4deg);}
+		50% {-webkit-transform: rotate(0deg);}
+		75% {-webkit-transform: rotate(-4deg);}
+		100% {-webkit-transform: rotate(0deg);}
 	}
 	.result1{
 		position: absolute;
