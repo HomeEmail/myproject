@@ -1,0 +1,72 @@
+.nav_list{ /* ¶þ¼¶µ¼º½ */
+	line-height:45px;
+}
+.nav_list a{
+	color:#666666;
+	line-height:35px;
+}
+.nav_list .checked{
+	color:#fd9c20;
+}
+.nav_list a:hover{
+	color:#fd9c20;
+}
+.circ_info{
+	border:#CCCCCC 1px solid;
+	overflow:hidden;
+}
+.circ_info img{
+	padding:20px;
+	float:left;
+}
+.circ_info .circ_detaile{
+	border-bottom:#CCCCCC 1px solid;
+	float:left;
+	margin-bottom:10px;
+}
+.circ_info .circ_detaile2 td{
+	line-height:35px;
+	color:#666666;
+}
+.content .circ_detaile3{
+	width:590px;
+	float:left; 
+	color:#666666;
+	padding-top:20px;
+}
+.content .circ_detaile3 td{
+	line-height:45px;
+	color:#666666;
+	border:#CCCCCC 1px solid;
+	padding-left:10px;
+}
+.content .circ_detaile4{
+	margin-top:20px;
+}
+.content .menu{
+	padding-top:20px;
+	overflow:hidden;
+}
+.content .menu span{
+	padding:15px 30px;
+	line-height:35px;
+}
+.content .menu a{
+	color:#666666;
+}
+.content .menu .checked{
+	padding:15px 40px;
+	line-height:30px;
+	color:#000000;
+	font-weight:bold;
+	border-bottom:none;
+	border-top:#CCCCCC 1px solid;
+	border-left:#CCCCCC 1px solid;
+	border-right:#CCCCCC 1px solid;
+}
+.content .circ_detaile4 td{
+	line-height:45px;
+	color:#666666;
+	border:#CCCCCC 1px solid;
+	padding-left:10px;
+}

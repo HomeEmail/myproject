@@ -1,0 +1,202 @@
+.main_wrap{
+    width:1200px;
+}
+#main{
+    margin-top:5px;
+    overflow: hidden;
+   
+}
+#main ul li{
+    list-style: none;
+}
+#main .l_main{
+    width:278px;
+    margin-left:8px;
+    border:1px solid #CCCCCC;
+    float: left;
+    position: relative;
+}
+#main .r_main{
+    width:880px;
+    float: left;
+    margin-left:30px;
+    border:1px solid #D2D2D2;
+    padding:50px 0;
+}
+
+#main .l_main  h1{
+    padding:8px 15px 8px 0;
+    margin-right:90px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.l_main .part img{
+    margin:25px 0;
+}
+#main .l_main .tab .title{
+    background-color: #F7F7F7;
+    border:1px solid #DCDCDC;
+    position: absolute;
+    width:103%;
+    left:-9px;
+    top:15px;
+}
+
+#main .l_main .tab h1{
+    color: #333333;
+    padding:15px 15px 15px 0;
+}
+
+#main .l_main .tab  ul li{
+    margin:0 25px;
+    padding:15px;
+	text-align:right;
+}
+.arrow_bg{
+    width: 0;
+    height: 0;
+    border: 4px solid #fd9c20;
+    display: inline-block;
+    margin-right:30px;
+    margin-bottom:4px;
+    vertical-align: middle;
+}
+#main .l_main .tab  ul li a{
+    color: #666666;
+    padding-left:5px;
+    height: 21px;
+    line-height:21px;
+    display: inline-block;
+
+}
+#main .l_main .tab  ul .select {
+	background-color:#fd9c20;
+}
+#main .l_main .tab  ul .select a{
+	color:#ffffff;
+}
+#main .l_main .tab  ul .select .arrow_bg{
+    width: 0;
+    height: 0;
+    border: 4px solid #ffffff;
+    display: inline-block;
+    margin-right:30px;
+    margin-bottom:4px;
+    vertical-align: middle;
+}
+.r_main{
+    margin-bottom:30px;
+    position: relative;
+}
+.r_main .menu{
+    width:80%;
+    margin:0 auto;
+}
+.r_main .menu .tab  a{
+	color:#000000;
+    padding:5px 15px;
+    font-size:14px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.r_main .menu .type{
+    margin-bottom: 5px;
+}
+.r_main .menu .type p{
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+}
+.r_main .menu .tab{
+    width:619px;
+    display: inline-block;
+}
+.r_main .menu .tab2{
+    display: none;
+    overflow: hidden;
+}
+.r_main .menu .tab .select{
+	background-color:#fd9c20;
+	border-radius:4px;
+    color:#FFFFFF;
+    padding:5px 15px;
+}
+
+
+.content_detail{
+    margin-top: 50px;
+}
+.prudent_title span{
+    display: inline-block;
+    height:25px;
+    width:7px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-color:#fd9c20 ;
+
+}
+.prudent_title h1{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: normal;
+}
+.introduction{
+    overflow: hidden;
+}
+.introduction .introduction_title{
+    margin-top:20px;
+}
+.introduction .introduction_title,
+.introduction .hasBtn{
+    float: left;
+    padding-bottom: 15px;
+}
+.introduction .introduction_title p{
+    display: inline-block;
+    vertical-align: middle;
+}
+.introduction .introduction_title .dashed{
+    border:1px dashed #DCDCDC;
+    width:600px;
+    display: inline-block;
+    vertical-align: middle;
+    margin:0 18px 0 15px;
+
+}
+.introduction .hasBtn .applyBtn{
+    display: inline-block;
+    background-color: #FD9C20;
+    color: #ffffff;
+    font-size: 14px;
+    width:100px;
+    text-align: center;
+    padding:    10px 0;
+    border-radius: 8px;
+}
+.introduction .hasBtn .applyBtn p{
+    display: inline-block;
+}
+.introduction .hasBtn .dashed{
+    width:500px;
+}
+
+.introduction .text{
+    clear: both;
+
+}
+.introduction .text p{
+    padding-bottom:15px;
+    text-indent:2em;
+    line-height:20px;
+    font-size:14px;
+}
+
+.introduction .text h6{
+    font-size: 14px;
+    padding: 15px 0;
+    text-indent: 2em;
+}
+
+

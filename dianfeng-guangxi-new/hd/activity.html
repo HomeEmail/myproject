@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="page-view-size" content="1280*720"/>
+<title> </title>
+<style>
+.smooth { -webkit-transition-duration:300ms,300ms,300ms,300ms;-webkit-transition-property: width,height,top,left; }
+</style>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+document.onsystemevent = grabEvent;
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			
+			return 0;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			return 0;
+			break;
+		case "KEY_NUMBER1":
+			//audio_control.player.next();
+			return 0;
+			break;			
+		case "KEY_SELECT": //	
+			control.doSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			//window.location.href = "../index.html";
+			return false;
+			break;
+		default:
+			//
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	control.init();
+}
+
+var control = {
+	focusArea : 0,
+	init : function(){
+		this.contentList.init();
+	},
+	contentList : {
+		x : 0,
+		y : 0,
+		dataPos : 0,
+		dataList : [
+			{
+				"focusArea" : [
+					{top:30,left:34,width:538,height:295},
+					{top:30,left:588,width:392,height:220}
+				]
+			},
+			{
+				"focusArea" : [
+					{top:338,left:34,width:264,height:150},
+					{top:338,left:308,width:264,height:150},
+					{top:265,left:588,width:392,height:220}
+				]
+			}
+		],
+		init : function(){
+			this.focusOn();
+		},
+		changeX : function(_num){
+			if(_num > 0 && this.x == 2 || _num < 0 && this.x == 0)return;
+			this.x += _num;
+			this.focusOn();
+		},
+		changeY : function(_num){
+			if(_num > 0 && this.y == 1 || _num < 0 && this.y == 0)return;
+			this.y += _num;
+			if(this.y == 0 && this.x == 1)this.x=0;
+			if(this.y == 0 && this.x == 2)this.x=1;
+			if(this.y == 1 && this.x == 1)this.x=2;
+			this.focusOn();
+		},
+		focusOn : function(){
+			this.dataPos = this.x + this.y*2;
+			var focusObj = $("content_focus");
+			focusObj.style.top = this.dataList[this.y].focusArea[this.x].top +"px";
+			focusObj.style.left = this.dataList[this.y].focusArea[this.x].left +"px";
+			focusObj.style.width = this.dataList[this.y].focusArea[this.x].width +"px";
+			focusObj.style.height = this.dataList[this.y].focusArea[this.x].height +"px";
+		}
+	},
+	doSelect : function(){
+		if(this.focusArea == 0){
+			this.menuObj.doSelect();
+		}else if(this.focusArea == 1){
+			window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
+		}
+	},
+	clickTop : function(){
+		this.contentList.changeY(-1);
+	},
+	clickDown : function(){
+		this.contentList.changeY(1);
+	},
+	clickLeft : function(){
+		this.contentList.changeX(-1);
+	},
+	clickRight : function(){
+		this.contentList.changeX(1);
+	}
+}
+
+var json = "";
+function ajaxGetData(_currpage,_type){
+	if(req != null){
+		req = null;
+	}
+	showLoadingDiv();
+	req = ajax({
+		url: serverUrl +'listajax?page='+ _currpage +'&size=18&type='+ _type,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			json = eval("(" + html + ")");
+			//if(json.bool){
+			control.subList.init(json.result);
+			//}
+		},
+		onComplete : function(){
+			req = null;
+			if(!dataFlag)ajaxPutData();
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+
+var dataFlag = false;
+function ajaxPutData(){
+	if(req != null){
+		req = null;
+	}
+	req = ajax({
+		url: hostUrl +':81/shanghai/analysis?os=3',
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			dataFlag = true;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			//
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+</script>
+</head>
+
+<body>
+<div id="bg" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/activity/bg.jpg); overflow:hidden;">
+
+<div style="position:absolute; top:0px; left:0px; width:1280px; height:100px;">
+	<!--<img id="logo" src="images/activity/logo.png" width="300" height="33" style="position:absolute; top:35px; left:65px;" />-->
+</div>
+<div style="position:absolute; top:139px; left:20px; width:1030px; height:510px;">
+	<div style="position:absolute; top:30px; left:35px; width:535px; height:295px;">
+		<img id="listImg_0" src="images/activity/list_1.png" width="535" height="295" />
+	</div>
+	<div style="position:absolute; top:30px; left:590px; width:388px; height:218px;">
+		<img id="listImg_1" src="images/activity/list_2.png" width="388" height="218" />
+	</div>
+	<div style="position:absolute; top:340px; left:35px; width:260px; height:145px;">
+		<img id="listImg_2" src="images/activity/list_3.png" width="260" height="145" />
+	</div>
+	<div style="position:absolute; top:340px; left:310px; width:260px; height:145px;">
+		<img id="listImg_3" src="images/activity/list_4.png" width="260" height="145" />
+	</div>
+	<div style="position:absolute; top:267px; left:590px; width:388px; height:218px;">
+		<img id="listImg_4" src="images/activity/list_5.png" width="388" height="218" />
+	</div>
+	<div id="content_focus" style="position:absolute; top:30px; left:34px; width:538px; height:295px;">
+		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="16" height="16" style="background:url(images/activity/focus_lt.png); background-repeat:no-repeat;"></td>
+				<td style="background:url(images/activity/focus_t.png);background-repeat:repeat-x;"></td>
+				<td width="16" style="background:url(images/activity/focus_rt.png);background-repeat:no-repeat;"></td>
+			</tr>
+			<tr>
+				<td style="background:url(images/activity/focus_l.png);background-repeat:repeat-y;"></td>
+				<td>&nbsp;</td>
+				<td style="background:url(images/activity/focus_r.png);background-repeat:repeat-y;"></td>
+			</tr>
+			<tr>
+				<td width="16" height="16" style="background:url(images/activity/focus_lb.png);background-repeat:no-repeat;"></td>
+				<td style="background:url(images/activity/focus_b.png);background-repeat:repeat-x;"></td>
+				<td style="background:url(images/activity/focus_rb.png);background-repeat:no-repeat;"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="page" style="position:absolute; top:622px; left:1130px; width:50px; height:55px; font-size:24px; color:#FFFFFF; font-weight:bold;"></div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
+	<img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />
+</div>
+
+</div>
+</body>
+</html>

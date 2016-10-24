@@ -1,0 +1,112 @@
+.banner{
+    margin-top:5px;
+    position: relative;
+    height:500px;
+}
+.banner ul li{
+    list-style:none;
+    float:left;
+}
+
+.bannerImg{
+    width:100%;
+    position: relative;
+    overflow:hidden;
+    height:500px;
+}
+.bannerImg .bg{
+    width: 100%;
+    left:50%;
+    height: 500px;
+    position: absolute;
+    margin-left: -960px;
+    display: block;
+}
+.bannerImg img{
+    height:500px;
+    position: relative;
+}
+.apply{
+    position: fixed;
+    right: 0;
+    top: 138px;
+}
+.apply img{
+    display:inline-block;
+    height:371px;
+}
+.dots{
+    z-index:999;
+    position: absolute;
+    top:460px;
+    left:50%;
+    list-style: none;
+}
+.dots li{
+    color: red;
+    float: left;
+    z-index: 999;
+    height:30px;
+    width:30px;
+    margin:0 15px;
+    background: url("../img/dot.png") no-repeat;
+}
+.dots .active{
+    color: #FFFFFF;
+    background: url("../img/dot_white.png") no-repeat;
+
+}
+.banner .info{
+    position: absolute;
+    top:0;
+    left:15%;
+    width:340px;
+    height:500px;
+    z-index: 999;
+}
+.banner .info .infotitle{
+    background-color: rgba(255,255,255,0.5);
+    padding:10px 0;
+    margin-bottom:5px;
+    overflow: hidden;
+    height:4%;
+}
+.banner .info .infotitle h1{
+    float: left;
+    font-size: 22px;
+    margin-left:10px;
+
+}
+.banner .info .infotitle a{
+    float: right;
+    color: #EF8336;
+    font-size: 16px;
+}
+.banner .info .infocontent{
+    background-color: rgba(255,255,255,0.5);
+    padding:24px 0 38px 0;
+    height:86%;
+}
+.banner .info .infocontent h1{
+    color: #333333;
+    font-size: 18px;
+}
+
+.banner .info .infocontent a{
+    margin-left:10px;
+    font-size: 16px;
+    padding:5px 0 8px 0;
+    color: #666666;
+    display: block;
+    width: 95%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.banner .info .part{
+    margin-bottom:15px;
+}
+.banner .info .part:hover{
+    background-color:rgba(0,0,0,0.3);
+}
