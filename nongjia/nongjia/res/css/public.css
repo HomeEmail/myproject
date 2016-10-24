@@ -1,0 +1,16 @@
+.main_title {
+    min-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: url(../images/main_title.png) center no-repeat;
+}
+.main_title p{
+	text-align:center;
+    line-height: 50px;
+    font-size: 30px;
+    color: #333333;
+}
+.content{
+	width: 1200px;
+    margin: 0 auto;
+}

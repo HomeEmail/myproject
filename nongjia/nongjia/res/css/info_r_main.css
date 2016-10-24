@@ -1,0 +1,68 @@
+.title_box{
+    padding:15px 0;;
+}
+#main .box{
+    margin-bottom:10px;
+    min-height: 270px;
+    overflow:hidden;
+    border:1px solid #DCDCDC;
+    padding-left: 20px;
+}
+#main .box a{
+    color:#666666;
+    max-width:250px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#main .box ul li{
+    border-bottom:1px solid #EFEFEF;
+    list-style: none;
+    padding: 10px 0;
+    margin-right:20px;
+}
+.info_read{
+    width:260px;
+    height:30px;
+    line-height: 30px;
+    -ms-filter: alpha(Opacity=50);
+    filter: alpha(Opacity=50);
+    background: #000000;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom:0;
+}
+.info_read a{
+    color: #ffffff !important;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+}
+.box .content a{
+    width:80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left:5px ;
+    display: inline-block;
+}
+.r_main .content a{
+    width:80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left:5px ;
+    display: inline-block;
+}
+.r_main .rank span{
+    margin-right: 5px;
+    display: inline-block;
+}
+.r_main .rank .ranking{
+    padding: 3px 7px;
+    color:#BABABA;
+    background-color: #F1F1F1;
+    font-size: 14px;
+    vertical-align: text-bottom;
+}

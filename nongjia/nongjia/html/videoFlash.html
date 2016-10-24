@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>flash视频播放</title>
+<style>
+.on{
+ event:expression(onmouseover = function(){video.control.over()}); 
+}
+
+</style>
+<script type="text/javascript">
+var video = {
+	control : {
+		status : "play",
+		over : function(){
+			document.getElementById("control").style.visibility = "visible";
+		},
+		out : function(){
+			document.getElementById("control").style.visibility = "hidden";
+		},
+		changeStatus : function(){
+			if(this.status == "play"){
+				this.status = "pause";
+				this.pause();
+			}else{
+				this.status = "play";
+				this.play();
+			}
+		},
+		play : function(){
+			this.status = "play";
+			document.getElementById("video").Play();
+			document.getElementById("name").innerText = "暂停";
+		},
+		stop : function(){
+			this.status = "stop";
+			document.getElementById("video").GotoFrame(0);
+			document.getElementById("name").innerText = "播放";
+		},
+		pause : function(){
+			this.status = "pause";
+			document.getElementById("video").StopPlay();
+			document.getElementById("name").innerText = "播放";
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div class="on" onmouseover='video.control.over()' onmouseout='video.control.out()' style="width:800px; margin:0 auto;">
+	<embed id="video" src="../res/video/nongjia.swf" width="800" height="600"  controls="stopbutton" play="true" loop="false" quality="high"></embed>
+	<div id="control" style="position:relative; bottom:100px; margin:0 auto; width:800px; height:100px; background:#999999; visibility:hidden;">
+		<div id="name" onclick='video.control.changeStatus()' style="border:#FF0000 1px solid; border-radius:25px; width:50px; height:50px; text-align:center; margin-top:30px; line-height:50px; float:left; margin-right:30px;">暂停</div>
+		<div onclick='video.control.stop()' style="border:#FF0000 1px solid; border-radius:25px; width:50px; height:50px; text-align:center; margin-top:30px; line-height:50px; float:left;">停止</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>头部尾部样式范例</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="../res/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/head.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/banner.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/info_list.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/title_box.css"/>
+
+<!--[if IE 6]>
+<script type="text/javascript" src="../res/js/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix(".ie6png");
+</script>
+<![endif]-->
+
+</head>
+
+<body>
+<!-- header begin -->
+<div id="topNav">
+	<input type="hidden" value="2" id="sessionAreaId">
+    <div id="TN_content">
+        <ul>
+        	<li><img style="vertical-align: middle" src="../res/images/yunxingzhong.png"/></li>
+            <li id="sn_city">广州市<a href="javascript:void(0)">[切换地区]</a></li>
+        </ul>
+        <ul class="right_list">
+            <li><a href="#" target="_blank">管理系统</a></li>            
+            <li><a href="#">登录</a></li>
+            <li><a href="#">我的农加</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <div class="choose_city_menu">
+	        <div class="provide menu">
+	            <h2>省份</h2>
+	            <ul>
+	                <li><a data-city="1" href="http://www.nongj.com/nonjia/index.action?areaId=1">广东省</a></li>
+	            </ul>
+	        </div>
+	        <div class="cities menu ">
+	            <h2>市级</h2>
+	        </div>
+	        <div class="county menu">
+	            <h2>县级</h2>
+	        </div>
+		</div>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- nav begin -->
+<div id="navBar">
+	<div id="NB_content">
+		<a href='#'><img src="../res/images/logo1.png" alt="农加网"></a>
+		<ul>
+			<li><a href="#" class="checked">首页</a></li>
+			<li><a href="#">资讯</a></li>
+			<li><a href="#">产权流转</a></li>
+			<li><a href="#">金融服务</a></li>
+			<li><a href="#">涉农就业</a></li>
+			<li><a href="#">开发平台</a></li>
+		</ul>
+	</div>
+</div>
+<!-- nav end -->
+
+<!-- banner begin -->
+<div class="bannerImg">
+	<img id="bannerImg" src="../res/images/landBanner.png" alt="金融服务">
+	<div class="apply">
+		<a href="#"><img id="fixImg" src="../res/images/jinrong_button.png" alt=""></a>
+	</div>
+</div>
+<!-- banner end -->
+
+<!-- info_list begin -->
+<div class="info_list">
+	<div>
+		<img src="../res/images/jinrong_info1.png" alt="info">
+		<p>一号文件专家解读：深化农村集体产权制度改革</p>
+	</div>
+	<div>
+		<img src="../res/images/jinrong_info2.png" alt="info">
+		<p>破解农村金融难题不能单纯依靠市场</p>
+	</div>
+	<div>
+		<img src="../res/images/jinrong_info3.png" alt="info">
+		<p>农村都有哪些土地产权可以抵押？</p>
+	</div>
+	<div>
+		<img src="../res/images/jinrong_info4.png" alt="info">
+		<p>央行稳步推进农村两权抵押贷款试点盘活农村存量资产</p>
+	</div>
+	<div class="last">
+		<img src="../res/images/jinrong_info5.png" alt="info">
+		<p>《关于开展农村两权抵押贷款试点的指导意见》解读</p>
+	</div>
+</div>
+<!-- info_list end -->
+
+<!-- title_box begin -->
+<div class="title_box">
+	<span class="line"></span>
+	<h1>集体产权流转</h1>
+	<span class="menu">
+		<lable class="check"><a href="#">全部</a></lable>
+		<lable><a href="#">流转</a></lable>
+		<lable><a href="#">处置</a></lable>
+	</span>
+	<a href="#" class="more">查看更多&gt;&nbsp;</a>
+</div>
+
+<!-- title_box end -->
+
+<!-- plateGround begin -->
+
+<!-- plateGround end -->
+
+<!-- content begin -->
+<div class="content test">
+    
+</div>
+<!-- content end -->
+
+<!-- footer begin -->
+<div id="loginFooter">
+    <div id="footerText">
+    	<div class="link">
+			<h6>友情链接</h6>
+			<a href="#">广东农业信息网</a>
+			<a href="#">广东乡村网</a>
+			<a href="#">合算网</a>
+			<a href="#">食安达</a>
+			<a href="#">农业银行</a>
+		</div>
+        <a href="#">关于我们</a>
+        <a href="#">帮助中心</a>
+        <a href="#">管理系统</a>
+        <a href="#">用户协议</a>
+        <a class='last_noR' href="#">联系电话：400-020-8886600</a>
+    </div>
+    <p id="copyRight">Copyright ©广州神农信息技术服务有限公司主办|粤ICP备12071480-4号</p>
+</div>
+<!-- footer end -->
+
+<!-- 公共的 js -->
+<script type="text/javascript" src="../res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../res/js/common.js"></script>
+<script type="text/javascript">
+(function(){
+	document.getElementById("fixImg").style.height = document.getElementById("bannerImg").height +"px"; //banner fixed
+})();
+</script>
+
+</body>
+</html>
