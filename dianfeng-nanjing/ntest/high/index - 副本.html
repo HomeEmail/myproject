@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<style>
+		body {
+			background-color: #040f2b;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width: 1280px;
+			height: 720px;
+			color: white;
+			font-size: 12px;
+		}
+		
+		.container {
+			width: 1280px;
+			height: 720px;
+			background-image: url(img/h2.jpg);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		
+		.list {
+			width: 215px;
+			height: 400px;
+			position: absolute;
+			top: 170px;
+			left: 88px;
+		}
+		
+		.main {
+			width: 720px;
+			height: 440px;
+			position: absolute;
+			top: 175px;
+			left: 400px;
+			overflow: hidden;
+		}
+		
+		.page {
+			width: 100px;
+			height: 46px;
+			position: absolute;
+			top: 665px;
+			left: 550px;
+		}
+		
+		.pinfo {
+			text-align: right;
+			width: 250px;
+			height: 18px;
+			position: absolute;
+			top: 660px;
+			left: 950px;
+			font-size: 18px;
+			line-height: 18px;
+			background-image: url(img/icona.png);
+			background-repeat: no-repeat;
+		}
+	
+		
+		.list td{ }
+		.list img {
+			margin-top: 6px;
+		}
+		
+		.main a {
+			border: none;
+			display: block;
+			text-decoration: none;
+		}
+		
+		.main a:visited,
+		.main a:link {
+			color: white;
+			text-decoration: none;
+			border: none;
+			
+		}
+		
+		.main a:hover {
+			background-color: gray;
+			border: none;
+			text-decoration: none;
+		}
+		
+		.main .m {
+			display: block;
+			float: left;
+			width: 116px;
+			height: 140px;
+			margin: 2px;
+			text-align: center;
+		}
+		
+		.main img {
+			margin-top: 4px;
+			width: 80px;
+			height: 80px;
+			
+		}
+		
+		.main .t {
+			margin-top: 5px;
+			　word-break:break-all; /*支持IE，chrome，FF不支持*/
+text-align: center;
+　　word-wrap:break-word;/*支持IE，chrome，FF*/
+			
+			white-space:normal;
+			width: 80px;
+			font-size: 14px;
+			line-height: 18px;
+			height: 48px;
+			margin-left: 18px;
+			
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<div class="list">	
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td tabindex="1"><a id="all1"  href="#"><img id="all"  src="img/b1.png" width="210" height="63" /></a></td></tr>
+						<tr><td>	<a id="web1"  href="#"><img id="web"  src="img/b4.png" width="210" height="63" /></a></td></tr>
+						<tr><td><a id="sin1"  href="#"><img id="sin"  src="img/b6.png" width="210" height="63" /></a></td></tr>
+
+					</tr>
+
+				</table>
+				
+				
+				
+			
+				
+			</div>
+			<div class="main">
+			</div>
+			<div class="page">
+				<img src="img/5.png" width="42" height="24" />
+				<img src="img/4.png" width="42" height="24" />
+			</div>
+			<div class="pinfo">1/17</div>
+
+		</div>
+		<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+	var datas=[
+ {"name":"暴风城之怒","img":"img/BFCZN.png","url":"BFCZN.html","type":"1"},
+ {"name":"太极熊猫2","img":"img/TJXM2.png","url":"TJXM2.html","type":"1"},
+ {"name":"我欲封天","img":"img/WYFT.png","url":"WYFT.html","type":"1"},
+ {"name":"跟着贝尔去冒险","img":"img/GZBRQLV.png","url":"GZBRQLV.html","type":"2"},
+ {"name":"密室逃脱8","img":"img/MSTT8.png","url":"MSTT8.html","type":"2"},
+ {"name":"皮卡丘PK数码兽","img":"img/PKQPKSMS.png","url":"PKQPKSMS.html","type":"1"},
+ {"name":"呆萌小怪物","img":"img/DMXGW.png","url":"DMXGW.html","type":"2"},
+ {"name":"疯狂坦克大战","img":"img/FKTKDZ.png","url":"FKTKDZ.html","type":"2"},
+ {"name":"植物大战僵尸全明星","img":"img/ZWDZJSQMX.png","url":"ZWDZJSQMX.html","type":"2"},
+ {"name":"一骑当千-千军斩","img":"img/YQDQQQZ.png","url":"YQDQQQZ.html","type":"1"},
+ {"name":"幻想军团","img":"img/HXJT.png","url":"HXJT.html","type":"1"},
+ {"name":"涂鸦上帝-闪电","img":"img/TYSDSD.png","url":"TYSDSD.html","type":"2"},
+ {"name":"功夫全明星","img":"img/GFQMX.png","url":"GFQMX.html","type":"2"},
+ {"name":"英雄冲冲冲","img":"img/YXCCC.png","url":"YQDQQQZ.html","type":"2"},
+ {"name":"猪猪侠之五灵守卫者","img":"img/ZZXZWLSWZ.png","url":"ZZXZWLSWZ.html","type":"2"},
+ {"name":"希望之光","img":"img/XWZG.png","url":"XWZG.html","type":"1"},
+ {"name":"奥特曼系列OL","img":"img/OTMXIOL.png","url":"OTMXIOL.html","type":"1"},
+ {"name":"蛋糕消消乐","img":"img/DGXXL.png","url":"DGXXL.html","type":"2"}
+ ];
+
+
+
+setlist("0");
+
+
+
+function setlist(types){
+
+var d=new Array();
+
+for (var i = 0; i < datas.length; i++) {
+
+	if(types=="0" || datas[i].type==types){
+		d.push(datas[i]); 
+	}
+	 
+	
+}var html = "";
+	var count=d.length>18?18:d.length;
+		for (var i = 0; i < count; i++) {
+
+			
+			html += '<a href="'+d[i].url+'" class="m">';
+			html += '<img src="'+d[i].img+'">';
+			html += '<div class="t">';
+			html += d[i].name;
+			html += '</div>';
+			html += '</a>';
+
+			
+
+		}
+		$(".main").html(html);
+}
+
+
+
+
+$("#all1").focusin(function(){
+	
+		$("#all").attr("src","img/b1.png");
+		$("#web").attr("src","img/b4.png");
+		$("#sin").attr("src","img/b6.png");
+	
+	setlist("0");
+	
+	
+});
+
+
+
+
+$("#web1").focusin(function(){
+	
+	$("#all").attr("src","img/b2.png");
+	$("#web").attr("src","img/b3.png");
+	$("#sin").attr("src","img/b6.png");
+	setlist("1");
+});
+$("#sin1").focusin(function(){
+	
+	$("#all").attr("src","img/b2.png");
+	$("#web").attr("src","img/b4.png");
+	$("#sin").attr("src","img/b5.png");
+	setlist("2");
+});
+
+
+	
+	
+</script>
+	</body>
+
+</html>
