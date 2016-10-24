@@ -48,7 +48,7 @@
 	<img src="./images/yudi1.png" width="450" height="450" style="visibility:hidden;position:absolute;left:0px;top:0px;" />
 
 	<img src="./images/yudi2.png" width="450" height="450" style="visibility:hidden;position:absolute;left:0px;top:0px;" />
-	<audio src="song.mp3" autoplay loop id="audio" style="visibility:hidden;"></audio>
+	<audio src="yiy.mp3" id="audio" style="visibility:hidden;"></audio>
 	<!-- 玩游戏界面 -->
 	<div id="playing" style="display:block;">
 		<div class="playing-top"></div>
@@ -87,6 +87,8 @@
 /**实现与pc端同样的el:active效果只需要额外添加下面一行代码即可**/
 document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }); 
 
+	var $audio=document.getElementById('audio');
+	var isPlayMp3=false;
 	function pageLoad(){
 		setTimeout(function(){
 			gotoPlay();
@@ -144,7 +146,7 @@ document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }
 		  }
 		});
 	}
-	
+	var curH=0;
 	var luckId=0;//中了什么奖，0分享奖，1幸运奖
 	var totalTime=15;
 	var calTimerId=null;
@@ -152,9 +154,7 @@ document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }
 		init();
 		//$('#calTime').show();
 		//$('#calTime').html('剩余'+totalTime+'秒');
-		$('.shui-move-main').animate({
-			height:'260px'
-		},18*1000);
+
 		runGame();
 		calTimerId=setInterval(function(){
 			if(totalTime<=0){
@@ -168,7 +168,11 @@ document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }
 					var title='恭喜，您获得'+6+'盒护舒宝';
 					//var s='恭喜您<br/>获得<br/>'+lemonNum+'个柠檬<br/>通关成功！';
 					$playing.css('background-image','url(./images/result-bg.jpg)');
-					document.title=title;//分享文案 
+					document.title=title;//分享文案
+					$('.shui-move-main').animate({
+						height:'260px'
+					},300);
+					curH=260;
 					//luckId=1;
 					//getCode();//水满后加载ajax获得兑奖码,实际请根据情况删除注释
 					showResult();//用于测试,实际请根据情况添加注释
@@ -247,7 +251,7 @@ document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }
 	//摇一摇 控制代码
 	var SHAKE_THRESHOLD = 500;//越小越敏感，5个等级
 	var SHAKE_THRESHOLD2 = 6000;
-	var SHAKE_THRESHOLD3 = 12000;
+	var SHAKE_THRESHOLD3 = 8000;
 	var SHAKE_THRESHOLD4 = 10000;
 	var SHAKE_THRESHOLD5 = 12000;
     var last_update = 0;
@@ -279,25 +283,38 @@ document.body.addEventListener('touchstart', function (e) {e.preventDefault(); }
             if (speed > SHAKE_THRESHOLD) {
                 //alert("摇动了");
                 runGame();//运行游戏
-                setTimeout(function(){runGame();},0);
+                //setTimeout(function(){runGame();},0);
                 if(!!!isVibrate&&!!!timeover){
+					$audio.play();
 		            navigator.vibrate(500);//震动
 		            isVibrate=true;
 		            setTimeout(function(){
 		            	isVibrate=false;
 		            },1500);
 		        }
+
+				if(curH<=260){
+					curH+=3;
+					$('.shui-move-main').animate({
+						height:curH+'px'
+					},300);
+				}
             }
             if (speed > SHAKE_THRESHOLD2) {
                 //alert("摇动了");
                 runGame();//运行游戏
-                setTimeout(function(){runGame();},0);
+
+				//setTimeout(function(){runGame();},0);
             }
             if (speed > SHAKE_THRESHOLD3) {
                 //alert("摇动了");
                 runGame();//运行游戏
-
-	            
+				if(curH<=260){
+					curH+=2;
+					$('.shui-move-main').animate({
+						height:curH+'px'
+					},300);
+				}
             }
             if (speed > SHAKE_THRESHOLD4) {
                 //alert("摇动了");
