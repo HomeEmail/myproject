@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="page-view-size" content="640*530"/>
+<title> </title>
+<style>
+.smooth { -webkit-transition-duration:300ms,300ms,300ms,300ms;-webkit-transition-property: width,height,top,left; }
+.menu{
+	 font-size:26px;
+	 font-weight:bold;
+	 color:#ffffff;
+	 text-align:center;
+	 line-height:45px;
+}
+
+.list{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+}
+</style>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+document.onsystemevent = grabEvent;
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			
+			return 0;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			return 0;
+			break;
+		case "KEY_NUMBER1":
+			//audio_control.player.next();
+			return 0;
+			break;			
+		case "KEY_SELECT": //	
+			control.doSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			//window.location.href = "../index.html";
+			return false;
+			break;
+		default:
+			//
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+	//control.init();
+}
+
+var control = {
+	focusArea : 0,
+	init : function(_arr){
+		this.menuObj.init();
+	},
+	menuObj : {
+		menuPos : 0,
+		type : "", //列表数据参数["",0,1]==[全部,手机单机,手机网游]
+		selectPos : 0,
+		menuList :[110,230,350,470],
+		init : function(){
+			this.menuPos = 0;
+			this.focus();
+			//ajaxGetData(1,this.type);
+		},
+		focus : function(){
+			$("menu_"+ this.selectPos).style.color = "#FFCC00";
+			$("m_focus_0").style.opacity = 1;
+		},
+		blur : function(){
+			//$("menu_"+ this.selectPos).style.color = "#ffffff";
+			$("m_focus_0").style.opacity = 0;
+		},
+		changeFocus : function(_num){
+			if(this.menuPos == 0 && _num < 0)return;
+			if(this.menuPos == (this.menuList.length - 1) && _num > 0)return;
+			this.menuPos += _num;
+			$("menu_focus").style.top = this.menuList[this.menuPos] +"px";
+			this.doSelect();
+		},
+		doSelect : function(){
+			if(this.selectPos != this.menuPos){
+				$("menu_"+ this.selectPos).style.color = "#ffffff";
+				this.selectPos = this.menuPos;
+				$("menu_"+ this.selectPos).style.color = "#FFCC00"; 
+				if(this.selectPos == 0){
+					this.type = "";
+				}else if(this.selectPos == 1){
+					this.type = 0;
+				}else if(this.selectPos == 2){
+					this.type = 1;
+				}
+				var that = control;
+				that.subList.currPage = 1;
+				ajaxGetData(1,this.type);
+			}
+		}
+	},
+	content_0 : {
+		area : 0,
+		focusStatus : {},
+		areaStatus : [
+			{
+				x : 0,
+				y : 0,
+				"focus":[
+					{"top":-16,"left":-12,"width":545,"height":352},
+					{"top":310,"left":-12,"width":286,"height":190},
+					{"top":310,"left":248,"width":286,"height":190}
+				],
+				changeX : function(_num){
+					var that = control.content_0;
+					if(_num > 0){
+						if(this.y == 0 || this.x == 1){
+							that.area = 1;
+							that.areaStatus[that.area].y = this.y > 0 ? 2 : 0;
+						}else{
+							this.x = 1;
+						}
+					}else{
+						if(this.y == 0 || this.x == 0){
+							that.blur();
+							control.focusArea = 0;
+							control.menuObj.focus();
+							return;
+						}else{
+							this.x = 0;
+						}
+					}
+					that.areaStatus[that.area].returnFocusStatus();
+				},
+				changeY : function(_num){
+					var that = control.content_0;
+					if(this.y == 1 && _num > 0 || this.y == 0 && _num < 0 )return;
+					this.x = 0;
+					this.y += _num;
+					that.areaStatus[that.area].returnFocusStatus();
+				},
+				returnFocusStatus : function(){
+					control.content_0.focusStatus = this.focus[this.y*1+this.x];
+				}
+			},
+			{
+				y : 0,
+				"focus":[
+					{"top":2,"left":532,"width":270,"height":182},
+					{"top":152,"left":532,"width":270,"height":182},
+					{"top":302,"left":532,"width":270,"height":182}
+				],
+				changeX : function(_num){
+					var that = control.content_0;
+					if(_num > 0){
+						that.area = 2;
+					}else{
+						that.area = 0;
+						that.areaStatus[that.area].x = this.y < 2 ? 0 : 1;
+						that.areaStatus[that.area].y = this.y < 2 ? 0 : 1;
+					}
+					that.areaStatus[that.area].returnFocusStatus();
+				},
+				changeY : function(_num){
+					var that = control.content_0;
+					if(this.y == 2 && _num > 0 || this.y == 0 && _num < 0 )return;
+					this.y += _num;
+					that.areaStatus[that.area].returnFocusStatus();
+				},
+				returnFocusStatus : function(){
+					control.content_0.focusStatus = this.focus[this.y];
+				}
+			},
+			{
+				x : 0,
+				y : 0,
+				"focus":[
+					{"top":-16,"left":-12,"width":545,"height":352},
+					{"top":310,"left":-12,"width":286,"height":190},
+					{"top":310,"left":248,"width":286,"height":190}
+				],
+				changeX : function(_num){
+					var that = control.content_0;
+					if(_num > 0){
+						if(this.y == 0 || this.x == 1){
+							that.area = 1;
+						}else{
+							this.x = 1;
+						}
+					}else{
+						if(this.y == 0 || this.x == 0){
+							that.area = -1;
+						}else{
+							this.x = 0;
+						}
+					}
+					that.areaStatus[that.area].returnFocusStatus();
+				},
+				changeY : function(_num){
+					var that = control.content_0;
+					if(this.y == 1 && _num > 0 || this.y == 0 && _num < 0 )return;
+					this.y += _num;
+					that.areaStatus[that.area].returnFocusStatus();
+				},
+				returnFocusStatus : function(){
+					control.content_0.focusStatus = this.focus[this.y*1+this.x];
+				}
+			}
+		],
+		init : function(){
+			this.areaStatus[this.area].returnFocusStatus();
+			this.focus();
+		},
+		focus : function(){
+			var obj = $("c_focus_0");
+			obj.style.visibility = "visible";
+			obj.style.top = this.focusStatus.top +"px";
+			obj.style.left = this.focusStatus.left +"px";
+			obj.style.width = this.focusStatus.width +"px";
+			obj.style.height = this.focusStatus.height +"px";
+		},
+		blur : function(){
+			var obj = $("c_focus_0");
+			$("c_focus_0").style.visibility = "hidden";
+		},
+		changeX : function(_num){
+			this.areaStatus[this.area].changeX(_num);
+			if(control.focusArea == 1)this.focus();
+		},
+		changeY : function(_num){
+			this.areaStatus[this.area].changeY(_num);
+			this.focus();
+		}
+	},
+	subList : {
+		x : 0,
+		y : 0,
+		xPlace : 42,
+		yPlace : 4,
+		updataX : 131,
+		updataY : 143,
+		pageDataList : [],
+		pageDataLength : 13,
+		yLength : 3,
+		currPage : 1,
+		totalPage : 1,
+		dataPos : 0,
+		rightTouchout : true,
+		init : function(_arr){
+			this.x = 0;
+			this.y = 0;
+			this.pageDataList = _arr;
+			this.pageDataLength = this.pageDataList.length > 18 ? 18 : this.pageDataList.length;
+			this.yLength = (this.pageDataLength%6 == 0) ? parseInt(this.pageDataLength/6 - 1) : parseInt(this.pageDataLength/6);
+			//this.currPage = 1; //每次切换数据保留当前页码
+			this.totalPage = json.totalpage;
+			
+			this.initPlace();
+			this.showData();
+		},
+		initPlace : function(){
+			this.dataPos = this.x + this.y*6;
+			var obj = $("content_focus");
+			obj.style.top = parseInt(this.yPlace) + parseInt(this.y*this.updataY) +"px";
+			obj.style.left = parseInt(this.xPlace) + parseInt(this.x*this.updataX) +"px";
+		},
+		focus : function(){
+			$("content_focus").style.visibility = "visible";
+		},
+		blur : function(){
+			$("content_focus").style.visibility = "hidden";
+		},
+		changeX : function(_num){
+			this.prePos = this.dataPos;
+			this.x += _num;
+			if(_num < 0){
+				if(this.x < 0){
+					this.x = 0;
+					this.touchLeft();
+					return 0;
+				}
+			}else{
+				if(this.x%6 == 0 || this.x > (this.pageDataLength - 1) - this.y*6){
+					this.x = (this.pageDataLength - 1) - this.y*6;
+					this.touchRight();
+					return 0;
+				}
+			}
+			this.initPlace();
+		},
+		changeY : function(_num){
+			this.prePos = this.dataPos;
+			this.y += _num;
+			if(this.y < 0){
+				this.y = 0;
+				this.touchTop();
+				return 0;
+			}else if(this.y > this.yLength){
+				this.y = this.yLength;
+				this.touchBottom();
+				return 0;
+			}
+			if((this.y*6 + this.x) > this.pageDataLength - 1)this.x = 0;
+			this.initPlace();
+		},
+		showData : function(){
+			this.clearData();
+			var tmp = "";
+			for(var i = 0;i < this.pageDataLength;i++){
+				var img = imgBasePath + this.pageDataList[i].img;
+				var reocod = this.pageDataList[i].name;
+				tmp += '<div style="margin-left:0px; padding-left:0px; width:130px; height:142px; float:left;">'
+					+'<img src="'+ img +'" width="98" height="98" style="margin-left:15px;" />'
+					+'<div style="margin-top:5px; margin-left:0px; color:#FFFFFF; text-align:center; font-size:15px; font-weight:bold; width:130px;">'+ reocod +'</div>'
+				+'</div>';
+			}
+			$("content").innerHTML = tmp;
+			this.showListPage();
+		},
+		clearData : function(){
+			$("content").innerHTML = "";	
+		},
+		touchLeft : function(){
+			var that = control;
+			that.focusArea = 0;
+			this.blur();
+			that.menuObj.focus();
+		},
+		touchRight : function(){
+			if(this.rightTouchout){
+				if(this.y == this.yLength){
+					if(this.currPage < this.totalPage)this.changePage(1);
+				}else{
+					this.x = 0
+					this.y += 1;
+					this.initPlace();
+				}
+			}
+		},
+		touchTop : function(){
+			if(this.currPage > 1)this.changePage(-1);
+		},
+		touchBottom : function(){
+			if(this.currPage < this.totalPage)this.changePage(1);
+		},
+		changePage : function(_num){
+			this.currPage += _num;
+			if(this.currPage < 1){
+				this.currPage = 1;
+				return 0;
+			}else if(this.currPage > this.totalPage){
+				this.currPage = this.totalPage;
+				return 0;
+			}
+			var that = control;
+			ajaxGetData(this.currPage,that.menuObj.type);
+		},
+		showListPage : function(){	
+			$("page").innerText  = this.currPage +"/"+ this.totalPage;
+			$("t_icon").style.background = "url(images/"+ (this.currPage == 1 ? "t_false" : "t_true") +".png)";
+			$("b_icon").style.background = "url(images/"+ (this.currPage == this.totalPage ? "b_false" : "b_true") +".png)";
+		}
+	},
+	doSelect : function(){
+		if(this.focusArea == 0){
+			this.menuObj.doSelect();
+		}else if(this.focusArea == 1){
+			window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
+		}
+	},
+	clickTop : function(){
+		if(this.focusArea == 0){
+			this.menuObj.changeFocus(-1);
+		}else if(this.focusArea == 1){
+			this["content_"+ this.menuObj.menuPos].changeY(-1);
+		}
+	},
+	clickDown : function(){
+		if(this.focusArea == 0){
+			this.menuObj.changeFocus(1);
+		}else if(this.focusArea == 1){
+			this["content_"+ this.menuObj.menuPos].changeY(1);
+		}
+	},
+	clickLeft : function(){
+		if(this.focusArea == 0){
+			//
+		}else if(this.focusArea == 1){
+			this["content_"+ this.menuObj.menuPos].changeX(-1);
+		}
+	},
+	clickRight : function(){
+		if(this.focusArea == 0){
+			this.focusArea = 1;
+			this.menuObj.blur();
+			this["content_"+ this.menuObj.menuPos].init();
+		}else if(this.focusArea == 1){
+			this["content_"+ this.menuObj.menuPos].changeX(1);
+		}
+	}
+}
+
+var json = "";
+function ajaxGetData(_currpage,_type){
+	if(req != null){
+		req = null;
+	}
+	showLoadingDiv();
+	req = ajax({
+		url: serverUrl +'listajax?page='+ _currpage +'&size=18&type='+ _type,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			json = eval("(" + html + ")");
+			//if(json.bool){
+			control.subList.init(json.result);
+			//}
+		},
+		onComplete : function(){
+			req = null;
+			if(!dataFlag)ajaxPutData();
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+
+var dataFlag = false;
+function ajaxPutData(){
+	if(req != null){
+		req = null;
+	}
+	req = ajax({
+		url: hostUrl +':81/shanghai/analysis?os=3',
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			dataFlag = true;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			//
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+</script>
+</head>
+
+<body>
+<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/bg.jpg); overflow:hidden;">
+
+<div style="position:absolute; top:0px; left:0px; width:1280px; height:100px;">
+	<!--<img id="logo" src="images/logo.png" width="300" height="33" style="position:absolute; top:35px; left:65px;" />-->
+</div>
+<div id="Menu" style="position:absolute; top:95px; left:0px; width:1280px; height:70px;">
+	<div id="menu_0" class="menu" style="position:absolute; top:112px; left:30px; width:120px; height:50px;">首页推荐</div>
+	<div id="menu_1" class="menu" style="position:absolute; top:232px; left:30px; width:120px; height:50px;">热门游戏</div>
+	<div id="menu_2" class="menu" style="position:absolute; top:352px; left:30px; width:120px; height:50px;">最新游戏</div>
+	<div id="menu_3" class="menu" style="position:absolute; top:472px; left:30px; width:120px; height:50px;">收藏夹</div>
+	<div id="menu_focus" style="position:absolute; top:110px; left:2px; width:187px; height:48px;">
+		<div id="m_focus_0" style="position:absolute; top:0px; left:0px; width:187px; height:44px; background:url(images/menuFocus_1.png); opacity:1;"></div>
+		<div id="m_focus_1" style="position:absolute; top:40px; left:22px; width:143px; height:5px; background:url(images/menuFocus_2.png); opacity:1;"></div>
+	</div>
+</div>
+<div id="content_0" style="position:absolute; top:158px; left:165px; width:1072px; height:505px; display:block;">
+	<div id="c_img_0" style="position:absolute; top:4px; left:8px; width:506px; height:312px; background:url(images/c_ad_0.png);"></div>
+	<div id="c_img_1" style="position:absolute; top:330px; left:8px; width:246px; height:152px; background:url(images/c_ad_1.png);"></div>
+	<div id="c_img_2" style="position:absolute; top:330px; left:268px; width:246px; height:152px; background:url(images/c_ad_1.png);"></div>
+	<div style="position:absolute; top:4px; left:534px; width:276px; height:495px; background:url(images/list_bg1.png);">
+		<div id="c_img_3" style="position:absolute; top:18px; left:18px; width:230px; height:142px; background:url(images/c_ad_2.png);"></div>
+		<div id="c_img_4" style="position:absolute; top:168px; left:18px; width:230px; height:142px; background:url(images/c_ad_2.png);"></div>
+		<div id="c_img_5" style="position:absolute; top:318px; left:18px; width:230px; height:142px; background:url(images/c_ad_2.png);"></div>
+	</div>
+	<div style="position:absolute; top:4px; left:815px; width:266px; height:495px; background:url(images/list_bg2.png);">
+		<div id="c_img_6" style="position:absolute; top:20px; left:18px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>	
+		<div id="c_img_7" style="position:absolute; top:20px; left:133px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>	
+		<div id="c_img_8" style="position:absolute; top:132px; left:18px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>	
+		<div id="c_img_9" style="position:absolute; top:132px; left:133px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>
+		<div id="c_img_10" style="position:absolute; top:244px; left:18px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>	
+		<div id="c_img_11" style="position:absolute; top:244px; left:133px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>
+		<div id="c_img_12" style="position:absolute; top:356px; left:18px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>	
+		<div id="c_img_13" style="position:absolute; top:356px; left:133px; width:104px; height:104px; background:url(images/c_ad_3.png);"></div>
+	</div>
+	<div id="c_focus_0" style="position:absolute; top:-16px; left:-12px; width:545px; height:352px; visibility:hidden;">
+		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="50" height="50" style="background:url(images/focus_1.png); background-repeat:no-repeat;"></td>
+				<td style="background:url(images/focus_2.png);background-repeat:repeat-x;"></td>
+				<td width="50" style="background:url(images/focus_3.png);background-repeat:no-repeat;"></td>
+			</tr>
+			<tr>
+				<td style="background:url(images/focus_4.png);background-repeat:repeat-y;"></td>
+				<td>&nbsp;</td>
+				<td style="background:url(images/focus_5.png);background-repeat:repeat-y;"></td>
+		
+			</tr>
+			<tr>
+				<td width="50" height="50" style="background:url(images/focus_6.png);background-repeat:no-repeat;"></td>
+				<td style="background:url(images/focus_7.png);background-repeat:repeat-x;"></td>
+				<td style="background:url(images/focus_8.png);background-repeat:no-repeat;"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="page" style="position:absolute; top:622px; left:1130px; width:50px; height:55px; font-size:24px; color:#FFFFFF; font-weight:bold;"></div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
+	<img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />
+</div>
+
+</div>
+</body>
+</html>

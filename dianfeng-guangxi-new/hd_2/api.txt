@@ -1,0 +1,7 @@
+http://127.0.0.1:81/shanghai/index/listajax?page=0&size=20
+http://127.0.0.1:81/shanghai/index/ajax?id=631
+http://127.0.0.1:81/shanghai/account/  admin admin
+
+
+ÖíÖíÏÀ°Ù±ä·É³µ
+upload/images/20160511/2.png
