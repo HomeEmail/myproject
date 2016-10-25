@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title>HiFi儿歌-专辑详情</title>
+<style>
+.smooth { -webkit-transition-duration:0ms; }
+
+.list{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+}
+.content {
+	-webkit-text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical;
+}
+marquee {
+	background: none;
+}
+</style>
+</head>
+
+<body onUnload="" style="background:url(images/bg.jpg) no-repeat; width:1280px; height:720px; overflow:hidden;">
+<div id="loadingDiv" class="smooth" style="position:absolute; top:320px; left:600px; width:70px; height:70px; z-index:10; visibility:hidden;">
+	<img src="./images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div style="position:absolute; top:50px; left:35px; width:400px; height:600px; color:#ffffff;">
+	<img id="album_face" width="320" height="320" src="images/play_face.png" style="position:absolute; top:22px; left:35px;" />
+	<img id="jiao16bit-1" style="position:absolute;top:22px; left: 278px;" src="./images/jiao16bit.png">
+	<div style="position:absolute; top:365px; left:40px; width:248px; height:58px; background:url(images/album_button.png);">
+		<img id="cangImg" src="images/ab_cang_no.png" width="20" height="21" style="position:absolute; top:18px; left:55px;"/>
+		<div id="cangTxt" style="position:absolute; top:0px; left:85px; width:130px; height:58px; line-height:58px; font-size:24px; font-weight:bold;">收藏专辑</div>
+	</div>
+	<div style="position:absolute; top:440px; left:40px; width:248px; height:58px; background:url(images/album_button.png);">
+		<img  src="images/record_info_icon.png" width="21" height="21" style="position:absolute; top:18px; left:55px;"/>
+		<div style="position:absolute; top:0px; left:85px; width:130px; height:58px; line-height:58px; font-size:24px; font-weight:bold;">专辑简介</div>
+	</div>
+	<div id="btn_focus" style="position:absolute; top:352px; left:28px; width:272px; height:82px; background:url(images/album_btn_focus.png); opacity:0;visibility:hidden;"></div>
+</div>
+
+
+<div id="album_name" style="position:absolute; top:50px; left:455px; width:580px; height:65px; color:#ffffff; font-weight:bold; line-height:65px; font-size:32px; overflow:hidden;"></div>
+<div id="singer" style="position:absolute; top:100px; left:460px;width:550px;height:35px;color:#ffffff; font-weight:bold; overflow:hidden; line-height:35px; font-size:20px;"></div>
+<div id="List" class="" style="position:absolute; top:185px; left:450px; width:590px; height:440px; overflow:hidden;background: none; z-index:3;background-color: transparent;">
+	<div id="list_0" style="position:absolute; top:0px;   left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_1" style="position:absolute; top:55px;  left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_2" style="position:absolute; top:110px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_3" style="position:absolute; top:165px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_4" style="position:absolute; top:220px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_5" style="position:absolute; top:275px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_6" style="position:absolute; top:330px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_7" style="position:absolute; top:385px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+	<div id="list_8" style="position:absolute; top:440px; left:10px; width:550px; height:45px; color:#ffffff; font-size:24px; line-height:24px;"></div>
+</div>
+
+<div style="position:absolute; top:50px; left:1050px; width:210px; height:600px; color:#ffffff;">
+	<div style="position:absolute; top:5px; left:0px; width:190px; height:45px; text-align:center; font-weight:bold; line-height:45px; font-size:22px;">您可能感兴趣</div>
+	<div style="position:absolute; top:55px; left:3px; width:200px; height:190px;">
+		<img id="tj_img_0" src="images/tm.gif" width="140" height="140" style="position:absolute; top:10px; left:25px;"/>
+		<div id="tj_name_0" style="position:absolute; top:140px;left:20px;width:150px;height:45px;line-height:45px;text-align:center; font-size:22px; font-weight:bold; overflow:hidden"></div>
+	</div>
+	<div style="position:absolute; top:235px; left:3px; width:200px; height:190px;">
+		<img id="tj_img_1" src="images/tm.gif" width="140" height="140" style="position:absolute; top:10px; left:25px;"/>
+		<div id="tj_name_1" style="position:absolute; top:140px;left:20px;width:150px;height:45px;line-height:45px;text-align:center; font-size:22px; font-weight:bold; overflow:hidden"></div>
+	</div>
+	<div style="position:absolute; top:415px; left:3px; width:200px; height:190px;">
+		<img id="tj_img_2" src="images/tm.gif" width="140" height="140" style="position:absolute; top:10px; left:25px;"/>
+		<div id="tj_name_2" style="position:absolute; top:140px;left:20px;width:150px;height:45px;line-height:45px;text-align:center; font-size:22px; font-weight:bold; overflow:hidden"></div>
+	</div>
+	<div id="tj_focus" class="smooth" style="position:absolute; top:36px; left:0px; width:197px; height:220px; background:url(images/album_focusReco.png); z-index:5; opacity:0;visibility:hidden;"></div>
+</div>
+
+<div style="position:absolute; top:655px; left:630px; width:128px; height:20px; background:url(images/tips_2.png);"></div>
+	
+<div style="position:absolute; top:653px; left:755px; width:110px; height:22px; line-height:22px; font-size:24px; color:#ffffff; font-weight:bold; text-align:center;">
+	<span id="currPage"></span>/<span id="totalPage"></span>
+</div>
+
+<div id="top" style="position:absolute; top:145px; left:709px; width:25px; height:12px; background:url(images/last_false.png);"></div>
+<div id="bottom" style="position:absolute; top:625px; left:712px; width:25px; height:12px; background:url(images/next_true.png);"></div>
+
+<div id="list_focus" class="" style="position:absolute; top:148px; left:415px; width:628px; height:97px; background:url(images/album_focusList.png); z-index:5; opacity:1;visibility:visible;"></div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="recordInfo" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:7; opacity:0;visibility:hidden;"> <!--简介弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:400px; border-top:2px #ff3631 solid;border-bottom:2px #ff3631 solid; background-color:#000000;">
+		<div style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:38px;border-bottom:1px #202020 solid;">专辑简介</div>
+		<div id="content_info" class="content" style="padding:20px 30px; padding-bottom:10px; height:270px; line-height:35px; color:#ffffff; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/listSlip1.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+document.onsystemevent = grabEvent;
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			
+			return 0;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			return 0;
+			break;
+		case "EIS_VOD_RERADY_SUCCESS": //
+			//$("debugShow").innerText += "-a-"+_event.which;
+			
+			return 0;
+			break;
+		case "EIS_VOD_PROGRAM_END"://当前流媒体已经播放结束
+			
+			return 0;
+			break;
+		case "KEY_NUMBER1":
+			//audio_control.player.next();
+			return 0;
+			break;			
+		case "KEY_SELECT": //	
+			control.clickSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			control.clickDoBack();
+			//window.location.href = "../index.html";
+			return false;
+			break;
+		default:
+			//if(_event.which > 5000 && _event.which < 6000)$("debugShow").innerText += "-d-"+_event.which;
+			break;
+	}
+}
+
+window.onload = init;
+var albumId = "";
+var backUrl = "";
+var payStatus = {
+	payState : "",
+	payDesc : ""
+};
+var icon24=false;
+function init(){
+	loadingDiv = $('loadingDiv');
+	albumId = Q.getDecoded("albumId");
+	backUrl = Q.getDecoded("backUrl") != "null" ? Q.getDecoded("backUrl") : "index.html?menuPos=0";
+
+	payStatus.payState = Q.getDecoded("payState");
+	if(payStatus.payState == "1" || payStatus.payState == 1){
+		payStatus.payDesc = "支付成功";
+	}else if(payStatus.payState == "0" || payStatus.payState == 0){
+		payStatus.payDesc = "支付失败"+ Q.getDecoded("payDesc");
+	}	
+	//alert(payStatus.payState);
+	control.init();
+
+}
+
+
+var parmObj = {
+	DivId:        "list_",           //行DIV的ID名称   
+	focusId:      "list_focus",      //焦点的ID
+	arrLength:     15, 				//数据总长度
+	listSize:      8,               //显示DIV数
+	rowHeight:     55,              //每次移动距离
+	focusStartPos: 148,              //显示的第一个焦点	X或Y轴（这里是X）坐标
+	direction:     "top",          //方向 top 纵向 left 横向
+//	cycle:         0,              //0：不循环，1：循环  默认为0
+//	pageType:      0,              //翻页形式，0：不翻页 1：翻页  默认为0
+//	duration:      "200ms",        //速度，默认为300ms
+};
+
+var focusPos = 0;
+var listPos = 0;
+var listObj = null;
+function initList(){
+	focusPos = 0;
+	listPos = 0;
+	for(var i = 0;i < 9;i++){
+		$("list_"+ i).style.top = 55*i +"px";
+	}
+	listObj = new listSlip1(parmObj);
+	listObj.startline = 2; //起始行 从0开始数，默认为0 (注意：pageType=1，不起作用)
+	listObj.endline   = 5; //其实列 从0开始数,默认为最后一行(注意：pageType=1，不起作用)
+	listObj.firstFlag = true;//按向上的时候是否能滑到 第一行条目的位置 (注意：cycle=1，不起作用)
+	listObj.lastFlag = true;//按向下的时候是否能滑到 最后一行条目的位置; (注意：cycle=1，不起作用)
+	//焦点位置默认为0，重新赋值或者焦点定位时必须在 文字输出之前
+	listObj.listPos = listPos; 
+	listObj.focusPos = focusPos;	
+	//输出文字
+	listObj.haveData = showText;
+	listObj.notData = clearText;
+	listObj.initInfo();
+	//焦点定位处理
+	listObj.focusObj.style.webkitTransitionDuration = "0ms";
+	listObj.onfocus();
+	listObj.focusObj.style.webkitTransitionDuration = listObj.duration;
+	changeListTop(0);
+	$(parmObj.focusId).style.visibility = 'visible';
+}
+
+function showText(_i,_pos){
+	$("list_"+_i).innerHTML = (_pos + 1) +"."+ json_album.data.trackList[_pos].trackName;
+}
+
+function clearText(_i){
+	$("list_"+_i).innerHTML = "";
+}
+
+function listOnfocusStyle(){
+	//$(parmObj.focusId).style.opacity = 1;
+	
+	var tempId = listObj.currId();
+	$("list_"+ tempId).innerHTML = "<marquee>"+ (listObj.listPos + 1) +"."+ json_album.data.trackList[listObj.listPos].trackName +"</marquee>";
+}
+function listOnblurStyle(){
+	//$(parmObj.focusId).style.opacity = 0;
+	
+	var tempId = listObj.currId();
+	$("list_"+ tempId).innerHTML = (listObj.listPos + 1) +"."+ json_album.data.trackList[listObj.listPos].trackName;
+}
+
+var timeout = null;
+function changeListTop(_num){
+	if((listObj.listPos == 0 && _num < 0) || (listObj.listPos == parmObj.arrLength - 1 && _num > 0) || timeout != null)return 0;
+	clearTimeout(timeout);
+	timeout = null;
+	listOnblurStyle();
+	listObj.changeFocus(_num);
+	//timeout = setTimeout(function(){
+		listOnfocusStyle();
+		timeout = null;
+	//},300);
+	showPage(parseInt(listObj.listPos + 1),parmObj.arrLength);
+}
+
+function showPage(_currPage,_totalPage){
+	$("currPage").innerHTML = _currPage;
+	$("totalPage").innerHTML = _totalPage;
+	$("top").style.background = "url(images/"+ (_currPage == 1 ? "last_false" : "last_true") +".png)";
+	$("bottom").style.background = "url(images/"+ (_currPage == _totalPage ? "next_false" : "next_true") +".png)";
+}
+
+var control = {
+	focusArea : 1,//0:主菜单,1:列表,2:推荐
+	init : function(){
+		ajaxGetAlbumData(albumId);
+	},
+	showInfo : function(){
+		$("album_name").innerText = json_album.data.albumName;
+		$("content_info").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+json_album.data.albumIntroduction;
+		$("cangImg").src = json_album.data.ifCollection == 0 ? "images/ab_cang_yes.png" : "images/ab_cang_no.png";
+		$("cangTxt").innerText = json_album.data.ifCollection == 0 ? "已收藏" : "收藏专辑";
+		$("singer").innerText = json_album.data.artistNames;
+		$("album_face").src = imgRecordPath + json_album.data.albumBigImg;
+	},
+	button : {  //收藏专辑、专辑详情
+		pos : 0,
+		flag : false,
+		changeFocus : function(_num){
+			this.pos += _num;
+			if(this.pos < 0){
+				this.pos = 0;
+			}else if(this.pos > 1){
+				this.pos = 1;
+			}
+			$("btn_focus").style.top = 352 + this.pos*75 +"px";
+		},
+		focus : function(){
+			$("btn_focus").style.opacity = 1;
+			$("btn_focus").style.visibility = 'visible';
+		},
+		blur : function(){
+			$("btn_focus").style.opacity = 0;
+			$("btn_focus").style.visibility = 'hidden';
+		},
+		doSelect : function(){
+			if(this.pos == 0){
+				if(json_album.data.ifCollection == 1){ //0已收藏1未收藏
+					ajaxCang(1,albumId,function(_code){
+						json_album.data.ifCollection = 0;
+						$("cangImg").src = json_album.data.ifCollection == 0 ? "images/ab_cang_yes.png" : "images/ab_cang_no.png";
+						$("cangTxt").innerText = json_album.data.ifCollection == 0 ? "已收藏" : "收藏专辑";
+					});
+				}else{
+					ajaxCangChanel(collectionId,function(_code){
+						json_album.data.ifCollection = 1;
+						$("cangImg").src = json_album.data.ifCollection == 0 ? "images/ab_cang_yes.png" : "images/ab_cang_no.png";
+						$("cangTxt").innerText = json_album.data.ifCollection == 0 ? "已收藏" : "收藏专辑";
+					});
+				}
+			}else if(this.pos == 1){
+				if(!this.flag){
+					this.flag = true;
+					$("recordInfo").style.opacity = 1;
+					$('recordInfo').style.visibility = 'visible';
+				}else{
+					this.flag = false;
+					$("recordInfo").style.opacity = 0;
+					$('recordInfo').style.visibility = 'hidden';
+				}
+			}
+		}
+	},
+	record : {  //专辑推荐
+		pos : 0,
+		dataList : [
+			//{"id":123,"img":"","name":""}			
+		],
+		init : function(_arr){
+			this.pos = 0;
+			control.focusArea = 1;
+			this.dataList = [];
+			for(var i=0;i<_arr.length&&i<3;i++){
+				var obj = {};
+				obj.id = _arr[i].albumId;
+				obj.img = _arr[i].albumSmallImg;
+				obj.name = _arr[i].albumName;
+				this.dataList.push(obj);
+				$("tj_img_"+ i).src = imgRecordPath + this.dataList[i].img;
+				$("tj_name_"+ i).innerText = this.dataList[i].name;
+			}
+			this.blur();
+			$("tj_focus").style.top = 36 + this.pos*180 +"px";
+		},
+		changeFocus : function(_num){
+			if( (this.pos == 0 && _num < 0) || (this.pos == this.dataList.length - 1 && _num > 0) )return 0;
+			this.blur();
+			this.pos += _num;
+			$("tj_focus").style.top = 36 + this.pos*180 +"px";
+			this.focus();
+		},
+		focus : function(){
+			$("tj_focus").style.opacity = 1;
+			$("tj_focus").style.visibility = 'visible';
+			$("tj_name_"+ this.pos).innerHTML = "<marquee>"+ this.dataList[this.pos].name +"</marquee>";
+		},
+		blur : function(){
+			$("tj_focus").style.opacity = 0;
+			$("tj_focus").style.visibility = 'hidden';
+			$("tj_name_"+ this.pos).innerHTML = this.dataList[this.pos].name;
+		},
+		doSelect : function(){
+			if(this.dataList[this.pos].id != albumId){
+				albumId = this.dataList[this.pos].id;
+				ajaxGetAlbumData(albumId);
+			}
+		}
+	},
+	clickTop : function(){
+		if(!this.button.flag){ //专辑按钮弹层
+			if(this.focusArea == 0){
+				this.button.changeFocus(-1);
+			}else if(this.focusArea == 1){
+				changeListTop(-1);
+			}else if(this.focusArea == 2){
+				this.record.changeFocus(-1);
+			}
+		}
+	},
+	clickDown : function(){
+		if(!this.button.flag){ //专辑按钮弹层
+			if(this.focusArea == 0){
+				this.button.changeFocus(1);
+			}else if(this.focusArea == 1){
+				changeListTop(1);
+			}else if(this.focusArea == 2){
+				this.record.changeFocus(1);
+			}
+		}
+	},
+	clickRight : function(){
+		if(!this.button.flag){ //专辑按钮弹层
+			if(this.focusArea == 0){
+				this.focusArea = 1;
+				this.button.blur();
+				$(parmObj.focusId).style.visibility = 'visible';
+				listOnfocusStyle();
+			}else if(this.focusArea == 1){
+				if(this.record.dataList.length > 0){
+					this.focusArea = 2;
+					$(parmObj.focusId).style.visibility = 'hidden';
+					listOnblurStyle();
+					this.record.focus();
+				}
+			}else if(this.focusArea == 2){
+				//	
+			}
+		}
+	},
+	clickLeft : function(){
+		if(!this.button.flag){ //专辑按钮弹层
+			if(this.focusArea == 1){
+				this.focusArea = 0;
+				$(parmObj.focusId).style.visibility = 'hidden';
+				listOnblurStyle();
+				this.button.focus();
+			}else if(this.focusArea == 2){
+				this.focusArea = 1;
+				this.record.blur();
+				$(parmObj.focusId).style.visibility = 'visible';
+				listOnfocusStyle();
+			}
+		}
+	},
+	clickSelect : function(){
+		if(!this.button.flag){ //专辑详情弹层
+			if(this.focusArea == 0){
+				this.button.doSelect();
+			}else if(this.focusArea == 1){
+				//window.location.href = "play.html";
+				if(keyNo != "notFound"){
+					var that = control;
+					ajaxGetSingleData(json_album.data.trackList[listObj.listPos].trackId,function(){
+						//that.play.show();
+					});
+				}else{
+					showTips.init("tips","t_title|温馨提示","t_content|没有找到用户智能卡!",0);
+					showTips.onEventHandle(grabEvent);//事件接管
+				}
+			}else if(this.focusArea == 2){
+				this.record.doSelect();
+			}
+		}else{
+			this.button.doSelect();
+		}
+	},
+	clickDoBack : function(){
+		if(!this.button.flag){ //专辑按钮弹层
+			location.href = backUrl;
+		}else{
+			this.button.doSelect();
+		}
+	}
+}
+
+var audioId = "";
+function gotoPlayPage(audioId){
+	location.href='album_video.html?albumId='+albumId+'&audioId='+audioId+'&backUrl='+Q.encode(location.href);
+}
+function showOrder(){  //展示订购信息
+	orderFlow.init();//模块初始化
+	orderFlow.onEventHandle(grabEvent);//事件接管
+	orderFlow.show();//显示模块
+	
+	orderFlow.orderSuccessCallBack=function(){
+		json_single.data.userCode = 200;
+		/*orderFlow.setSuccessTipsDivBt1('确认',function(){
+			orderFlow.close();
+			orderFlow.successTipsDivCallBack();
+		});*/
+	};//订购成功回调
+	orderFlow.orderFailureCallBack=function(){};//订购失败回调
+	orderFlow.successTipsDivCallBack=function(){ //订购成功关闭弹层回调
+		json_single.data.userCode = 200;
+		audioId = json_single.data.vodId;
+		gotoPlayPage(audioId);
+	};
+	orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+
+	orderFlow.showStep('orderTipsDiv');//显示哪一步
+
+}
+
+Number.prototype.formatTime=function(){
+    // 计算
+    var h=0,i=0,s=parseInt(this);
+    if(s>59){
+        i=parseInt(s/60);
+        s=parseInt(s%60);
+        if(i > 59) {
+            h=parseInt(i/60);
+            i = parseInt(i%60);
+        }
+    }
+    // 补零
+    var zero=function(v){
+        return (v>>0)<10?"0"+v:v;
+    };
+    return [zero(i),zero(s)].join(":");
+};
+
+String.prototype.formatSecond = function(){
+	var seconde=0,s="";
+	s=this.split(":");
+	if(s.length == 0){
+		seconde = 0;
+	}else if(s.length == 1){
+		seconde = parseInt(s[0]);	
+	}else if(s.length == 2){
+		seconde = parseInt(s[0])*60 + parseInt(s[1]);
+	}else if(s.length == 3){
+		seconde = parseInt(s[0])*3600 + parseInt(s[1])*60 + parseInt(s[2]);	
+	}
+	return seconde;
+}
+
+
+
+var json_album = "";
+function ajaxGetAlbumData(_albumId){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiData/album.action?albumId="+ _albumId +"&keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			json_album = eval("(" + html + ")");
+			if(json_album.code == 0){
+				parmObj.arrLength = json_album.data.trackList.length;
+				collectionId = json_album.data.collectionId;
+				initList();
+				control.showInfo();
+				control.record.init(json_album.data.tjList);
+			}
+			if(payStatus.payDesc != "" && payStatus.payDesc != "null"){
+				showTips.init("tips","t_title|温馨提示","t_content|"+ payStatus.payDesc,0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+var json_single;
+function ajaxGetSingleData(_singleId,_fn){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiData/single.action?singleId="+ _singleId +"&keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			json_single = eval("(" + html + ")");
+			if(json_single.code == "0"){
+				if(json_single.data.isfree == 1){
+					!!_fn&&_fn();
+					audioId = json_single.data.vodId;
+					gotoPlayPage(audioId);
+				}else{
+					if(json_single.data.userCode == 202){  //黑名单
+						showTips.init("tips","t_title|温馨提示","t_content|您的广电账户已在广电客户黑名单，请拨打 96868 详细咨询!",0);
+						showTips.onEventHandle(grabEvent);//事件接管
+						return 0;
+					}else if(json_single.data.userCode == 203){ //欠费停用
+						
+						!!_fn&&_fn();
+						showOrder();
+					}else if(json_single.data.userCode == 201){ //欠费停用
+						!!_fn&&_fn();
+						showOrder();
+					}else if(json_single.data.userCode == 200){
+						!!_fn&&_fn();
+						audioId = json_single.data.vodId;
+						gotoPlayPage(audioId);
+					}
+				}
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|您的广电账户暂时不能使用该服务，请拨打 96868 详细咨询!",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+				return 0;
+			}
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+var collectionId = "";
+var single_collectionId = "";
+function ajaxCang(_type,_collectionId,_fn){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiUser/addUserCollection.action?collectionType="+ _type +"&collectionId="+ _collectionId +"&keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			if(json.code == 0){
+				if(_type == 0){ //0单曲,1专辑
+					single_collectionId = json.collectionId;
+				}else{
+					collectionId = json.collectionId;
+				}
+			}
+			!!_fn&&_fn(json.msg);
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});
+}
+
+function ajaxCangChanel(_collectionId,_fn){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiUser/deleteUserCollection.action?collectionId="+ _collectionId +"&keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			if(json.code == 0){
+				json_album.data.ifCollection = 1;
+				collectionId = "";
+				single_collectionId = "";
+			}
+			!!_fn&&_fn(json.msg);
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});
+}
+
+</script>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>歌手专辑列表</title>
+<style>
+.smooth{
+	-webkit-transition-duration:300ms;	
+}
+.list{
+    font-size: 24px;
+    font-weight: bold;
+    color: #999999;
+    text-align: center;
+    line-height: 70px;	
+}
+
+</style>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/showList.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.changeListY(-1);
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.changeListY(1);
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.changeListX(-1);
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.changeListX(1);
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			control.changePage(-1);
+			return false;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			control.changePage(1);
+			return false;
+			break;	
+		case "KEY_SELECT": //	
+			control.doSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			location.href = pre.backUrl;
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+window.onload = init;
+var pre = {
+	artisId : "", 
+	page : 1, 
+	dataPos : 0, 
+	backUrl : "",
+	init : function(){
+		this.artisId = Q.getDecoded("artisId");
+		this.page = Q.getInt("page",1);
+		this.dataPos = Q.getInt("dataPos",0);
+		this.backUrl = Q.getDecoded("backUrl") != "null" ? Q.getDecoded("backUrl") : "index.html?menuPos=0";
+	} 
+}
+
+function init(){
+	loadingDiv = $('loadingDiv');
+	pre.init();
+	control.init();
+}
+
+function ajaxGetData(_pageNo){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}	
+	req=ajax({
+		url: serverUrl +"hifiData/albumListByArtis.action?artisId="+ pre.artisId +"&size=10&pageno="+ _pageNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			var json = eval("("+html+")");
+			if(json.code == 0){
+				$("artist_img").src = json.data.artistSmallImg != "" ? (imgRecordPath + json.data.artistSmallImg) : "images/artist_def.png";
+				$("artist_name").innerText = json.data.artistName;
+				//!!_fn&&_fn(json.data);
+				listContral.init(json.data);
+			}
+		},
+		onError:function(){ //请求失败后执行[可选]
+			//hideLoadingDiv();
+			alert("数据出错");
+		},
+        post:"",  
+        timeout:7000   
+	});	
+};
+
+//----------------------------------------------------------
+var control = {
+	focusArea : 0,
+	init : function(){
+		ajaxGetData(pre.page);
+	},
+	changeListX:function(_num){
+		listContral.changeX(_num);
+	},
+
+	changeListY:function(_num){
+		listContral.changeY(_num);
+	},
+
+	changePage:function(_num){//上一页、下一页，_num取+1、-1
+		listContral.changePage(_num);
+	},
+	goPage:function(n){
+		listCtr.goPage(n);
+	},	
+	doSelect : function(){
+		var selfUrl = "albumList_singer.html?page="+ listContral.currPage +"&artisId="+ pre.artisId +"&backUrl="+ Q.encode(pre.backUrl);
+		var albumId = listContral.dataObj.list[listContral.dataPos].albumId;
+		if(listContral.dataObj.list.fileType == "0"){ //[0,1]==[音频，视频]
+			location.href = "album.html?albumId="+ albumId +"&backUrl="+ Q.encode(selfUrl);
+		}else{
+			location.href = "album_video.html?albumId="+ albumId +"&backUrl="+ Q.encode(selfUrl);
+		}
+	}
+
+};
+
+var listContral = {
+	x : 0,
+	y : 0,
+	xPlace : 0,
+	yPlace : 57,
+	updataX : 200,
+	updataY : 263,
+	pageDataLength : 8,
+	currPage : 1,
+	totalPage : 1,
+	dataPos : 0,
+	dataObj : {}, 
+	rightTouchout : true,
+	init : function(_arr){
+		this.x = 0;
+		this.y = 0;
+		this.dataObj = _arr;
+		this.pageDataLength = this.dataObj.list.length > 10 ? 10 : this.dataObj.list.length;
+		this.currPage = this.dataObj.page; 
+		this.totalPage = this.dataObj.totalPage;  
+		if(pre.dataPos != 0){ //焦点记忆记住返回列表时所在位置
+			this.dataPos = pre.dataPos;
+			pre.dataPos = 0;
+			this.x = this.dataPos%4;
+			this.y = parseInt(this.dataPos/4);
+		}
+		this.initPlace();
+		this.showData();
+	},
+	initPlace : function(){
+		this.dataPos = this.x + this.y*5;
+		$("list_focus").style.top = parseInt(this.yPlace) + parseInt(this.y*this.updataY) +"px";
+		$("list_focus").style.left = parseInt(this.xPlace) + parseInt(this.x*this.updataX) +"px";
+	},
+	focus : function(){
+		$("list_focus").style.opacity = 1;
+	},
+	blur : function(){
+		$("list_focus").style.opacity = 0;
+	},
+	changeX : function(_num){
+		this.x += _num;
+		if(this.x < 0){
+			this.x = 0;
+			this.touchLeft();
+			return 0;
+		}else if(this.x > 4 && this.pageDataLength > 5){
+			this.touchRight();
+			return 0;
+		}else if(this.x > (this.pageDataLength - 1) - this.y*5){
+			this.x = (this.pageDataLength - 1) - this.y*5;
+			this.touchRight();
+			return 0;
+		}
+		this.initPlace();
+	},
+	changeY : function(_num){
+		this.prePos = this.dataPos;
+		this.y += _num;
+		if(this.y < 0){
+			this.y = 0;
+			this.touchTop();
+			return 0;
+		}else if(this.y > (this.pageDataLength > 5 ? 1 : 0)){
+			this.y = this. pageDataLength > 5 ? 1 : 0;
+			this.touchBottom();
+			return 0;
+		}
+		if((this.y*5 + this.x) > this.pageDataLength - 1)this.x = 0;
+		this.initPlace();
+	},
+	showData : function(){
+		this.clearData();
+		var tmp = "";
+		for(var i =0 ;i < this.pageDataLength;i++){
+			var img = this.dataObj.list[i].smallImg != "" ? (imgRecordPath + this.dataObj.list[i].smallImg) : "images/artist_def.png";
+			var reocod = this.dataObj.list[i].albumName;
+			tmp += '<div style="margin:0px 0px 18px 18px; width:182px; height:245px; color:#ffffff; background:url(images/record_listBg.png); float:left;">'
+			+'<img src="'+ img +'" width="182" height="182" />'
+			+'<div style="padding:6px 0px 0px 5px; width:172px; height:51px; line-height:45px; font-size:22px; overflow:hidden;">'+ reocod +'</div>'
+			+'</div>';
+		}
+		$("content").innerHTML = tmp;
+		this.showListPage();
+	},
+	clearData : function(){
+		$("content").innerHTML = "";	
+	},
+	touchLeft : function(){
+		//
+	},
+	touchRight : function(){
+		if(this.rightTouchout){
+			if(this.pageDataLength > 5 && this.y == 0){
+				this.x = 0
+				this.y = 1;
+				this.initPlace();
+			}else{
+				//this.x = (this.pageDataLength - 1) - this.y*4;
+				if(this.currPage < this.totalPage)this.changePage(1);
+			}
+		}
+	},
+	touchTop : function(){
+		if(this.currPage > 1)this.changePage(-1);
+	},
+	touchBottom : function(){
+		if(this.currPage < this.totalPage)this.changePage(1);
+	},
+	changePage : function(_num){
+		this.currPage += _num;
+		if(this.currPage < 1){
+			this.currPage = 1;
+			return 0;
+		}else if(this.currPage > this.totalPage){
+			this.currPage = this.totalPage;
+			return 0;
+		}
+		ajaxGetData(this.currPage);
+	},
+	showListPage : function(){	
+		$("currPage").innerText  = this.currPage;
+		$("totalPage").innerText = this.totalPage;
+		$("top").style.background = "url(images/"+ (this.currPage == 1 ? "last_false" : "last_true") +".png)";
+		$("bottom").style.background = "url(images/"+ (this.currPage == this.totalPage ? "next_false" : "next_true") +".png)";
+	}
+}
+
+</script>	
+</head>
+<body style="background:url(images/bg.jpg) no-repeat; width:1280px; height:720px; overflow:hidden;">
+<div id="loadingDiv" class="smooth" style="position:absolute; top:320px; left:600px; width:70px; height:70px; z-index:10; visibility:hidden;">
+	<img src="./images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+
+<div id="noData" class="smooth" style="position:absolute; top:300px; left:606px; background-color:#000000; width:180px; height:80px; line-height:80px; z-index:10; border-radius: 10px; opacity:0;visibility:hidden; font-size:20px; text-align:center;"><span>亲，暂无数据</span></div>
+
+<div id="Menu" style="position:absolute; top:0px; left:0px; width:244px; height:720px; background:url(images/list_bg0.png);">
+	<img id="artist_img" src="images/artist_def.png" width="200" height="200" style="position: absolute; top:90px; left:25px;" />
+	<div id="artist_name" style="position:absolute; top:310px; left:35px; width:180px; height:35px; color:#ffffff; text-align:center; font-weight:bold; font-size:24px;"></div> 
+</div>
+
+<div style="position:absolute; top:10px; left:244px; width:1036px; height:700px;">
+	<div id="content" style="position:absolute; top:80px; left:5px; width:1010px; height:620px;"></div>
+	<div id="list_focus" class="smooth" style="position:absolute; top:57px; left:0px; width:228px; height:291px; background:url(images/record_focus.png); opacity:1;"></div>
+</div>
+
+<div id="top" style="position:absolute; top:60px; left:740px; width:26px; height:12px; background-image:url(images/up_off.png);"></div>
+<div id="bottom" style="position:absolute; top:615px; left:740px; width:26px; height:12px; background-image:url(images/down_off.png);"></div>
+
+<div style="position:absolute; top:644px; left:660px; width:128px; height:22px; background:url(images/tipsFlag.png);"></div>
+<div style="position:absolute; top:642px; left:785px; width:85px; height:22px; line-height:22px; font-size:24px; color:#ffffff; font-weight:bold; text-align:center;">
+	<span id="currPage"></span>/<span id="totalPage"></span>
+</div>
+		
+</body>
+</html>

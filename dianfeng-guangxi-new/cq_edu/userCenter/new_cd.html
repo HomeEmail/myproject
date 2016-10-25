@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新碟抢先听</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.menu{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+	 text-align:center;
+	 line-height:70px;
+}
+
+.list{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+}
+
+.keySub{
+	 font-size:32px;
+	 font-weight:bold;
+	 line-height:55px;
+	 text-align:center;
+	 color:#ffffff;
+}
+
+.searchList_txt{
+	 font-size:22px;
+	 font-weight:bold;
+	 color:#ffffff;
+}
+</style>
+
+</head>
+
+<body style="background:url(../images/bg.jpg) no-repeat;">
+<div id="loadingDiv" class="smooth" style="position:absolute;top:320px; left:600px; width:80px; height:80px; z-index:10; visibility:hidden;">
+	<img src="../images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div id="menu" style="position:absolute; top:0px; left:0px; width:244px; height:720px; background:url(../images/list_bg0.png);">
+	<div id="menu_0" class="menu" style="position:absolute; top:100px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_1" class="menu" style="position:absolute; top:170px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_2" class="menu" style="position:absolute; top:240px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_3" class="menu" style="position:absolute; top:310px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_4" class="menu" style="position:absolute; top:380px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_5" class="menu" style="position:absolute; top:450px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_6" class="menu" style="position:absolute; top:520px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_7" class="menu" style="position:absolute; top:590px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_focus" style="position:absolute; top:100px; left:75px; width:160px; height:69px; background:url(../images/title_focus.png); opacity:0"></div>
+</div>
+
+<div id="subMenu" style="position:absolute; top:0px; left:244px; width:166px; height:720px; background:url(../images/list_bg1.png); visibility:visible;">
+	<div id="subMenu_0" class="menu" style="position:absolute; top:100px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_1" class="menu" style="position:absolute; top:170px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_2" class="menu" style="position:absolute; top:240px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_3" class="menu" style="position:absolute; top:310px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_4" class="menu" style="position:absolute; top:380px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_5" class="menu" style="position:absolute; top:450px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_6" class="menu" style="position:absolute; top:520px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_7" class="menu" style="position:absolute; top:590px; left:3px; width:160px; height:69px;"></div>
+	<div id="subMenu_focus" style="position:absolute; top:100px; left:3px; width:160px; height:69px; background:url(../images/title_focus.png); opacity:0;"></div>
+</div>
+
+<div id="List" style="position:absolute; top:20px; left:410px; width:870px; height:700px; visibility:visible;">
+  <div id="content" style="position:absolute; top:100px; left:12px; width:870px; height:700px;"></div>
+	<div id="top" style="position:absolute; top:75px; left:408px; width:25px; height:12px; background:url(../images/last_false.png);"></div>
+	<div id="bottom" style="position:absolute; top:620px; left:408px; width:25px; height:12px; background:url(../images/next_false.png);"></div>
+	<div style="position:absolute; top:644px; left:590px; width:128px; height:20px; background:url(../images/tips.png);"></div>
+	
+	<div style="position:absolute; top:642px; left:720px; width:83px; height:22px; line-height:22px; font-size:24px; color:#ffffff; font-weight:bold; text-align:center;">
+		<span id="currPage"></span>/<span id="totalPage"></span>
+	</div>
+	<div id="list_focus" class="smooth" style="position:absolute; top:77px; left:7px; width:228px; height:291px; background:url(../images/record_focus.png); opacity:0;visibility:hidden;"></div>
+</div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/keyEvent.js"></script>
+<script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/param.js"></script>
+<script type="text/javascript" src="../js/showList.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/order.js"></script>
+<script type="text/javascript" src="../js/showTips.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			
+			return false;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			return false;
+			break;	
+		case "KEY_SELECT": //	
+			control.clickSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			//window.history.back();
+			location.href = "../index.html?menuPos=6";
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+var dataList_this = {
+	"menu" : [
+		{
+			"id" : "000",
+			"title" : "新碟抢先听",
+			"subMenuCheckPos" : 0,
+			"subMenu" : [
+			]
+		}
+	]
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+	pre.init();
+	ajaxGetSub();
+}
+
+var pre = {
+	area : 0,
+	page : 0,
+	subMenuPos : 0,
+	listPos : 0,
+	backUrl : "",
+	init : function(){
+		this.area = Q.getInt("area",1);
+		this.page = Q.getInt("page",1);
+		this.subMenuPos = Q.getInt("subMenuPos",0);
+		this.listPos = Q.getInt("listPos",0);
+		this.backUrl = Q.getDecoded("backUrl") != "null" ? Q.getDecoded("backUrl") : "../index.html";
+	}
+}
+
+var subMenuBox = null;
+function initSubBox(){
+	subMenuBox = new showList(8, dataList_this.menu[0].subMenu.length, dataList_this.menu[0].subMenuCheckPos, 100, window);
+	subMenuBox.focusDiv = "subMenu_focus";
+	subMenuBox.listHigh = 70;
+	subMenuBox.showType = 1;
+	subMenuBox.listSign = 0;
+	subMenuBox.haveData = function(List){//List.idPos:对象id,List.dataPos:数据id
+		$("subMenu_" + List.idPos).innerText = dataList_this.menu[0].subMenu[List.dataPos].name;
+	};
+	subMenuBox.notData  = function(List){
+		$("subMenu_" + List.idPos).innerText = "";
+	};
+	subMenuBox.startShow();
+}
+
+var listcontrol = {
+	x : 0,
+	y : 0,
+	xPlace : 7,
+	yPlace : 77,
+	updataX : 200,
+	updataY : 263,
+	pageDataLength : 8,
+	currPage : 1,
+	totalPage : 1,
+	dataPos : 0,
+	rightTouchout : true,
+	yTouchout : true,
+	prePos : -1,  // 光标修改之前的dataPos,默认-1
+	init : function(_arr){
+		this.x = 0;
+		this.y = 0;
+		this.pageDataLength = _arr.length > 8 ? 8 : _arr.length;
+		var that = control;
+		this.currPage = dataList_this.menu[0].subMenu[that.subMenuCheckPos].subListPage; //每次切换数据保留当前页码
+		this.totalPage = dataList_this.menu[0].subMenu[that.subMenuCheckPos].subListTotalPage;  
+		//this.initPlace();
+		this.showData();
+		if(pre.area != 1){ //焦点记忆记住返回列表时所在位置
+			this.dataPos = pre.listPos;
+			pre.listPos = 0;
+			this.x = this.dataPos%4;
+			this.y = parseInt(this.dataPos/4);
+		}
+		this.initPlace();
+	},
+	initPlace : function(){
+		this.dataPos = this.x + this.y*4;
+		$("list_focus").style.top = parseInt(this.yPlace) + parseInt(this.y*this.updataY) +"px";
+		$("list_focus").style.left = parseInt(this.xPlace) + parseInt(this.x*this.updataX) +"px";
+		if(control.focusArea == 2){  //焦点记忆当所在位置在列表区域
+			setTimeout(function(){
+				$("list_focus").style.opacity = 1;
+				$("list_focus").style.visibility = 'visible';
+			},300);
+		}
+	},
+	focus : function(){
+		$("list_focus").style.opacity = 1;
+		$("list_focus").style.visibility = 'visible';
+	},
+	blur : function(){
+		$("list_focus").style.opacity = 0;
+		$("list_focus").style.visibility = 'hidden';
+	},
+	changeX : function(_num){
+		//this.prePos = this.dataPos;
+		if((this.x + this.y*4 == this.pageDataLength - 1 || this.x == 3) && _num > 0 ){
+			this.touchRight();
+			return 0;
+		}else if(this.x == 0 && _num < 0){
+			this.touchLeft();
+			return 0;
+		}else{
+			this.x += _num;
+			this.initPlace();
+		}
+	},
+	changeY : function(_num){
+		//this.prePos = this.dataPos;
+		if((this.y*4 + this.x) > this.pageDataLength - 1)this.x = 0;
+		if(this.y == 0 && _num < 0){
+			this.touchTop();
+			return 0;
+		}else if(this.y == (this.pageDataLength > 4 ? 1 : 0) && _num > 0){
+			this.touchBottom();
+			return 0;
+		}else{
+			this.y += _num;
+			if((this.y*4 + this.x) > this.pageDataLength - 1)this.x = 0;
+			this.initPlace();
+		}
+	},
+	showData : function(){
+		this.clearData();
+		var tmp = "";
+		for(var i = 0;i < this.pageDataLength;i++){
+			var img = imgRecordPath + dataList_this.menu[0].subMenu[control.subMenuCheckPos].songList[i].smallImg;
+			var albumName = dataList_this.menu[0].subMenu[control.subMenuCheckPos].songList[i].name;
+			var createTime = dataList_this.menu[0].subMenu[control.subMenuCheckPos].songList[i].createTime;
+			tmp += '<div style="margin:0px 0px 18px 18px; width:182px; height:245px; color:#ffffff; background:url(../images/record_listBg.png); float:left;">'
+			+'<img src="'+ img +'" width="182" height="182" />'
+			+'<div style="padding:2px 0px 0px 5px; width:172px; height:30px; line-height:30px; font-size:18px; overflow:hidden;">'+ albumName +'</div>'
+			+'<div style="padding:0px 0px 0px 5px; width:172px; height:30px; line-height:30px; font-size:12px; overflow:hidden;">上线时间：'+ createTime +'</div>'
+			+'</div>';
+		}
+		$("content").innerHTML = tmp;
+		this.showListPage();
+	},
+	clearData : function(){
+		$("content").innerHTML = "";	
+	},
+	touchLeft : function(){
+		control.focusArea = 1;
+		this.blur();
+		control.menuFocus("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+	},
+	touchRight : function(){
+		if(this.rightTouchout){
+			if(this.pageDataLength > 4 && this.y == 0){
+				this.x = 0
+				this.y = 1;
+				this.initPlace();
+			}else{
+				//this.x = (this.pageDataLength - 1) - this.y*4;
+				if(this.currPage < this.totalPage)this.changePage(1);
+			}
+		}
+	},
+	touchTop : function(){
+		if(this.yTouchout){
+			if(this.currPage > 1)this.changePage(-1);
+		}
+	},
+	touchBottom : function(){
+		if(this.yTouchout){
+			if(this.currPage < this.totalPage)this.changePage(1);
+		}
+	},
+	changePage : function(_num){
+		this.currPage += _num;
+		if(this.currPage < 1){
+			this.currPage = 1;
+			return 0;
+		}else if(this.currPage > this.totalPage){
+			this.currPage = this.totalPage;
+			return 0;
+		}
+		ajaxGetList(dataList_this.menu[0].subMenu[subMenuBox.position].id,this.currPage);
+	},
+	showListPage : function(){
+		$("currPage").innerText  = this.currPage;
+		$("totalPage").innerText = this.totalPage;
+		$("top").style.background = "url(../images/"+ (this.currPage == 1 ? "last_false" : "last_true") +".png)";
+		$("bottom").style.background = "url(../images/"+ (this.currPage == this.totalPage ? "next_false" : "next_true") +".png)";
+	}
+}
+
+function showOrder(){  //展示订购信息
+	orderFlow.init();//模块初始化
+	orderFlow.onEventHandle(grabEvent);//事件接管
+	
+	orderFlow.successTipsDivCallBack=function(){}; //订购成功关闭弹层回调
+	orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+	orderFlow.orderSuccessCallBack=function(){};//订购成功回调
+	orderFlow.orderFailureCallBack=function(){};//订购失败回调
+	orderFlow.show();//显示模块
+	orderFlow.showStep('orderTipsDiv');//显示哪一步
+	orderFlow.setSuccessTipsDivBt1('参与活动',function(){
+		location.href = "../topic/guessSong/index.html";
+	});
+	orderFlow.setOrderTipsDivBt2('返回首页',function(){
+		location.href = "../index.html?menuPos=6";
+	});
+}
+
+var control = {
+	focusArea : 1,//0:主菜单, 1:二级菜单,2:列表
+	menuCheckPos : 0,
+	subMenuCheckPos : 0,
+	init : function(){
+		$("menu_"+ this.menuCheckPos).innerText = dataList_this.menu[this.menuCheckPos].title;
+		initSubBox();
+		listcontrol.subListPage = pre.page;
+		dataList_this.menu[0].subMenu[this.subMenuCheckPos].subListPage = listcontrol.subListPage;
+		this.clickSelect();
+		this.menuBlur("menu_focus","menu_" + subMenuBox.focusPos);
+		if(pre.area == 2){
+			this.focusArea = pre.area;
+			this.subMenuCheckPos = pre.subMenuPos;
+			this.menuBlur("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+		}else{
+			this.subMenuCheckPos = subMenuBox.position;
+			this.menuFocus("subMenu_focus","subMenu_" + this.subMenuCheckPos);
+		}
+		dataList_this.menu[this.menuCheckPos].subMenuCheckPos = this.subMenuCheckPos;
+	},
+	changeSubMenu : function(_num){ //改变二级菜单
+		if(subMenuBox.position == dataList_this.menu[this.menuCheckPos].subMenu.length - 1 & _num > 0 || subMenuBox.position == 0 & _num < 0)return 0;
+		subMenuBox.changeList(_num);
+		this.subMenuCheckPos = subMenuBox.position;
+		this.clickSelect();
+	},
+	clickTop : function(){
+		if(this.focusArea == 1){
+			this.menuBlur("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+			this.changeSubMenu(-1);
+			this.menuFocus("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+		}else if(this.focusArea == 2){
+			listcontrol.changeY(-1);
+		}
+	},
+	clickDown : function(){
+		if(this.focusArea == 1){
+			this.menuBlur("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+			this.changeSubMenu(1);
+			this.menuFocus("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+		}else if(this.focusArea == 2){
+			listcontrol.changeY(1);
+		}
+	},
+	clickRight : function(){
+		if(this.focusArea == 1){
+			if(dataList_this.menu[this.menuCheckPos].subMenu[this.subMenuCheckPos].songList.length > 0){
+				this.focusArea = 2;
+				this.menuBlur("subMenu_focus","subMenu_" + subMenuBox.focusPos);
+				listcontrol.focus();
+			}
+		}else if(this.focusArea == 2){
+			listcontrol.changeX(1);
+		}
+	},
+	clickLeft : function(){
+		if(this.focusArea == 2){
+			listcontrol.changeX(-1);
+		}
+	},
+	clickSelect : function(){
+		var dataObj = dataList_this.menu[0].subMenu[this.subMenuCheckPos];
+		if(this.focusArea == 1){
+			if(dataObj.songList.length > 0){
+				listcontrol.init(dataObj.songList);
+			}else{
+				var id = dataObj.id;
+				var page = dataObj.subListPage;
+				ajaxGetList(id,page);
+			}
+		}else if(this.focusArea == 2){ 
+			var albumId = dataObj.songList[listcontrol.dataPos].id;
+			var selfUrl = "userCenter/new_cd.html?subMenuPos="+this.subMenuCheckPos+"&page="+listcontrol.currPage+"&listPos="+listcontrol.dataPos+"&area=2&backUrl="+Q.encode(pre.backUrl);
+			if(dataObj.songList[listcontrol.dataPos].fileType == 0){
+				location.href = "../album.html?albumId="+ albumId +"&backUrl="+ Q.encode(selfUrl);
+			}else{
+				
+			}location.href = "../album_video.html?albumId="+ albumId +"&backUrl="+ Q.encode(selfUrl);
+		}
+	},
+	menuFocus : function(_focusObj,_textObj){
+		if(typeof(_focusObj) != "undefined"){
+			$(_focusObj).style.opacity = 1;
+		}	
+		if(typeof(_textObj) != "undefined"){
+			$(_textObj).style.color = "#ffffff";
+			$(_textObj).style.fontSize = "26px";
+		}
+	},
+	menuBlur : function(_focusObj,_textObj){
+		if(typeof(_focusObj) != "undefined"){
+			$(_focusObj).style.opacity = 0.3;
+		}	
+		if(typeof(_textObj) != "undefined"){
+			$(_textObj).style.color = "#666666";
+			$(_textObj).style.fontSize = "24px";
+		}
+	}
+}
+
+function ajaxGetSub(){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiUser/getVipType.action?keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			if(json.code == 0){
+				for(var i = 0;i < json.data.length;i++){
+					var obj = {};
+					obj.id = json.data[i].id;
+					obj.name = json.data[i].styleName;
+					obj.creatDate = json.data[i].creatDate;
+					obj.subListPage = 1;
+					obj.subListTotalPage = 1;
+					obj.songList = [];
+					dataList_this.menu[0].subMenu.push(obj);
+				}
+				control.init();
+			}else if(json.code == "-3"){
+				showOrder();
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|系统繁忙!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+function ajaxGetList(_styleId,_page){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiData/albumList.action?styleId="+ _styleId +"&pageno="+ _page +"&size=8",
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			if(json.code == 0){
+				var dataLength = typeof(json.data.list) != "undefined" ? json.data.list.length : 0;
+				dataList_this.menu[0].subMenu[subMenuBox.position].songList = dataLength > 0 ? [] : "";
+				for(var i = 0;i < dataLength;i++){
+					var obj = {};
+					obj.id = json.data.list[i].id;
+					obj.name = json.data.list[i].name;
+					obj.smallImg = json.data.list[i].smallImg;
+					obj.createTime = json.data.list[i].createTime;
+					obj.fileType = json.data.list[i].fileType;
+					dataList_this.menu[0].subMenu[subMenuBox.position].songList.push(obj);
+				}
+				dataList_this.menu[0].subMenu[subMenuBox.position].subListPage = json.data.page;
+				dataList_this.menu[0].subMenu[subMenuBox.position].subListTotalPage = json.data.totalPage;
+				listcontrol.init(dataList_this.menu[0].subMenu[subMenuBox.position].songList);
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|系统繁忙!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+</script>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title>更多活动</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.btn { font-size:22px; border-radius:30px; text-align:center; line-height:45px;}
+</style>
+</head>
+
+<body style="background:url(../images/bg.jpg) no-repeat; width:1280px; height:720px; overflow:hidden;">
+<div id="loadingDiv" class="smooth" style="position:absolute;top:320px; left:600px; width:80px; height:80px; z-index:10; visibility:hidden;">
+	<img src="../images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div style="position:absolute; top:59px; left:540px; width:220px; height:59px; background:url(../images/more_title.png);"></div>
+<div style="position:absolute; top:153px; left:67px; width:1147px; height:422px;">
+	<div id="list" style="position:absolute; top:20px; left:127px; width:936px; height:385px; overflow:hidden;">
+		<div id="list_0" class="smooth" style="position:absolute; top:0px; left:0px; width:276px; height:385px;">
+			<img src="../images/act_0.png" width="276" height="385" />
+		</div>
+		<div id="list_1" class="smooth" style="position:absolute; top:0px; left:330px; width:276px; height:385px;">
+			<img src="../images/act_1.png" width="276" height="385" />
+		</div>
+		<div id="list_2" class="smooth" style="position:absolute; top:0px; left:660px; width:276px; height:385px;">
+			<img src="../images/act_2.png" width="276" height="385" style="position:absolute; top:0px; left:0px;" />
+	  </div>
+		<div id="list_3" class="smooth" style="position:absolute; top:0px; left:990px; width:276px; height:385px;">
+			<img src="../images/act_1.png" width="276" height="385" style="position:absolute; top:0px; left:0px;" />
+		</div>
+	</div>
+	<div id="list_focus" class="smooth" style="position:absolute; top:6px;left:113px;width:304px;height:413px;background:url(../images/act_focus.png);z-index:5; opacity:1;"></div>
+</div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="alipayDiv" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:4; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:0px; width:1280px; height:400px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div style="text-align:center; height:80px; line-height:80px; color:#ffffff; font-size:28px; font-weight:bold; border-bottom:2px #202020 solid;">支付宝充值</div>
+		<div id="moneySelect" style="height:300px; padding-top:20px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/keyEvent.js"></script>
+<script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/listSlip.js"></script>
+<script type="text/javascript" src="../js/param.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			changeListFocus(-1);
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			changeListFocus(1);
+			return 0;
+			break;		
+		case "KEY_SELECT": //	
+			if(listObj.listPos == 0){
+				location.href = "czyl.html";
+			}else if(listObj.listPos == 1){
+				location.href = "dgyl.html";
+			}
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			location.href = "../index.html?menuPos=0";
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+	initList();
+}
+
+var parmObj = {
+	DivId:        "list_",           //行DIV的ID名称   
+	focusId:      "list_focus",      //焦点的ID
+	arrLength:     3, 				//数据总长度
+	listSize:      1,               //显示DIV数
+	rowHeight:     330,             //每次移动距离
+	focusStartPos: 113,              //显示的第一个焦点	X或Y轴（这里是X）坐标
+	direction:     "left",          //方向 top 纵向 left 横向
+//	cycle:         0,              //0：不循环，1：循环  默认为0
+//	pageType:      0,              //翻页形式，0：不翻页 1：翻页  默认为0
+//	duration:      "200ms",        //速度，默认为300ms
+};
+
+var focusPos = 0;
+var listPos = 0;
+var listObj = null;
+function initList(){
+	listObj = new listSlip(parmObj);
+	listObj.startline = 0; //起始行 从0开始数，默认为0 (注意：pageType=1，不起作用)
+	listObj.endline   = 2; //其实列 从0开始数,默认为最后一行(注意：pageType=1，不起作用)
+	listObj.firstFlag = true;//按向上的时候是否能滑到 第一行条目的位置 (注意：cycle=1，不起作用)
+	listObj.lastFlag = true;//按向下的时候是否能滑到 最后一行条目的位置; (注意：cycle=1，不起作用)
+	//焦点位置默认为0，重新赋值或者焦点定位时必须在 文字输出之前
+	listObj.listPos = listPos; 
+	listObj.focusPos = focusPos;	
+	//输出文字
+	listObj.haveData = showText;
+	listObj.notData = clearText;
+	listObj.initInfo();
+	//焦点定位处理
+	listObj.focusObj.style.webkitTransitionDuration = "0ms";
+	listObj.onfocus();
+	listObj.focusObj.style.webkitTransitionDuration = listObj.duration;
+}
+
+function showText(_i,_pos){
+	//$("title_"+_i).innerHTML = _pos;
+	//$("name_"+_i).innerHTML = json.contentList[_pos].list[0].title.length > 10 ? json.contentList[_pos].list[0].title : json.contentList[_pos].list[0].title.substring(0,10)+"...";
+}
+
+function clearText(_i){
+	//$("img_"+_i).style.background = "url(images/tm.gif)";
+	//$("title_"+_i).innerHTML = "";
+	//$("name_"+_i).innerHTML = "";
+}
+
+function listOnfocusStyle(){
+	$(parmObj.focusId).style.opacity = 1;
+	var tempId = listObj.currId();
+}
+function listOnblurStyle(){
+	$(parmObj.focusId).style.opacity = 0;
+	var tempId = listObj.currId();
+}
+
+function changeListFocus(_num){
+	listObj.changeFocus(_num);
+}
+
+var json;
+function ajaxGetUser(){
+	if(req != null){
+		req.abort();
+		req = null;
+	}
+	req = ajax({
+		url: serverUrl +'hifiUser/getUserImg.action?keyNo='+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			json = eval("(" + html + ")");
+			if(json.code == 0){
+				control.init();
+			}
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据出错",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+
+</script>
+</html>

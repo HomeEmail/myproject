@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订购有礼</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.btn { font-size:22px; border-radius:30px; text-align:center; line-height:45px;}
+</style>
+</head>
+
+<body style="background:url(../images/bg.jpg) no-repeat;">
+<div id="loadingDiv" class="smooth" style="position:absolute;top:320px; left:600px; width:80px; height:80px; z-index:10; visibility:hidden;">
+	<img src="../images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div style="position:absolute; top:110px; left:66px; width:1147px; height:422px;">
+	<div style="position:absolute; top:0px; left:0px; width:1147px; height:422px; background:url(../images/dg_bg.png);"></div>
+	<div style="position:absolute; top:430px; left:0px; width:1147px; height:35px; text-align:center; font-size:28px; line-height:35px; color:#ffffff;">
+		<div style="position:absolute; top:8px; left:70px; width:750px; height:35px; font-weight:bold;">HIFI音乐包月 标准资费：10元/月 (
+			<del id="money" style="font-size:22px;">原价：19元/月</del> )
+		</div>
+		<div class="btn" style="position:absolute; top:0px; left:810px; width:150px; height:45px; color:#ffffff; border:2px #ffffff solid;">马上订购</div>
+	</div>
+</div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="alipayDiv" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:4; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:0px; width:1280px; height:400px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div style="text-align:center; height:80px; line-height:80px; color:#ffffff; font-size:28px; font-weight:bold; border-bottom:2px #202020 solid;">支付宝充值</div>
+		<div id="moneySelect" style="height:270px; padding-top:20px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/keyEvent.js"></script>
+<script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/param.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/order.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			//
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			//
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			//
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			//
+			return 0;
+			break;		
+		case "KEY_SELECT": //	
+			showOrder();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			//history.back();
+			if(!!window.android){
+				window.android.onCloseWebView('1');//关闭webview
+			}else{
+				location.href = "../index.html?menuPos=6";
+			}
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+}
+
+function showOrder(){  //展示订购信息
+	orderFlow.init();//模块初始化
+
+	orderFlow.onEventHandle(grabEvent);//事件接管
+	
+
+	orderFlow.orderFailureCallBack=function(){};//订购失败回调
+	orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+
+	orderFlow.orderSuccessCallBack=function(){
+		jsonUser.status = 0;	
+	};//订购成功回调
+	orderFlow.successTipsDivCallBack=function(){
+		orderFlow.init();//模块初始化
+		orderFlow.onEventHandle(grabEvent);//事件接管
+		orderFlow.show();//显示模块
+		orderFlow.showStep('successTipsDiv');
+	};//订购成功关闭弹层回调
+
+	orderFlow.show();//显示模块
+	orderFlow.showStep('orderTipsDiv');//显示哪一步
+	orderFlow.setSuccessTipsDivBt1('参与活动',function(){
+		location.href = "topic/61/index.html";
+	});
+}
+</script>
+</html>

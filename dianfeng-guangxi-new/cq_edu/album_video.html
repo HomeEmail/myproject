@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title>HiFi儿歌-视频专辑</title>
+<style>
+.smooth { -webkit-transition-duration:0ms; }
+
+.txt{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#cccccc;
+}
+.content {
+	-webkit-text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical;
+}
+marquee {
+	background: none;
+}
+</style>
+</head>
+
+<body onUnload="release()">
+<div id="loadingDiv" class="smooth" style="position:absolute; top:320px; left:600px; width:70px; height:70px; z-index:10; visibility:hidden;">
+	<img src="./images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+
+
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="pv_fullScreen" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:6; display:none; visibility:hidden;">
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:65px; background:url(images/pv_fullScreen_top.png);">
+		<div id="pv_mediaName" style="position:absolute; top:0px; left:30px; width:675px; height:65px; color:#fff; overflow:hidden; font-weight:bold; line-height:65px; font-size:36px;"></div>
+	</div>
+	<div id="pv_fullScreen_status" style="position:absolute; top:270px; left:550px; width:177px; height:175px; background:url(images/pv_play.png); visibility:hidden;"></div>
+	
+	<div style="position:absolute; top:655px; left:0px; width:1280px; height:65px; background:url(images/pv_fullScreen_bottom.png); color:#FFFFFF;">
+		<div style="position:absolute; top:12px; left:90px; width:780px; height:70px;">
+			<span style="position:absolute; top:12px; left:10px; width:10px; height:14px; background:url(images/progress_left.png);"></span>
+			<span id="pv_fullScreen_index" style="position:absolute; top:12px; left:10px; width:0px; height:14px; background:url(images/progress_index.png) repeat-x;"></span>
+			<span id="pv_fullScreen_currIndex" style="position:absolute; top:5px; left:0px; width:30px; height:30px; background:url(images/progress_flag.png);"></span>
+		</div>
+		<div id="pv_fullScreen_currTime"  style="position:absolute; top:0px; left:30px; width:80px; height:60px; line-height:60px; font-size:24px;">00:00</div>
+		<div id="pv_fullScreen_totalTime" style="position:absolute; top:0px; left:1190px; width:80px; height:60px; line-height:60px; font-size:24px;">00:00</div>
+	</div>
+</div>
+
+<div id="tips_order" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:5; visibility:hidden;">
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.4;"></div>
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background:url(images/order_bg2.png);">
+		<div id="tips_orderBtn" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background:url(images/order2_btn0.png);"></div>
+	</div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/listSlip1.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+document.onsystemevent = grabEvent;
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			if(!order.flag){
+				
+				audio_control.player.previous();
+				
+			}
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			if(!order.flag){
+				
+				audio_control.player.next();
+				
+			}
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			if(order.flag){
+				order.changeFocus(-1);
+			}
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			if(order.flag){
+				order.changeFocus(1);
+			}
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			
+			return 0;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			return 0;
+			break;
+		case "EIS_VOD_RERADY_SUCCESS": //
+			audio_control.player.play(0);
+			return 0;
+			break;
+		case "EIS_VOD_PROGRAM_END": //当前流媒体已经播放结束
+			audio_control.player.next();
+			return 0;
+			break;
+		case "KEY_NUMBER0":
+			//control.play.changeFullStatus();
+			return 0;
+			break;				
+		case "KEY_SELECT": //	
+			control.clickSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			control.clickDoBack();
+			return false;
+			break;
+		default:
+			//if(_event.which > 5000 && _event.which < 6000)$("debugShow").innerText += "-d-"+_event.which;
+			break;
+	}
+}
+
+window.onload = init;
+var albumId = "";
+var backUrl = "";
+var audioId = "";
+var payStatus = {
+	payState : "",
+	payDesc : ""
+};
+
+function init(){
+	loadingDiv = $('loadingDiv');
+	albumId = Q.getDecoded("albumId");
+	backUrl = Q.getDecoded("backUrl") != "null" ? Q.getDecoded("backUrl") : hostUrl +"/HiFi_cq/index.html?menuPos="+ Q.getInt("indexMenuPos",1);
+	audioId = Q.getDecoded("audioId");
+	
+	payStatus.payState = Q.getDecoded("payState");
+	if(payStatus.payState == "1" || payStatus.payState == 1){
+		payStatus.payDesc = "支付成功";
+	}else if(payStatus.payState == "0" || payStatus.payState == 0){
+		payStatus.payDesc = "支付失败"+ Q.getDecoded("payDesc");
+	}	
+	control.init();
+	//audio_control.player.play();
+	//initList();
+}
+
+function release(){
+	DVB.stopAV(0);
+	media.AV.close();
+}
+
+var control = {
+	init : function(){
+
+		ajaxGetAlbumData(albumId);
+	},
+	showInfo : function(){
+		//$("album_name").innerText = json_album.data.albumName;
+		//$("singer").innerText = json_album.data.artistNames;
+	},
+	play : {  //播放弹层对象
+		pauseFlag : false,
+		fullScreenControlTimer : null,
+		playBtnTimer : null,
+		show : function(){
+			this.doSelect();
+		},
+		showStatu : function(){
+			$("pv_fullScreen").style.display = "block";
+			$("pv_fullScreen").style.visibility = "visible";
+			$("pv_fullScreen").style.opacity = 1;
+		},
+		hideStatu : function(){
+			$("pv_fullScreen").style.display = "none";
+			$("pv_fullScreen").style.visibility = "hidden";
+			$("pv_fullScreen").style.opacity = 0;
+		},
+		showData : function(){
+			var that = this;
+			that.pauseFlag = false;
+			$("pv_fullScreen_status").style.visibility = "visible";
+			$("pv_fullScreen_status").style.background = "url(images/pv_play.png)";
+			that.showStatu();
+			that.playBtnTimer = setTimeout(function(){
+				that.hideStatu();
+				clearTimeout(that.playBtnTimer);
+				that.playBtnTimer=null;
+			},3000);
+			audio_control.player.play();
+			this.changeFullStatus();
+			
+		},
+		changeFullStatus : function(){
+			
+			media.video.fullScreen();
+			
+			$("pv_mediaName").innerText = json_single.data.name;
+			
+		},
+		doSelect : function(){
+			var that = this;
+			
+			
+			if(!that.pauseFlag){
+				that.pauseFlag = true;
+				$("pv_fullScreen_status").style.background = "url(images/pv_pause.png)";
+				$("pv_fullScreen_status").style.visibility = "visible";
+				that.showStatu();
+				audio_control.player.pause();
+			}else{
+				that.pauseFlag = false;
+				$("pv_fullScreen_status").style.background = "url(images/pv_play.png)";
+				setTimeout(function(){that.hideStatu();},3000);
+				audio_control.player.play();
+			}
+		}
+	},
+	clickSelect : function(){
+		if(order.flag){
+			order.doSelect();
+		}else{
+			this.play.doSelect();
+		}
+	},
+	clickDoBack : function(){
+		if(order.flag){
+			order.hide();
+		}else{
+			location.href = backUrl;
+		}
+	}
+}
+
+var playPos = -1;
+var rtsp_url = "";
+var audio_control = {
+	player : {
+		timers : null,
+		currTime : 0,
+		totalTime : 0,
+		index : 0,
+		play : function(_model){  //0:歌曲开始播放,1:歌曲暂停后播放
+			if(_model == 0)this.currTime = 0;
+			//if(!control.play.fullScreenFlag){
+				//media.video.setPosition(442,135,782,442);
+			//}
+			this.startTimer();
+			media.AV.play();
+		},
+		pause : function(){
+			media.AV.pause(0);
+			this.clearTimer();
+		},
+		stop : function(){
+			media.AV.stop(0);
+			this.clearTimer();
+			this.currTime = 0;
+		},
+		previous : function(){ //上一首
+			if(playPos == 0){
+				showTips.init("tips","t_title|温馨提示","t_content|已经是播放列表第一首",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}else{
+				playPos -= 1;
+				this.stop();
+				ajaxGetSingleData(json_album.data.trackList[playPos].trackId,function(){
+					control.play.showData();
+				});
+			}
+		},
+		next : function(){ //下一首
+			if(playPos == json_album.data.trackList.length - 1){
+				showTips.init("tips","t_title|温馨提示","t_content|已经是播放列表最后一首",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}else{
+				playPos += 1;
+				this.stop();
+				ajaxGetSingleData(json_album.data.trackList[playPos].trackId,function(){
+					control.play.showData();
+				});
+			}
+		},
+		getCurrentPoint : function(){
+			//this.currTime = parseInt(media.AV.progress);
+			this.currTime++;
+			this.totalTime = parseInt(media.AV.duration);
+			this.index = parseFloat(this.currTime/this.totalTime);
+			this.showProgress(this.index);
+			this.showPlayTime();			
+			
+			if(this.currTime == this.totalTime){
+				this.clearTimer();
+				this.currTime = 0;
+				return 0;
+			}
+		},
+		showProgress : function(_index){
+			$("pv_fullScreen_index").style.width = _index*1070 +"px";
+			$("pv_fullScreen_currIndex").style.left = _index*1070 +"px";	
+		},
+		showPlayTime : function(){
+			
+			$("pv_fullScreen_currTime").innerHTML = isNaN(this.currTime) ? "00:00" : Number(this.currTime).formatTime();
+			$("pv_fullScreen_totalTime").innerHTML = isNaN(this.totalTime) ? "00:00" : Number(this.totalTime).formatTime();
+		},
+		startTimer : function(){
+			if(this.timers == null){
+				this.timers = setInterval('audio_control.player.getCurrentPoint()',1000);
+			}	
+		},
+		clearTimer : function(){
+			if(!!this.timers){
+				try{
+					clearInterval(this.timers);
+					this.timers = null;
+				}catch(err){
+					
+				}
+			}
+		}
+	}
+}
+
+var order = {  //cscs
+	pos : 0,
+	flag : false,
+	init : function(){
+		this.pos = 0;
+		this.show();
+	},
+	show : function(){
+		this.flag = true;
+		$("tips_order").style.visibility = "visible";
+	},
+	hide : function(){
+		this.flag = false;
+		$("tips_order").style.visibility = "hidden";
+	},
+	changeFocus : function(_num){
+		this.pos += _num;
+		this.pos = this.pos < 0 ? 0 : this.pos;
+		this.pos = this.pos > 1 ? 0 : this.pos;
+		$("tips_orderBtn").style.background = "url(images/order2_btn"+ this.pos +".png)";
+	},
+	doSelect : function(){
+		if(this.pos == 0){
+			this.optParentLocker();
+		}
+		this.hide();
+	},
+	optParentLocker : function(){
+		orderFlow.init();//模块初始化
+
+		orderFlow.onEventHandle(grabEvent);//事件接管
+		orderFlow.show();//显示模块
+		
+		orderFlow.successTipsDivCallBack=function(){ 
+			json_single.data.userCode = 200;
+		};//订购成功关闭弹层回调
+		orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+		orderFlow.orderSuccessCallBack=function(){
+			json_single.data.userCode = 200;
+		};//订购成功回调
+		orderFlow.orderFailureCallBack=function(){};//订购失败回调
+	
+		orderFlow.optParentLocker(function(data){							   
+			if(data.code == "200"){
+				//有家长锁
+				orderFlow.passwordYes = data.passwd;
+				orderFlow.showStep('passwordDiv');//去家长锁步骤	
+			}else if(data.code == "201"){
+				//没有家长锁
+				//直接调用开通接口
+				orderFlow.checkMyMoney(function(b){
+					if(!!b){
+						//余额足够
+						//直接调用开通接口 
+						orderFlow.orderProduct(function(data){
+							if(data.code == 200){
+								//orderFlow.showStep('successTipsDiv');	
+								orderFlow.orderSuccessCallBack();
+								//关闭
+								orderFlow.close(orderFlow.successTipsDivCallBack);	
+							}else if(data.code == 300){
+								orderFlow.showStep('myMoneyLess');	
+							}else{
+								showTips.init("tips","t_title|温馨提示","t_content|系统繁忙,请稍后再试!",0);
+								showTips.onEventHandle(orderFlow.preEventFn);//事件接管	
+							}
+						});
+					}else{
+						//余额不够,去余额不够页面
+						orderFlow.showStep('myMoneyLess');
+					}
+				});
+				return;							
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|系统繁忙,请稍后再试!",0);
+				showTips.onEventHandle(orderFlow.preEventFn);//事件接管	
+			}
+		});
+		return 0;
+	}
+};
+
+function showOrder(){  //展示订购信息
+	orderFlow.init();//模块初始化
+	orderFlow.onEventHandle(grabEvent);//事件接管
+	orderFlow.show();//显示模块
+	
+	orderFlow.orderSuccessCallBack=function(){
+		json_single.data.userCode = 200;
+		ajaxGetSingleData(json_album.data.trackList[playPos].trackId,function(){
+			control.play.showData();
+		});
+		/*orderFlow.setSuccessTipsDivBt1('确认',function(){
+			orderFlow.close();
+			orderFlow.successTipsDivCallBack();
+		});*/
+	};//订购成功回调
+	orderFlow.orderFailureCallBack=function(){
+		location.href=backUrl;
+	};//订购失败回调
+	orderFlow.successTipsDivCallBack=function(){ //订购成功关闭弹层回调
+		json_single.data.userCode = 200;
+	};
+	orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+
+	orderFlow.showStep('orderTipsDiv');//显示哪一步
+
+}
+
+Number.prototype.formatTime=function(){
+    // 计算
+    var h=0,i=0,s=parseInt(this);
+    if(s>59){
+        i=parseInt(s/60);
+        s=parseInt(s%60);
+        if(i > 59) {
+            h=parseInt(i/60);
+            i = parseInt(i%60);
+        }
+    }
+    // 补零
+    var zero=function(v){
+        return (v>>0)<10?"0"+v:v;
+    };
+    return [zero(i),zero(s)].join(":");
+};
+
+String.prototype.formatSecond = function(){
+	var seconde=0,s="";
+	s=this.split(":");
+	if(s.length == 0){
+		seconde = 0;
+	}else if(s.length == 1){
+		seconde = parseInt(s[0]);	
+	}else if(s.length == 2){
+		seconde = parseInt(s[0])*60 + parseInt(s[1]);
+	}else if(s.length == 3){
+		seconde = parseInt(s[0])*3600 + parseInt(s[1])*60 + parseInt(s[2]);	
+	}
+	return seconde;
+}
+
+function play_ajax(_audioId){
+	if(req != null){
+		req.abort();
+		req = null;
+		release();
+	}
+	req = ajax({
+		url: iPanel.eventFrame.pre_epg_url +"/defaultHD/en/go_authorization.jsp?playType=1&progId="+ _audioId +"&contentType=0&business=1&baseFlag=0",
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			var json = eval("(" + html + ")");
+			rtsp_url = json.playUrl.split("^")[4];
+			media.AV.open(rtsp_url,"VOD");
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+var json_album = "";
+function ajaxGetAlbumData(_albumId){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +"hifiData/album.action?albumId="+ _albumId +"&keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			json_album = eval("(" + html + ")");
+			if(json_album.code == 0){
+				var len=json_album.data.trackList.length;
+				var i=0;
+				playPos=i;
+				for(;i<len;i++){
+					if(parseInt(audioId,10)==parseInt(json_album.data.trackList[i].vodId,10)){
+						playPos=i;
+						
+						break;
+					}
+				}
+				ajaxGetSingleData(json_album.data.trackList[playPos].trackId,function(){
+					control.play.showData();
+				});
+				//collectionId = json_album.data.collectionId;
+				//initList();
+			}
+			if(payStatus.payDesc != "" && payStatus.payDesc != "null"){
+				showTips.init("tips","t_title|温馨提示","t_content|"+ payStatus.payDesc,0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+var json_single;
+function ajaxGetSingleData(_singleId,_fn){
+	showLoadingDiv();
+	if(req != null){
+		req = null;
+	}
+	req = ajax({
+		url: serverUrl +"hifiData/single.action?singleId="+ _singleId +"&keyNo="+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			json_single = eval("(" + html + ")");
+			if(json_single.code == "0"){
+				if(json_single.data.isfree == 1 || json_single.data.userCode == 200){
+					!!_fn&&_fn();
+					audioId = json_single.data.vodId;
+					play_ajax(audioId);
+				}else{
+					if(json_single.data.userCode == 202){  //黑名单
+						showTips.init("tips","t_title|温馨提示","t_content|您的广电账户已在广电客户黑名单，请拨打 96868 详细咨询!",0);
+						showTips.onEventHandle(grabEvent);//事件接管
+						return 0;
+					}else{ //欠费停用
+						//order.init();
+						showOrder();
+					}
+				}
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|您的广电账户暂时不能使用该服务，请拨打 96868 详细咨询!",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+				return 0;
+			}
+		},
+		onComplete:function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+        post:"",  
+        timeout:7000  
+	});	
+}
+
+</script>
+</html>

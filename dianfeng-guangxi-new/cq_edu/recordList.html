@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HiFi音乐-唱片馆</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.menu{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+	 text-align:center;
+	 line-height:70px;
+}
+
+.list{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+}
+
+.keySub{
+	 font-size:32px;
+	 font-weight:bold;
+	 line-height:55px;
+	 text-align:center;
+	 color:#ffffff;
+}
+
+.searchList_txt{
+	 font-size:22px;
+	 font-weight:bold;
+	 color:#ffffff;
+}
+</style>
+
+</head>
+
+<body style="background:url(images/bg.jpg) no-repeat;">
+<div id="loadingDiv" class="smooth" style="position:absolute; top:320px; left:600px; width:70px; height:70px; z-index:10; visibility:hidden;">
+	<img src="./images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div id="menu" style="position:absolute; top:0px; left:0px; width:244px; height:720px; background:url(images/list_bg0.png);">
+	<div id="menu_0" class="menu" style="position:absolute; top:100px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_1" class="menu" style="position:absolute; top:170px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_2" class="menu" style="position:absolute; top:240px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_3" class="menu" style="position:absolute; top:310px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_4" class="menu" style="position:absolute; top:380px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_5" class="menu" style="position:absolute; top:450px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_6" class="menu" style="position:absolute; top:520px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_7" class="menu" style="position:absolute; top:590px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_focus" style="position:absolute; top:170px; left:75px; width:160px; height:69px; background:url(images/title_focus.png); opacity:0.3"></div>
+</div>
+
+<div id="search_layer" style="position:absolute; top:20px; left:245px; width:1030px; height:700px; visibility:hidden; display:none;">
+	<div id="keyWords" style="position:absolute; top:54px; left:54px; width:370px; height:45px; color:#ffffff; font-size:24px; font-weight:bold; overflow:hidden;"></div>
+	<div style="position:absolute; top:80px; left:50px; width:370px; height:446px; background:url(images/search_bg.png);"></div>
+	<div id="search_focus" style="position:absolute; top:85px; left:40px; width:384px; height:96px; display:none;">
+		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="25" height="25" style="background:url(images/focus_lt_w.png); background-repeat:no-repeat;"></td>
+				<td style="background:url(images/focus_t_w.png);background-repeat:repeat-x;"></td>
+				<td width="25" style="background:url(images/focus_rt_w.png);background-repeat:no-repeat;"></td>
+			</tr>
+			<tr>
+				<td style="background:url(images/focus_l_w.png);background-repeat:repeat-y;"></td>
+				<td>&nbsp;</td>
+				<td style="background:url(images/focus_r_w.png);background-repeat:repeat-y;"></td>
+		
+			</tr>
+			<tr>
+				<td width="25" height="25" style="background:url(images/focus_lb_w.png);background-repeat:no-repeat;"></td>
+				<td style="background:url(images/focus_b_w.png);background-repeat:repeat-x;"></td>
+				<td width="25" style="background:url(images/focus_rb_w.png);background-repeat:no-repeat;"></td>
+			</tr>
+		</table>
+		<div id="keyboard_sub" style="position:absolute; top:-47px; left:-35px; width:220px; height:220px; background:url(images/key_sub.png); display:none;">
+			<div id="keySub_0" class="keySub" style="position:absolute; top:20px; left:75px; width:65px; height:55px;">2</div>
+			<div id="keySub_1" class="keySub" style="position:absolute; top:85px; left:15px; width:65px; height:55px;">A</div>
+			<div id="keySub_2" class="keySub" style="position:absolute; top:85px; left:75px; width:65px; height:55px;">OK</div>
+			<div id="keySub_3" class="keySub" style="position:absolute; top:85px; left:140px; width:65px; height:55px;">B</div>
+			<div id="keySub_4" class="keySub" style="position:absolute; top:150px; left:75px; width:65px; height:55px;">C</div>
+		</div>
+	</div>
+	
+	<div id="keyWords" style="position:absolute; top:50px; left:490px; width:370px; height:45px; color:#ffffff; font-size:24px; font-weight:bold;">搜索结果</div>
+	<div style="position:absolute; top:80px; left:490px; width:485px; height:2px; background:url(images/line.png);"></div>
+	<div id="no_list" style="position:absolute; top:110px; left:500px; width:475px; height:85px; color:#ffffff; font-size:24px; display:none; visibility:hidden;">暂无结果</div>
+	<div id="search_list" style="position:absolute; top:130px; left:450px; width:550px; height:600px; display:none; visibility:hidden;">
+		<div id="searchList_0" style="position:absolute; top:5px; left:30px; width:475px; height:85px;">
+			<img id="searchList_img_0" src="images/album_reco1.png" width="85" height="85" style="position:absolute; top:0px; left:5px;" />
+			<div style="position:absolute; top:0px; left:105px; width:350px; height:85px;">
+				<table>
+					<tr height="85">
+						<td id="searchList_txt_0"  class="searchList_txt"><br /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="searchList_1" style="position:absolute; top:105px; left:30px; width:475px; height:85px;">
+			<img id="searchList_img_1" src="images/album_reco1.png" width="85" height="85" style="position:absolute; top:0px; left:5px;" />
+			<div style="position:absolute; top:0px; left:105px; width:350px; height:85px;">
+				<table>
+					<tr height="85">
+						<td id="searchList_txt_1"  class="searchList_txt"><br /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="searchList_2" style="position:absolute; top:200px; left:30px; width:475px; height:85px;">
+			<img id="searchList_img_2" src="images/album_reco1.png" width="85" height="85" style="position:absolute; top:0px; left:5px;" />
+			<div style="position:absolute; top:0px; left:105px; width:350px; height:85px;">
+				<table>
+					<tr height="85">
+						<td id="searchList_txt_2"  class="searchList_txt"><br /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="searchList_3" style="position:absolute; top:295px; left:30px; width:475px; height:85px;">
+			<img id="searchList_img_3" src="images/album_reco1.png" width="85" height="85" style="position:absolute; top:0px; left:5px;" />
+			<div style="position:absolute; top:0px; left:105px; width:350px; height:85px;">
+				<table>
+					<tr height="85">
+						<td id="searchList_txt_3"  class="searchList_txt"><br /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="searchList_4" style="position:absolute; top:390px; left:30px; width:475px; height:85px;">
+			<img id="searchList_img_4" src="images/album_reco1.png" width="85" height="85" style="position:absolute; top:0px; left:5px;" />
+			<div style="position:absolute; top:0px; left:105px; width:350px; height:85px;">
+				<table>
+					<tr height="85">
+						<td id="searchList_txt_4"  class="searchList_txt"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div style="position:absolute; top:520px; left:330px; width:128px; height:20px; background:url(images/tips.png);"></div>
+		
+		<div style="position:absolute; top:518px; left:460px; width:100px; height:22px; line-height:22px; font-size:24px; color:#ffffff; font-weight:bold; text-align:center;">
+			<span id="search_currPage"></span>/<span id="search_totalPage"></span>
+		</div>
+		
+		<div id="searchList_focus" class="smooth" style="position:absolute; top:-22px; left:0px; width:549px; height:144px; background:url(images/searchList_focus.png); opacity:0;visibility:hidden;"></div>
+	</div>
+</div>
+
+
+
+<div id="List" style="position:absolute; top:20px; left:230px; width:1070px; height:700px; visibility:hidden; display:none;">
+	<div style="position:absolute; top:20px; left:296px; width:193px; height:47px; background:url(images/recoed_title.png);"></div>
+	<div id="content" style="position:absolute; top:100px; left:12px; width:1070px; height:700px;"></div>
+	<div id="top" style="position:absolute; top:75px; left:506px; width:25px; height:12px; background:url(images/last_false.png);"></div>
+	<div id="bottom" style="position:absolute; top:620px; left:506px; width:25px; height:12px; background:url(images/next_false.png);"></div>
+	<div style="position:absolute; top:644px; left:790px; width:128px; height:20px; background:url(images/tips.png);"></div>
+	
+	<div style="position:absolute; top:642px; left:920px; width:83px; height:22px; line-height:22px; font-size:24px; color:#ffffff; font-weight:bold; text-align:center;">
+		<span id="currPage"></span>/<span id="totalPage"></span>
+	</div>
+	<div id="list_focus" class="smooth" style="position:absolute; top:77px; left:7px; width:228px; height:291px; background:url(images/record_focus.png); opacity:0;visibility:hidden;"></div>
+</div>
+
+</body>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/showList.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript" src="js/recordList.js"></script>
+</html>

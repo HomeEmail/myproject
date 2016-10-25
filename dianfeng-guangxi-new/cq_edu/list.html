@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HiFi音乐-唱片馆</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.menu{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#FFFFFF;
+	 text-align:center;
+	 line-height:70px;
+}
+
+.list{
+	 font-size:24px;
+	 font-weight:bold;
+	 color:#999999;
+}
+
+.keySub{
+	 font-size:32px;
+	 font-weight:bold;
+	 line-height:55px;
+	 text-align:center;
+	 color:#ffffff;
+}
+
+.searchList_txt{
+	 font-size:22px;
+	 font-weight:bold;
+	 color:#ffffff;
+}
+</style>
+
+</head>
+
+<body style="background:url(images/happyclass/allbg.jpg) no-repeat;">
+<div id="loadingDiv" class="smooth" style="position:absolute; top:320px; left:600px; width:70px; height:70px; z-index:10; visibility:hidden;">
+	<img src="./images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div id="menu" style="position:absolute; top:0px; left:0px; width:244px; height:720px; ">
+	<div id="menu_focus" style="position:absolute; top:160px; left:85px; width:143px; height:51px; background:url(images/happyclass/focusbg.png); opacity:0.3"></div>
+	<div id="menu_0" class="menu" style="position:absolute; top:100px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_1" class="menu" style="position:absolute; top:170px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_2" class="menu" style="position:absolute; top:240px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_3" class="menu" style="position:absolute; top:310px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_4" class="menu" style="position:absolute; top:380px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_5" class="menu" style="position:absolute; top:450px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_6" class="menu" style="position:absolute; top:520px; left:75px; width:160px; height:70px;"></div>
+	<div id="menu_7" class="menu" style="position:absolute; top:590px; left:75px; width:160px; height:70px;"></div>
+
+	<div id="upsign" style="width: 25px;height: 12px;position: absolute;left: 143px;top: 90px;background: url(images/happyclass/upsign.png) no-repeat;"> </div>
+	<div id="upsignlighting" style="width: 41px;height: 29px;position: absolute;left: 135px;top: 82px;background: url(images/happyclass/upsignlighting.png) no-repeat;visibility: hidden;"> </div>
+	<div id="downsign" style="width: 25px;height: 12px;position: absolute;left: 143px;top: 630px;background: url(images/happyclass/downsign.png) no-repeat;"> </div>
+	<div id="downsignlighting" style="width: 41px;height: 29px;position: absolute;left: 135px;top: 621px;background: url(images/happyclass/downsignlighting.png) no-repeat;visibility: visible;"> </div>
+	
+</div>
+
+
+<div id="List" style="position:absolute; top:20px; left:230px; width:1070px; height:700px; visibility:hidden; display:none;">    
+	<div id="upsignchange" style="position:absolute; top:20px; left:425px; width:200px; height:50px; text-align:center;color: #ffffff;font-size: 38px;"><img src="images/happyclass/up0.png" /></div>
+	<div id="content" style="position:absolute; top:100px; left:12px; width:1070px; height:700px;"></div>
+	<div id="top" style="position:absolute; top:75px; left:506px; width:25px; height:12px; background:url(images/last_false.png);"></div>
+	<div id="bottom" style="position:absolute; top:620px; left:506px; width:25px; height:12px; background:url(images/next_false.png);"></div>
+	<div style="position:absolute; top:644px; left:780px; width:128px; height:20px; background:url(images/tips.png);"></div>
+	
+	<div style="position:absolute; top:642px; left:920px; width:83px; height:22px; line-height:22px; font-size:24px; color:#ffffff; font-weight:bold; text-align:center;">
+		<span id="currPage"></span>/<span id="totalPage"></span>
+	</div>
+	<div id="list_focus" class="smooth" style="position:absolute; top:77px; left:7px; width:228px; height:291px; background:url(images/record_focus.png); opacity:0;visibility:hidden;"></div>
+</div>
+
+</body>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/showList.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
+</html>

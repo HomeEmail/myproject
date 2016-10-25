@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>充值有礼</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.btn { font-size:22px; border-radius:30px; text-align:center; line-height:45px;}
+</style>
+</head>
+
+<body style="background:url(../images/bg.jpg) no-repeat;">
+<div id="loadingDiv" class="smooth" style="position:absolute;top:320px; left:600px; width:80px; height:80px; z-index:10; visibility:hidden;">
+	<img src="../images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+<div style="position:absolute; top:110px; left:66px; width:1147px; height:422px;">
+	<div style="position:absolute; top:0px; left:0px; width:1147px; height:422px; background:url(../images/cz_bg.png);"></div>
+	<div style="position:absolute; top:430px; left:0px; width:1147px; height:35px; text-align:center; font-size:28px; line-height:35px; font-weight:bold; color:#ffffff;">
+		<div style="position:absolute; top:8px; left:140px; width:650px; height:35px;">我的账户余额是：<span id="money"></span>元</div>
+		<div class="btn" style="position:absolute; top:0px; left:680px; width:150px; height:45px; color:#ffffff; border:2px #ffffff solid;">马上充值</div>
+	</div>
+</div>
+
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="alipayDiv" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:4; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:0px; width:1280px; height:400px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div style="text-align:center; height:80px; line-height:80px; color:#ffffff; font-size:28px; font-weight:bold; border-bottom:2px #202020 solid;">支付宝充值</div>
+		<div id="moneySelect" style="height:300px; padding-top:20px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/keyEvent.js"></script>
+<script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/param.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/order.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress =grabEvent;
+}
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;		
+		case "KEY_SELECT": //	
+			control.clickSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			if(!!window.android){
+				window.android.onCloseWebView('1');//关闭webview
+			}else{
+				control.clickBack();
+			}
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+	ajaxGetUser();
+}
+
+var control = {
+	focusArea : 0, //0:btn区域 1:充值弹出框
+	init : function(){
+		$("money").innerText = json.balance;
+	},
+	alipay : {
+		pos : 0,
+		btnFlag : false,
+		moneyData : [
+			{text:'10元',val : 10},
+			{text:'30元',val : 30},
+			{text:'50元',val : 50},
+			{text:'100元',val : 100}
+		],
+		init : function(){
+			this.show();
+			$("moneySelect").innerHTML = "";
+			var tmp = '<div style="padding-bottom:30px; font-size:28px; color:#ffffff;">亲爱的乐迷，请先选择下面的金额再进行充值</div>'
+					+'<div id="recharge0" style="width:119px; height:118px; margin:0px 10px; display:inline-block; background:url(../images/moneySelectBg-on.png);">'
+					+'<div style="font-size:36px;text-align:center;padding-top:58px;width:119px;">'+ this.moneyData[0].text +'</div>'
+					+'</div>';
+			for(var i = 1; i < this.moneyData.length;i++){
+				var id = "recharge"+ i;
+				tmp += '<div id="'+id+'" style="width:119px; height:118px; margin:0px 10px; display:inline-block; background:url(../images/moneySelectBg.png);">'
+					+'<div style="font-size:36px;text-align:center;padding-top:58px;width:119px;">'+ this.moneyData[i].text +'</div>'
+					+'</div>';
+			}
+			tmp += '<div id="recharge_focus" style="position:absolute;top:320px; left:560px; width:150px; height:50px; line-height:50px; text-align:center; border-radius:25px; color:#999999; border:2px #999999 solid;">取消充值</div>';
+			$("moneySelect").innerHTML = tmp;
+		},
+		show : function(){
+			$("alipayDiv").style.opacity = 1;
+			$("alipayDiv").style.visibility = "visible";
+		},
+		changeX : function(_num){
+			if(this.pos == 0 && _num < 0 || this.pos == this.moneyData.length -1 && _num > 0)return;
+			$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg.png)";
+			this.pos += _num;
+			$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg-on.png)";
+		},
+		changeY : function(_num){
+			if(this.btnFlag && _num < 0){
+				this.btnFlag = false;
+				$("recharge_focus").style.color = "#999999";
+				$("recharge_focus").style.borderColor = "#999999";
+				$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg-on.png)";
+				return;
+			}else if(!this.btnFlag && _num > 0){
+				$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg.png)";
+				this.btnFlag = true;
+				$("recharge_focus").style.color = "#ffffff";
+				$("recharge_focus").style.borderColor = "#ffffff";		
+				return;		
+			}
+		},
+		hide : function(){
+			this.pos = 0;
+			this.btnFlag = false;
+			$("alipayDiv").style.opacity = 0;
+			$("alipayDiv").style.visibility = "hidden";
+		},
+		doSelect : function(){
+			var that = control;
+			if(this.btnFlag){
+				this.hide();
+				that.focusArea = 0;
+			}else{
+				var money = this.moneyData[this.pos].val;
+				money = money*100;
+				//location.href = "http://192.168.9.106/commonPay/index.htm?payMoney="+ money +"&returnUrl="+ returnUrl;
+				var target = typeof hardware!='undefined' ? hardware.STB.serialNumber : 20028882000201055;
+				var returnUrl = hostUrl +"/HiFi_cq/topic/sign/index.html";
+				var orderId = "hifi_"+ keyNo + new Date().getTime();
+				var notifyUrl = Q.encode(serverUrl+'hifiUser/userRecharge.action');
+				location.href = "http://192.168.5.74:9000/ccn-pay/payPlatform?payChannel=ccn9c77de9bfa6aa76f&userName="+keyNo+"&orderId="+orderId+"&payAmount="+money+"&targetId="+target+"&cardNo="+keyNo+"&extend=hifi_recharge&notifyUrl="+notifyUrl+"&returnUrl="+returnUrl+"&homeUrl="+returnUrl+"&rechargeType=1&rechargeAccount=0";
+			}
+		},
+		doBack : function(){
+			this.hide();
+			var that = control;
+			that.focusArea = 0;
+		}
+	},
+	clickTop : function(){
+		if(this.focusArea == 0){
+			//			
+		}else if(this.focusArea == 1){
+			this.alipay.changeY(-1);
+		}
+	},
+	clickDown : function(){
+		if(this.focusArea == 0){
+			//
+		}else if(this.focusArea == 1){
+			this.alipay.changeY(1);
+		}
+	},
+	clickLeft : function(){
+		if(this.focusArea == 0){
+			//
+		}else if(this.focusArea == 1){
+			this.alipay.changeX(-1);
+		}
+	},
+	clickRight : function(){
+		if(this.focusArea == 0){
+			//
+		}else if(this.focusArea == 1){
+			this.alipay.changeX(1);
+		}
+	},
+	clickSelect : function(){
+		if(this.focusArea == 0){
+			this.focusArea = 1;
+			this.alipay.init();
+		}else if(this.focusArea == 1){
+			this.alipay.doSelect();
+		}
+	},
+	clickBack : function(){
+		if(this.focusArea == 0){
+			//location.href = "more_activity.html";
+			location.href = "../index.html?menuPos=6";
+			//history.back();
+		}else if(this.focusArea == 1){
+			this.alipay.doBack();
+		}
+	}
+}
+
+var json;
+function ajaxGetUser(){
+	if(req != null){
+		req.abort();
+		req = null;
+	}
+	req = ajax({
+		url: serverUrl +'hifiUser/getUserImg.action?keyNo='+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			json = eval("(" + html + ")");
+			if(json.code == 0){
+				control.init();
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|系统繁忙,请稍后再试!",0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据出错",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+</script>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title>用户信息</title>
+<style>
+.smooth { -webkit-transition-duration:300ms; }
+.txt { font-size:22px; color:#ffffff; line-height:35px;}
+.txt_2 { font-size:22px; border-radius:20px; text-align:center; line-height:35px;}
+</style>
+</head>
+
+<body style="background:url(../images/bg.jpg) no-repeat; width:1280px; height:720px; overflow:hidden;">
+<div id="loadingDiv" class="smooth" style="position:absolute;top:320px; left:600px; width:80px; height:80px; z-index:10; visibility:hidden;">
+	<img src="../images/loading.gif" style="position:absolute; top:0px; left:0px;" />
+</div>
+
+<div style="position:absolute; top:50px; left:250px; width:781px; height:532px; background:url(../images/user_info_bg.png)">
+	<div style="position:absolute; top:192px; left:33px; width:244px; height:265px;">
+		<img id="head_img" src="../images/head_0.png" width="150" height="150" style="position:absolute; top:40px; left:40px;" />
+		<div style="position:absolute; top:200px; left:40px; width:150px; height:35px; text-align:center; font-size:22px; line-height:35px; color:#999999;">点击头像可换</div>
+		<div id="head_focus" style="position:absolute; top:19px; left:19px; width:192px; height:192px; background:url(../images/head_focus.png); opacity:0;"></div>
+	</div>
+	<div style="position:absolute; top:200px; left:300px; width:440px; height:265px;">
+		<div id="user_card" class="txt" style="position:absolute; top:30px; left:0px; width:440px; height:35px;"></div>
+		<div id="user_balance" class="txt" style="position:absolute; top:100px; left:0px; width:440px; height:35px;"></div>
+		<div id="user_credit" class="txt" style="position:absolute; top:170px; left:0px; width:440px; height:35px;"></div>
+		<div id="btn_0" class="txt_2" style="position:absolute; top:98px; left:240px; width:100px; height:35px; color:#ffffff; border:2px #ffffff solid; ">充值</div>
+		<div id="btn_1" class="txt_2" style="position:absolute; top:168px;left:240px; width:100px; height:35px; color:#999999; border:2px #999999 solid; ">签到</div>
+	</div>
+</div>
+
+<div id="head" class="" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:3; opacity:0; visibility:hidden;"> <!--头像弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:0px; width:1280px; height:460px; border-top:2px #ff3631 solid; border-bottom:2px #ff3631 solid; background-color:#000000;">
+		<div style="text-align:center; height:80px; line-height:80px; color:#ffffff; font-size:28px; font-weight:bold; border-bottom:2px #202020 solid;">请选择您的头像</div>
+		<div id="head_list" style="height:270px; padding-top:80px;">
+			<div style="position:absolute; top:100px; left:360px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_0" src="../images/head_1.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_0" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div style="position:absolute; top:100px; left:510px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_1" src="../images/head_2.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_1" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div style="position:absolute; top:100px; left:660px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_2" src="../images/head_3.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_2" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div style="position:absolute; top:100px; left:810px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_3" src="../images/head_4.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_3" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			
+			<div style="position:absolute; top:250px; left:360px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_4" src="../images/head_5.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_4" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div style="position:absolute; top:250px; left:510px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_5" src="../images/head_6.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_5" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div style="position:absolute; top:250px; left:660px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_6" src="../images/head_7.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_6" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div style="position:absolute; top:250px; left:810px; width:127px; height:127px; background:url(../images/head_bg.png);">
+				<img id="head_7" src="../images/head_8.png" width="113" height="113" style="position:absolute; top:7px; left:7px;" />
+				<img id="head_check_7" src="../images/checked.png" width="128" height="127" style="position:absolute; top:0px; left:0px; visibility:hidden;" />
+			</div>
+			<div id="choose_focus" style="position:absolute; top:91px; left:351px; width:145px; height:145px;">
+				<img src="../images/head_focus.png" width="145" height="145" />
+			</div>
+			<div id="check_focus" class="txt_2" style="position:absolute; top:400px; left:585px; width:120px; height:35px; color:#999999; border:2px #999999 solid; ">确认</div>
+		</div>
+	</div>
+</div>
+
+<div id="tips" class="" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+
+<div id="alipayDiv" class="" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:4; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:0px; width:1280px; height:400px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div style="text-align:center; height:80px; line-height:80px; color:#ffffff; font-size:28px; font-weight:bold; border-bottom:2px #202020 solid;">支付宝充值</div>
+		<div id="moneySelect" style="height:300px; padding-top:20px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/keyEvent.js"></script>
+<script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/param.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/order.js"></script>
+<script type="text/javascript" src="../js/showTips.js"></script>
+
+<script type="text/javascript">
+function initEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;	
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			location.href = "../index.html?menuPos=0";
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;		
+		case "KEY_SELECT": //	
+			control.clickSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			control.clickBack();
+			return false;
+			break;
+		default:
+			break;
+	}
+}
+
+window.onload = init;
+function init(){
+	loadingDiv = $('loadingDiv');
+	document.onkeydown = initEvent;
+	if(document.onkeypress!==null){
+		document.onkeypress = initEvent;
+	}
+	$("user_card").innerText = "智能卡号："+ keyNo;
+	ajaxGetUser();
+}
+
+var control = {
+	focusArea : 0, //0:btn区域 1:头像 2:头像选择层
+	imgPos : 0,
+	init : function(){
+		document.onkeydown = grabEvent;
+		if(document.onkeypress!==null){
+			document.onkeypress = grabEvent;
+		}
+		this.imgPos = json.userImg;
+		$("head_img").src = "../images/head_"+ (parseInt(this.imgPos) + 1) +".png";
+		$("user_balance").innerText = "账号余额：￥"+ json.balance;
+		$("user_credit").innerText = "签到积分："+ json.userIntegral;
+		
+	},
+	btn : {
+		pos : 0,
+		init : function(_pos){
+			this.pos = !!_pos ? _pos : 0;
+			this.focus();
+		},
+		focus : function(){
+			control.focusArea = 0;
+			$("btn_"+ this.pos).style.color = "#ffffff";
+			$("btn_"+ this.pos).style.borderColor = "#ffffff";
+		},
+		blur : function(){
+			$("btn_"+ this.pos).style.color = "#999999";
+			$("btn_"+ this.pos).style.borderColor = "#999999";
+		},
+		changeFocus : function(_num){
+			var prePos = this.pos;
+			this.pos += _num;
+			if(this.pos < 0){
+				this.pos = 0;
+				return 0;
+			}else if(this.pos > 1){
+				this.pos = 1;
+				return 0;
+			}
+			$("btn_"+ prePos).style.color = "#999999";
+			$("btn_"+ prePos).style.borderColor = "#999999";
+			$("btn_"+ this.pos).style.color = "#ffffff";
+			$("btn_"+ this.pos).style.borderColor = "#ffffff";
+		},
+		touchLeft : function(){
+			var that = control;
+			that.focusArea = 1;
+			this.blur();
+			$("head_focus").style.opacity = 1;
+		},
+		clickSelect : function(){
+			if(this.pos == 0){
+				var that = control;
+				that.focusArea = 3;
+				that.alipay.init();
+			}else if(this.pos == 1){
+				location.href = "../topic/sign/index.html";
+			}
+		}
+	},
+	choose_head : { 
+		x : 0,
+		y : 0,
+		dataPos : 0,
+		checkPos : -1,
+		newLine : true, // x左右边界换行开关
+		checkArea : false, // 提交按钮位置
+		init : function(){
+			this.show();
+			var that = control;
+			this.checkPos = that.imgPos;
+			if(this.checkPos > -1)$("head_check_"+ this.checkPos).style.visibility = "visible";
+		},
+		show : function(){
+			control.focusArea = 2;
+			$("head").style.opacity = 1;
+			$("head").style.visibility = "visible";
+			//this.focus();
+		},
+		hide : function(){
+			this.x = 0;
+			this.y = 0;
+			this.dataPos = 0;
+			this.checkArea = false, // 提交按钮位置
+			$("head").style.opacity = 0;
+			$("head").style.visibility = "hidden";
+			this.initFocus();
+			this.blur();
+		},
+		initFocus : function(_x,_y){
+			this.x = !!_x ? _x : this.x;
+			this.y = !!_y ? _y : this.y;
+			this.dataPos = this.x + this.y*4;
+			var divObj = $("choose_focus");
+			divObj.style.top  = 91  + this.y*150 +"px";
+			divObj.style.left = 351 + this.x*150 +"px";
+		},	
+		changeX : function(_num){
+			this.x += _num;
+			if(this.x < 0){
+				this.touchLeft();
+				return 0;
+			}else if(this.x > 3){
+				this.touchRight();
+				return 0;
+			}
+			this.initFocus();
+		},
+		changeY : function(_num){
+			if(!this.checkArea){
+				this.y += _num;
+				if(this.y < 0){
+					this.y = 0;
+					return 0;
+				}else if(this.y > 1){
+					this.y = 1;
+					this.touchBottom();
+					return 0;
+				}
+				this.initFocus();
+			}else{
+				if(_num < 0){
+					this.checkArea = false;
+					this.blur();
+					$("choose_focus").style.opacity = 1;
+				}
+			}
+		},
+		touchLeft : function(){
+			if(this.y > 0 && this.newLine){
+				this.y--;
+				this.x = 3;
+				this.initFocus();
+			}else{
+				this.x = 0;
+			}
+		},
+		touchRight : function(){
+			if(this.y < 1 && this.newLine){
+				this.y++;
+				this.x = 0;
+				this.initFocus();
+			}else{
+				this.x = 3;
+			}
+		},
+		touchBottom : function(){
+			this.checkArea = true;
+			this.focus();
+			$("choose_focus").style.opacity = 0;
+		},			
+		focus : function(){
+			$("check_focus").style.color = "#ffffff";
+			$("check_focus").style.borderColor = "#ffffff";
+		},
+		blur : function(){
+			$("check_focus").style.color = "#999999";
+			$("check_focus").style.borderColor = "#999999";			
+		},
+		doSelect : function(){
+			if(!this.checkArea){
+				if(this.checkPos == this.dataPos)return;
+				if(this.checkPos > -1)$("head_check_"+ this.checkPos).style.visibility = "hidden";
+				this.checkPos = this.dataPos;
+				$("head_check_"+ this.checkPos).style.visibility = "visible";
+			}else{
+				var that = control;
+				ajaxSetHeadImg(this.checkPos,function(){
+					that.choose_head.hide();
+					that.focusArea = 1;
+					that.imgPos = that.choose_head.checkPos;
+					$("head_img").src = "../images/head_"+ (that.imgPos + 1) +".png";
+				})
+			}
+		},
+		doBack : function(){
+			this.hide();
+			var that = control;
+			that.focusArea = 1;
+		}
+	},
+	alipay : {
+		pos : 0,
+		btnFlag : false,
+		moneyData : [
+			{text:'10元',val : 10},
+			{text:'30元',val : 30},
+			{text:'50元',val : 50},
+			{text:'100元',val : 100}
+		],
+		init : function(){
+			this.show();
+			$("moneySelect").innerHTML = "";
+			var tmp = '<div style="padding-bottom:30px; font-size:28px; color:#ffffff;">亲爱的乐迷，请先选择下面的金额再进行充值</div>'
+					+'<div id="recharge0" style="width:119px; height:118px; margin:0px 10px; display:inline-block; background:url(../images/moneySelectBg-on.png);">'
+					+'<div style="font-size:36px;text-align:center;padding-top:58px;width:119px;">'+ this.moneyData[0].text +'</div>'
+					+'</div>';
+			for(var i = 1; i < this.moneyData.length;i++){
+				var id = "recharge"+ i;
+				tmp += '<div id="'+id+'" style="width:119px; height:118px; margin:0px 10px; display:inline-block; background:url(../images/moneySelectBg.png);">'
+					+'<div style="font-size:36px;text-align:center;padding-top:58px;width:119px;">'+ this.moneyData[i].text +'</div>'
+					+'</div>';
+			}
+			tmp += '<div id="recharge_focus" style="position:absolute;top:320px; left:560px; width:150px; height:50px; line-height:50px; text-align:center; border-radius:25px; color:#999999; border:2px #999999 solid;">取消充值</div>';
+			$("moneySelect").innerHTML = tmp;
+		},
+		show : function(){
+			$("alipayDiv").style.opacity = 1;
+			$("alipayDiv").style.visibility = "visible";
+		},
+		changeX : function(_num){
+			if(this.pos == 0 && _num < 0 || this.pos == this.moneyData.length -1 && _num > 0)return;
+			$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg.png)";
+			this.pos += _num;
+			$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg-on.png)";
+		},
+		changeY : function(_num){
+			if(this.btnFlag && _num < 0){
+				this.btnFlag = false;
+				$("recharge_focus").style.color = "#999999";
+				$("recharge_focus").style.borderColor = "#999999";
+				$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg-on.png)";
+				return;
+			}else if(!this.btnFlag && _num > 0){
+				$("recharge"+ this.pos).style.background = "url(../images/moneySelectBg.png)";
+				this.btnFlag = true;
+				$("recharge_focus").style.color = "#ffffff";
+				$("recharge_focus").style.borderColor = "#ffffff";		
+				return;		
+			}
+		},
+		hide : function(){
+			this.pos = 0;
+			this.btnFlag = false;
+			$("alipayDiv").style.opacity = 0;
+			$("alipayDiv").style.visibility = "hidden";
+		},
+		doSelect : function(){
+			var that = control;
+			if(this.btnFlag){
+				this.hide();
+				that.focusArea = 0;
+			}else{
+				var money = this.moneyData[this.pos].val;
+				money = money*100;
+				//location.href = "http://192.168.9.106/commonPay/index.htm?payMoney="+ money +"&returnUrl="+ returnUrl;
+				var target = typeof hardware!='undefined' ? hardware.STB.serialNumber : 20028882000201055;
+				var returnUrl = Q.encode(location.href);
+				var orderId = "hifi_"+ keyNo + new Date().getTime();
+				var notifyUrl = Q.encode(serverUrl+'hifiUser/userRecharge.action');
+				location.href = "http://192.168.5.74:9000/ccn-pay/payPlatform?payChannel=ccn9c77de9bfa6aa76f&userName="+keyNo+"&orderId="+orderId+"&payAmount="+money+"&targetId="+target+"&cardNo="+keyNo+"&extend=hifi_recharge&notifyUrl="+notifyUrl+"&returnUrl="+returnUrl+"&homeUrl="+returnUrl+"&rechargeType=1&rechargeAccount=0";
+			}
+		},
+		doBack : function(){
+			this.hide();
+			var that = control;
+			that.focusArea = 0;
+		}
+	},
+	clickTop : function(){
+		if(this.focusArea == 0){
+			this.btn.changeFocus(-1);	
+		}else if(this.focusArea == 1){
+			
+		}else if(this.focusArea == 2){
+			this.choose_head.changeY(-1);
+		}else if(this.focusArea == 3){
+			this.alipay.changeY(-1);
+		}
+	},
+	clickDown : function(){
+		if(this.focusArea == 0){
+			this.btn.changeFocus(1);
+		}else if(this.focusArea == 1){
+			
+		}else if(this.focusArea == 2){
+			this.choose_head.changeY(1);
+		}else if(this.focusArea == 3){
+			this.alipay.changeY(1);
+		}
+	},
+	clickLeft : function(){
+		if(this.focusArea == 0){
+			this.btn.touchLeft();
+		}else if(this.focusArea == 1){
+			
+		}else if(this.focusArea == 2){
+			this.choose_head.changeX(-1);
+		}else if(this.focusArea == 3){
+			this.alipay.changeX(-1);
+		}
+	},
+	clickRight : function(){
+		if(this.focusArea == 0){
+			//
+		}else if(this.focusArea == 1){
+			$("head_focus").style.opacity = 0;
+			this.btn.focus();
+		}else if(this.focusArea == 2){
+			this.choose_head.changeX(1);
+		}else if(this.focusArea == 3){
+			this.alipay.changeX(1);
+		}
+	},
+	clickSelect : function(){
+		if(this.focusArea == 0){
+			this.btn.clickSelect();
+		}else if(this.focusArea == 1){
+			this.choose_head.init();
+		}else if(this.focusArea == 2){
+			this.choose_head.doSelect();
+		}else if(this.focusArea == 3){
+			this.alipay.doSelect();
+		}
+	},
+	clickBack : function(){
+		if(this.focusArea == 0){
+			location.href = "../index.html?menuPos=0";
+		}else if(this.focusArea == 1){
+			location.href = "../index.html?menuPos=0";
+		}else if(this.focusArea == 2){
+			this.choose_head.doBack();
+		}else if(this.focusArea == 3){
+			this.alipay.doBack();
+		}
+	}
+}
+
+function showOrder(){  //展示订购信息
+	orderFlow.init();//模块初始化
+
+	orderFlow.onEventHandle(grabEvent);//事件接管
+	
+	orderFlow.successTipsDivCallBack=function(){};//订购成功关闭弹层回调
+	orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+	orderFlow.orderSuccessCallBack=function(){};//订购成功回调
+	orderFlow.orderFailureCallBack=function(){};//订购失败回调
+
+	orderFlow.show();//显示模块
+	orderFlow.showStep('orderTipsDiv');//显示哪一步
+	orderFlow.setSuccessTipsDivBt1('参与活动',function(){
+		location.href = "topic/guessSong/index.html";
+	});
+}
+
+var json;
+function ajaxGetUser(){
+	if(req != null){
+		req.abort();
+		req = null;
+	}
+	req = ajax({
+		url: serverUrl +'hifiUser/getUserImg.action?keyNo='+ keyNo,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			json = eval("(" + html + ")");
+			if(json.code == 0){
+				control.init();
+			}else{
+				showTips.init("tips","t_title|温馨提示","t_content|"+json.msg,0);
+				showTips.onEventHandle(grabEvent);//事件接管
+			}
+		},
+		onError:function(){ //请求失败后执行[可选]
+			showTips.init("tips","t_title|温馨提示","t_content|数据出错",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}
+
+function ajaxSetHeadImg(_imgPos,_fn){
+	showLoadingDiv();
+	if(req != null){
+		req.abort();
+		req = null;
+		hideLoadingDiv();
+	}
+	req = ajax({
+		url: serverUrl +'hifiUser/updateUserImg.action?keyNo='+ keyNo +'&userImgIndex='+ _imgPos,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			if(json.code == 0){
+				!!_fn&&_fn();
+			}
+		},
+		onError:function(){ //请求失败后执行[可选]
+			hideLoadingDiv();
+			showTips.init("tips","t_title|温馨提示","t_content|数据出错",0);
+			showTips.onEventHandle(grabEvent);//事件接管
+		},
+		post:"",  
+		timeout:7000  
+	});	
+}	
+</script>
+</html>

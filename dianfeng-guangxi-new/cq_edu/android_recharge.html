@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HiFi音乐安卓充值</title>
+<style>
+.smooth { -webkit-transition-duration:300ms,300ms,300ms,300ms;-webkit-transition-property: width,height,top,left; }
+
+</style>
+</head>
+
+<body onUnload="" style="background:url(images/bg.jpg) no-repeat; width:1280px; height:720px; overflow:hidden;">
+
+	<div id="loadingDiv" class="smooth" style="position:absolute; top:320px; left:600px; width:70px; height:70px; z-index:10; visibility:hidden;">
+		<img src="./images/loading.gif" style="position:absolute; top:0px; left:0px;background: transparent;" />
+	</div>
+<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:10; opacity:0; visibility:hidden;"> <!--提示弹出层-->
+	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
+	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
+		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
+		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
+		<div id="btnFocus" style="width:100px;height:40px;border:1px #ccc solid;position: absolute;left: 562px;color: #ffffff;text-align: center;font-size: 24px;line-height: 40px;top: 276px;">确定</div>
+	</div>
+</div>
+
+</body>
+	<script type="text/javascript" src="js/keyEvent.js"></script>
+	<script type="text/javascript" src="js/lib.js"></script>
+	<script type="text/javascript" src="js/param.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/order.js"></script>
+	<script type="text/javascript" src="js/showTips.js"></script>
+<script type="text/javascript">
+	document.onkeydown = grabEvent;
+	if(document.onkeypress!==null){
+		document.onkeypress =grabEvent;
+	}
+	function grabEvent(_event){
+		if(_event.type=='keydown'){
+			document.onkeypress = null;
+		}
+		var code = Event(_event);
+		switch(code){
+			case "KEY_UP": //
+				//control.clickTop();
+				return 0;
+				break;
+			case "KEY_DOWN": //
+				//control.clickDown();
+				return 0;
+				break;
+			case "KEY_LEFT": //
+				//control.clickLeft();
+				return 0;
+				break;
+			case "KEY_RIGHT": //
+				//control.clickRight();
+				return 0;
+				break;		
+			case "KEY_SELECT": //	
+				//control.clickSelect();
+				return 0;
+				break;
+			case "KEY_EXIT":
+			case "KEY_BACK":
+				//control.clickBack();
+				window.history.back();
+				//closeWebview();
+				return false;
+				break;
+			default:
+				break;
+		}
+	}
+	function closeWebview(){
+		if(!!window.android){
+				window.android.onCloseWebView('1');//关闭webview
+		}
+	}
+	window.onload=init;
+	orderFlow.close = function(fn){//关闭弹层，还原事件接管
+		this.hide();
+		this.offEventHandle();
+		closeWebview();
+		!!fn&&fn();
+	}
+	var payStatus = {
+		payState : "",
+		payDesc : ""
+	};
+	function init(){
+		payStatus.payState = Q.getDecoded("payState");
+		if(payStatus.payState == "1" || payStatus.payState == 1){
+			payStatus.payDesc = "支付成功";
+		}else if(payStatus.payState == "0" || payStatus.payState == 0){
+			payStatus.payDesc = "支付失败"+ Q.getDecoded("payDesc");
+		}
+		if(payStatus.payDesc == "支付成功"){
+			rechargeOK();
+			// showTips.init("tips","t_title|温馨提示","t_content|"+ payStatus.payDesc,0);
+			// showTips.onEventHandle(grabEvent);//事件接管
+		}else if(payStatus.payDesc.indexOf("支付失败")>-1 ){
+			rechargeFail();
+		}else{
+			showOrder();
+		}
+	}
+
+	function showOrder(_url){  //展示订购信息
+		orderFlow.init();//模块初始化
+
+		orderFlow.onEventHandle(grabEvent);//事件接管
+		
+
+		orderFlow.orderFailureCallBack=function(){};//订购失败回调
+		orderFlow.failureTipsDivCallBack=function(){};//订购失败关闭弹层回调
+
+		orderFlow.orderSuccessCallBack=function(){
+			
+		};//订购成功回调
+		orderFlow.successTipsDivCallBack=function(){
+			
+		};//订购成功关闭弹层回调
+
+
+
+		orderFlow.show();//显示模块
+		orderFlow.goAlipayRechargeFlow();//去充值流程
+
+		
+	}
+	function rechargeOK(){
+
+		orderFlow.init();//模块初始化
+
+		orderFlow.onEventHandle(grabEvent);//事件接管
+		orderFlow.show();//显示模块
+		orderFlow.reChargeSuccessDivTipsText='恭喜您，充值成功！';
+		orderFlow.showStep('reChargeSuccessDiv');
+		orderFlow.setReChargeSuccessDivBt1('确定',function(){
+			orderFlow.close();
+		});
+
+		if(!!window.android){
+			window.android.onResultCallback('1','recharge success');//返回充值结果给安卓
+			window.android.onClickKeyBack();//设置返回按键状态
+
+		}
+	}
+	function rechargeFail(){
+		orderFlow.init();//模块初始化
+
+		orderFlow.onEventHandle(grabEvent);//事件接管
+		orderFlow.show();//显示模块
+		
+		orderFlow.showStep('reChargeFailureDiv');
+
+		if(!!window.android){
+			window.android.onResultCallback('0','recharge failure');//返回充值结果给安卓
+			window.android.onClickKeyBack();//设置返回按键状态
+		}
+		
+	}
+</script>
+</html>
