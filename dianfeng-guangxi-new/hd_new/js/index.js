@@ -73,20 +73,47 @@ var menuPos= Q.getInt('menuPos',0);
 window.onload=function(){
     //ctr=topTips.init();//事件交给右上角控制对象
     ctr=menuObj.init();//事件交给菜单控制对象
-    indexHome.init();
+
 };
 
 //内容首页控制对象
 var indexHome = {
     uiPos: 0,
+    data:[
+        {top:0,left:42,width:506,height:312,img:'images/img1.png',link:'#'},
+        {top:326,left:42,width:246,height:152,img:'images/img2.png',link:'#'},
+        {top:326,left:302,width:246,height:152,img:'images/img2.png',link:'#'},
+
+        {top:16,left:590,width:228,height:140,img:'images/img3.png',link:'#'},
+        {top:168,left:590,width:228,height:140,img:'images/img3.png',link:'#'},
+        {top:320,left:590,width:228,height:140,img:'images/img3.png',link:'#'},
+
+        {top:16,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:16,left:986,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:130,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:130,left:986,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:244,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:244,left:986,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:357,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
+        {top:357,left:986,width:104,height:104,img:'images/img4.png',link:'#'}
+
+    ],
     init: function () {
         $('contentBox').style.backgroundImage = "url(images/index-bg1.png)";
         $('l_icon').style.visibility="hidden";
         $('r_icon').style.visibility="hidden";
         $('pageNav').style.visibility="hidden";
-
+        this.render();
         return this;
+    },
+    render: function(){
+        var s='';
+        for(var i= 0,len=this.data.length;i<len;i++){
+            s+='<div style="position: absolute;top: '+this.data[i].top+'px;left: '+this.data[i].left+'px;width: '+this.data[i].width+'px;height: '+this.data[i].height+'px;background: url('+this.data[i].img+') no-repeat;"></div>';
+        }
+        $('content').innerHTML=s;
     }
+
 };
 //内容列表控制对象
 var contentList = {
@@ -107,6 +134,7 @@ var menuObj = {
         //this.menuPos = 0;
         $("menu_focus").style.left = this.menuList[this.menuPos] + "px";
         this.focus();
+        this.enter();
         return this;
     },
     focus: function () {
@@ -124,7 +152,7 @@ var menuObj = {
         if (this.menuPos == (this.menuList.length-1) && _num > 0)return;
         this.menuPos += _num;
         $("menu_focus").style.left = this.menuList[this.menuPos] + "px";
-
+        this.enter();
     },
     left: function () {
         this.changeFocus(-1);
@@ -141,16 +169,19 @@ var menuObj = {
     enter: function () {
         if (this.menuPos == 0) {
             //首页推荐
-            alert('home');
+            //alert('home');
+            indexHome.init();
         } else if (this.menuPos == 1) {
             //热门游戏
+            contentList.init();
             return;
         } else if (this.menuPos == 2) {
             //最新游戏
-
+            contentList.init();
             return 0;
         } else if (this.menuPos == 3) {
             //收藏夹
+            contentList.init();
             return 0;
         }
 
