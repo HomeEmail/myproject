@@ -1,0 +1,12 @@
+{
+  "code": "0",
+  "data": [
+    {
+      "indexId": 1,
+      "indexName": "首页第一个游戏",
+      "indexUrl": "/html/index_one.html",
+      "indexImg": "/upload/index_1.jpg",
+      "indexs": 1
+    }
+  ]
+}

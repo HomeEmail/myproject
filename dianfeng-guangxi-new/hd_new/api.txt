@@ -1,0 +1,5 @@
+
+
+10.0.4.46:8088/df/inter/getTyep.action   传宝 调用这个接口的时候 需要传一个userNo 这样的参数
+
+

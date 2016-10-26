@@ -1,0 +1,18 @@
+{
+  "code": "0",
+  "data": [
+    {
+      "gameId": 1,
+      "gameTitle": "测试游戏",
+      "gameContent": "测试游戏",
+      "gameFolderId": 1,
+      "gameFolderName": "测试游戏文件夹",
+      "playUrl": "http:www.dfsy.com/test.mp3",
+      "playVodId": "239900",
+      "qrCodeImg": "/upload/erweim.jpg",
+      "gameStatus": 0,
+      "gameImg": "/upload/game_text.jpg",
+      "gameIndex": 1
+    }
+  ]
+}

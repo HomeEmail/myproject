@@ -1,0 +1,13 @@
+{
+  "code": "0",
+  "data": [
+    {
+      "folderId": 1,
+      "folderName": "测试游戏文件夹",
+      "folderImg": "/upload/test.jpg",
+      "folderIndex": 1
+    }
+  ],
+  "page": 1,
+  "total": 1
+}

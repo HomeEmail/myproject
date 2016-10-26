@@ -12,7 +12,6 @@
 <script type="text/javascript" src="js/lib.js"></script>
 <script type="text/javascript" src="js/param.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/showTips.js"></script>
 <script type="text/javascript">
 document.onkeydown = grabEvent;
 if(document.onkeypress!==null){
@@ -67,10 +66,55 @@ function grabEvent(_event){
 	}
 }
 
+
+var loadingDiv=null;
+
 window.onload = init;
 function init(){
-	control.init();
+	loadingDiv=$('loadingDiv');
+	showLoadingDiv();
+	//control.init();
+	getData();
 }
+function getData(){
+	var url=serverUrl+'dfManage/inter/getGameLists.action?folderId=1';
+	url='getGameLists.json';//test
+	fetch(url,function(data){
+		control.init();
+	},function(){
+		//alert('网络错误');
+	});
+}
+
+var req=null;
+function fetch(url,successFn,failFn){
+	if(req != null){
+		req.abort();
+		req=null;
+	}
+	showLoadingDiv();
+	req = ajax({
+		url: url,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			req=null;
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			!!successFn&&successFn(json);
+		},
+		onComplete : function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			req=null;
+			!!failFn&&failFn();
+		},
+		post:"",
+		timeout:30000
+	});
+}
+
 
 var control = {
 	focusArea : 0,
@@ -81,6 +125,7 @@ var control = {
 		x : 0,
 		y : 0,
 		dataPos : 0,
+		datas : [],
 		dataList : [
 			{
 				"focusArea" : [
@@ -113,6 +158,11 @@ var control = {
 			this.focusOn();
 		},
 		focusOn : function(){
+			if(this.dataList[this.y]&&this.dataList[this.y].focusArea[this.x]){
+
+			}else{
+				return;
+			}
 			this.dataPos = this.x + this.y*2;
 			var focusObj = $("content_focus");
 			focusObj.style.top = this.dataList[this.y].focusArea[this.x].top +"px";
@@ -122,11 +172,7 @@ var control = {
 		}
 	},
 	doSelect : function(){
-		if(this.focusArea == 0){
-			this.menuObj.doSelect();
-		}else if(this.focusArea == 1){
-			window.location.href = "content.html?contentId="+ this.subList.pageDataList[this.subList.dataPos].id;
-		}
+		window.location.href = "content.html?contentId="+ this.contentList.dataPos;
 	},
 	clickTop : function(){
 		this.contentList.changeY(-1);
@@ -140,57 +186,11 @@ var control = {
 	clickRight : function(){
 		this.contentList.changeX(1);
 	}
-}
+};
 
-var json = "";
-function ajaxGetData(_currpage,_type){
-	if(req != null){
-		req = null;
-	}
-	showLoadingDiv();
-	req = ajax({
-		url: serverUrl +'listajax?page='+ _currpage +'&size=18&type='+ _type,
-		type: "GET", //HTTP 请求类型,GET或POST
-		dataType: "html", //请求的文件类型html/xml
-		onSuccess: function(html){ //请求成功后执行[可选]
-			hideLoadingDiv();
-			json = eval("(" + html + ")");
-			//if(json.bool){
-			control.subList.init(json.result);
-			//}
-		},
-		onComplete : function(){
-			req = null;
-			if(!dataFlag)ajaxPutData();
-		},
-		onError:function(){ //请求失败后执行[可选]
-			showTips.init("tips","t_title|温馨提示","t_content|数据有误!",0);
-			showTips.onEventHandle(grabEvent);//事件接管
-		},
-		post:"",  
-		timeout:7000  
-	});	
-}
 
-var dataFlag = false;
-function ajaxPutData(){
-	if(req != null){
-		req = null;
-	}
-	req = ajax({
-		url: hostUrl +':81/shanghai/analysis?os=3',
-		type: "GET", //HTTP 请求类型,GET或POST
-		dataType: "html", //请求的文件类型html/xml
-		onSuccess: function(html){ //请求成功后执行[可选]
-			dataFlag = true;
-		},
-		onError:function(){ //请求失败后执行[可选]
-			//
-		},
-		post:"",  
-		timeout:7000  
-	});	
-}
+
+
 </script>
 </head>
 

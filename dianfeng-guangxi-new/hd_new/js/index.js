@@ -71,40 +71,107 @@ if(user_id=='null'){
 var menuPos= Q.getInt('menuPos',0);
 
 window.onload=function(){
-    //ctr=topTips.init();//事件交给右上角控制对象
-    ctr=menuObj.init();//事件交给菜单控制对象
+    getMenuData();
 
 };
+var loadingDiv=$('loadingDiv');
+showLoadingDiv();
+//ajax obj
+var req=null;
+function fetch(url,successFn,failFn){
+    if(req != null){
+        req.abort();
+        req=null;
+    }
+    showLoadingDiv();
+    req = ajax({
+        url: url,
+        type: "GET", //HTTP 请求类型,GET或POST
+        dataType: "html", //请求的文件类型html/xml
+        onSuccess: function(html){ //请求成功后执行[可选]
+            req=null;
+            hideLoadingDiv();
+            var json = eval("(" + html + ")");
+            !!successFn&&successFn(json);
+        },
+        onComplete : function(){
+            req = null;
+        },
+        onError:function(){ //请求失败后执行[可选]
+            req=null;
+            !!failFn&&failFn();
+        },
+        post:"",
+        timeout:30000
+    });
+}
+
+function getMenuData(){
+    var url=serverUrl+'df/inter/getTyep.action?userNo='+user_id;
+    url='getTyep.json';//test
+    fetch(url,function(data){
+        //menuObj.data=data;
+        menuObj.render();
+        ctr=menuObj.init();//事件交给菜单控制对象
+    },function(){
+        //alert('网络错误');
+    });
+}
+
+
 
 //内容首页控制对象
 var indexHome = {
     uiPos: 0,
+    dataPos : 0,
     data:[
-        {top:0,left:42,width:506,height:312,img:'images/img1.png',link:'#'},
-        {top:326,left:42,width:246,height:152,img:'images/img2.png',link:'#'},
-        {top:326,left:302,width:246,height:152,img:'images/img2.png',link:'#'},
+        {top:0,left:42,width:506,height:312,leftTo:'',rightTo:3,upTo:'touchUp',downTo:1,img:'images/img1.png',link:'#'},
+        {top:326,left:42,width:246,height:152,leftTo:'',rightTo:2,upTo:0,downTo:'',img:'images/img2.png',link:'#'},
+        {top:326,left:302,width:246,height:152,leftTo:1,rightTo:5,upTo:0,downTo:'',img:'images/img2.png',link:'#'},
 
-        {top:16,left:590,width:228,height:140,img:'images/img3.png',link:'#'},
-        {top:168,left:590,width:228,height:140,img:'images/img3.png',link:'#'},
-        {top:320,left:590,width:228,height:140,img:'images/img3.png',link:'#'},
+        {top:16,left:590,width:228,height:140,leftTo:0,rightTo:6,upTo:'touchUp',downTo:4,img:'images/img3.png',link:'#'},
+        {top:168,left:590,width:228,height:140,leftTo:0,rightTo:8,upTo:3,downTo:5,img:'images/img3.png',link:'#'},
+        {top:320,left:590,width:228,height:140,leftTo:2,rightTo:10,upTo:4,downTo:'',img:'images/img3.png',link:'#'},
 
-        {top:16,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:16,left:986,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:130,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:130,left:986,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:244,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:244,left:986,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:357,left:868,width:104,height:104,img:'images/img4.png',link:'#'},
-        {top:357,left:986,width:104,height:104,img:'images/img4.png',link:'#'}
+        {top:16,left:868,width:104,height:104,leftTo:3,rightTo:7,upTo:'touchUp',downTo:8,img:'images/img4.png',link:'#'},
+        {top:16,left:986,width:104,height:104,leftTo:6,rightTo:'',upTo:'touchUp',downTo:9,img:'images/img4.png',link:'#'},
+        {top:130,left:868,width:104,height:104,leftTo:3,rightTo:9,upTo:6,downTo:10,img:'images/img4.png',link:'#'},
+        {top:130,left:986,width:104,height:104,leftTo:8,rightTo:'',upTo:7,downTo:11,img:'images/img4.png',link:'#'},
+        {top:244,left:868,width:104,height:104,leftTo:4,rightTo:11,upTo:8,downTo:12,img:'images/img4.png',link:'#'},
+        {top:244,left:986,width:104,height:104,leftTo:10,rightTo:'',upTo:9,downTo:13,img:'images/img4.png',link:'#'},
+        {top:357,left:868,width:104,height:104,leftTo:5,rightTo:13,upTo:10,downTo:'',img:'images/img4.png',link:'#'},
+        {top:357,left:986,width:104,height:104,leftTo:12,rightTo:'',upTo:11,downTo:'',img:'images/img4.png',link:'#'}
 
     ],
-    init: function () {
+    getData : function(){
+        var url='';
+
+        fetch('getdata.action',function(data){
+
+        },function(){
+            //alert('网络错误');
+        });
+    },
+    show: function(){
         $('contentBox').style.backgroundImage = "url(images/index-bg1.png)";
         $('l_icon').style.visibility="hidden";
         $('r_icon').style.visibility="hidden";
         $('pageNav').style.visibility="hidden";
         this.render();
+    },
+    init: function () {
+        this.focus();
         return this;
+    },
+    focus : function(){
+        $('content_focus').style.visibility="visible";
+        $('content_focus').style.width=this.data[this.dataPos].width+'px';
+        $('content_focus').style.height=this.data[this.dataPos].height+'px';
+        $('content_focus').style.left=(this.data[this.dataPos].left-4)+'px';
+        $('content_focus').style.top=(this.data[this.dataPos].top-4)+'px';
+    },
+    blur : function(){
+        $('content_focus').style.visibility="hidden";
     },
     render: function(){
         var s='';
@@ -112,24 +179,263 @@ var indexHome = {
             s+='<div style="position: absolute;top: '+this.data[i].top+'px;left: '+this.data[i].left+'px;width: '+this.data[i].width+'px;height: '+this.data[i].height+'px;background: url('+this.data[i].img+') no-repeat;"></div>';
         }
         $('content').innerHTML=s;
+    },
+    left : function(){
+        var to=this.data[this.dataPos].leftTo;
+        if(to==='') return;
+        if(to=='touchLeft'){
+            this.touchLeft();
+            return;
+        }
+        //this.blur();
+        this.uiPos=to;
+        this.dataPos=to;
+        this.focus();
+    },
+    right : function(){
+        var to=this.data[this.dataPos].rightTo;
+        if(to==='') return;
+        if(to=='touchRight'){
+            this.touchRight();
+            return;
+        }
+        this.uiPos=to;
+        this.dataPos=to;
+        this.focus();
+    },
+    up : function(){
+        var to=this.data[this.dataPos].upTo;
+        if(to==='') return;
+        if(to=='touchUp'){
+            this.touchUp();
+            return;
+        }
+        this.uiPos=to;
+        this.dataPos=to;
+        this.focus();
+    },
+    down : function(){
+        var to=this.data[this.dataPos].downTo;
+        if(to==='') return;
+        if(to=='touchDown'){
+            this.touchDown();
+            return;
+        }
+        this.uiPos=to;
+        this.dataPos=to;
+        this.focus();
+    },
+    enter : function(){
+        //alert(this.data[this.dataPos].link);
+        location.href='activity.html';
+    },
+    touchLeft : function(){
+
+    },
+    touchUp : function(){
+        this.blur();
+        ctr=menuObj.init();
+    },
+    touchRight : function(){
+
+    },
+    touchDown : function(){
+
     }
 
 };
 //内容列表控制对象
 var contentList = {
-    init : function () {
+    show : function () {
         $('contentBox').style.backgroundImage = "url(images/index-bg2.png)";
         $('l_icon').style.visibility="visible";
         $('r_icon').style.visibility="visible";
         $('pageNav').style.visibility="visible";
-
+        $('content').innerHTML='';
+        if(!!this.data['menu'+menuObj.menuPos].lists){
+            this.render();
+        }else{
+            this.getData();
+        }
         return this;
+    },
+    uiPos : 0,
+    dataPos : 0,
+    data : {
+        menu1 : {
+            currentPage : 1,
+            totalPage : 1,
+            lists : [
+                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
+            ]
+        },
+        menu2 : {
+            currentPage : 1,
+            totalPage : 1,
+            lists : [
+                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
+            ]
+        },
+        menu3 : {
+            currentPage : 1,
+            totalPage : 1,
+            lists : [
+                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
+            ]
+        }
+    },
+    getData : function(){
+        var url='';
+        if(menuObj.menuPos==1||menuObj.menuPos==2){
+            url='dfManage/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
+        }
+        //menuObj.data[menuObj.menuPos].id
+        if(menuObj.menuPos==3){//收藏列表
+            url='dfManage/inter/getScList.action?userNo=1001&page=1';
+        }
+        var that=this;
+        fetch(url,function(data){
+            that.data['menu'+menuObj.menuPos].lists=[];
+            that.render();
+        },function(){
+            //alert('网络错误');
+        });
+    },
+    init : function(){
+        this.focus();
+        return this;
+    },
+    rowCount : 8,//一行几个
+    colCount : 3,//一列几个
+    initTop : 45,
+    initLeft :65,
+    stepLeft : 130,
+    stepTop : 140,
+    render : function(){
+        var s='',top= 0,left=0;
+        var items=this.data['menu'+menuObj.menuPos];
+        for(var i= 0,len=items.lists.length;i<len;i++){
+            top=this.initTop+(this.stepTop*parseInt(i/this.rowCount,10));
+            left=this.initLeft+(this.stepLeft*(i%this.rowCount));
+            s+='<div style="position: absolute;top: '+top+'px;left: '+left+'px;width: '+104+'px;height: '+104+'px;background: url('+'images/img5.png'+') no-repeat;"></div>';
+        }
+        $('content').innerHTML=s;
+        this.renderPageNav();
+    },
+    renderPageNav : function(){
+        var items=this.data['menu'+menuObj.menuPos];
+        $('pageNav').innerHTML=items.currentPage+'/'+items.totalPage;
+        if(items.currentPage<=1){
+            $('l_icon').style.background='url(images/l_false.png) no-repeat';
+        }else{
+            $('l_icon').style.background='url(images/l_true.png) no-repeat';
+        }
+        if(items.currentPage>=items.totalPage){
+            $('r_icon').style.background='url(images/r_false.png) no-repeat';
+        }else{
+            $('r_icon').style.background='url(images/r_true.png) no-repeat';
+        }
+    },
+    focus : function(){
+        if(!!!this.data['menu'+menuObj.menuPos].lists[this.uiPos]){
+            this.uiPos=0;
+            this.dataPos=0;
+        }
+        var l = 0,t = 0;
+        l=this.initLeft+this.stepLeft*(this.uiPos%this.rowCount);
+        t=this.initTop+this.stepTop*parseInt(this.uiPos/this.rowCount,10);
+        $('content_focus').style.visibility="visible";
+        $('content_focus').style.width=104+'px';
+        $('content_focus').style.height=104+'px';
+        $('content_focus').style.left=(l-4)+'px';
+        $('content_focus').style.top=(t-4)+'px';
+    },
+    blur : function(){
+        $('content_focus').style.visibility="hidden";
+    },
+    left : function(){
+        if(this.uiPos%this.rowCount == 0 || !!!this.data['menu'+menuObj.menuPos].lists[this.uiPos-1]){//到最左边了
+            this.touchLeft();
+            return;
+        }
+        this.uiPos--;
+        this.dataPos--;
+        this.focus();
+    },
+    right : function(){
+        if(this.uiPos%this.rowCount == (this.rowCount-1) || !!!this.data['menu'+menuObj.menuPos].lists[this.uiPos+1]){//到最右边了
+            this.touchRight();
+            return;
+        }
+        this.uiPos++;
+        this.dataPos++;
+        this.focus();
+    },
+    up : function(){
+        if(this.uiPos<=(this.rowCount-1)||!!!this.data['menu'+menuObj.menuPos].lists[this.uiPos-this.rowCount]){
+            this.touchUp();
+            return;
+        }
+        this.uiPos-=8;
+        this.dataPos-=8;
+        this.focus();
+
+    },
+    down : function(){
+        if(!!!this.data['menu'+menuObj.menuPos].lists[this.uiPos+this.rowCount]){
+            this.touchDown();
+            return;
+        }
+        this.uiPos+=8;
+        this.dataPos+=8;
+        this.focus();
+    },
+    enter : function(){
+        //this.data['menu'+menuObj.menuPos].lists[this.uiPos].link
+    },
+    touchLeft : function(){
+        //上一页
+        if(this.data['menu'+menuObj.menuPos].currentPage<=1) return;
+        this.data['menu'+menuObj.menuPos].currentPage--;
+        this.data['menu'+menuObj.menuPos].lists=null;
+        this.show();
+    },
+    touchUp : function(){
+        this.blur();
+        ctr=menuObj.init();
+    },
+    touchRight : function(){
+        //下一页
+        if(this.data['menu'+menuObj.menuPos].currentPage>=this.data['menu'+menuObj.menuPos].totalPage) return;
+        this.data['menu'+menuObj.menuPos].currentPage++;
+        this.data['menu'+menuObj.menuPos].lists=null;
+        this.show();
+    },
+    touchDown : function(){
+
     }
 };
+
+
 //菜单控制对象
 var menuObj = {
     menuPos: 0,
     menuList: [100, 350, 600, 850],
+    data : [
+        {name:'首页推荐',id:0},
+        {name:'热门游戏',id:0},
+        {name:'最新游戏',id:0},
+        {name:'收藏夹',id:0}
+    ],
+    stepLeft:250,
+    initLeft:100,
+    render : function(){
+        var s='';
+        for(var i= 0,len=this.data.length;i<len;i++){
+            s+='<div id="menu_'+i+'" class="menu" style="position:absolute; font-size:26px; top:0px; left:'+(this.initLeft+i*this.stepLeft)+'px; width:250px; height:50px;text-align: center;color:#ffffff;">'+this.data[i].name+'</div>';
+        }
+        $('menuItems').innerHTML=s;
+    },
     init: function () {
         //this.menuPos = 0;
         $("menu_focus").style.left = this.menuList[this.menuPos] + "px";
@@ -165,23 +471,31 @@ var menuObj = {
         ctr=topTips.init();//事件交给右上角控制对象
     },
     down: function () {
+        this.selected();
+        if (this.menuPos == 0) {
+            ctr=indexHome.init();
+        }else{
+            if(!!!contentList.data['menu'+menuObj.menuPos].lists||contentList.data['menu'+menuObj.menuPos].lists.length<=0) return;//没数据
+            ctr=contentList.init();
+        }
     },
     enter: function () {
         if (this.menuPos == 0) {
             //首页推荐
             //alert('home');
-            indexHome.init();
+            indexHome.show();
+            //indexHome.init();
         } else if (this.menuPos == 1) {
             //热门游戏
-            contentList.init();
+            contentList.show();
             return;
         } else if (this.menuPos == 2) {
             //最新游戏
-            contentList.init();
+            contentList.show();
             return 0;
         } else if (this.menuPos == 3) {
             //收藏夹
-            contentList.init();
+            contentList.show();
             return 0;
         }
 
