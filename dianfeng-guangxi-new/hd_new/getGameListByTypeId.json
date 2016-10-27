@@ -1,0 +1,117 @@
+{
+  "code": "0",
+  "data": [
+    {
+      "gameId": 104,
+      "gameTitle": "反恐女神",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000733",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161023/fankongnvshen.png",
+      "gameIndex": 733
+    },
+    {
+      "gameId": 103,
+      "gameTitle": "猪猪侠之百变联盟",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000732",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/zhuzhuxiazhibaibianlianmeng.png",
+      "gameIndex": 732
+    },
+    {
+      "gameId": 102,
+      "gameTitle": "小小枪战:反恐精英",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000731",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/xiaoxiaoqingzhan.png",
+      "gameIndex": 731
+    },
+    {
+      "gameId": 101,
+      "gameTitle": "熊出没3壮志熊心",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000730",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/xiongchumo3zhuangzhixiongxin.png",
+      "gameIndex": 730
+    },
+    {
+      "gameId": 100,
+      "gameTitle": "SD敢达手机游戏",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000729",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/sdgundam.png",
+      "gameIndex": 729
+    },
+    {
+      "gameId": 99,
+      "gameTitle": "超级飞侠",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000728",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/chaojifeixia.png",
+      "gameIndex": 728
+    },
+    {
+      "gameId": 98,
+      "gameTitle": "数码兽大作战",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000727",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/shumashoudazuozhan.png",
+      "gameIndex": 727
+    },
+    {
+      "gameId": 97,
+      "gameTitle": "密室逃脱5",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000726",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/5.png",
+      "gameIndex": 726
+    },
+    {
+      "gameId": 96,
+      "gameTitle": "王牌战舰",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000725",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/huangpaizhanjian.png",
+      "gameIndex": 725
+    },
+    {
+      "gameId": 95,
+      "gameTitle": "蜡笔小新3D大冲关",
+      "gameContent": "",
+      "playUrl": "",
+      "playVodId": "dfsy0000000000000000000000000724",
+      "qrCodeImg": "",
+      "gameStatus": 1,
+      "gameImg": "upload/images/20161020/labixiaoxin3Ddachongguan.png",
+      "gameIndex": 724
+    }
+  ],
+  "page": 1,
+  "total": 103
+}

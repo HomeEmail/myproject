@@ -312,8 +312,14 @@ var contentList = {
     },
     getData : function(){
         var url='';
-        if(menuObj.menuPos==1||menuObj.menuPos==2){
-            url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
+        if(menuObj.menuPos==1){//最热
+            //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=2&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            //url='getFolderLists.json';//test
+        }
+        if(menuObj.menuPos==2){//最新
+            //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=1&page='+this.data['menu'+menuObj.menuPos].currentPage;
             //url='getFolderLists.json';//test
         }
         //menuObj.data[menuObj.menuPos].id
@@ -337,16 +343,16 @@ var contentList = {
             if(menuObj.menuPos==3){
                 //收藏列表
                 this.data['menu'+menuObj.menuPos].lists.push({
-                    id:data.data[i].scId,
-                    gameId:data.data[i].gameId,
+                    scid:data.data[i].scId,
+                    id:data.data[i].gameId,
                     name:data.data[i].gameTitle,
                     img:imgBasePath+data.data[i].gameImg
                 });
             }else{
                 this.data['menu'+menuObj.menuPos].lists.push({
-                    id:data.data[i].folderId,
-                    name:data.data[i].folderName,
-                    img:imgBasePath+data.data[i].folderImg
+                    id:data.data[i].gameId,
+                    name:data.data[i].gameTitle,
+                    img:imgBasePath+data.data[i].gameImg
                 });
             }
         }
@@ -367,7 +373,7 @@ var contentList = {
         for(var i= 0,len=items.lists.length;i<len;i++){
             top=this.initTop+(this.stepTop*parseInt(i/this.rowCount,10));
             left=this.initLeft+(this.stepLeft*(i%this.rowCount));
-            s+='<div style="position: absolute;top: '+top+'px;left: '+left+'px;width: '+104+'px;height: '+104+'px;background: url('+'images/img5.png'+') no-repeat;"></div>';
+            s+='<div style="position: absolute;top: '+top+'px;left: '+left+'px;width: '+104+'px;height: '+104+'px;background: url('+items[i].img+') no-repeat;"></div>';
         }
         $('content').innerHTML=s;
         this.renderPageNav();

@@ -2,4 +2,4 @@
 
 10.0.4.46:8088/df/inter/getTyep.action   传宝 调用这个接口的时候 需要传一个userNo 这样的参数
 
-
+http://localhost:8080/dfManage/inter/getPlayUrl.action?gameId=1  这个是播放接口
