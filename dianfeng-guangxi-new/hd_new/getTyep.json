@@ -3,7 +3,25 @@
   "data": [
     {
       "typeId": 1,
+      "typeName": "首页推荐",
+      "typeImg": "/upload/1.img",
+      "typeIndex": 1
+    },
+    {
+      "typeId": 1,
+      "typeName": "热门游戏",
+      "typeImg": "/upload/1.img",
+      "typeIndex": 1
+    },
+    {
+      "typeId": 1,
       "typeName": "最新游戏",
+      "typeImg": "/upload/1.img",
+      "typeIndex": 1
+    },
+    {
+      "typeId": 1,
+      "typeName": "收藏夹",
       "typeImg": "/upload/1.img",
       "typeIndex": 1
     }

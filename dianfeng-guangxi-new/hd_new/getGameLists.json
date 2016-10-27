@@ -12,6 +12,7 @@
       "qrCodeImg": "/upload/erweim.jpg",
       "gameStatus": 0,
       "gameImg": "/upload/game_text.jpg",
+      "gameBigImg":"",
       "gameIndex": 1
     }
   ]

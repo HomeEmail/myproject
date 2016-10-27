@@ -68,7 +68,7 @@ function grabEvent(_event){
 
 
 var loadingDiv=null;
-
+var folderId=Q.getInt('id',0);
 window.onload = init;
 function init(){
 	loadingDiv=$('loadingDiv');
@@ -77,13 +77,30 @@ function init(){
 	getData();
 }
 function getData(){
-	var url=serverUrl+'dfManage/inter/getGameLists.action?folderId=1';
-	url='getGameLists.json';//test
+	var url=serverUrl+'/inter/getGameLists.action?folderId='+folderId;
+	//url='getGameLists.json';//test
 	fetch(url,function(data){
+		formatData(data);
+		renderData();
 		control.init();
 	},function(){
 		//alert('网络错误');
 	});
+}
+function formatData(data){
+	control.contentList.datas=[];
+	for(var i=0,len=data.data.length;i<len;i++){
+		control.contentList.datas.push({
+			gameId:data.data[i].gameId,
+			gameImg:data.data[i].gameBigImg,
+			playUrl:data.data[i].playUrl
+		});
+	}
+}
+function renderData(){
+	for(var i=0,len=control.contentList.datas.length;i<len;i++){
+		$('listImg_'+i).src=imgBasePath+control.contentList.datas[i].gameImg;
+	}
 }
 
 var req=null;
@@ -117,7 +134,7 @@ function fetch(url,successFn,failFn){
 
 
 var control = {
-	focusArea : 0,
+	focusArea : 0,//0:主内容，1:顶部右上角菜单
 	init : function(){
 		this.contentList.init();
 	},
@@ -125,7 +142,9 @@ var control = {
 		x : 0,
 		y : 0,
 		dataPos : 0,
-		datas : [],
+		datas : [
+			//{gameId:0,gameImg:'',playUrl:''}
+		],
 		dataList : [
 			{
 				"focusArea" : [
@@ -150,7 +169,13 @@ var control = {
 			this.focusOn();
 		},
 		changeY : function(_num){
-			if(_num > 0 && this.y == 1 || _num < 0 && this.y == 0)return;
+			if(_num > 0 && this.y == 1)return;
+			if(_num < 0 && this.y == 0){//到顶了
+				control.focusArea=1;
+				this.blur();
+				topTips.init();
+				return;
+			}
 			this.y += _num;
 			if(this.y == 0 && this.x == 1)this.x=0;
 			if(this.y == 0 && this.x == 2)this.x=1;
@@ -165,29 +190,111 @@ var control = {
 			}
 			this.dataPos = this.x + this.y*2;
 			var focusObj = $("content_focus");
+			focusObj.style.visibility='visible';
 			focusObj.style.top = this.dataList[this.y].focusArea[this.x].top +"px";
 			focusObj.style.left = this.dataList[this.y].focusArea[this.x].left +"px";
 			focusObj.style.width = this.dataList[this.y].focusArea[this.x].width +"px";
 			focusObj.style.height = this.dataList[this.y].focusArea[this.x].height +"px";
+		},
+		blur : function(){
+			$("content_focus").style.visibility='hidden';
 		}
 	},
 	doSelect : function(){
-		window.location.href = "content.html?contentId="+ this.contentList.dataPos;
+		if(this.focusArea===0){
+			//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
+			alert(this.contentList.dataPos);
+			//this.contentList.datas[this.contentList.dataPos].gameId;//playUrl
+			var url='play.html?url='+encodeURIComponent(this.contentList.datas[this.contentList.dataPos].playUrl);
+			alert(url);
+			//window.location.href=url;
+		}else{
+			//右上角菜单
+			topTips.enter();
+		}
 	},
 	clickTop : function(){
+		if(this.focusArea===1){
+
+			return;
+		}
 		this.contentList.changeY(-1);
 	},
 	clickDown : function(){
+		if(this.focusArea==1){
+			this.focusArea=0;
+			topTips.blur();
+			this.init();
+			return;
+		}
 		this.contentList.changeY(1);
 	},
 	clickLeft : function(){
+		if(this.focusArea==1){
+			topTips.left();
+			return;	
+		}
 		this.contentList.changeX(-1);
 	},
 	clickRight : function(){
+		if(this.focusArea==1){
+			topTips.right();
+			return;	
+		}
 		this.contentList.changeX(1);
 	}
 };
 
+
+//右上角顶部按钮控制对象
+var topTips= {
+    menuPos: 0,
+    menuList: [1037, 1092, 1147],
+    init : function(){
+        //this.menuPos=0;
+        $("topTipsFocus").style.left = this.menuList[this.menuPos] + "px";
+        this.focus();
+        return this;
+    },
+    focus: function () {
+        $("topTipsFocus").style.visibility = "visible";
+    },
+    blur: function () {
+        $("topTipsFocus").style.visibility = "hidden";
+    },
+    changeFocus: function (_num) {
+        if (this.menuPos == 0 && _num < 0)return;
+        if (this.menuPos == 2 && _num > 0)return;
+        this.menuPos += _num;
+        $("topTipsFocus").style.left = this.menuList[this.menuPos] + "px";
+
+    },
+    left: function(){
+        this.changeFocus(-1);
+    },
+    right: function(){
+        this.changeFocus(1);
+    },
+    down: function(){
+    },
+    enter: function() {
+        if (this.menuPos == 0) {
+            //首页//返回portal页
+       		window.location.href = 'http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
+        }
+        else if (this.menuPos == 1) {
+            //sp主页
+            history.back();
+            return;
+        } else if (this.menuPos == 2) {
+            //返回
+            history.back();
+            return 0;
+        }
+        
+
+    }
+};
 
 
 
@@ -196,6 +303,12 @@ var control = {
 
 <body>
 <div id="bg" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/activity/bg.jpg); overflow:hidden;">
+
+
+
+<img src="./images/df-tips-icon.png" style="position:absolute;top: 30px;left: 1040px;height: 64px;width: auto;" />
+<div id="topTipsFocus" class="smooth" style="position: absolute;top: 30px;left: 1037px;height: 56px;x;width: 50px;border: 3px #ffffff solid;visibility: hidden;-webkit-border-radius: 6px;-webkit-box-shadow: 0px 0px 22px 1px #ffffff;"></div>
+
 
 <div style="position:absolute; top:0px; left:0px; width:1280px; height:100px;">
 	<!--<img id="logo" src="images/activity/logo.png" width="300" height="33" style="position:absolute; top:35px; left:65px;" />-->
@@ -238,13 +351,6 @@ var control = {
 </div>
 <div id="page" style="position:absolute; top:622px; left:1130px; width:50px; height:55px; font-size:24px; color:#FFFFFF; font-weight:bold;"></div>
 
-<div id="tips" class="smooth" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; z-index:8; opacity:0; visibility:hidden;"> <!--提示弹出层-->
-	<div style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-color:#000000; opacity:0.3;"></div>
-	<div style="position:absolute; top:160px; left:30px; width:1220px; height:360px; border-top:2px #ff3631 solid; border-bottom:1px #ff3631 solid; background-color:#000000;">
-		<div id="t_title" style="text-align:center; height:80px; line-height:80px; color:#d82d28; font-size:28px; font-weight:bold; border-bottom:2px #d82d28 solid;"></div>
-		<div id="t_content" class="content" style="height:270px; padding-top:80px; line-height:35px; color:#ffffff; text-align:center; font-size:24px; overflow:hidden;"></div>
-	</div>
-</div>
 
 <div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
 	<img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />

@@ -107,15 +107,26 @@ function fetch(url,successFn,failFn){
 }
 
 function getMenuData(){
-    var url=serverUrl+'df/inter/getTyep.action?userNo='+user_id;
-    url='getTyep.json';//test
+    var url=serverUrl+'/inter/getTyep.action?userNo='+user_id;
+    //url='getTyep.json';//test
     fetch(url,function(data){
-        //menuObj.data=data;
+        formatMenuData(data);
         menuObj.render();
         ctr=menuObj.init();//事件交给菜单控制对象
     },function(){
         //alert('网络错误');
     });
+}
+function formatMenuData(data){
+    menuObj.data=[];
+    menuObj.menuList=[];
+    for(var i=0,len=data.data.length;i<len;i++){
+        menuObj.data.push({
+            name:data.data[i].typeName,
+            id:data.data[i].typeId
+        });
+        menuObj.menuList.push(menuObj.initLeft+(menuObj.stepLeft*i));
+    }
 }
 
 
@@ -144,20 +155,35 @@ var indexHome = {
 
     ],
     getData : function(){
-        var url='';
-
-        fetch('getdata.action',function(data){
-
+        var url=serverUrl+'/inter/getIndexLists.action?typeId='+menuObj.data[menuObj.menuPos].id;
+        //url='getIndexLists.json';//test
+        var that=this;
+        fetch(url,function(data){
+            that.formatData(data);
+            that.render();
         },function(){
             //alert('网络错误');
         });
+    },
+    formatData : function(data){
+        for(var i=0,len=data.data.length;i<len;i++){
+            this.data[i].id=data.data[i].indexId;
+            this.data[i].name=data.data[i].indexName;
+            this.data[i].img=imgBasePath+data.data[i].indexImg;
+            this.data[i].link=data.data[i].indexUrl;
+        }
     },
     show: function(){
         $('contentBox').style.backgroundImage = "url(images/index-bg1.png)";
         $('l_icon').style.visibility="hidden";
         $('r_icon').style.visibility="hidden";
         $('pageNav').style.visibility="hidden";
-        this.render();
+        $('content').innerHTML='';
+        if(!!this.data[0].id){
+            this.render();
+        }else{
+            this.getData();
+        }
     },
     init: function () {
         this.focus();
@@ -227,7 +253,7 @@ var indexHome = {
     },
     enter : function(){
         //alert(this.data[this.dataPos].link);
-        location.href='activity.html';
+        location.href=this.data[this.dataPos].link;//'activity.html';
     },
     touchLeft : function(){
 
@@ -252,7 +278,7 @@ var contentList = {
         $('r_icon').style.visibility="visible";
         $('pageNav').style.visibility="visible";
         $('content').innerHTML='';
-        if(!!this.data['menu'+menuObj.menuPos].lists){
+        if(!!this.data['menu'+menuObj.menuPos].lists[0]){//有数据
             this.render();
         }else{
             this.getData();
@@ -266,40 +292,64 @@ var contentList = {
             currentPage : 1,
             totalPage : 1,
             lists : [
-                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
+                //{id:1,name:'',img:''},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
             ]
         },
         menu2 : {
             currentPage : 1,
             totalPage : 1,
             lists : [
-                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
+                //{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
             ]
         },
         menu3 : {
             currentPage : 1,
             totalPage : 1,
             lists : [
-                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
+                //{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
             ]
         }
     },
     getData : function(){
         var url='';
         if(menuObj.menuPos==1||menuObj.menuPos==2){
-            url='dfManage/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            //url='getFolderLists.json';//test
         }
         //menuObj.data[menuObj.menuPos].id
         if(menuObj.menuPos==3){//收藏列表
-            url='dfManage/inter/getScList.action?userNo=1001&page=1';
+            url=serverUrl+'/inter/getScList.action?userNo=1001&page=1';
+            //url='getScList.json';//test
         }
         var that=this;
         fetch(url,function(data){
-            that.data['menu'+menuObj.menuPos].lists=[];
+            that.formatData(data);
             that.render();
         },function(){
             //alert('网络错误');
         });
+    },
+    formatData : function(data){
+        this.data['menu'+menuObj.menuPos].lists=[];
+        this.data['menu'+menuObj.menuPos].currentPage=data.page||1;
+        this.data['menu'+menuObj.menuPos].totalPage=data.total||1;
+        for(var i=0,len=data.data.length;i<len;i++){
+            if(menuObj.menuPos==3){
+                //收藏列表
+                this.data['menu'+menuObj.menuPos].lists.push({
+                    id:data.data[i].scId,
+                    gameId:data.data[i].gameId,
+                    name:data.data[i].gameTitle,
+                    img:imgBasePath+data.data[i].gameImg
+                });
+            }else{
+                this.data['menu'+menuObj.menuPos].lists.push({
+                    id:data.data[i].folderId,
+                    name:data.data[i].folderName,
+                    img:imgBasePath+data.data[i].folderImg
+                });
+            }
+        }
     },
     init : function(){
         this.focus();
@@ -391,6 +441,13 @@ var contentList = {
         this.focus();
     },
     enter : function(){
+        if(menuObj.menuPos==3){
+            //收藏列表
+            alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].gameId);
+        }else{
+            //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+            location.href='activity.html?id='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].id;
+        }
         //this.data['menu'+menuObj.menuPos].lists[this.uiPos].link
     },
     touchLeft : function(){
