@@ -98,6 +98,9 @@ function formatData(data){
 	}
 }
 function renderData(){
+    if(!!control.contentList.datas[0]){
+        $('bg').style.backgroundImage='url('+imgBasePath+control.contentList.datas[0].gameFolderBgImg+')';//gameFolderBgImg
+    }
 	for(var i=0,len=control.contentList.datas.length;i<len;i++){
 		$('listImg_'+i).src=imgBasePath+control.contentList.datas[i].gameImg;
 	}
@@ -302,7 +305,7 @@ var topTips= {
 </head>
 
 <body>
-<div id="bg" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/activity/bg.jpg); overflow:hidden;">
+<div id="bg" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/bg.jpg);background-repeat: no-repeat; overflow:hidden;">
 
 
 
@@ -315,21 +318,21 @@ var topTips= {
 </div>
 <div style="position:absolute; top:139px; left:20px; width:1030px; height:510px;">
 	<div style="position:absolute; top:30px; left:35px; width:535px; height:295px;">
-		<img id="listImg_0" src="images/activity/list_1.png" width="535" height="295" />
+		<img id="listImg_0" src="images/tm.gif" width="535" height="295" />
 	</div>
 	<div style="position:absolute; top:30px; left:590px; width:388px; height:218px;">
-		<img id="listImg_1" src="images/activity/list_2.png" width="388" height="218" />
+		<img id="listImg_1" src="images/tm.gif" width="388" height="218" />
 	</div>
 	<div style="position:absolute; top:340px; left:35px; width:260px; height:145px;">
-		<img id="listImg_2" src="images/activity/list_3.png" width="260" height="145" />
+		<img id="listImg_2" src="images/tm.gif" width="260" height="145" />
 	</div>
 	<div style="position:absolute; top:340px; left:310px; width:260px; height:145px;">
-		<img id="listImg_3" src="images/activity/list_4.png" width="260" height="145" />
+		<img id="listImg_3" src="images/tm.gif" width="260" height="145" />
 	</div>
 	<div style="position:absolute; top:267px; left:590px; width:388px; height:218px;">
-		<img id="listImg_4" src="images/activity/list_5.png" width="388" height="218" />
+		<img id="listImg_4" src="images/tm.gif" width="388" height="218" />
 	</div>
-	<div id="content_focus" style="position:absolute; top:30px; left:34px; width:538px; height:295px;">
+	<div id="content_focus" style="position:absolute; top:30px; left:34px; width:538px; height:295px;visibility: hidden;">
 		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="16" height="16" style="background:url(images/activity/focus_lt.png); background-repeat:no-repeat;"></td>

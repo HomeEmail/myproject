@@ -354,7 +354,7 @@ var contentList = {
         }
         //menuObj.data[menuObj.menuPos].id
         if(menuObj.menuPos==3){//收藏列表
-            url=serverUrl+'/inter/getScList.action?userNo=1001&page=1';
+            url=serverUrl+'/inter/getScList.action?userNo='+user_id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
             //url='getScList.json';//test
         }
         var that=this;
@@ -399,8 +399,8 @@ var contentList = {
     stepTop : 140,
     render : function(){
         var s='',top= 0,left=0;
-        var items=this.data['menu'+menuObj.menuPos];
-        for(var i= 0,len=items.lists.length;i<len;i++){
+        var items=this.data['menu'+menuObj.menuPos].lists;
+        for(var i= 0,len=items.length;i<len;i++){
             top=this.initTop+(this.stepTop*parseInt(i/this.rowCount,10));
             left=this.initLeft+(this.stepLeft*(i%this.rowCount));
             s+='<div style="position: absolute;top: '+top+'px;left: '+left+'px;width: '+104+'px;height: '+104+'px;background: url('+items[i].img+') no-repeat;"></div>';
