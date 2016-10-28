@@ -137,7 +137,7 @@ function getGameUrl(id){
 }
 
 function getMenuData(){
-    var url=serverUrl+'/inter/getTyep.action?userNo='+user_id;
+    var url=serverUrl+'/inter/getTyeps.action?userNo='+user_id;
     //url='getTyep.json';//test
     fetch(url,function(data){
         formatMenuData(data);
