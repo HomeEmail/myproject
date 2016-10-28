@@ -105,6 +105,36 @@ function fetch(url,successFn,failFn){
         timeout:30000
     });
 }
+function getGameUrl(id){
+    ///inter/getPlayUrl.action?gameId=1
+    if(req != null){
+        req.abort();
+        req=null;
+    }
+    var url=serverUrl+'/inter/getPlayUrl.action?gameId='+id;
+    showLoadingDiv();
+    req = ajax({
+        url: url,
+        type: "GET", //HTTP 请求类型,GET或POST
+        dataType: "html", //请求的文件类型html/xml
+        onSuccess: function(html){ //请求成功后执行[可选]
+            req=null;
+            hideLoadingDiv();
+            //var json = eval("(" + html + ")");
+            var playUrl='';
+            var url='play.html?url='+encodeURIComponent(playUrl);
+            window.location.href=url;
+        },
+        onComplete : function(){
+            req = null;
+        },
+        onError:function(){ //请求失败后执行[可选]
+            req=null;
+        },
+        post:"",
+        timeout:30000
+    });
+}
 
 function getMenuData(){
     var url=serverUrl+'/inter/getTyep.action?userNo='+user_id;
@@ -449,10 +479,12 @@ var contentList = {
     enter : function(){
         if(menuObj.menuPos==3){
             //收藏列表
-            alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].gameId);
+            alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+            getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
         }else{
-            //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
-            location.href='activity.html?id='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].id;
+            alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+            getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+            //location.href='activity.html?id='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].id;
         }
         //this.data['menu'+menuObj.menuPos].lists[this.uiPos].link
     },
