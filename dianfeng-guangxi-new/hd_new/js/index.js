@@ -492,7 +492,7 @@ var contentList = {
         //上一页
         if(this.data['menu'+menuObj.menuPos].currentPage<=1) return;
         this.data['menu'+menuObj.menuPos].currentPage--;
-        this.data['menu'+menuObj.menuPos].lists=null;
+        this.data['menu'+menuObj.menuPos].lists=[];
         this.show();
     },
     touchUp : function(){
@@ -503,7 +503,7 @@ var contentList = {
         //下一页
         if(this.data['menu'+menuObj.menuPos].currentPage>=this.data['menu'+menuObj.menuPos].totalPage) return;
         this.data['menu'+menuObj.menuPos].currentPage++;
-        this.data['menu'+menuObj.menuPos].lists=null;
+        this.data['menu'+menuObj.menuPos].lists=[];
         this.show();
     },
     touchDown : function(){
