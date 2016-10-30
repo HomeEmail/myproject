@@ -120,10 +120,23 @@ function getGameUrl(id){
         onSuccess: function(html){ //请求成功后执行[可选]
             req=null;
             hideLoadingDiv();
-            //var json = eval("(" + html + ")");
-            var playUrl='';
-            var url='play.html?url='+encodeURIComponent(playUrl);
-            window.location.href=url;
+            var json = eval("(" + html + ")");
+            if(!json.bool){
+                alert(json.result);
+                return;
+            }
+            if(!json.result.play){
+                alert('播放地址获取失败');
+                return;
+            }
+            var play=json.result.play;
+            var state=play.state;
+            if(parseInt(state,10)==0){
+                var url='play.html?url='+encodeURIComponent(play.url);
+                window.location.href=url;
+            }else{
+                alert(play.reason);
+            }
         },
         onComplete : function(){
             req = null;
@@ -302,21 +315,9 @@ var indexHome = {
 };
 //内容列表控制对象
 var contentList = {
-    show : function () {
-        $('contentBox').style.backgroundImage = "url(images/index-bg2.png)";
-        $('l_icon').style.visibility="visible";
-        $('r_icon').style.visibility="visible";
-        $('pageNav').style.visibility="visible";
-        $('content').innerHTML='';
-        if(!!this.data['menu'+menuObj.menuPos].lists[0]){//有数据
-            this.render();
-        }else{
-            this.getData();
-        }
-        return this;
-    },
     uiPos : 0,
     dataPos : 0,
+    hasData : false,
     data : {
         menu1 : {
             currentPage : 1,
@@ -340,7 +341,7 @@ var contentList = {
             ]
         }
     },
-    getData : function(){
+    getData : function(isTurnPage){
         var url='';
         if(menuObj.menuPos==1){//最热
             //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
@@ -358,10 +359,14 @@ var contentList = {
             //url='getScList.json';//test
         }
         var that=this;
+        that.hasData=false;
         fetch(url,function(data){
+            that.hasData=true;
             that.formatData(data);
             that.render();
+            !!isTurnPage&&that.focus();
         },function(){
+            that.hasData=true;
             //alert('网络错误');
         });
     },
@@ -388,7 +393,21 @@ var contentList = {
         }
     },
     init : function(){
+        this.uiPos=0;
+        this.dataPos=0;
         this.focus();
+        return this;
+    },
+    show : function (isTurnPage) {
+        $('contentBox').style.backgroundImage = "url(images/index-bg2.png)";
+        $('l_icon').style.visibility="visible";
+        $('r_icon').style.visibility="visible";
+        $('pageNav').style.visibility="visible";
+        if(!!this.hasData&&!!this.data['menu'+menuObj.menuPos].lists[0]){//有数据
+            this.render();
+        }else{
+            this.getData(!!isTurnPage);
+        }
         return this;
     },
     rowCount : 8,//一行几个
@@ -398,6 +417,7 @@ var contentList = {
     stepLeft : 130,
     stepTop : 140,
     render : function(){
+        $('content').innerHTML='';
         var s='',top= 0,left=0;
         var items=this.data['menu'+menuObj.menuPos].lists;
         for(var i= 0,len=items.length;i<len;i++){
@@ -479,10 +499,10 @@ var contentList = {
     enter : function(){
         if(menuObj.menuPos==3){
             //收藏列表
-            alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+            //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
             getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
         }else{
-            alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+            //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
             getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
             //location.href='activity.html?id='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].id;
         }
@@ -492,8 +512,8 @@ var contentList = {
         //上一页
         if(this.data['menu'+menuObj.menuPos].currentPage<=1) return;
         this.data['menu'+menuObj.menuPos].currentPage--;
-        this.data['menu'+menuObj.menuPos].lists=[];
-        this.show();
+
+        this.show(true);//翻页模式
     },
     touchUp : function(){
         this.blur();
@@ -503,8 +523,8 @@ var contentList = {
         //下一页
         if(this.data['menu'+menuObj.menuPos].currentPage>=this.data['menu'+menuObj.menuPos].totalPage) return;
         this.data['menu'+menuObj.menuPos].currentPage++;
-        this.data['menu'+menuObj.menuPos].lists=[];
-        this.show();
+
+        this.show(true);//翻页模式
     },
     touchDown : function(){
 
