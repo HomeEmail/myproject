@@ -65,7 +65,7 @@ var ctr={//事件控制对象
 //从portal页进入此页面会携带user_id参数
 var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
 if(user_id=='null'){
-    user_id=108601998;
+    user_id=104734528;
 }
 //菜单初始化在哪个
 var menuPos= Q.getInt('menuPos',0);
@@ -105,13 +105,24 @@ function fetch(url,successFn,failFn){
         timeout:30000
     });
 }
+
 function getGameUrl(id){
-    ///inter/getPlayUrl.action?gameId=1
+    getRtspUrl(id);
+
+    /*var url=serverUrl+'/inter/getTyeps.action?userNo='+user_id;
+    fetch(url,function(data){
+        getRtspUrl(id);
+    },function(){
+        ///alert('网络错误');
+    });*/
+}
+function getRtspUrl(id){
+    ///play/getPlayUrl.action?gameId=1
     if(req != null){
         req.abort();
         req=null;
     }
-    var url=serverUrl+'/inter/getPlayUrl.action?gameId='+id;
+    var url=serverUrl+'/play/getPlayUrl.action?gameId='+id+'&userNo='+user_id;
     showLoadingDiv();
     req = ajax({
         url: url,
@@ -121,22 +132,18 @@ function getGameUrl(id){
             req=null;
             hideLoadingDiv();
             var json = eval("(" + html + ")");
-            if(!json.bool){
-                alert(json.result);
+            if(!!!json.url){
+                alert(json.msg);
                 return;
             }
-            if(!json.result.play){
-                alert('播放地址获取失败');
-                return;
-            }
-            var play=json.result.play;
-            var state=play.state;
-            if(parseInt(state,10)==0){
-                var url='play.html?url='+encodeURIComponent(play.url);
+            
+            var state=json.state;
+            //if(parseInt(state,10)==0){
+                var url='play.html?url='+encodeURIComponent(json.url);
                 window.location.href=url;
-            }else{
-                alert(play.reason);
-            }
+            //}else{
+            //    alert(json.reason);
+            //}
         },
         onComplete : function(){
             req = null;
@@ -296,7 +303,13 @@ var indexHome = {
     },
     enter : function(){
         //alert(this.data[this.dataPos].link);
-        location.href=this.data[this.dataPos].link;//'activity.html';
+        var url=this.data[this.dataPos].link;
+        if(url.indexOf('?')>-1){
+            url+='&user_id='+user_id;
+        }else{
+            url+='?user_id='+user_id;
+        }
+        location.href=url;//'activity.html';
     },
     touchLeft : function(){
 
@@ -318,6 +331,7 @@ var contentList = {
     uiPos : 0,
     dataPos : 0,
     hasData : false,
+    pageSize : 24,
     data : {
         menu1 : {
             currentPage : 1,
@@ -372,23 +386,25 @@ var contentList = {
     },
     formatData : function(data){
         this.data['menu'+menuObj.menuPos].lists=[];
-        this.data['menu'+menuObj.menuPos].currentPage=data.page||1;
-        this.data['menu'+menuObj.menuPos].totalPage=data.total||1;
-        for(var i=0,len=data.data.length;i<len;i++){
-            if(menuObj.menuPos==3){
-                //收藏列表
-                this.data['menu'+menuObj.menuPos].lists.push({
-                    scid:data.data[i].scId,
-                    id:data.data[i].gameId,
-                    name:data.data[i].gameTitle,
-                    img:imgBasePath+data.data[i].gameImg
-                });
-            }else{
-                this.data['menu'+menuObj.menuPos].lists.push({
-                    id:data.data[i].gameId,
-                    name:data.data[i].gameTitle,
-                    img:imgBasePath+data.data[i].gameImg
-                });
+        if(parseInt(data.code,10)!=-1){
+            this.data['menu'+menuObj.menuPos].currentPage=data.page||1;
+            this.data['menu'+menuObj.menuPos].totalPage=Math.ceil(data.total/this.pageSize)||1;
+            for(var i=0,len=data.data.length;i<len;i++){
+                if(menuObj.menuPos==3){
+                    //收藏列表
+                    this.data['menu'+menuObj.menuPos].lists.push({
+                        scid:data.data[i].scId,
+                        id:data.data[i].gameId,
+                        name:data.data[i].gameTitle,
+                        img:imgBasePath+data.data[i].gameImg
+                    });
+                }else{
+                    this.data['menu'+menuObj.menuPos].lists.push({
+                        id:data.data[i].gameId,
+                        name:data.data[i].gameTitle,
+                        img:imgBasePath+data.data[i].gameImg
+                    });
+                }
             }
         }
     },
@@ -420,10 +436,14 @@ var contentList = {
         $('content').innerHTML='';
         var s='',top= 0,left=0;
         var items=this.data['menu'+menuObj.menuPos].lists;
-        for(var i= 0,len=items.length;i<len;i++){
-            top=this.initTop+(this.stepTop*parseInt(i/this.rowCount,10));
-            left=this.initLeft+(this.stepLeft*(i%this.rowCount));
-            s+='<div style="position: absolute;top: '+top+'px;left: '+left+'px;width: '+104+'px;height: '+104+'px;background: url('+items[i].img+') no-repeat;"></div>';
+        if(items.length>0){
+            for(var i= 0,len=items.length;i<len;i++){
+                top=this.initTop+(this.stepTop*parseInt(i/this.rowCount,10));
+                left=this.initLeft+(this.stepLeft*(i%this.rowCount));
+                s+='<div style="position: absolute;top: '+top+'px;left: '+left+'px;width: '+104+'px;height: '+104+'px;background: url('+items[i].img+') no-repeat;"></div>';
+            }
+        }else{
+            s='<div style="height:100px;line-height:100px;font-size:24px;color:#ffffff;text-align:center;">暂无数据</div>';
         }
         $('content').innerHTML=s;
         this.renderPageNav();
@@ -512,7 +532,7 @@ var contentList = {
         //上一页
         if(this.data['menu'+menuObj.menuPos].currentPage<=1) return;
         this.data['menu'+menuObj.menuPos].currentPage--;
-
+        this.hasData=false;
         this.show(true);//翻页模式
     },
     touchUp : function(){
@@ -523,7 +543,7 @@ var contentList = {
         //下一页
         if(this.data['menu'+menuObj.menuPos].currentPage>=this.data['menu'+menuObj.menuPos].totalPage) return;
         this.data['menu'+menuObj.menuPos].currentPage++;
-
+        this.hasData=false;
         this.show(true);//翻页模式
     },
     touchDown : function(){

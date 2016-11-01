@@ -69,6 +69,11 @@ function grabEvent(_event){
 
 var loadingDiv=null;
 var folderId=Q.getInt('id',0);
+var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
+if(user_id=='null'){
+    user_id=104734528;
+}
+
 window.onload = init;
 function init(){
 	loadingDiv=$('loadingDiv');
@@ -136,6 +141,56 @@ function fetch(url,successFn,failFn){
 	});
 }
 
+function getGameUrl(id){
+	getRtspUrl(id);
+
+    /*var url=serverUrl+'/inter/getTyeps.action?userNo='+user_id;
+    fetch(url,function(data){
+        getRtspUrl(id);
+    },function(){
+        ///alert('网络错误');
+    });*/
+}
+function getRtspUrl(id){
+
+    ///play/getPlayUrl.action?gameId=1
+    if(req != null){
+        req.abort();
+        req=null;
+    }
+    var url=serverUrl+'/play/getPlayUrl.action?gameId='+id+'&userNo='+user_id;
+    showLoadingDiv();
+    req = ajax({
+        url: url,
+        type: "GET", //HTTP 请求类型,GET或POST
+        dataType: "html", //请求的文件类型html/xml
+        onSuccess: function(html){ //请求成功后执行[可选]
+            req=null;
+            hideLoadingDiv();
+            var json = eval("(" + html + ")");
+            if(!!!json.url){
+                alert(json.msg);
+                return;
+            }
+            
+            var state=json.state;
+            //if(parseInt(state,10)==0){
+                var url='play.html?url='+encodeURIComponent(json.url);
+                window.location.href=url;
+            //}else{
+            //    alert(json.reason);
+            //}
+        },
+        onComplete : function(){
+            req = null;
+        },
+        onError:function(){ //请求失败后执行[可选]
+            req=null;
+        },
+        post:"",
+        timeout:30000
+    });
+}
 
 var control = {
 	focusArea : 0,//0:主内容，1:顶部右上角菜单
@@ -207,10 +262,11 @@ var control = {
 	doSelect : function(){
 		if(this.focusArea===0){
 			//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
-			alert(this.contentList.dataPos);
+			//alert(this.contentList.dataPos);
 			//this.contentList.datas[this.contentList.dataPos].gameId;//playUrl
-			var url='play.html?url='+encodeURIComponent(this.contentList.datas[this.contentList.dataPos].playUrl);
-			alert(url);
+			getGameUrl(this.contentList.datas[this.contentList.dataPos].gameId);
+			//var url='play.html?url='+encodeURIComponent(this.contentList.datas[this.contentList.dataPos].playUrl);
+			//alert(url);
 			//window.location.href=url;
 		}else{
 			//右上角菜单
@@ -333,6 +389,8 @@ var topTips= {
 	<div style="position:absolute; top:267px; left:590px; width:388px; height:218px;">
 		<img id="listImg_4" src="images/tm.gif" width="388" height="218" />
 	</div>
+	<div id="content_focus" class="smooth" style="position:absolute; top:30px; left:34px; width:530px; height:287px; border:4px #ffffff solid; visibility: hidden;border-radius:16px;-webkit-border-radius:16px;-webkit-box-shadow: 0px 0px 28px 1px #ffffff;"> </div>
+	
 	<!-- <div id="content_focus" style="position:absolute; top:30px; left:34px; width:538px; height:295px;visibility: hidden;">
 		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
@@ -352,7 +410,6 @@ var topTips= {
 			</tr>
 		</table>
 	</div> -->
-	<div id="content_focus" class="smooth" style="position:absolute; top:30px; left:34px; border:4px #ffffff solid; width:530px; height:287px;visibility: hidden;border-radius:16px;-webkit-border-radius:16px;-webkit-box-shadow: 0px 0px 28px 1px #ffffff;"></div>
 </div>
 
 <div id="page" style="position:absolute; top:622px; left:1130px; width:50px; height:55px; font-size:24px; color:#FFFFFF; font-weight:bold;"></div>
