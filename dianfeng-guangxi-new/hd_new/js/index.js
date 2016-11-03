@@ -243,8 +243,8 @@ var indexHome = {
         $('content_focus').style.visibility="visible";
         $('content_focus').style.width=this.data[this.dataPos].width+'px';
         $('content_focus').style.height=this.data[this.dataPos].height+'px';
-        $('content_focus').style.left=(this.data[this.dataPos].left-4)+'px';
-        $('content_focus').style.top=(this.data[this.dataPos].top-4)+'px';
+        $('content_focus').style.left=(this.data[this.dataPos].left-6)+'px';
+        $('content_focus').style.top=(this.data[this.dataPos].top-6)+'px';
     },
     blur : function(){
         $('content_focus').style.visibility="hidden";
@@ -326,6 +326,8 @@ var indexHome = {
     }
 
 };
+
+
 //内容列表控制对象
 var contentList = {
     uiPos : 0,
@@ -473,8 +475,8 @@ var contentList = {
         $('content_focus').style.visibility="visible";
         $('content_focus').style.width=104+'px';
         $('content_focus').style.height=104+'px';
-        $('content_focus').style.left=(l-4)+'px';
-        $('content_focus').style.top=(t-4)+'px';
+        $('content_focus').style.left=(l-6)+'px';
+        $('content_focus').style.top=(t-6)+'px';
     },
     blur : function(){
         $('content_focus').style.visibility="hidden";
