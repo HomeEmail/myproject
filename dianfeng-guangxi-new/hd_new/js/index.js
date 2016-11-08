@@ -170,7 +170,7 @@ function getMenuData(){
 function formatMenuData(data){
     menuObj.data=[];
     menuObj.menuList=[];
-    for(var i=0,len=data.data.length;i<len;i++){
+    for(var i=0,len=4;i<len;i++){
         menuObj.data.push({
             name:data.data[i].typeName,
             id:data.data[i].typeId
