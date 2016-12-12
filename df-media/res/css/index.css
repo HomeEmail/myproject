@@ -1,0 +1,73 @@
+body,html{
+    background-color: #ffffff;
+}
+.header-wrapper{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.menu-wrapper{
+    font-size: 18px;
+    padding-top: 50px;
+}
+.menu-wrapper a{
+    margin-right: 45px;
+}
+
+.indexBanner-wrapper{
+    height: 471px;
+    background: url("../images/index-bg.png") no-repeat center bottom;
+}
+.login-wrapper{
+    background-color: #0d0d0d;
+    height: 80px;
+    color: #ffffff;
+    line-height: 80px;
+}
+.login-title{
+    background-color: #eb7425;
+    width: 30%;
+    text-align: right;
+    padding-right: 10px;
+    position: relative;
+}
+.login-title:after{
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    display: inline-block;
+    border-left: 10px #eb7425 solid;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+}
+.login-box{
+    padding-right: 50px;
+}
+.login-box input{
+    height: 30px;
+    line-height: 30px;
+    border:0px;
+    width: 160px;
+    padding: 0px 5px;
+}
+#loginBt{
+    background-color: #eb7425;
+    border: 0px;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 13px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+}
+#registerBt{
+    background-color: #ffffff;
+    border: 0px;
+    padding: 5px 10px;
+    color: #222222;
+    font-size: 13px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}

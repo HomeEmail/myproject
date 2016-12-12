@@ -1,0 +1,18 @@
+body,html{
+    background-color: #cfd7dc;
+}
+.header-body{
+    background-color: #ffffff;
+}
+.header-wrapper{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.menu-wrapper{
+    font-size: 18px;
+    padding-top: 50px;
+}
+.menu-wrapper a{
+    margin-right: 45px;
+}
+
