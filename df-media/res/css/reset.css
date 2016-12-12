@@ -68,3 +68,28 @@ audio:not([controls]) {display: none; height: 0;}
 [hidden] {display: none;}
 
 /************************************************/
+
+
+select,button,html input[type="button"],input[type="reset"],input[type="submit"] {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer
+}
+
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+    box-sizing: border-box;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+input[type="number"] {
+    -moz-appearance: textfield
+}
+
+input[type="number"],input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none
+}
+
