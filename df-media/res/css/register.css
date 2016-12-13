@@ -98,3 +98,49 @@ select.inputText{
 #companyAddress{
     width: 500px;
 }
+
+#companyContactName,#qqNo,#telNo{
+    width: 120px;
+}
+#telAreaNo,#telSubNo{
+    width: 50px;
+}
+.sendValidCode{
+    width: 180px;
+    text-align: center;
+}
+.registerBt{
+    border: 0px;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+}
+
+#tips{
+    background-color: #e4e9ed;
+    width: 500px;
+    height: 300px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 20px 0px #aaa;
+    position: fixed;
+    z-index: 99;
+    top:50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -150px;
+    text-align: center;
+    display: none;
+}
+.tipsText{
+    padding: 50px 10px;
+    font-size: 22px;
+    line-height: 50px;
+}
+.againInputBt{
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 22px;
+}
