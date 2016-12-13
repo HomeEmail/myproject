@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>播放 - 巅峰投放平台</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="../res/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/play.css"/>
+</head>
+
+<body>
+<div class="page w1200 all">
+	<div class="title">
+		<div class="left">
+			<div class="icon">
+				<span class="id">ID1879</span>
+			</div>
+			<span class="text">ID&LOGO</span>
+		</div>
+		<div class="right">退出登陆</div>
+	</div>
+	<div class="content">
+		<div class="left">
+			<div class="list">
+				<span class="icon" style="background-position:0px 0;"></span>
+				<span class="name">我要编辑</span>
+			</div>
+			<div class="list checked">
+				<span class="icon" style="background-position:0px -40px;"></span>
+				<span class="name">产品投放</span>
+			</div>
+		</div>
+		<div class="middle">
+			<div class="select_box">
+				<select>
+					<option selected="selected">产品文件选择</option>
+					<option>手游.MP4</option>
+				</select>
+				<span class="text">温馨提示：每次只能投放一个文件</span>
+			</div>
+			<div class="list">
+				<div class="list_title">投放渠道选择</div>
+				<div class="list_bg">
+					<div class="list_content">
+						<span class="list_name">9游</span>
+						<span class="list_btn" onClick="setPlay()">点击投放</span>
+						<span class="list_name">360</span>
+						<span class="list_btn" onClick="setPlay()">点击投放</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="play_box">
+				<video src="http://www.w3school.com.cn/i/movie.ogg" controls="controls">
+					您的浏览器不支持 video 标签。
+				</video>
+			</div>
+			<div class="text">如需撤销当前视屏投放，请与我方工作人员联系 QQ：1918928855</div>
+		</div>
+		<div class="text_sorry" style="display:none;">非常抱歉，此功能区暂未开发</div>
+	</div>
+</div>
+<!-- 公共的 js -->
+<script language="javascript" type="text/javascript" src="../res/js/jquery-1.8.2.min.js"></script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function () {
+	$('.content .left .list').click(function(){
+		var index = $(this).index();
+		$(this).addClass('checked').siblings().removeClass('checked');
+		if(index == 0){
+			$('.text_sorry').css('display','block');
+			$('.content .middle').css('display','none');
+			$('.content .right').css('display','none');
+			return;
+		}else if(index == 1){
+			$('.text_sorry').css('display','none');
+			$('.content .middle').css('display','block');
+			$('.content .right').css('display','block');
+			return;
+		}
+	});
+});
+function setPlay(){
+	
+}
+</script>
+</body>
+</html>
