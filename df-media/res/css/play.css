@@ -1,10 +1,14 @@
 body,html{
 	color:#414344;
+	margin:0;
+	padding: 0;
 	background-color:#cfd7dc;
 }
 .all{
 	padding-top:45px;
+	background-color:#cfd7dc;
 	padding-bottom:45px;
+	position:relative;
 }
 .all .title{
 	margin:0 10px 0px 10px;
@@ -24,6 +28,30 @@ body,html{
 	line-height:28px;
 	margin-top:16px;
 	display:inline-block;
+}
+.title .more_list_icon{
+	margin-left:10px;
+	display:inline-block;
+	cursor:pointer;
+}
+.more_list{
+	background-color:#fdbd72;
+	width:100px;
+	height:80px;
+	position:absolute;
+	top:95px;
+	left:180px;
+	display:none;
+}
+.more_list .list{
+	height:40px;
+	margin:0 5px;
+	line-height:40px;
+	cursor:pointer;
+}
+.more_list .list span{
+	margin-left:10px;
+	color:#414344;
 }
 .title .left .icon .id{
 	font-size:12px;
@@ -60,6 +88,7 @@ body,html{
 .content .left .list{
 	height:55px;
 	line-height:55px;
+	cursor:pointer;
 }
 .content .left .checked{
 	background-color:#e3e3e3;
@@ -162,5 +191,92 @@ body,html{
 	float:left;
     width:970px;
     line-height: 500px;
-    text-align: center
+    text-align: center;
+	display:none;
+}
+
+.content .more_data{
+	display:inline-block;
+	width:990px;
+}
+.content .more_data .my_info{
+	margin:50px 50px 0 50px;
+	width:890px;
+	height:530px;
+	display:none;
+}
+.content .more_data .my_info .list_basic {
+	background-color:#fff;
+	height:260px;
+}
+.content .more_data .my_info .info_title{
+	background-color:#56a2e7;
+	line-height:35px;
+	padding-left:20px;
+	color:#fff;
+	font-size:14px;
+}
+.more_data .my_info .info_form{
+	margin-top:30px;
+}
+.more_data .my_info .info_form li{
+	overflow:hidden;
+	line-height:40px;
+}
+.more_data .my_info .info_form .info_list_name{
+	width:70px;
+	display:inline-block;
+	text-align:right;
+	font-weight:bold;
+}
+.more_data .my_info .info_form .input{
+	line-height:25px;
+	width:240px;
+	padding-left:2px;
+}
+.content .more_data .my_info .password {
+	background-color:#fff;
+	margin-top:10px;
+	height:250px;
+}
+.more_data .my_info .btn{
+	margin-top:20px;
+	padding-left:112px;
+}
+.more_data .my_info .btn span{
+	background-color:#56a2e7;
+	color:#fff;
+	padding:10px 30px;
+	margin-right:30px;
+	cursor:pointer;
+}
+.content .more_data .recharge_record{
+	margin:50px 50px 0 50px;
+	width:890px;
+	height:530px;
+	background-color:#fff;
+	display:none;
+}
+.more_data .recharge_record .tab_title{
+	background-color:#56a2e7;
+	line-height:35px;
+	padding-left:20px;
+	color:#414344;
+	font-size:14px;
+}
+.more_data .recharge_record table{
+	width:100%;
+	border:none;
+}
+.more_data .recharge_record table thead{
+	background-color:#dfdfdf;
+	line-height:30px;
+}
+.more_data .recharge_record table tbody{
+	background-color:#fff;
+	line-height:30px;
+	text-align:center;
+}
+.recharge_record table tbody tr td{
+	border-bottom:1px solid #EDEBEC;
 }
