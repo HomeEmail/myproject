@@ -1,0 +1,13 @@
+.Tab_group{
+    font-size:0;
+}
+.Tab{
+    color: #3D9BCB;
+    font-size: 12px;
+    display: inline-block;
+    padding:6px 15px;
+    margin:0 5px 5px 0;
+    background-color: #EDF9FF;
+    min-width: 48px;
+    text-align: center;
+}

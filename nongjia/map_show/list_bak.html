@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>确权信息列表</title>
+<link rel="stylesheet" type="text/css" href="css/page.css"/>
+<style>
+body{
+	font-size:18px;
+	color:#ffffff;
+	background-color: #000;
+}
+.title{
+	color:#ffffff;
+	line-height:35px;
+}
+.input{
+	line-height:25px;
+	border:1px solid #ffffff;
+	background-color:transparent;
+	width:145px;
+	color:#ffffff;
+	padding-left:5px;
+}
+.checkBtn{
+	color:#ffffff;
+	background-color:#004bbc;
+	padding:10px 40px;
+}
+
+table{
+    width:100%;
+    text-align: left;
+    margin-top:5px;
+}
+table tr{
+	height:40px;
+}
+table th,table td{
+    border:1px solid #DBDBDB;
+    text-align: center;
+    vertical-align: middle;
+}
+table .bottom{
+    margin-bottom:45px !important;
+}
+.clickBtn{
+	color:#33CCFF;
+}
+.backBtn{
+	color:#ffffff;
+	background-color:#004bbc;
+	font-size:22px;
+	padding:12px 60px;
+	border-radius:2px;
+	cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+<div style="position:absolute; top:0px; left:0px; width:100%;">
+	<img src="img/bg_2.jpg" width="100%" />
+	<div class="titleName" style="position:absolute; top:23px; left:0px; width:700px; height:96px; line-height:96px; text-align:center; font-weight:bold; background-color:#18288c; font-size:44px; color:#ffffff;"></div>
+	<div style="position:absolute; top:170px; left:150px; width:1720px; height:50px;">
+		<span class="title" style="margin-left:75px;">地区：</span>
+		<input type="text" class="input" />
+		<span class="title" style="margin-left:25px;">户主名：</span>
+		<input type="text" class="input" />
+		<span class="title" style="margin-left:25px;">权证编号：</span>
+		<input type="text" class="input" />
+		<a class="checkBtn">查询</a>
+	</div>
+	<div style="position:absolute; top:230px; left:150px; width:1602px; height:680px; text-align:center;">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<thead>
+			<tr>
+				<th>序号</th>
+				<th>户主名称</th>
+				<th>权证（合同）编号</th>
+				<th>地区</th>
+				<th>实测面积（亩）</th>
+				<th>领证时间</th>
+				<th>是否流转</th>
+				<th>是否抵押</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td id="sn_0">1</td>
+				<td id="dataName_0">叶先生</td>
+				<td id="dataNum_0">7989562623</td>
+				<td id="dataArea_0">高良镇</td>
+				<td id="dataExtensive_0">3.42</td>
+				<td id="getTime_0">2016/11/11</td>
+				<td id="isCirculation_0">是</td>
+				<td id="isPledge_0">是</td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_1"></td>
+				<td id="dataName_1"></td>
+				<td id="dataNum_1"></td>
+				<td id="dataArea_1"></td>
+				<td id="dataExtensive_1"></td>
+				<td id="getTime_1"></td>
+				<td id="isCirculation_1"></td>
+				<td id="isPledge_1"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_2"></td>
+				<td id="dataName_2"></td>
+				<td id="dataNum_2"></td>
+				<td id="dataArea_2"></td>
+				<td id="dataExtensive_2"></td>
+				<td id="getTime_2"></td>
+				<td id="isCirculation_2"></td>
+				<td id="isPledge_2"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_3"></td>
+				<td id="dataName_3"></td>
+				<td id="dataNum_3"></td>
+				<td id="dataArea_3"></td>
+				<td id="dataExtensive_3"></td>
+				<td id="getTime_3"></td>
+				<td id="isCirculation_3"></td>
+				<td id="isPledge_3"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_4"></td>
+				<td id="dataName_4"></td>
+				<td id="dataNum_4"></td>
+				<td id="dataArea_4"></td>
+				<td id="dataExtensive_4"></td>
+				<td id="getTime_4"></td>
+				<td id="isCirculation_4"></td>
+				<td id="isPledge_4"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_5"></td>
+				<td id="dataName_5"></td>
+				<td id="dataNum_5"></td>
+				<td id="dataArea_5"></td>
+				<td id="dataExtensive_5"></td>
+				<td id="getTime_5"></td>
+				<td id="isCirculation_5"></td>
+				<td id="isPledge_5"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_6"></td>
+				<td id="dataName_6"></td>
+				<td id="dataNum_6"></td>
+				<td id="dataArea_6"></td>
+				<td id="dataExtensive_6"></td>
+				<td id="getTime_6"></td>
+				<td id="isCirculation_6"></td>
+				<td id="isPledge_6"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_7"></td>
+				<td id="dataName_7"></td>
+				<td id="dataNum_7"></td>
+				<td id="dataArea_7"></td>
+				<td id="dataExtensive_7"></td>
+				<td id="getTime_7"></td>
+				<td id="isCirculation_7"></td>
+				<td id="isPledge_7"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_8"></td>
+				<td id="dataName_8"></td>
+				<td id="dataNum_8"></td>
+				<td id="dataArea_8"></td>
+				<td id="dataExtensive_8"></td>
+				<td id="getTime_8"></td>
+				<td id="isCirculation_8"></td>
+				<td id="isPledge_8"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_9"></td>
+				<td id="dataName_9"></td>
+				<td id="dataNum_9"></td>
+				<td id="dataArea_9"></td>
+				<td id="dataExtensive_9"></td>
+				<td id="getTime_9"></td>
+				<td id="isCirculation_9"></td>
+				<td id="isPledge_9"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_10"></td>
+				<td id="dataName_10"></td>
+				<td id="dataNum_10"></td>
+				<td id="dataArea_10"></td>
+				<td id="dataExtensive_10"></td>
+				<td id="getTime_10"></td>
+				<td id="isCirculation_10"></td>
+				<td id="isPledge_10"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			<tr>
+				<td id="sn_11"></td>
+				<td id="dataName_11"></td>
+				<td id="dataNum_11"></td>
+				<td id="dataArea_11"></td>
+				<td id="dataExtensive_11"></td>
+				<td id="getTime_11"></td>
+				<td id="isCirculation_11"></td>
+				<td id="isPledge_11"></td>
+				<td><a class="clickBtn" href="#">查看详情</a></td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="page">
+			<ul>
+				<li><a id="first" class="before" href="javascript:void(0)">首页</a></li>
+				<li><a id="pre" class="before" href="javascript:void(0)">上一页</a></li>
+				<li><a class="selected" href="javascript:void(0)">1</a></li>
+				<li><a href="javascript:void(0)">2</a></li>
+				<li><a href="javascript:void(0)">3</a></li>
+				<li><a href="javascript:void(0)">4</a></li>
+				<li><a href="javascript:void(0)">5</a></li>
+				<li><a href="javascript:void(0)">6</a></li>
+				<li><a href="javascript:void(0)">7</a></li>
+				<li><a href="javascript:void(0)">8</a></li>
+				<li><a href="javascript:void(0)">9</a></li>
+				<li><a href="javascript:void(0)">10</a></li>
+				<li><a id="next" class="before" href="javascript:void(0)">下一页</a></li>
+				<li><a id="last" class="before" href="javascript:void(0)">尾页</a></li>
+			</ul>
+		</div>
+		<span class="backBtn" onClick="goBack()">返回</span>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript">
+function goBack(){
+	location.href = "index.html";
+}
+var currPage = 0;
+function showData(){
+	for(var i = 0;i < 12;i++){
+		$("#sn_"+ i).html();
+		$("#dataName_"+ i).html();
+		$("#dataArea_"+ i).html();
+		$("#dataExtensive_"+ i).html();
+		$("#getTime_"+ i).html();
+		$("#isCirculation_"+ i).html();
+		$("#isPledge_"+ i).html();
+	}
+}
+function changePage(_page){
+	currPage = _page;
+	showData();
+}
+var checkName = "";
+var checkPos = 0;
+$(document).ready(function(){
+	checkName = Q.getDecoded("checkName");
+	checkPos = Q.getInt("checkPos");
+	$('.titleName').html(checkName +'土地确权信息');
+	var indexSelect = 2;
+	currPage = 1;
+	var page_li = $('.page li')
+	$('.page a').click(function(){
+		var id = $(this).attr('id');
+		if(id == "first"){
+			currPage = 1;
+			indexSelect = 2;
+		}else if(id == "pre"){
+			if(currPage == 1)return;
+			currPage--;
+			indexSelect--;
+		}else if(id == "next"){
+			if(currPage == 10)return;
+			currPage++;
+			indexSelect++;
+		}else if(id == "last"){
+			currPage = 10;
+			indexSelect=currPage+1;
+		}else{
+			currPage = parseInt($(this).text());
+			indexSelect = parseInt($(this).parent().index());
+		}
+		//alert(indexSelect)
+		page_li.eq(indexSelect).find('a').addClass('selected');
+		page_li.eq(indexSelect).siblings().find('a').removeClass('selected');
+	});
+	$('.clickBtn').click(function(){
+		location.href = "detail.html?userName=11";
+	});
+});
+</script>
+</body>
+</html>

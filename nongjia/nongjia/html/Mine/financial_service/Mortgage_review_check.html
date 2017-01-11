@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+    <title>农加网-个人产权流入申请查看</title>
+    <!-- 公共的css -->
+    <link rel="stylesheet" type="text/css" href="../../../res/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/button.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/full_formstyle.css"/>
+
+    <!-- 当前的css -->
+    <style>
+        .review{
+            padding:30px 15px 15px 15px;
+            border:1px solid #DCDCDC;
+            overflow: hidden;
+        }
+        .review_tab a{
+            display: inline-block;
+            color: #999999;
+            font-size: 14px;
+            padding:15px 25px;
+            position: relative;
+            outline: none;
+        }
+        .review_tab .select{
+            position: relative;
+            border:1px solid #D2D2D2;
+            border-bottom:1px solid #ffffff;
+            bottom:-1px;
+            color: #333333;
+            font-weight: bold;
+        }
+        .tab_content{
+            overflow: hidden;
+            display: none;
+        }
+        .choose_tab{
+            display: block;
+        }
+        .tab_content ul{
+            display: none;
+        }
+        .tab_content .show{
+            display: block;
+        }
+        table{
+            border-top:2px solid #DBDBDB;
+            border-right:1px solid #DBDBDB;
+            border-left:1px solid #DBDBDB;
+            border-bottom:1px solid #DBDBDB;
+            width: 100%;
+            margin-top:20px;
+            table-layout:fixed
+        }
+        table tr,th,td{
+            border-bottom:1px solid #DBDBDB;
+            font-size: 14px;
+            padding:15px 0 15px 20px ;
+            color: #656565;
+            text-align: left;
+            vertical-align: middle;
+            line-height: 1.5;
+
+        }
+        table th{
+            color: #333333;
+            text-align: left;
+        }
+
+        table .label{
+            width:140px;
+            text-align: right;
+        }
+        
+        /*.stage{*/
+            /*position: absolute;*/
+            /*top:51px;*/
+            /*right:15px;*/
+        /*}*/
+
+
+    </style>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../../../res/js/DD_belatedPNG.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix(".ie6png");
+    </script>
+    <![endif]-->
+</head>
+<body>
+<!-- header begin -->
+<div id="topNav">
+    <input type="hidden" value="2" id="sessionAreaId"/>
+    <div id="TN_content">
+        <ul>
+            <li><img style="vertical-align: middle" src="../../../res/images/yunxingzhong.png"/></li>
+            <li id="sn_city">广州市<a href="javascript:void(0)">[切换地区]</a></li>
+        </ul>
+        <ul class="right_list">
+            <li><a href="#" target="_blank">管理系统</a></li>
+            <li><a href="#">登录</a></li>
+            <li><a href="../../Mine/Mine.html">我的农加</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <div class="choose_city_menu">
+            <div class="provide menu">
+                <h2>省份</h2>
+                <ul>
+                    <li><a data-city="1" href="http://www.nongj.com/nonjia/index.action?areaId=1">广东省</a></li>
+                </ul>
+            </div>
+            <div class="cities menu ">
+                <h2>市级</h2>
+            </div>
+            <div class="county menu">
+                <h2>县级</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- nav begin -->
+<div id="navBar">
+    <div id="NB_content">
+        <a href='#'><img src="../../../res/images/logo1.png" alt="农加网"/></a>
+        <div class="logo_wrap">
+            <span class="line"></span>
+            <div class="name_wrap">
+                <p class='T_name'>我的农加</p>
+            </div>
+        </div>
+        <div class="back" onClick="location='http://test.nongj.com/html/index.html'">
+            <span class="M_logo logo7"></span><span>返回首页</span>
+        </div>
+    </div>
+</div>
+<!-- nav end -->
+
+<!-- content begin -->
+<div class="content main_wrap">
+    <div class="main">
+        <div class="content nav_list">
+        <span><a href="${newPath}/index.action">首页</a></span>>
+        <span><a href="${newPath}/userIndex.action">我的农加</a></span>>
+        <span><a href="${newPath}/Mine/mortgage/MoragagePage/qMortgageStatusList.action">三农业务申请</a></span> >
+        <span><a href="javascript:void(0);" class="checked">三农业务审核</a></span>
+    </div>
+    <div class="disabled">
+        <div class="fill_in" style="position: relative">
+            <div class="type_title">
+                <h1>申请账户</h1>
+            </div>
+            <div class="sheet" >
+                <div>
+                    <ul>
+                        <li><span class="align_right"><label>申请账户：</label></span>
+                            <div class="border"><input class="input" type="text" value="${userTab.userName}"/></div>
+                        </li>
+                    </ul>
+                </div>
+                <!--<div class="stage">-->
+                    <!--<img src="${newPath}/nongjia/res/images/state/shenhezhong.png" alt="">-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="fill_in">
+            <div class="type_title">
+                 <h1>申请人信息</h1>
+            </div>
+            <div class="sheet">
+                    <ul>
+                        <li><span class="align_right"><label>申请人：</label></span>
+                            <div class="border"><input class="input" type="text" value="${userMortgageTab.mortgageUser}"/></div>
+                        </li>
+                        <li><span class="align_right"><label>联系地址：</label></span>
+                            <div class="border"><input class="input" type="text" value="${userMortgageTab.userAddress}"/></div>
+                        </li>
+                        <li><span class="align_right"><label>手机号码：</label></span>
+                            <div class="border"><input class="input" type="text" value="${userMortgageTab.userPhone}"/></div>
+                        </li>
+                        <li><span class="align_right"><label>身份证号：</label></span>
+                            <div class="border"><input class="input" type="text" value="${userMortgageTab.userNumber}"/></div>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <div class="fill_in">
+            <div class="type_title">
+                <h1>贷款信息</h1>
+            </div>
+            <div class="sheet">
+                <ul>
+                    <!-- <li><span class="align_right"><label>开户行：</label></span>
+                        <div class="border">
+                            <select name="">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </li> -->
+                     <li><span class="align_right"><label>开户行：</label></span>
+                        <div class="border"><input class="input" type="text" value="${userMortgageTab.userBank==1?'农业银行':''}"/></div>
+                    </li>
+                    <!-- <li><span class="align_right"><label>金融产品：</label></span>
+                        <div class="border">
+                            <select name="">
+                                <option value=""></option>
+                            </select></div>
+                    </li> -->
+                    <li><span class="align_right"><label>金融产品：</label></span>
+                        <div class="border">
+                        	<c:forEach items="${FinancialProductsTabs}" var="fp">
+                           		<c:if test="${userMortgageTab.financiaProductsId==fp.id}">
+                           			<input class="input" type="text" value="${fp.name}"/>
+                           		</c:if>
+                           	</c:forEach>
+                        </div>
+                    </li>
+                    <li><span class="align_right"><label>贷款额度：</label></span>
+                        <div class="border"><input class="input" type="text" value="${userMortgageTab.financeQuota}"/></div>
+                    </li>
+                    <li style="margin-bottom: 15px;"><span class="align_right"><label>抵押物类型：</label></span>
+                           <!--  <input type="checkbox"/><label>农村经营权抵押贷款</label>
+                            <input type="checkbox"/><label>养殖水面承包经营权</label>
+                            <input type="checkbox"/><label>集体组织四荒地的承包经营权</label> -->
+                            <c:forEach items="${typeNames}" var="type"  end="2" >
+			    				<c:choose>
+                           			 <c:when test="${FinanceType1==type.id}"><label><input type="checkbox" checked="checked" value="${type.id}"/>${type.typeName}</label></c:when>
+                           			 <c:when test="${FinanceType2==type.id}"><label><input type="checkbox" checked="checked" value="${type.id}"/>${type.typeName}</label></c:when>
+                           			 <c:when test="${FinanceType3==type.id}"><label><input type="checkbox" checked="checked" value="${type.id}"/>${type.typeName}</label></c:when>
+                           			<c:otherwise><label><input type="checkbox" value="${type.id}"/>${type.typeName}</label></c:otherwise>
+                            	</c:choose>
+				    		</c:forEach>
+                    </li>
+                    <li style="margin-bottom: 15px;"><span class="align_right"></span>
+                        <!-- <input type="checkbox"/><label>设施农业用地承包经营权</label>
+                        <input type="checkbox"/><label>集体组织机动地的承包经营权</label>
+                        <input type="checkbox"/><label>畜禽饲养用地承包经营权</label> -->
+                        <c:forEach items="${typeNames}" var="type"  begin="3">
+		    				<c:choose>
+			    				<c:when test="${FinanceType4==type.id}"><label><input type="checkbox" checked="checked" value="${type.id}"/>${type.typeName}</label></c:when>
+			    				<c:when test="${FinanceType5==type.id}"><label><input type="checkbox" checked="checked" value="${type.id}"/>${type.typeName}</label></c:when>
+			    				<c:when test="${FinanceType6==type.id}"><label><input type="checkbox" checked="checked" value="${type.id}"/>${type.typeName}</label></c:when>
+			    				<c:otherwise><label><input type="checkbox" value="${type.id}"/>${type.typeName}</label></c:otherwise>
+			    			</c:choose>
+		    			</c:forEach>
+                    </li>
+                    <li><span class="align_right v_top"><label>贷款用途：</label></span>
+                        <div class="border"><textarea cols="30" rows="10" style="width: 350px;">${userMortgageTab.financePurpose}</textarea></div>
+                    </li>
+                    <li><span class="align_right v_top"><label>抵押物主体：</label></span>
+                        <div class="border"><textarea cols="30" rows="10" style="width: 350px;">${userMortgageTab.collateral}</textarea></div>
+                    </li>
+                    <li><span class="align_right v_top"><label>抵押附属物：</label></span>
+                        <div class="border"><textarea cols="30" rows="10" style="width: 350px;">${userMortgageTab.collateralSubsidiary}</textarea></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fill_in">
+            <div class="type_title">
+               <!--  <h1 style="display: inline-block;float: left">相关材料</h1>
+                <a href="#" style="float: right;margin-right: 150px;color: #678BFF;font-size: 14px;">全部下载</a> -->
+            </div>
+            <div class="sheet">
+                <ul>
+                    <li><span class="align_right v_top"><label>相关材料：</label></span>
+                    	<c:choose>
+                    		<c:when test="${userMortgageTab.dataFile!=null&&userMortgageTab.dataFile!=''}">
+                    			<div class="border" style="width: 800px;height: 50px;line-height: 50px;padding-left: 10px;">
+			                        <p style="display: inline-block;float: left">已上传文件（点击右侧下载查看）</p>
+			                        <a href="${frontPath}/downloadFile.action?path=${userMortgageTab.dataFile }&fileName=其他材料文件" style="float: right;margin-right: 10px;color: #678BFF;font-size: 14px;">下载</a>
+		                        </div>
+                    		</c:when>
+	                        <c:otherwise>
+                        		<div class="border" style="width: 800px;height: 50px;line-height: 50px;padding-left: 10px;">
+			                        <p style="display: inline-block;float: left">尚未上传文件</p>
+		                        </div>
+                        	</c:otherwise>
+                        </c:choose>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>    
+        <div class="fill_in">
+            <div class="type_title">
+                <h1>审核信息</h1>
+            </div>
+            <div class="sheet">
+                <div class="review_tab" id="review_tab">
+                    <a href="#" class="select" data-type="1">签约结果</a>
+                    <a href="#" data-type="2">预审结果</a>
+                    <a href="#" data-type="3">银行审核</a>
+                    <a href="#" data-type="4">抵押鉴证</a>
+                    <a href="#" data-type="5">业务结单</a>
+                    <a href="#" data-type="6">业务记录</a>
+                </div>
+                
+                	<input type="hidden" name="mortgageId" id="mortgageId" value="${userMortgageTab.mortgageId}"/>
+	                <div class="review">
+	                    <div class="review_message">
+	                        <div class="tab_content choose_tab" >
+	                        	<form action="" name="form1">
+	                                <ul class="show">
+	                                    <li><span class="align_right"><label>业务员：</label></span>
+	                                        <div class="border"><input class="input" type="text" name="userName"/></div>
+	                                    </li>
+	                                    <li><span class="align_right"><label>签约状态：</label></span>
+	                                        <div class="border"><select name="status">
+	                                            <option value="">请选择</option>
+	                                            <option value="1">处理中</option>
+	                                            <option value="2">已签约</option>
+	                                            <option value="3">放弃签约</option>
+	                                        </select>
+	                                        </div>
+	                                    </li>
+	                                    <li><span class="align_right v_top"><label>备注：</label></span>
+	                                        <div class="border"><textarea cols="30" rows="10" name="description" style="width: 350px;"></textarea></div>
+	                                    </li>
+	                                </ul>
+	                            </form>
+	                        </div>
+	                        <div class="tab_content" >
+	                        	<form action="" name="form2">
+		                            <ul class="show">
+		                                <li><span class="align_right"><label>预审结果：</label></span>
+		                                    <div class="border"><select name="status">
+		                                        <option value="">请选择</option>
+		                                        <option value="1">通过</option>
+		                                        <option value="2">不通过</option>
+		                                    </select></div>
+		                                </li>
+		                                <li><span class="align_right v_top"><label>预审意见：</label></span>
+		                                    <div class="border"><textarea cols="30" rows="10" name="opinion" style="width: 350px;"></textarea></div>
+		                                </li>
+		                            </ul>
+	                            </form>
+	                        </div>
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        <div class="tab_content" >
+		                            <ul class="show">
+		                                <li><span class="align_right"><label>业务进度：</label></span>
+		                                    <div class="border"><select name="bank_audit">
+		                                        <option value="">请选择</option>
+		                                        <option value="">银行已受理</option>
+		                                        <option value="">银行已出合同</option>
+		                                        <option value="">银行审核不通过</option>
+		                                        <option value="">客户放弃贷款</option>
+		                                    </select></div>
+		                                </li>
+		                                <li><span class="align_right v_top"><label>备注：</label></span>
+		                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+		                                </li>
+		                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>业务进度：</label></span>
+	                                    <div class="border"><select name="bank_audit">
+	                                        <option value="">请选择</option>
+	                                        <option value="">银行已受理</option>
+	                                        <option value="">银行已出合同</option>
+	                                        <option value="">银行审核不通过</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                </li>
+	                                <li style="margin-bottom: 15px;"><span class="align_right"><label><strong style="margin-right: 17px;">合同详情</strong></label></span></li>
+	                                <li><span class="align_right"><label>合同额度：</label></span>
+	                                    <div class="border has_in "><input class="input" type="text"/><span class="in_input">元</span></div>
+	                                </li>
+	                                <li><span class="align_right"><label>贷款利率：</label></span>
+	                                    <div class="border" style="width: 80px;margin-right: 3px"><input class="input" style="width: 70px;" type="text"/></div>
+	                                    <div class="border" style="width: 270px;"><input class="input" style="width: 230px;" type="text"/><span class="in_input">%</span></div>
+	                                </li>
+	                                <li><span class="align_right"><label>贷款期限：</label></span>
+	                                    <div class="border has_in"><input class="input" type="text"/><span class="in_input">年</span></div>
+	                                </li>
+	                                <li><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>业务进度：</label></span>
+	                                    <div class="border"><select name="bank_audit">
+	                                        <option value="">请选择</option>
+	                                        <option value="">银行已受理</option>
+	                                        <option value="">银行已出合同</option>
+	                                        <option value="">银行审核不通过</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                    <div style="margin-left: 8px;" class="border"><input class="input" type="text" placeholder="请描述审核不通过原因"/></div>
+	                                </li>
+	                                <li ><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>业务进度：</label></span>
+	                                    <div class="border"><select name="bank_audit" >
+	                                        <option value="">请选择</option>
+	                                        <option value="">银行已受理</option>
+	                                        <option value="">银行已出合同</option>
+	                                        <option value="">银行审核不通过</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                    <div style="margin-left: 8px;" class="border"><input class="input" type="text" placeholder="请描述放弃贷款的原因"/></div>
+	                                </li>
+	                                <li ><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        
+	                        <div class="tab_content" >
+	                            <ul class="show">
+	                                <li><span class="align_right"><label>办理进度：</label></span>
+	                                    <div class="border"><select name="Mortgage">
+	                                        <option value="">请选择</option>
+	                                        <option value="">已申请办理</option>
+	                                        <option value="">成功办理鉴证</option>
+	                                        <option value="">办理失败</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                </li>
+	                                <li><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>办理进度：</label></span>
+	                                    <div class="border"><select name="Mortgage">
+	                                        <option value="">请选择</option>
+	                                        <option value="">已申请办理</option>
+	                                        <option value="">成功办理鉴证</option>
+	                                        <option value="">办理失败</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                </li>
+	                                <li style="margin-bottom: 15px;"><span class="align_right"><label><strong style="margin-right: 17px;">他项权利证书信息</strong></label></span></li>
+	                                <li><span class="align_right"><label>证书号：</label></span>
+	                                    <div class="border"><input class="input" type="text"/></div>
+	                                </li>
+	                                <li><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>办理进度：</label></span>
+	                                    <div class="border"><select name="Mortgage">
+	                                        <option value="">请选择</option>
+	                                        <option value="">已申请办理</option>
+	                                        <option value="">成功办理鉴证</option>
+	                                        <option value="">办理失败</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                    <div style="margin-left: 8px;" class="border"><input class="input" type="text" placeholder="请描述失败的原因"/></div>
+	                                </li>
+	                                <li ><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>办理进度：</label></span>
+	                                    <div class="border"><select name="Mortgage">
+	                                        <option value="">请选择</option>
+	                                        <option value="">已申请办理</option>
+	                                        <option value="">成功办理鉴证</option>
+	                                        <option value="">办理失败</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                    <div style="margin-left: 8px;" class="border"><input class="input" type="text" placeholder="请描述放弃贷款的原因"/></div>
+	                                </li>
+	                                <li ><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                        <div class="tab_content" >
+	                            <ul class="show">
+	                                <li><span class="align_right"><label>结单进度：</label></span>
+	                                    <div class="border"><select name="Business_statement">
+	                                        <option value="">请选择</option>
+	                                        <option value="">银行已放款</option>
+	                                        <option value="">客户已结款</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                </li>
+	                                <li style="margin-bottom: 15px;"><span class="align_right"><label><strong style="margin-right: 17px;">合同确认</strong></label></span></li>
+	                                <li><span class="align_right"><label>合同额度：</label></span>
+	                                    <div class="border has_in "><input class="input" type="text"/><span class="in_input">元</span></div>
+	                                </li>
+	                                <li><span class="align_right"><label>贷款利率：</label></span>
+	                                    <div class="border" style="width: 80px;margin-right: 3px"><input class="input" style="width: 70px;" type="text"/></div>
+	                                    <div class="border" style="width: 270px;"><input class="input" style="width: 230px;" type="text"/><span class="in_input">%</span></div>
+	                                </li>
+	                                <li><span class="align_right"><label>贷款期限：</label></span>
+	                                    <div class="border has_in"><input class="input" type="text"/><span class="in_input">年</span></div>
+	                                </li>
+	                                <li><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border "><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>结单进度：</label></span>
+	                                    <div class="border"><select name="Business_statement">
+	                                        <option value="">请选择</option>
+	                                        <option value="">银行已放款</option>
+	                                        <option value="">客户已结款</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                </li>
+	                                <li style="margin-bottom: 15px;"><span class="align_right"><label><strong style="margin-right: 17px;">收款细节</strong></label></span></li>
+	                                <li><span class="align_right"><label>贷款额度：</label></span>
+	                                    <div class="border "><input class="input" disabled="disabled" value="123" type="text"/><span class="in_input">元</span></div>
+	                                </li>
+	                                <li><span class="align_right"><label>收款金额：</label></span>
+	                                    <div class="border"><input class="input"  type="text"/><span class="in_input">元</span></div>
+	                                </li>
+	                                <li><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                            <ul>
+	                                <li><span class="align_right"><label>办理进度：</label></span>
+	                                    <div class="border"><select name="Business_statement">
+	                                        <option value="">请选择</option>
+	                                        <option value="">银行已放款</option>
+	                                        <option value="">客户已结款</option>
+	                                        <option value="">客户放弃贷款</option>
+	                                    </select></div>
+	                                    <div style="margin-left: 8px;" class="border"><input class="input" type="text" placeholder="请描述放弃贷款的原因"/></div>
+	                                </li>
+	                                <li ><span class="align_right v_top"><label>备注：</label></span>
+	                                    <div class="border"><textarea cols="30" rows="10" style="width: 350px;"></textarea></div>
+	                                </li>
+	                            </ul>
+	                        </div>
+	
+	                        <div class="tab_content" >
+	                            <ul class="show">
+	                                <li><span class="align_right"><label>业务进度</label></span>
+	                                </li>
+	
+	                            </ul>
+	                            <table>
+	                                <thead>
+	                                <tr>
+	                                    <th>操作时间</th>
+	                                    <th>操作人</th>
+	                                    <th>业务状态</th>
+	                                    <th width="290px">业务描述</th>
+	                                    <th width="310px">备注</th>
+	                                </tr>
+	                                </thead>
+	                                <tbody>
+	                                <tr>
+	                                    <td>2016-11-02 16:20</td>
+	                                    <td>李树坤</td>
+	                                    <td>客户已结款</td>
+	                                    <td>共收款：1000元</td>
+	                                    <td></td>
+	                                </tr>
+	                                <tr>
+	                                    <td>2016-11-02 16:20</td>
+	                                    <td>李树坤</td>
+	                                    <td>银行已放款</td>
+	                                    <td>银行已经进行贷款放款</td>
+	                                    <td>今天联系银行，银行反馈昨天（11月1日）已对该单进行贷
+	                                        款放款
+	                                    </td>
+	                                </tr>
+	                                </tbody>
+	                            </table>
+	                        </div>
+	                    </div>
+	                    <div class="btn_group">
+	                        <input class="btn" type="button" id="submitBtn" value="提交"/>
+	                    </div>
+	                </div>
+				
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- content end -->
+
+<!-- footer begin -->
+<div id="loginFooter">
+    <div id="footerText">
+        <div class="link">
+            <h6>友情链接</h6>
+            <a href="#">广东农业信息网</a>
+            <a href="#">广东乡村网</a>
+            <a href="#">合算网</a>
+            <a href="#">食安达</a>
+            <a href="#">农业银行</a>
+        </div>
+        <a href="#">关于我们</a>
+        <a href="#">帮助中心</a>
+        <a href="#">管理系统</a>
+        <a href="#">用户协议</a>
+        <a class='last_noR' href="#">联系电话：400-020-8886600</a>
+    </div>
+    <p id="copyRight">Copyright ©广州神农信息技术服务有限公司主办|粤ICP备12071480-4号</p>
+</div>
+<!-- footer end -->
+
+<!-- 公共的 js -->
+<script type="text/javascript" src="../../../res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../../res/js/common.js"></script>
+<script type="text/javascript" src="../../../res/js/Mortgage_review_check.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.disabled input').attr('readonly','readonly');
+		$(".disabled input[type='checkbox']").attr('disabled','disabled');
+		$('.disabled textarea').attr('readonly','readonly');
+	})
+</script>
+
+</body>
+</html>

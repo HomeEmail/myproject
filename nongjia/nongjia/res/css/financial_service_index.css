@@ -29,3 +29,248 @@
 .jrfw-jieshao .item:hover{
     border-color: #D37100;
 }
+
+body{
+    font-family: 'Microsoft YaHei';
+}
+.bannerImg,
+.bannerImg img {
+    width:100%;
+}
+.bannerImg{
+    text-align: center;
+    position: relative;
+}
+.apply{
+    position: fixed;
+    right: 0;
+    top: 138px;
+}
+.apply img{
+    display:inline-block;
+    height:371px;
+    width:100px;
+}
+.bgColor{
+    background-color: #F3F4F4;
+}
+
+.info{
+    padding:20px 0;
+    overflow: hidden;
+}
+.info div{
+    float: left;
+    background-color: #ffffff;
+    width:220px;
+    height:207px;
+    border-radius: 5px;
+    margin-right:25px;
+    text-align: center;
+}
+.last{
+    margin:0 !important;
+}
+.info div img{
+    margin-top:3px;
+}
+.info div p{
+    width:195px;
+    line-height: 20px;
+    text-align: left;
+    margin: 15px auto 0 auto;
+}
+.title_box{
+    padding-top:45px;
+}
+.title_box .line{
+    display:inline-block;
+    height:19px;
+    width:3px;
+    background-color: #fd9c20;
+    margin-bottom:5px;
+    vertical-align: middle;
+    margin-right:5px;
+}
+.title_box h1{
+    color: #656565;
+    font-size: 20px;
+    font-weight: normal;
+    display: inline-block;
+}
+.title_box a{
+    float: right;
+    color: #999999;
+    margin-top:4px;
+    font-size:14px;
+}
+.bank_business{
+    margin-top:50px;
+    overflow: hidden;
+    padding:10px;
+    margin-bottom: 50px;
+}
+.bank{
+    border:1px solid #BFBFBF;
+    height:477px;
+    width:369px;
+    float: left;
+    margin-top:25px;
+}
+.middle{
+    border-left:none;
+    border-right:none;
+}
+.active{
+    width:438px !important;
+    border:1px solid #fd9c20 !important;
+    box-shadow: 0 0 15px 2px #fd9c20 ;
+    height:502px !important;
+    margin-top:0 !important;
+}
+.active .list{
+    display: none !important;
+}
+.active .more_list{
+    display: block !important;
+}
+.bank .bankLogo{
+    text-align: center;
+    margin-top: 45px;
+}
+.bank .bankLogo p{
+    color: #333333;
+    font-size: 18px;
+    margin-top:10px;
+}
+
+/*单列*/
+.bank .list{
+    width:220px;
+    margin: 0 auto 25px auto;
+
+}
+.bank .list .product .title_business{
+    border-bottom:1px solid #CBCBCB;
+    padding-bottom:8px;
+    margin-top:35px;
+}
+.bank .list .product .title_business p{
+    color: #333333;
+    font-size: 16px;
+}
+/*多列*/
+.bank .more_list{
+    width:400px;
+    margin: 0 auto 25px auto;
+    display: none;
+}
+.bank .more_list .product .title_business{
+    border-bottom:1px solid #999999;
+    padding-bottom:8px;
+    margin-top:35px;
+}
+.bank .more_list .product .title_business p{
+    font-size: 16px;
+    display: inline-block;
+    font-weight: bold;
+}
+.bank .more_list .product .title_business a{
+    display: inline-block;
+    color: #1955FF;
+    width:35px;
+    height:21px;
+    text-align: center;
+    line-height: 21px;
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+    font-size:14px;
+    float: right;
+}
+.bank .more_list .business{
+    overflow: hidden;
+}
+.bank .more_list .business ul{
+    float: left;
+    margin-right: 22px;
+
+}
+.bank .more_list .business a{
+    color: #333333;
+}
+
+.hot{
+    background: url(../images/hot.png) no-repeat;
+    display: inline-block;
+    width:35px;
+    height:15px;
+    vertical-align: middle;
+}
+
+
+.bank .business{
+    margin-top:25px;
+    margin-left:5px;
+}
+.bank .business ul li{
+    list-style: none;
+    margin-bottom:15px;
+}
+.bank .business ul li .dot{
+    width:8px;
+    height:8px;
+    display: inline-block;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    background-color:#EF8336;
+    margin-bottom: 1px;
+    margin-right:8px;
+
+}
+.bank .business ul li a {
+    color: #656565;
+    font-size: 16px;
+}
+
+
+.content_detail{
+    margin-top:35px;
+}
+.content_detail p{
+    color: #656565;
+    font-size: 16px;
+    line-height:25px;
+    width:1190px;
+    margin-bottom:30px;
+}
+.content_detail .img{
+    text-align: center;
+}
+.content_detail .button{
+    text-align: center;
+    font-size: 0;
+    margin-top: 50px;
+    padding-bottom: 45px;
+}
+.content_detail .button a{
+    display: inline-block;
+    width: 250px;
+    height:100px;
+    line-height: 100px;
+    font-size: 18px;
+    color: #666666;
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+    margin-right:64px;
+}
+.content_detail .button span{
+    display: inline-block;
+    margin-right:25px;
+}
+.content_detail .button span img{
+    vertical-align: middle;
+}
+

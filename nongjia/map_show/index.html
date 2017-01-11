@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+<title>确权统计</title>
+<style>
+body{
+	font-family: 'Microsoft YaHei';
+	width:100%;
+	background-color: #000;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+.detail_btn{
+	padding:10px 65px;
+	color:#ffffff;
+	font-size:22px;
+	background-color:#09afd3;
+	border-radius:2px;
+	text-decoration:none;
+}
+.area{
+	height:15px;
+	line-height:15px;
+	font-size:12px;
+	color:#ffffff;
+	display:block;
+	margin-bottom:2px;
+}
+.list{
+	color:#ffffff;
+	font-size:16px;
+	width:360px;
+	display:block;
+	height:15px;
+	line-height:15px;
+	margin-bottom:2px;
+}
+.progress{
+	line-height:15px;
+	float:left;
+	height:5px;
+	margin-right:10px;
+	display:inline-block;	
+}
+.dataDesc{
+	display:block;
+	line-height:15px;
+}
+.map_name{
+	display:inline-block;
+	color:#ffffff;
+	width:100px;
+	height:100px;
+	cursor:pointer;
+}
+.map_name .big_icon{
+	margin-left:20px;
+	display:block;
+	border:2px solid #ffffff;
+	width:16px;
+	height:16px;
+	border-radius:50%;
+}
+.map_name .small_icon{
+	display:block;
+	background:#ffffff;
+	width:10px;
+	height:10px;
+	margin:3px;
+	border-radius:50%;
+}
+.map_name .townName{
+	margin:20px 0 0 10px;
+	display:block;
+	font-size:21px;
+}
+.pieChart_box{
+	position:absolute;
+	left:1432px;
+	width:399px;
+	height:289px;
+}
+.pie_1 {
+	width: 180px;
+	height: 180px;
+	position:absolute;
+	top:30px;
+	left:205px;
+	border-radius: 50%;
+	background: #7ECEF4;
+	background-image: linear-gradient(to right, transparent 50%, #FFF100 0); 
+}
+#pie_2{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	top: 0px;
+	left: 15px;
+}
+.progress_cycle {
+	margin-left: 50%;
+	width: 90px;
+	height: 100%;
+	border-radius: 0 100% 100% 0 / 50%;
+	background: #7ECEF4;
+	transform-origin: left;
+}
+.progress_cycle_more{
+	background: #FFF100;
+}
+ .data{
+	 position: absolute;
+	 top: 155px;
+	 left: 40px;
+ }
+.data span{
+	color: #fff;
+	font-size: 12px;
+}
+.data em{
+	display: inline-block;
+	width:5px;
+	height:5px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.data2{
+	top: 220px;
+	left: 40px;
+}
+
+.smooth { -webkit-transition-duration:1000ms; -moz-transition-duration:1000ms; }
+.line_chart{
+	position: absolute;
+	top: 614px;
+	left: 70px;
+}
+#line{
+	width:362px;
+	height:234px;
+
+}
+.percentage_box{
+	position:absolute;
+	top:5px;
+	left:45px;
+	width:100px;
+	height:120px;
+	color:#ffffff;
+}
+.percentage{
+	font-size:32px;
+	color:#ffffff;
+	position:absolute;
+	bottom:10px;
+	left:47px;
+	padding-bottom:10px;
+	border-bottom:1px solid #ffffff;
+}
+.data3{
+	top:18px;
+	left:260px;
+}
+</style>
+</head>
+
+<body>
+<div style="width:100%;position:absolute; top:0px; left:0px;">
+	<img src="img/bg.jpg" width="100%" />
+	<div style="position:absolute; top:23px; left:0px; width:700px; height:96px; line-height:96px; text-align:center; font-weight:bold; background-color:#0788ab; font-size:44px; color:#ffffff;">广东省肇庆市德庆县确权统计</div>
+	<div style="position:absolute; top:110px; left:65px; color:#ffffff; font-size:30px;">完成确权面积 <span id="data_mu" style="font-size:73px;"></span> 亩</div>
+	<div style="position:absolute; top:110px; left:650px; color:#ffffff; font-size:30px;">已确权农户 <span id="data_family" style="font-size:73px;"></span> 户</div>
+	<div style="position:absolute; top:130px; left:1620px; width:220px; height:100px;"><a href="#" class="detail_btn">查看详情</a></div>
+	<div style="position:absolute; top:272px; left:48px; width:400px; height:250px;">
+		<div style="position:absolute; top:0px; left:0px; width:60px; height:250px; border-right:2px solid #dedede;">
+			<div style="padding-top:10px; padding-left:10px; width:50px; text-align:center;">
+				<span id="name_0" class="area"></span>
+				<span id="name_1" class="area"></span>
+				<span id="name_2" class="area"></span>
+				<span id="name_3" class="area"></span>
+				<span id="name_4" class="area"></span>
+				<span id="name_5" class="area"></span>
+				<span id="name_6" class="area"></span>
+				<span id="name_7" class="area"></span>
+				<span id="name_8" class="area"></span>
+				<span id="name_9" class="area"></span>
+				<span id="name_10" class="area"></span>
+				<span id="name_11" class="area"></span>
+				<span id="name_12" class="area"></span>
+			</div>
+		</div>
+		<div style="position:absolute; top:0px; left:60px; width:342px; height:235px; border-top:2px solid #dedede;">
+			<div style="padding-top:10px; padding-left:2px; width:360px;">
+				<div class="list">
+					<div id="list_0" class="progress smooth" style="width:0px; background-color:#84ccc9;"></div>
+					<span id="data_0" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_1" class="progress smooth" style="width:0px; background-color:#13b5b1;"></div>
+					<span id="data_1" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_2" class="progress smooth" style="width:0px; background-color:#009e96;"></div>
+					<span id="data_2" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_3" class="progress smooth" style="width:0px; background-color:#00736d;"></div>
+					<span id="data_3" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_4" class="progress smooth" style="width:0px; background-color:#448aca;"></div>
+					<span id="data_4" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_5" class="progress smooth" style="width:0px; background-color:#fff100;"></div>
+					<span id="data_5" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_6" class="progress smooth" style="width:0px; background-color:#0068b7;"></div>
+					<span id="data_6" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_7" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_7" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_8" class="progress smooth" style="width:0px; background-color:#88abda;"></div>
+					<span id="data_8" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_9" class="progress smooth" style="width:0px; background-color:#005982;"></div>
+					<span id="data_9" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_10" class="progress smooth" style="width:0px; background-color:#0075a9;"></div>
+					<span id="data_10" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_11" class="progress smooth" style="width:0px; background-color:#00a0e9;"></div>
+					<span id="data_11" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_12" class="progress smooth" style="width:0px; background-color:#7ecef4;"></div>
+					<span id="data_12" class="dataDesc"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="map" style="position:absolute; top:140px; left:258px; width:1164px; height:729px;">
+		<div id="map_0" style="background:url(img/map_01.png); position:absolute; top:0px; left:716px; width:449px; height:280px;">
+			<div class="map_name" style="position:absolute; top:100px; left:100px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">莫村镇</label>
+			</div>
+		</div>
+		<div id="map_1" style="background:url(img/map_02.png); position:absolute; top:163px; left:283px; width:278px; height:345px;">
+			<div class="map_name" style="position:absolute; top:150px; left:100px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">官圩镇</label>
+			</div>
+		</div>
+		<div id="map_2" style="background:url(img/map_03.png); position:absolute; top:130px; left:508px; width:302px; height:398px;">
+			<div class="map_name" style="position:absolute; top:150px; left:135px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">高良镇</label>
+			</div>
+		</div>
+		<div id="map_3" style="background:url(img/map_04.png); position:absolute; top:147px; left:791px; width:267px; height:266px;">
+			<div class="map_name" style="position:absolute; top:130px; left:75px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">永丰镇</label>
+			</div>
+		</div>
+		<div id="map_4" style="background:url(img/map_05.png); position:absolute; top:177px; left:972px; width:179px; height:250px;">
+			<div class="map_name" style="position:absolute; top:90px; left:40px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">武垄镇</label>
+			</div>
+		</div>
+		<div id="map_5" style="background:url(img/map_06.png); position:absolute; top:343px; left:0px; width:325px; height:256px;">
+			<div class="map_name" style="position:absolute; top:100px; left:190px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">回龙镇</label>
+			</div>
+		</div>
+		<div id="map_6" style="background:url(img/map_07.png); position:absolute; top:303px; left:441px; width:189px; height:278px;">
+			<div class="map_name" style="position:absolute; top:100px; left:35px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">马圩镇</label>
+			</div>
+		</div>
+		<div id="map_7" style="background:url(img/map_08.png); position:absolute; top:358px; left:737px; width:210px; height:254px;">
+			<div class="map_name" style="position:absolute; top:90px; left:80px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">凤村镇</label>
+			</div>
+		</div>
+		<div id="map_8" style="background:url(img/map_09.png); position:absolute; top:346px; left:917px; width:185px; height:159px;">
+			<div class="map_name" style="position:absolute; top:60px; left:45px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">播植镇</label>
+			</div>
+		</div>
+		<div id="map_9" style="background:url(img/map_10.png); position:absolute; top:467px; left:276px; width:337px; height:175px;">
+			<div class="map_name" style="position:absolute; top:45px; left:60px; height:60px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">新圩镇</label>
+			</div>
+		</div>
+		<div id="map_10" style="background:url(img/map_11.png); position:absolute; top:476px; left:579px; width:275px; height:243px;">
+			<div class="map_name" style="position:absolute; top:75px; left:110px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">九市镇</label>
+			</div>
+		</div>
+		<div id="map_11" style="background:url(img/map_12.png); position:absolute; top:575px; left:324px; width:167px; height:62px;">
+			<div class="map_name" style="position:absolute; top:20px; left:65px; height:60px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">德城镇</label>
+			</div>
+		</div>
+		<div id="map_12" style="background:url(img/map_13.png); position:absolute; top:486px; left:792px; width:362px; height:245px;">
+			<div class="map_name" style="position:absolute; top:100px; left:130px;">
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+				<label class="townName">悦城镇</label>
+			</div>
+		</div>
+	</div>
+	<!--<div class="pieChart_box" style="top:230px;">
+		<div id="pie_1">
+			<div class="progress_cycle smooth"></div>
+			<div class="circle"></div>
+		</div>
+		<div class="data data2">
+			<span><em style="background:#FFF100"></em>完成部分</span>
+			<span><em style="background:#7ECEF4"></em>未完成部分</span>
+		</div>
+	</div>-->
+	<div class="line_chart">
+		<div id="line">
+
+		</div>
+		<div class="data data3">
+			<span><em style="background:pink"></em>德庆县</span>
+			<span><em class="select_color" style="background:#84ccc9"></em><span class="select_name">莫村镇</span></span>
+		</div>
+	</div>
+
+
+	<div class="pieChart_box" style="top:260px;">
+		<div class="pie_1">	
+			<div class="progress_cycle smooth"></div>
+		</div>
+		<div class="percentage_box mapdata_1" style="position:absolute; top:10px; left:55px; width:100px; height:140px; color:#ffffff;">
+			<div style="background-image:url(img/b_line.png); position:absolute; top:0px; left:0px; width:61px; height:130px;"></div>
+			<span class="percentage"></span>
+		</div>
+		<div class="data data2">
+			<span><em style="background:#FFF100"></em>完成部分</span>
+			<span><em style="background:#7ECEF4"></em>未完成部分</span>
+		</div>
+	</div>
+	<div class="pieChart_box" style="top:578px;right: 5px;">
+
+		<div id="pie_2">
+			<!--<div class="progress_cycle smooth"></div>
+			<div class="circle"></div>-->
+		</div>
+		<div class="percentage_box mapdata_2" style="position:absolute; top:45px; left:45px; width:100px; height:110px; color:#ffffff;">
+			<div style="background-image:url(img/b_line.png); position:absolute; top:0px; left:0px; width:61px; height:100px;"></div>
+			<span class="percentage" style="left:37px;"></span>
+		</div>
+		<div class="data">
+			<span><em style="background:#84ccc9"></em>莫村</span>
+			<span><em style="background:#13b5b1"></em>官圩</span>
+			<span><em style="background:#009e96"></em>高良</span>
+			<br/>
+			<span><em style="background:#00736d"></em>永丰</span>
+			<span><em style="background:#448aca"></em>武垄</span>
+			<span><em style="background:#fff100"></em>回龙</span>
+			<br/>
+			<span><em style="background:#0068b7"></em>马圩</span>
+			<span><em style="background:#556fb5"></em>凤村</span>
+			<span><em style="background:#88abda"></em>播植</span>
+			<br/>
+			<span><em style="background:#005982"></em>新圩</span>
+			<span><em style="background:#0075a9"></em>九市</span>
+			<br/>
+			<span><em style="background:#00a0e9"></em>德城</span>
+			<span><em style="background:#7ecef4"></em>悦城</span>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/pie.js"></script>
+<script src="js/line.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	showListData(checkPos);
+	changeMap(checkPos);
+	$('.mapdata_1 .percentage').html(dataList[checkPos].rate +"%");
+	$('.mapdata_2 .percentage').html(dataList[checkPos].rate +"%");
+	pie_show(dataList[checkPos].name);
+	$('#data_mu').html(dataList[checkPos].data);
+	$('#data_family').html(dataList[checkPos].family);
+	showProgress(".pie_1 .progress_cycle",dataList[checkPos].rate);
+});
+var dataList = [
+	{name:"莫村镇",width:68,data:"30007.24",family:"8152",average:"3.68",rate:"97",color:'#84ccc9'},
+	{name:"官圩镇",width:77,data:"33925.94",family:"9769",average:"3.47",rate:"95",color:'#13b5b1'},
+	{name:"高良镇",width:68,data:"29863.51",family:"9608",average:"3.11",rate:"79",color:'#009e96'},
+	{name:"永丰镇",width:58,data:"25494.04",family:"6555",average:"3.89",rate:"97",color:'#00736d'},
+	{name:"武垄镇",width:44,data:"19482.67",family:"5183",average:"3.76",rate:"98",color:'#448aca'},
+	{name:"回龙镇",width:29,data:"12700.44",family:"3675",average:"3.46",rate:"53",color:'#fff100'},
+	{name:"马圩镇",width:2,data:"700.99",family:"188",average:"3.73",rate:"3",color:'#0068b7'},
+	{name:"凤村镇",width:52,data:"22788.54",family:"6800",average:"3.35",rate:"72",color:'#556fb5'},
+	{name:"播植镇",width:38,data:"16932.11",family:"4912",average:"3.45",rate:"84",color:'#88abda'},
+	{name:"新圩镇",width:34,data:"14993.36",family:"4878",average:"3.07",rate:"74",color:'#005982'},
+	{name:"九市镇",width:6,data:"2680.83",family:"993",average:"2.70",rate:"11",color:'#0075a9'},
+	{name:"德城镇",width:18,data:"8039.49",family:"2242",average:"3.59",rate:"69",color:'#00a0e9'},
+	{name:"悦城镇",width:99,data:"43390.84",family:"7946",average:"5.46",rate:"89",color:'#7ecef4'}
+];
+function showListData(_pos){
+	for(var i = 0;i < dataList.length;i++){
+		var dataWidth = 250*dataList[i].width/100 +"px";
+		$("#name_"+ i).html(dataList[i].name);
+		$("#name_"+ i).css({'margin-bottom':'2px'});
+		$("#list_"+ i).parent().css({'margin-bottom':'2px'});
+		$("#list_"+ i).css({'width':dataWidth,'height':'5px'});
+		$("#data_"+ i).html('');
+	}
+	$("#name_"+ _pos).css({'margin-bottom':'10px'});
+	$("#list_"+ _pos).css({'height':'15px'});
+	$("#list_"+ _pos).parent().css({'margin-bottom':'10px'});
+	$("#data_"+ _pos).html(dataList[_pos].data+'亩');
+}
+var mapList = [
+	{sn:'',name:"莫村镇",top:"0",  left:"716",img:"map_01",checkImg:"map_01_c"},
+	{sn:'',name:"官圩镇",top:"163",left:"283",img:"map_02",checkImg:"map_02_c"},
+	{sn:'',name:"高良镇",top:"130",left:"508",img:"map_03",checkImg:"map_03_c"},
+	{sn:'',name:"永丰镇",top:"147",left:"791",img:"map_04",checkImg:"map_04_c"},
+	{sn:'',name:"武垄镇",top:"177",left:"972",img:"map_05",checkImg:"map_05_c"},
+	{sn:'',name:"回龙镇",top:"343",left:"0",  img:"map_06",checkImg:"map_06_c"},
+	{sn:'',name:"马圩镇",top:"303",left:"441",img:"map_07",checkImg:"map_07_c"},
+	{sn:'',name:"凤村镇",top:"358",left:"737",img:"map_08",checkImg:"map_08_c"},
+	{sn:'',name:"播植镇",top:"346",left:"917",img:"map_09",checkImg:"map_09_c"},
+	{sn:'',name:"新圩镇",top:"467",left:"276",img:"map_10",checkImg:"map_10_c"},
+	{sn:'',name:"九市镇",top:"476",left:"579",img:"map_11",checkImg:"map_11_c"},
+	{sn:'',name:"德城镇",top:"575",left:"324",img:"map_12",checkImg:"map_12_c"},
+	{sn:'',name:"悦城镇",top:"486",left:"792",img:"map_13",checkImg:"map_13_c"}
+]
+function changeMap(j){
+	for(var i = 0;i < mapList.length;i++){
+		$("#map_"+ i).css('background','url(img/'+ mapList[i].img +'.png)');
+	}
+	$("#map_"+ checkPos).css('background','url(img/'+ mapList[checkPos].checkImg +'.png)');
+	if(j==-1)return;
+	$("#map_"+ j).css('background','url(img/'+ mapList[j].checkImg +'.png)');
+}
+function showProgress(obj,_index){
+	if(_index > 50){
+		_index -= 50;
+		$(obj).addClass('progress_cycle_more');
+	}else{
+		$(obj).removeClass('progress_cycle_more');
+	}
+	$(obj).css('transform', 'rotate('+ 36*_index/10 +'deg)');
+}
+//显示饼图选中区域
+function pie_show(_name) {
+	myChart1.dispatchAction({
+		type: 'pieSelect',
+		name: _name
+	});
+}
+//显示折线图选中区域
+function line_show(_name) {
+	myChart.dispatchAction({
+		type: 'legendSelect',
+		name: _name
+	});
+}
+//隐藏折线图选中区域
+function line_hide(_name) {
+	myChart.dispatchAction({
+		type: 'legendUnSelect',
+		name: _name
+	});
+}
+var checkPos = 0;
+$(document).ready(function(){
+	line_show('莫村镇');
+	pie_show('莫村镇');
+	$(".map_name").mouseover(function(){
+		changeMap($(this).parent().index());
+		//$(this).parent().css('background','url(img/'+ mapList[$(this).parent().index()].checkImg +'.png)');
+	}).mouseout(function(){
+		changeMap(-1);
+	});
+	$(".map_name").click(function(){
+		line_hide(dataList[checkPos].name)
+
+
+		checkPos = $(this).parent().index();
+		$('.select_color').css('background',dataList[checkPos].color);
+		$('.select_name').text(dataList[checkPos].name);
+		line_show(dataList[checkPos].name);
+		pie_show(dataList[checkPos].name);
+		$('.line img').attr('src','img/line'+checkPos+'.png');
+		changeMap(checkPos);
+		$('.progress').removeClass('smooth');
+		$('#data_mu').html(dataList[checkPos].data);
+		$('#data_family').html(dataList[checkPos].family);
+		showListData(checkPos);
+		showProgress(".pie_1 .progress_cycle",dataList[checkPos].rate);
+		$('.mapdata_1 .percentage').html(dataList[checkPos].rate +"%");
+		$('.mapdata_2 .percentage').html(dataList[checkPos].rate +"%");
+	});
+	$(".detail_btn").click(function(){
+		location.href = "list.html?checkPos="+ checkPos +"&checkName="+ Q.encode(mapList[checkPos].name);
+	});
+});
+</script>
+</body>
+</html>

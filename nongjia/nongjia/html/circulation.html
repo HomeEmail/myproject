@@ -22,7 +22,30 @@
 DD_belatedPNG.fix(".ie6png");
 </script>
 <![endif]-->
-
+<style>
+.land_type_flag{
+	display:block;
+	position:absolute;
+	top:0px;
+}
+.land_type_flag .block{
+	float:left;
+	padding:0 15px;
+	line-height:40px;
+	color:#fff;
+}
+.land_type_flag .tri{
+	display:inline-block;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+}
+.backg{
+	background-color:red;	
+}
+.red{
+	border-left: 20px solid red;
+}
+</style>
 </head>
 
 <body>
@@ -37,7 +60,7 @@ DD_belatedPNG.fix(".ie6png");
         <ul class="right_list">
             <li><a href="#" target="_blank">管理系统</a></li>            
             <li><a href="#">登录</a></li>
-            <li><a href="#">我的农加</a></li>
+            <li><a href="Mine/Mine.html">我的农加</a></li>
             <li><a href="#">帮助中心</a></li>
         </ul>
         <div class="choose_city_menu">
@@ -62,13 +85,22 @@ DD_belatedPNG.fix(".ie6png");
 <div id="navBar">
 	<div id="NB_content">
 		<a href='#'><img src="../res/images/logo1.png" alt="农加网"></a>
+		<div class="logo_wrap">
+			<span class="line"></span>
+			<div class="city_name_wrap">
+				<p class='C_name'>广东省</p>
+				<span class='pingyin'>GUANG </span>
+				<span class='pingyin'>DONG </span>
+				<span class='pingyin'>SHENG</span>
+			</div>
+		</div>
 		<ul>
 			<li><a href="index.html">首页</a></li>
 			<li><a href="information.html">资讯</a></li>
 			<li><a href="#" class="checked">产权流转</a></li>
 			<li><a href="financial_service_index.html">金融服务</a></li>
-			<li><a href="#">涉农就业</a></li>
-			<li><a href="#">开发平台</a></li>
+			<li><a href="Agricultural/index.html" target="_blank">涉农就业</a></li>
+			<li><a href="open_platform_index.html">开放平台</a></li>
 		</ul>
 	</div>
 </div>
@@ -112,93 +144,60 @@ DD_belatedPNG.fix(".ie6png");
 </div>
 <!-- plateGround begin -->
 <div class="plate">
-	<div class="property">
-		<div class="property_box" style="background-color: #D37100;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo1.png"></span>
-				<div class="text">
-					<p>土地</p>
-					<p>经营权</p>
+	<table cellpadding="0" cellspacing="0" border="0">
+		<tr height="110">
+			<td width="243" style="background-color:#D37100;">
+				<img src="../res/images/plateGround/logo1.png" />
+				<span>土地<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="243" style="background-color:#55ABE3;">
+				<img src="../res/images/plateGround/logo2.png" />
+				<span>水域<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="243" style="background-color:#FB9379;">
+				<img src="../res/images/plateGround/logo3.png" />
+				<span>畜禽用地<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="243" style="background-color:#9369D5;">
+				<img src="../res/images/plateGround/logo4.png" />
+				<span>机动用地<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="180" rowspan="3" style="background-color:#FD9B1F; box-shadow:3px 3px 10px 0 #999999;" align="center">
+				<div style="width:180px; text-align:center;">
+					<img src="../res/images/plateGround/logo9.png" style="padding-left:0;" />
+					<span style="display:block; margin-left:0px; font-size:14px; color:#ffffff; margin-top:20px;">（经营权流转）<br /><span style="font-size:24px; font-weight:bold; margin-left:0px;">立即申请</span></span>
 				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #55ABE3;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo2.png"></span>
-				<div class="text">
-					<p>水域</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #FB9379;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo3.png"></span>
-				<div class="text">
-					<p>畜禽用地</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #9369D5;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo4.png"></span>
-				<div class="text">
-					<p>机动用地</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #57CFF3;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo5.png"></span>
-				<div class="text">
-					<p>海域</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #F3A927;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo6.png"></span>
-				<div class="text">
-					<p>设施用地</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #99C941;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo7.png"></span>
-				<div class="text">
-					<p>林地</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-		<div class="property_box" style="background-color: #FFD119;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo8.png"></span>
-				<div class="text">
-					<p>四荒地</p>
-					<p>经营权</p>
-				</div>
-			</div>
-		</div>
-
-	</div>
-	<div class="property2">
-		<div class="property_box2" style="background-color: #FD9B1F;">
-			<div class="property_block">
-				<span><img src="../res/images/new_logo9.png"></span>
-				<div class="text">
-					<p style="font-size: 14px; font-weight: normal">（经营权流转）</p>
-					<p>立即申请</p>
-				</div>
-			</div>
-		</div>
-	</div>			
-	</div>
+			</td>
+		</tr>
+		<tr height="10"></tr>
+		<tr height="110">
+			<td width="243" style="background-color:#57CFF3">
+				<img src="../res/images/plateGround/logo5.png" />
+				<span>海域<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="243" style="background-color:#F3A927">
+				<img src="../res/images/plateGround/logo6.png" />
+				<span>设施用地<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="243" style="background-color:#99C941">
+				<img src="../res/images/plateGround/logo7.png" />
+				<span>林地<br />经营权</span>
+			</td>
+			<td width="10"></td>
+			<td width="243" style="background-color:#FFD119">
+				<img src="../res/images/plateGround/logo8.png" />
+				<span>四荒地<br />经营权</span>
+			</td>
+			<td width="10"></td>
+		</tr>
+		<tr height="10"></tr>
+	</table>
 </div>
 <!-- plateGround end -->
 
@@ -228,46 +227,23 @@ DD_belatedPNG.fix(".ie6png");
 	</div>
 	<div class="content_list">
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_1.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
-				</div>
-			</div>
-			<div class="desc">
-				<p>· 土地 | 广福镇100亩耕地出租</p>
-				<p>· 荒地 | 文福镇100亩荒地入股</p>
-			</div>
-		</div>
-		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_2.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -276,22 +252,23 @@ DD_belatedPNG.fix(".ie6png");
 			</div>
 		</div>
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_3.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_2.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -300,22 +277,48 @@ DD_belatedPNG.fix(".ie6png");
 			</div>
 		</div>
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_4.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_3.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			</div>
+			<div class="desc">
+				<p>· 土地 | 广福镇100亩耕地出租</p>
+				<p>· 荒地 | 文福镇100亩荒地入股</p>
+			</div>
+		</div>
+		<div class="list">
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_4.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -338,46 +341,23 @@ DD_belatedPNG.fix(".ie6png");
 	</div>
 	<div class="content_list">
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_1.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
-				</div>
-			</div>
-			<div class="desc">
-				<p>· 土地 | 广福镇100亩耕地出租</p>
-				<p>· 荒地 | 文福镇100亩荒地入股</p>
-			</div>
-		</div>
-		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_2.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -386,22 +366,23 @@ DD_belatedPNG.fix(".ie6png");
 			</div>
 		</div>
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_3.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -410,22 +391,48 @@ DD_belatedPNG.fix(".ie6png");
 			</div>
 		</div>
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_4.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			</div>
+			<div class="desc">
+				<p>· 土地 | 广福镇100亩耕地出租</p>
+				<p>· 荒地 | 文福镇100亩荒地入股</p>
+			</div>
+		</div>
+		<div class="list">
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -448,46 +455,23 @@ DD_belatedPNG.fix(".ie6png");
 	</div>
 	<div class="content_list">
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_1.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
-				</div>
-			</div>
-			<div class="desc">
-				<p>· 土地 | 广福镇100亩耕地出租</p>
-				<p>· 荒地 | 文福镇100亩荒地入股</p>
-			</div>
-		</div>
-		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_2.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -496,22 +480,23 @@ DD_belatedPNG.fix(".ie6png");
 			</div>
 		</div>
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_3.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
-				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">
@@ -520,22 +505,48 @@ DD_belatedPNG.fix(".ie6png");
 			</div>
 		</div>
 		<div class="list">
-			<div class="bottom_line" onClick="location='circ_content.html'">
-				<img src="../res/images/liuzhuan_land_4.png" alt="info" />
-				<div>
-					<p class="info_name">白马村500亩耕地</p>
-					<p class="info_type" style="float:right;">个人</p>
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
-				<div>
-					<p class="info_price">500000元</p>
-					<p class="info_type" style="float:right;">十年</p>
-				</div>
-				<div>
-					<p class="info_type">500亩</p>
-					<p class="info_type" style="float:right; vertical-align:middle;">
-						<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
-						梅州市蕉岭县
-					</p>
+			</div>
+			<div class="desc">
+				<p>· 土地 | 广福镇100亩耕地出租</p>
+				<p>· 荒地 | 文福镇100亩荒地入股</p>
+			</div>
+		</div>
+		<div class="list">
+			<div class="hover">
+				<div class="bottom_line" onClick="location='circ_content.html'">
+					<img src="../res/images/liuzhuan_land_1.png" alt="info" />
+					<div>
+						<p class="info_name">白马村500亩耕地</p>
+						<p class="info_type" style="float:right;">个人</p>
+					</div>
+					<div>
+						<p class="info_price">500000元</p>
+						<p class="info_type" style="float:right;">十年</p>
+					</div>
+					<div>
+						<p class="info_type">500亩</p>
+						<p class="info_type" style="float:right; vertical-align:middle;">
+							<span style="vertical-align:middle; display:inline-block; margin-right:5px;"><img src="../res/images/icon_location.png" /></span>
+							梅州市蕉岭县						</p>
+					</div>
 				</div>
 			</div>
 			<div class="desc">

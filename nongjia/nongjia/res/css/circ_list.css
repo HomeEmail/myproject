@@ -2,30 +2,47 @@
 	width:1200px;
 	margin:0 auto;
 }
-.choose_list{
-	border:#666666 1px solid;
+.select { /* 地区筛选 */
+	border:1px solid #DBDBDB;
+	overflow:hidden;
 }
-.choose_list .title_div{
-	border-bottom:#666666 1px solid;
+.select .title_div{
+	border-bottom:1px solid #DBDBDB;
 }
-.choose_list .title{
+.select .title{
 	padding-left:30px;
 	color:#333333;
 	font-size:14px;
 	line-height:35px;
+	font-weight:bold;
 }
-.choose_list li{
+.select .dis_none{
+	display:none;	
+}
+.select .dis_block{
+	display:block;	
+}
+.select ul{
+	display:block;
+	overflow:hidden;
+}
+.select li{
 	float:left;
-	margin-top:10px;
+	overflow:hidden;
     list-style: none;
+	padding:5px 0;
     vertical-align: bottom;
 }
-.choose_list a{
-	color:$666666;
-	padding:10px 15px;
+.select a{
+	color:#666666;
+	padding:10px 20px;
+	display:inline-block;
 }
-.choose_list a checked{
-	color:$666666;
+.select .checked{
+	color:#fd9c20;
+	border:#fd9c20 1px solid;
+	padding-bottom:8px;
+	border-radius:3px;
 }
 .filter_list{
 	padding-left:30px;
@@ -34,8 +51,8 @@
 	margin-bottom:20px;
 }
 .filter_list a{
-	 color:#666666;
-	 padding:10px 20px;
+	color:#666666;
+	padding:10px 20px;
 }
 .filter_list .checked{
 	 color:#fd9c20;
@@ -47,11 +64,13 @@
 }
 .content .r_content{
 	width:300px;
-	float:left;
+	float:right;
 	margin-left:-20px;
 	border-bottom:none;
 }
-
+.content_list{
+	overflow:hidden;
+}
 .content_list .list{
     float: left;
 	padding-right:20px;
@@ -76,6 +95,10 @@
 .content_list .list .info_name{
 	font-size:18px;
 	color:#333333;
+	width:170px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .content_list .list .info_type{
 	font-size:14px;
@@ -85,35 +108,6 @@
 	font-size:18px;
 	color:#ff9900;
 }
-/*分页*/
-.page{
-    text-align: center;
-    margin:50px;
-}
-.page ul{
-    font-size: 0;
-}
-.page ul li{
-    display: inline-block;
-    margin: 3px;
-    font-size: 14px;
-}
-.page ul li a{
-    padding: 3px 7px;
-    background: #ffffff;
-    border:1px solid #DEDEDE;
-    color:#B7B7B7;
-    font-size: 14px;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:3px;
-
-}
-.page ul li .select{
-    background: #EF8335;
-    color: #ffffff;
-}
-/*分页 -end*/
 .r_content .button{
 	background-color:#fd9c20;
 	border-radius:5px;

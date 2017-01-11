@@ -1,0 +1,82 @@
+.r_main .imgs {
+	background: url('../images/solution0.png') no-repeat;
+	width: 880px;
+	height: 200px;
+	margin-bottom: 50px;
+}
+
+.font {
+	margin-left: 35px;
+	padding-top: 35px;
+}
+
+.font h1 {
+	font-size: 36px;
+	color: #ffffff;
+}
+
+.font p {
+	color: #ffffff;
+	font-size: 18px;
+	margin: 20px 0;
+}
+
+.text {
+	margin-left: 50px;
+}
+
+.text h6 {
+	color: #333333;
+	font-size: 14px;
+	margin: 35px 0 20px 0;
+}
+
+.text p {
+	margin-bottom: 8px;
+}
+
+.logo1 {
+	background-position: 0 0;
+	width: 23px;
+	height: 31px;
+}
+
+.logo2 {
+	background-position: 0 -42px;
+	width: 23px;
+	height: 23px;
+}
+
+.select .logo2 {
+	background-position: -38px -42px;
+}
+
+.logo3 {
+	background-position: 0 -81px;
+	width: 23px;
+	height: 21px;
+}
+
+.select .logo3 {
+	background-position: -38px -81px;
+}
+
+.logo4 {
+	background-position: 0 -118px;
+	width: 23px;
+	height: 22px;
+}
+
+.select .logo4 {
+	background-position: -38px -118px;
+}
+
+.logo5 {
+	background-position: 0 -150px;
+	width: 24px;
+	height: 20px;
+}
+
+.select .logo5 {
+	background-position: -38px -150px;
+}

@@ -1,4 +1,4 @@
-a{
+#main a{
     color:#333333;
     font-size: 14px;
     display: inline-block;
@@ -44,8 +44,6 @@ a{
     width:100%;
     height:49px;
     line-height: 49px;
-    -ms-filter: alpha(Opacity=50);
-    filter: alpha(Opacity=50);
     background: #000000;
     background: rgba(0,0,0,0.5);
     position: absolute;
@@ -57,18 +55,21 @@ a{
     color: #ffffff;
     display: inline-block;
 }
+.news_info_title .change_title{
+    display: none;
+}
 .news_info_title .dots{
     float: right;
     margin-right:15px;
 
 }
-.news_info_title .dots a{
+#main   .news_info_title .dots a{
     color: #ffffff;
     font-size: 22px;
     margin:0 2px;
 }
 .news_info_title .dots .choose{
-    color: #F58333;
+    color: #F58333 !important;
 }
 /*info banner -end*/
 /*选择资讯分类*/
@@ -82,7 +83,7 @@ a{
 }
 .choose_newType .newType a{
     display: inline-block;
-    padding:12px 23px;
+    padding:12px 21px;
     max-width: 120px;
     overflow: hidden;
     white-space: nowrap;
@@ -103,7 +104,7 @@ a{
     background-color: #FD9B1F;
 }
 .choose_newType .newType  div .select a{
-    color: #ffffff;
+    color: #ffffff !important;
 }
 .choose_newType .newType  div .select i{
     display: block;
@@ -112,7 +113,7 @@ a{
     position: absolute;
     width:0;
     height:0;
-    bottom: -20px;
+    bottom: -19px;
     left: 41px;
     border-width:10px;
     border-color:#FD9B1F transparent transparent transparent ;
@@ -135,13 +136,14 @@ a{
 .info_content .info_text .text_content{
     float: left;
     padding:0 15px;
+    width:603px;
 }
 .info_content .info_text .text_content h1{
     font-size: 24px;
     font-weight: normal;
 }
 .info_content .info_text .text_content p{
-    width:603px;
+    width:600px;
     text-indent: 2em;
     display:inline-block;
     max-height:55px;
@@ -182,34 +184,6 @@ a{
 
 /*资讯主体 -end*/
 
-/*分页*/
-.page{
-    text-align: center;
-    margin:50px;
-}
-.page ul{
-    font-size: 0;
-}
-.page ul li{
-    display: inline-block;
-    margin: 3px;
-    font-size: 14px;
-}
-.page ul li a{
-    padding: 3px 7px;
-    background: #ffffff;
-    border:1px solid #DEDEDE;
-    color:#B7B7B7;
-    font-size: 14px;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:3px;
 
-}
-.page ul li .select{
-    background: #EF8335;
-    color: #ffffff;
-}
-/*分页 -end*/
 
 

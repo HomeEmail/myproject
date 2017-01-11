@@ -1,0 +1,166 @@
+.l_main{
+    width:300px;
+    margin-right:16px;
+    border: 1px solid #DCDCDC;
+    float: left;
+    margin-bottom:35px;
+}
+.r_main{
+    width:880px;
+    border: 1px solid #DCDCDC;
+    min-height: 1044px;
+    float: left;
+	padding-bottom:35px;
+    margin-bottom:35px;
+}
+.l_main .kind span,
+.l_main p{
+    color: #666666;
+}
+.l_main .userImg{
+    background-color: #FD9C20;
+    padding: 20px 0;
+}
+.l_main .userImg p{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    color: #ffffff;
+}
+.l_main .kind{
+    padding:15px 0;
+    border-bottom:1px solid #DBDBDB;
+    border-top:1px solid #DBDBDB;
+}
+.main .l_main .mymessage{
+    border:none;
+}
+.main .l_main .mymessage p {
+    color: #FD9C20;
+    font-size: 18px;
+    display: inline-block;
+}
+.main .l_main .mymessage .bubble{
+    padding:5px 8px;
+    margin-left:5px;
+    display: inline-block;
+    background-color: #FF5300;
+    color: #ffffff;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    font-size: 14px;
+    font-weight: normal;
+}
+.main .l_main .module span{
+    vertical-align: middle;
+    font-size: 18px;
+
+}
+.main .l_main  .M_logo{
+    background: url("../../res/images/Mine/all_logo.png") no-repeat;
+    display: inline-block;
+    vertical-align: middle ;
+    margin:0 16px;
+}
+
+.choose{
+    color:#EF8335 !important;
+}
+.main .l_main  .Mine{
+    background-position: -150px -105px;
+}
+.main .l_main .logo{
+    background-position: 0 0;
+    width:30px;
+    height:26px;
+
+}
+.main .l_main  .logo2{
+    background-position: -48px 0;
+    width:23px;
+    height:21px;
+
+}
+.main .l_main  .logo3{
+    background-position: -90px 0;
+    width:23px;
+    height:21px;
+
+}
+.main .l_main  .logo4{
+    background-position: -128px 0;
+    width:22px;
+    height:21px;
+
+}
+.main .l_main  .logo5{
+    background-position: -169px 0;
+    width:22px;
+    height:22px;
+
+}
+.main .l_main .logo6{
+    background-position: -209px 0;
+    width:26px;
+    height:20px;
+
+}
+.module .M_content ul{
+    margin-top:10px;
+    margin-top:0\9;
+    margin-bottom:15px;
+}
+.module .M_content ul li{
+    height:35px\9;
+    line-height: 35px\9;
+    /*margin:20px 0\9;*/
+    overflow:hidden;
+    display: block;
+}
+.module .M_content span{
+    display: inline-block;
+    width: 4px;
+    height:4px;
+    border-radius: 50%;
+    margin:0 25px;
+    background-color: #999999;
+}
+.module .M_content ul li a{
+    display: block;
+    margin:10px auto;
+    overflow: hidden;
+    font-size: 14px;
+    color: #333333;
+}
+.module .M_content ul li .checked{
+    color: #FD9C20;
+}
+
+
+/*Mine r_main_title*/
+.r_main .r_main_title{
+    border-bottom: 1px solid #DCDCDC;
+    margin:0 22px;
+}
+.r_main .r_main_title h1{
+    color: #FD9C20;
+    font-size: 20px;
+    font-weight: normal;
+    padding:25px 3px;
+    display: inline-block;
+}
+.r_main .r_main_title a{
+    display: inline-block;
+    color: #ffffff;
+    background-color: #00B84E;
+    height:26px;
+    font-size: 14px;
+    line-height: 26px;
+    padding:0 10px;
+    margin-left:10px;
+    cursor: default;
+}
+
+
+/*Mine r_main_title -end*/

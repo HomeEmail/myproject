@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+    <title>涉农就业-职位管理</title>
+    <!-- 公共的css -->
+    <link rel="stylesheet" type="text/css" href="../../res/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../res/css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="../../res/css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="../../res/css/button.css"/>
+    <link rel="stylesheet" type="text/css" href="../../res/css/formstyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../../res/css/position_manage.css"/>
+
+    <!-- 当前的css -->
+    <style>
+        .r_main .sheet .align_right{
+            display: inline-block;
+            width:100px;
+            text-align: right;
+        }
+    </style>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../../res/js/DD_belatedPNG.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix(".ie6png");
+    </script>
+    <![endif]-->
+</head>
+<body>
+<!-- header begin -->
+<div id="topNav">
+    <input type="hidden" value="2" id="sessionAreaId"/>
+    <div id="TN_content">
+        <ul>
+            <li><img style="vertical-align: middle" src="../../res/images/yunxingzhong.png"/></li>
+            <li id="sn_city">广州市<a href="javascript:void(0)">[切换地区]</a></li>
+        </ul>
+        <ul class="right_list">
+            <li><a href="#" target="_blank">管理系统</a></li>
+            <li><a href="#">登录</a></li>
+            <li><a href="../Mine/Mine.html">我的农加</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <div class="choose_city_menu">
+            <div class="provide menu">
+                <h2>省份</h2>
+                <ul>
+                    <li><a data-city="1" href="http://www.nongj.com/nonjia/index.action?areaId=1">广东省</a></li>
+                </ul>
+            </div>
+            <div class="cities menu ">
+                <h2>市级</h2>
+            </div>
+            <div class="county menu">
+                <h2>县级</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- nav begin -->
+<div id="navBar">
+    <div id="NB_content">
+        <a href='#'><img src="../../res/images/logo1.png" alt="农加网"></a>
+        <div class="logo_wrap">
+            <span class="line"></span>
+            <div class="name_wrap">
+                <p class='T_name'>涉农就业</p>
+                <span></span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#">公司主页</a></li>
+            <li><a href="#" class="checked">职位管理</a></li>
+            <li><a href="#">候选人</a></li>
+            <li><a href="#">简历中心</a></li>
+        </ul>
+    </div>
+</div>
+<!-- nav end -->
+
+<!-- content begin -->
+<div class="content main_wrap">
+    <div id="main">
+
+        <div class="l_main">
+            <div class="box">
+                <div class="classify choose">
+                    <span class="icon icon_1"></span><p>职位管理</p>
+                </div>
+                <div class="genre">
+                    <ul style="margin-left:20px;">
+                        <li><span class="dot" ></span><a href="B_Job_management.html">职位管理</a></li>
+                        <li class="choose"><span class="dot" ></span><a href="javascript:void(0)">新增职位</a></li>
+                    </ul>
+                </div>
+                <div class="classify" style="border-bottom:none;" onClick="window.location = 'B_candidate.html'">
+                    <span class="icon icon_2"></span><p>候选人</p>
+                </div>
+                <div class="classify" onClick="window.location = 'B_resume_center.html'">
+                    <span class="icon icon_3"></span><p>简历中心</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="r_main">
+            <div class="r_main_title">
+                <h1>新增职位</h1>
+            </div>
+            <div class="btn_group job_type" style="margin:25px 0 0 20px;">
+                <input type="button" class="btn small_btn " value="全职岗位"/>
+                <input type="button" class="btn small_btn btn_color_5" value="兼职/短工"/>
+            </div>
+            <div class="sheet" style="margin-top: 10px">
+                <form>
+                    <ul >
+                        <li><span class="align_right"><label>职位名称：</label></span>
+                            <div class="border"><input class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>月薪范围：</label></span>
+                            <div class="border" style="width: 166px"><input style="width: 146px" class="input"  type="text"/></div>
+                            至
+                            <div class="border" style="width: 166px"><input style="width: 146px" class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>工作地点：</label></span>
+                            <div class="border small_select"><select name="">
+                                <option value=""></option>
+                            </select></div>
+                            <div class="border small_select"><select name="" >
+                                <option value=""></option>
+                            </select></div>
+                            <div class="border small_select"><select name="" >
+                                <option value=""></option>
+                            </select></div>
+                        </li>
+                        <li><span class="align_right"><label>详细地址：</label></span>
+                            <div class="border"><input class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>学历要求：</label></span>
+                            <div class="border"><select name="">
+                                <option value=""></option>
+                            </select></div>
+                        </li>
+                        <li><span class="align_right"><label>工作经验：</label></span>
+                            <div class="border"><select name="">
+                                <option value=""></option>
+                            </select></div>
+                        </li>
+
+                        <li><span class="align_right v_top"><label>岗位职责：</label></span>
+                            <div class="border" style="width: 500px"><textarea style="width: 480px"></textarea></div>
+                        </li>
+                        <li><span class="align_right v_top"><label>任职要求：</label></span>
+                            <div class="border" style="width: 500px"><textarea style="width: 480px"></textarea></div>
+                        </li>
+
+                    </ul>
+                    <ul style="display: none">
+                        <li><span class="align_right"><label>职位名称：</label></span>
+                            <div class="border"><input class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>薪资：</label></span>
+                            <div class="border" style="width: 200px;"><select style="width: 190px;height: 32px" name="">
+                                <option value=""></option>
+                            </select></div>
+                            <div class="border" style="width: 150px"><input style="width: 140px" class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>结算方式：</label></span>
+                            <div class="border"><select name="">
+                                <option value=""></option>
+                            </select></div>
+                        </li>
+                        <li><span class="align_right"><label>招聘人数：</label></span>
+                            <div class="border"><input class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>学历要求：</label></span>
+                            <div class="border small_select"><select name="">
+                                <option value=""></option>
+                            </select></div>
+                            <div class="border small_select"><select name="" >
+                                <option value=""></option>
+                            </select></div>
+                            <div class="border small_select"><select name="" >
+                                <option value=""></option>
+                            </select></div>
+                        </li>
+
+                        <li><span class="align_right"><label>详细地址：</label></span>
+                            <div class="border"><input class="input"  type="text"/></div>
+                        </li>
+                        <li><span class="align_right v_top"><label>职位描述：</label></span>
+                            <div class="border" style="width: 500px"><textarea style="width: 480px"></textarea></div>
+                        </li>
+
+                        <li><span class="align_right"><label>联系人：</label></span>
+                            <div class="border "><input class="input" type="text"/></div>
+                        </li>
+                        <li><span class="align_right"><label>联系方式：</label></span>
+                            <div class="border "><input class="input" type="text"/></div>
+                        </li>
+                    </ul>
+
+                    <div class="btn_group" style="margin-bottom:60px;">
+                        <input type="button" class="btn btn_color_5" value="取消">
+                        <input type="submit" class="btn" value="保存并发布">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- content end -->
+
+<!-- footer begin -->
+<div id="loginFooter">
+    <div id="footerText">
+        <div class="link">
+            <h6>友情链接</h6>
+            <a href="#">广东农业信息网</a>
+            <a href="#">广东乡村网</a>
+            <a href="#">合算网</a>
+            <a href="#">食安达</a>
+            <a href="#">农业银行</a>
+        </div>
+        <a href="#">关于我们</a>
+        <a href="#">帮助中心</a>
+        <a href="#">管理系统</a>
+        <a href="#">用户协议</a>
+        <a class='last_noR' href="#">联系电话：400-020-8886600</a>
+    </div>
+    <p id="copyRight">Copyright ©广州神农信息技术服务有限公司主办|粤ICP备12071480-4号</p>
+</div>
+<!-- footer end -->
+
+<!-- 公共的 js -->
+<script type="text/javascript" src="../../res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../res/js/common.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.job_type input').click(function () {
+            var index = $(this).index();
+           $(this).removeClass('btn_color_5').siblings().addClass('btn_color_5');
+            $('.sheet ul').eq(index).show().siblings('ul').hide();
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -8,6 +8,7 @@ body{
 .bannerImg{
     text-align: center;
     position: relative;
+	padding-top:4px;
 }
 
 .content{
@@ -15,77 +16,6 @@ body{
     margin:0 auto;
     overflow: hidden;
 }
-
-.property{
-    font-size:0;
-    width:1015px;
-    float: left;
-
-}
-.property2{
-    float: left;
-    box-shadow: 3px 3px 10px 0 #999999;
-    background: #FD9B1F;
-
-
-}
-.property2 .property_box2{
-    display: inline-block;
-    width:180px;
-    height:230px;
-    text-align: center;
-}
-.property2 .property_block span{
-    display: inline-block;
-    margin-top:50px;
-}
-.property2 .property_block .text {
-    margin-top: 20px;
-    line-height: 25px;
-
-}
-.property2 .property_block .text p{
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: bold;
-
-}
-
-.property .property_box{
-    display: inline-block;
-    width: 243px;
-    height:110px;
-    margin: 0 10px 10px 0;
-
-}
-
-.property .property_block{
-    overflow: hidden;
-    padding: 0 0 0 45px;
-}
-.property .property_block span{
-    display: inline-block;
-    float: left;
-    height: 110px;
-    line-height: 110px;
-    vertical-align: middle;
-}
-.property .property_block span img{
-    vertical-align: middle;
-}
-.property .property_block .text {
-    line-height: 22px;
-    margin-top: 33px;
-    text-align: left;
-    margin-left: 30px;
-    display: inline-block;
-
-}
-.property .property_block .text p{
-    font-size:20px;
-    color: #ffffff;
-}
-
 .title_box{
     padding-top:45px;
 }
@@ -131,7 +61,7 @@ body{
 .main_title{
     min-width: 1200px ;
     margin:40px auto 30px auto;
-    background: url('../images/main_title.png') center no-repeat;
+    background: url('../../res/images/main_title.png') center no-repeat;
 }
 .main_title p{
     line-height: 50px;
@@ -140,27 +70,7 @@ body{
     text-align: center;
 }
 
-table{
-    width:1200px;
-    border-top:2px solid #DBDBDB;
-    text-align: left;
-    margin-top:20px;
-    border-left:1px solid #DBDBDB;
-    border-right:1px solid #DBDBDB;
-}
-thead td{
-    color: #fd9c20;
-}
-th{
-    color: #333333 !important;
 
-}
-table tr,th,td{
-    border-bottom:1px solid #DBDBDB;
-    font-size: 14px;
-    padding:15px 0 15px 55px ;
-    color: #656565;
-}
 .left,.right{
     width:586px;
     float: left;
@@ -211,6 +121,11 @@ table tr,th,td{
     color: #656565;
     font-size: 16px;
     margin:15px 0;
+	width:270px;
+	overflow:hidden;
+	display:inline-block;
+	white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .block .block_detail span{
     color: #999999;
@@ -233,7 +148,7 @@ table tr,th,td{
     line-height: 40px;
     width: 250px;
     text-align: center;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 20px;
     background-color: #FD9B1F;
     margin-top:30px;
@@ -248,8 +163,6 @@ table tr,th,td{
     position: relative;
     height:400px;
     width:300%;
-
-
 }
 .news_img img{
     width: 586px;
@@ -261,8 +174,6 @@ table tr,th,td{
     width:586px;
     height:49px;
     line-height: 49px;
-    -ms-filter: alpha(Opacity=50);
-    filter: alpha(Opacity=50);
     background: #000000;
     background: rgba(0,0,0,0.5);
     position: absolute;
@@ -274,6 +185,13 @@ table tr,th,td{
     margin-left:20px;
     color: #ffffff;
     display: inline-block;
+    width:430px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.news_info_title .change_title{
+    display: none;
 }
 .news_info_title .dots{
     float: right;
@@ -309,8 +227,8 @@ table tr,th,td{
     border:2px solid #FD9B1F;
     border-radius: 3px;
     padding-top: 1px;
-    border-bottom:2px solid #FFFFFF;
-    top:2px;
+    border-bottom:3px solid #FFFFFF;
+    bottom:-2px;
 }
 .news_info .info_block span{
     font-size: 12px;
@@ -380,6 +298,33 @@ table tr,th,td{
     margin:25px 0 35px 0;
 }
 .group a{
-    margin-right:24px;
+    margin-right:18px;
+}
+.index_table{
+    width:100%;
+    border-top:2px solid #DBDBDB;
+    text-align: left;
+    margin-top:20px;
+    border-left:1px solid #DBDBDB;
+    border-right:1px solid #DBDBDB;
+}
+.index_table thead td{
+    color: #fd9c20;
+}
+.index_table th{
+    color: #333333 !important;
+
+}
+.index_table tr,.index_table th,.index_table td{
+    border-bottom:1px solid #DBDBDB;
+    font-size: 14px;
+    padding:15px 0 15px 55px ;
+    color: #656565;
+    text-align: left;
+    vertical-align: middle;
+}
+.bottom{
+    margin-bottom:45px !important;
 }
 
+.post:hover{cursor: pointer;}

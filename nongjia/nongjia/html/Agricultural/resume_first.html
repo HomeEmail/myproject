@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>我的简历-首次登录</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="../../res/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/head.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/title_box.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/Tab.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/js/uploadImage/uploadImage.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/button.css"/>
+
+<!-- 当前的css -->
+<link rel="stylesheet" type="text/css" href="../../res/css/Intentional_occupation.css"/>
+<!--[if IE 6]>
+<script type="text/javascript" src="../../res/js/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+	DD_belatedPNG.fix(".ie6png");
+</script>
+<![endif]-->
+<style>
+.container{
+	margin-top:5px;
+	margin-bottom:50px;
+	overflow:hidden;
+}
+.l_main{
+	width:300px;
+	margin-right:16px;
+	float:left;
+	position:relative;
+	top:0px;
+}
+.resume_title{
+	border:1px solid #DCDCDC;
+	display:block;
+	margin-bottom:10px;
+}
+.resume_title span{
+	display:block;
+	padding:10px 20px;
+}
+.resume_title .resume_btn{
+	padding:10px 0 20px 20px;
+}
+.resume_title .resume_btn a{
+	display:inline-block;
+	padding:10px 40px;
+	font-size:18px;
+	background-color:#cccccc;
+	color:#FFFFFF;
+	border-radius:5px;
+	margin-right:20px;
+}
+.resume_list{
+	width:300px;
+	margin-right:16px;
+	display:block;
+	margin-bottom:35px;
+}
+.resume_list .list_box{
+	border:1px solid #DCDCDC;
+}
+.resume_list ul{
+	margin-left:45px;
+}
+.resume_list li{
+	line-height:55px;
+	padding-left:20px;
+	font-size:18px;
+	color: #666666;
+}
+.resume_list li a{
+	font-size:18px;
+	color: #666666;
+}
+
+.r_main{
+	width:880px;
+	float:left;
+}
+.info_box{
+	border:1px solid #DCDCDC;
+	overflow:hidden;
+	margin-bottom:10px;
+	font-size:14px;
+	color:#666666;
+	position:relative;
+}
+.info_box .img{
+	display:inline-block;
+	padding:20px;
+	float:left;
+}
+.info_box .img input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: inline-block;
+	width: 100%;
+	height:146px;
+	opacity: 0;
+}
+.info_box .control{
+	display:block;
+	position:absolute;
+	top:5px;
+	right:20px;
+	height:30px;
+	line-height:30px;
+}
+.info_box .logo{
+	display:inline-block;
+	width:25px;
+	height:30px;
+	background-position:0 -20px;
+	background-image:url(../../res/images/Agricultural_logo.png);
+	cursor:pointer;
+}
+.info_box .logo_2{
+	display:inline-block;
+	width:25px;
+	height:30px;
+	background-position:0 -51px;
+	margin-left:10px;
+	background-image:url(../../res/images/Agricultural_logo.png);
+	cursor:pointer;
+}
+.info_box .title{
+	display:inline-block;
+	padding-left:20px;
+	line-height:48px;
+	color:#666666;
+	font-size:16px;
+	font-weight:bold;
+}
+.info_box .all_title{
+	width:100px;
+	display:inline-block;
+	text-align:right;
+}
+.basic_info_edit{
+	width:880px;
+	display:inline-block;
+	margin-top:20px;
+	position:relative;
+}
+.basic_info_edit .basic_title{
+	display:inline-block;
+	text-align:right;
+}
+.showImg .delImg{
+	height:146px !important;
+}
+.basic_info_edit .basic_l .basic_title{
+	width:80px;
+}
+.basic_info_edit .basic_r .basic_title{
+	width:115px;
+}
+.basic_info_show{
+	width:880px;
+	display:inline-block;
+	position:relative;
+}
+.basic_info_show h1{
+	font-size: 24px;
+	color: #333;
+	margin-top:40px;
+}
+.basic_info_show p{
+	margin:20px 0;
+	font-size: 14px;
+	color: #666;
+}
+.edu_exp_show{
+	position:relative;
+	padding: 30px 0 30px 0;
+	margin: 0 20px 15px 20px;
+	border: 1px solid #dcdcdc;
+}
+.edu_exp_show span{
+	margin-right:50px;
+}
+.work_exp_edit{
+	margin:0 20px 20px 20px;
+	overflow:hidden;
+	padding-top:20px;
+	border:1px solid #DCDCDC;
+	position:relative;
+}
+.work_exp_show{
+	margin:0 20px 20px 20px;
+	overflow:hidden;
+	padding-top:20px;
+	border:1px solid #DCDCDC;
+	position:relative;
+}
+.work_exp_show p{
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 10px;
+	line-height: 1.5;
+}
+.work_exp_edit .company_desc{
+	height:100px;
+	width:600px;
+	display:inline-block;
+	border:1px solid #DCDCDC;
+	position:relative;
+}
+.info_box .additional_box{
+	padding:15px;
+	border:1px solid #DCDCDC;
+	margin-bottom:10px;
+	position:relative;
+}
+.normal_input{
+	width:200px;
+	line-height:25px;
+}
+.short_input{
+	width:105px;
+	line-height:25px;
+}
+select{
+	width:95px;
+	height:30px;
+	margin-right:10px;
+}
+.long_select{
+	width:205px;
+	height:30px;
+}
+.date_img{
+	display: inline-block;
+	width: 21px;
+	height:21px;
+	background: url(../../res/images/Mine/all_logo.png);
+	background-position: -48px -40px;
+}
+.btnOrange{
+	padding:8px 30px;
+	margin-right:10px;
+	border-radius:5px;
+	color:#ffffff;
+	font-size:18px;
+	display:inline-block;
+	background-color:#fd9c20;
+	cursor:pointer;
+}
+.btnGrey{
+	padding:8px 30px;
+	margin-right:10px;
+	border-radius:5px;
+	color:#666666;
+	font-size:18px;
+	display:inline-block;
+	border:1px solid #dbf3ff;
+	background-color:#f6f6f6;
+	cursor:pointer;
+}
+.dis_block{
+	display:block;
+}
+.dis_none{
+	display:none;
+}
+/*锁屏*/
+.locking{
+	width:10000px;
+	height:1000px;
+	background: #000000;
+	opacity: 0.5;
+	filter:alpha(opacity=50);
+	position: absolute;
+	top:0;
+	background: rgba(0,0,0,0.5);
+	z-index: 998;
+	display: none;
+}
+
+/*锁屏 -end*/
+.resume_review{
+	position: absolute;
+	padding:20px;
+	background: #ffffff;
+	width: 1000px;
+	z-index: 999;
+	max-height:900px;
+	overflow-y: scroll;
+}
+</style>
+</head>
+<body>
+<!-- header begin -->
+<div id="topNav">
+	<input type="hidden" value="2" id="sessionAreaId"/>
+	<div id="TN_content">
+		<ul>
+			<li><img style="vertical-align: middle" src="../../res/images/yunxingzhong.png"/></li>
+			<li id="sn_city">广州市<a href="javascript:void(0)">[切换地区]</a></li>
+		</ul>
+		<ul class="right_list">
+			<li><a href="#" target="_blank">管理系统</a></li>
+			<li><a href="#">登录</a></li>
+			<li><a href="../Mine/Mine.html">我的农加</a></li>
+			<li><a href="#">帮助中心</a></li>
+		</ul>
+		<div class="choose_city_menu">
+			<div class="provide menu">
+				<h2>省份</h2>
+				<ul>
+					<li><a data-city="1" href="http://www.nongj.com/nonjia/index.action?areaId=1">广东省</a></li>
+				</ul>
+			</div>
+			<div class="cities menu ">
+				<h2>市级</h2>
+			</div>
+			<div class="county menu">
+				<h2>县级</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- header end -->
+
+<!-- nav begin -->
+<div id="navBar">
+	<div id="NB_content">
+		<a href='#'><img src="../../res/images/logo1.png" /></a>
+		<div class="logo_wrap">
+			<span class="line"></span>
+			<div class="name_wrap">
+				<p class='T_name'>涉农就业</p>
+			</div>
+		</div>
+		<ul>
+			<li><a href="index.html">首页</a></li>
+			<li><a href="full_time_index.html">全职招聘</a></li>
+			<li><a href="part_time_index.html">兼职短工</a></li>
+			<li><a href="gov_job_index.html">政府事业单位</a></li>
+			<li><a href="#" class="checked">我的简历</a></li>
+			<li><a href="Delivery_record.html" >投递记录</a></li>
+			<li><a href="B_company_Pages.html" target="_blank">企业版</a></li>
+		</ul>
+	</div>
+</div>
+<!-- nav end -->
+
+<!-- content begin -->
+<div class="container">
+	<div class="content">
+		<div class="l_main">
+			<div class="resume_title">
+				<span style="font-size:18px; color:#333333;">我的简历</span>
+				<span style="font-size:14px; color:#666666;">更新于：2016-11-11</span>
+				<div class="resume_btn">
+					<a href="#">刷新</a>
+					<a  class="review" href="#">预览</a>
+				</div>
+			</div>
+			<div class="resume_list">
+				<div class="list_box">
+					<ul>
+						<li><a href="#basic_info">基本信息</a></li>
+					</ul>
+				</div>
+				<div class="list_box">
+					<ul>
+						<li><a href="#job_intention">求职意向</a></li>
+					</ul>
+				</div>
+				<div class="list_box">
+					<ul>
+						<li><a href="#edu_epx">教育经历</a></li>
+					</ul>
+				</div>
+				<div class="list_box">
+					<ul>
+						<li><a href="#work_exp">工作经验</a></li>
+					</ul>
+				</div>
+				<div class="list_box">
+					<ul>
+						<li><a href="#additional">附加信息</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="r_main">
+			<div id="basic_info" class="basic_info info_box">
+				<div class="basic_info_not" style="display:none;">
+					<div class="img">
+						<img class="image" src="../../res/images/default_userImg.png"  width="128" height="146" />
+					</div>
+					<div style="display:inline-block; line-height:188px; width:650px; text-align:center; color:#999999; font-size:14px;">基本信息未完善</div>
+					<div class="control">
+						<div class="logo"></div>
+					</div>
+				</div>
+				<!--编辑信息开始-->
+				<div class="basic_info_edit dis_none">
+					<div id="showImgGroup" class="img">
+						<div class="showImg" style="width:128px; height:146px;">
+							<img class="image" src="../../res/images/default_userImg.png"  width="128" height="146" />
+							<input name="1" type="file" id="file">
+						</div>
+					</div>
+					<div style="display:block; overflow:hidden;">
+						<div class="basic_l" style="width:340px; display:inline-block; float:left; overflow:hidden;">
+							<div style="margin-bottom:20px;">
+								<label class="basic_title">姓名：</label>
+								<input class="normal_input" type="text" />
+							</div>
+							<div style="margin-bottom:20px; position:relative;">
+								<label class="basic_title">出生年月：</label>
+								<input class="normal_input date" type="text" />
+								<div style="position:absolute; top:5px; right:60px;">
+									<span class="date_img"></span>
+								</div>
+							</div>
+							<div style="margin-bottom:20px;">
+								<label class="basic_title">现居地：</label>
+								<select>
+									<option selected="selected">省份</option>
+									<option>广东省</option>
+								</select>
+								<select>
+									<option selected="selected">城市</option>
+									<option>广州市</option>
+								</select>
+							</div>
+							<div style="margin-bottom:20px;">
+								<label class="basic_title">邮箱：</label>
+								<input class="normal_input" type="text" />
+							</div>
+						</div>
+						<div class="basic_r" style="width:340px; display:inline-block; float:left; overflow:hidden;">
+							<div style="margin-bottom:20px;">
+								<label class="basic_title">性别：</label>
+								<select class="long_select">
+									<option selected="selected">请选择</option>
+									<option>男</option>
+									<option>女</option>
+								</select>
+							</div>
+							<div style="margin-bottom:20px;">
+								<label class="basic_title">起始工作年份：</label>
+								<input class="normal_input" type="text" />
+							</div>
+							<div style="margin-bottom:20px;">
+								<label class="basic_title">手机：</label>
+								<input class="normal_input" type="text" />
+							</div>
+						</div>
+					</div>
+					<div style="margin:20px; padding-right:155px; text-align:center;">
+						<span class="btnOrange">保存</span>
+						<span class="btnGrey">取消</span>
+					</div>
+				</div>
+				<!--编辑信息结束-->
+				<div class="basic_info_show">
+					<div class="img">
+						<img class="image" src="../../res/images/default_userImg.png"  width="128" height="146" />
+					</div>
+					<div class="control">
+						<div class="logo"></div>
+					</div>
+					<h1>叶小姐</h1>
+					<p>女  |  25岁  |  2年工作经验  |  现居住广州</p>
+					<div>
+						<span class="icon icon_1"></span><span style="font-size: 14px;color: #666;margin-right:20px;">abcdef@abc.com</span>
+						<span class="icon icon_2"></span><span style="font-size: 14px;color: #666">15889900000</span>
+					</div>
+				</div>
+			</div>
+			<div id="job_intention" class="job_intention info_box">
+				<div class="title">求职意向</div>
+				<div class="control">
+					<div class="logo"></div>
+				</div>
+				<div class="job_intention_edit dis_none">
+					<div style="display:block; width:800px; padding-left:20px;">
+						<div style="display:block; overflow:hidden;">
+							<div style="width:400px; float:left; display:inline-block;">
+								<label class="all_title">意向工作地点：</label>
+								<select>
+									<option selected="selected">省份</option>
+									<option>广东省</option>
+								</select>
+								<select>
+									<option selected="selected">城市</option>
+									<option>广州市</option>
+								</select>
+							</div>
+							<div style="width:400px; float:left; position:relative; display:inline-block;">
+								<label class="all_title">意向职位：</label>
+								<input class="jobs_list normal_input" type="text" />
+								<div style="position:absolute; top:5px; right:100px;">
+									<span class="date_img"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="margin:20px; text-align:center;">
+						<span class="btnOrange">保存</span>
+						<span class="btnGrey">取消</span>
+					</div>
+				</div>
+				<div class="job_intention_show">
+					<div style="display:block; width:800px; padding-left:20px; padding-bottom:30px;">
+						<div style="width:400px; float:left; display:inline-block;">
+							<label class="all_title">意向工作地点：</label>
+							<label>梅州市</label>
+						</div>
+						<div style="width:400px; float:left; display:inline-block;">
+							<label class="all_title">意向职位：</label>
+							<label>Java开发工程师</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--教育经历开始-->
+			<div id="edu_exp" class="edu_exp info_box">
+				<div class="title">教育经历</div>
+				<div class="control">
+					<a>+新增教育经历</a>
+				</div>
+				<div class="edu_exp_edit dis_none">
+
+					<div style="display:block; width:800px; padding-left:20px;">
+						<div style="display:block; overflow:hidden;">
+							<div style="width:400px; float:left; position:relative; display:inline-block;">
+								<label class="all_title">时间：</label>
+								<input class="short_input date" type="text" />
+								<div style="position:absolute; top:5px; right:190px;">
+									<span class="date_img"></span>
+								</div>
+								<span>至</span>
+								<input class="short_input date" type="text" />
+								<div style="position:absolute; top:5px; right:60px;">
+									<span class="date_img"></span>
+								</div>
+								<div style="margin:20px 0;">
+									<label class="all_title">专业：</label>
+									<input class="normal_input" type="text" />
+								</div>
+							</div>
+							<div style="width:400px; float:left; position:relative; display:inline-block;">
+								<label class="all_title">学校：</label>
+								<input class="normal_input" type="text" />
+								<div style="margin:20px 0;">
+									<label class="all_title">学历：</label>
+									<input class="normal_input" type="text" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="margin:20px; text-align:center;">
+						<span class="btnOrange">保存</span>
+						<span class="btnGrey">取消</span>
+					</div>
+				</div>
+				<div class="edu_exp_show">
+					<div class="control" style="top: 19px;">
+						<span class="logo" style="margin-right: 0;"></span>
+						<span class="logo_2" style="margin-right: 0;"></span>
+					</div>
+					<div style="display:block; width:800px; padding-left:20px; overflow: hidden">
+						<div style="width:800px; float:left; display:inline-block;">
+							<span>2010/10~2014/06</span>
+							<span>国立中山大学</span>
+							<span>计算机科学与技术</span>
+							<span>本科</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--教育经历结束-->
+			<!--工作经验开始-->
+			<div id="work_exp" class="work_exp info_box">
+				<div class="title">工作经验</div>
+				<div class="control">
+					<a>+新增工作经验</a>
+				</div>
+				<div class="work_exp_edit dis_none">
+					<div style="width:400px; float:left; position:relative; display:inline-block;">
+						<label class="all_title">时间：</label>
+						<input class="short_input date" type="text" />
+						<div style="position:absolute; top:5px; right:190px;">
+							<span class="date_img"></span>
+						</div>
+						<span>至</span>
+						<input class="short_input date" type="text" />
+						<div style="position:absolute; top:5px; right:60px;">
+							<span class="date_img"></span>
+						</div>
+						<div style="margin:20px 0;">
+							<label class="all_title">职位：</label>
+							<input class="normal_input" type="text" />
+						</div>
+						<label class="all_title">企业性质：</label>
+						<select class="long_select">
+							<option selected="selected">请选择</option>
+							<option>国企</option>
+							<option>民企</option>
+						</select>
+					</div>
+					<div style="width:400px; float:left; position:relative; display:inline-block;">
+						<label class="all_title">公司名称：</label>
+						<input class="normal_input" type="text" />
+						<div style="margin:20px 0;">
+							<label class="all_title">部门：</label>
+							<input class="normal_input" type="text" />
+						</div>
+						<label class="all_title">企业规模：</label>
+						<select class="long_select">
+							<option selected="selected">请选择</option>
+							<option>50人以下</option>
+							<option>50-200人</option>
+						</select>
+					</div>
+					<div style="margin-top:20px; display:inline-block;">
+						<label class="all_title" style="vertical-align:top;">工作描述：</label>
+						<div class="company_desc">
+							<textarea style="width:100%; height:100%; resize:none;"></textarea>
+						</div>
+					</div>
+					<div style="margin:20px; text-align:center;">
+						<span class="btnOrange">保存</span>
+						<span class="btnGrey">取消</span>
+					</div>
+				</div>
+
+				<div class="work_exp_show">
+					<div class="control">
+						<span class="logo"></span>
+						<span class="logo_2"></span>
+					</div>
+					<div style="padding-left:20px; padding-bottom:20px; width:816px;">
+						<p><span>2014/10~2015/06</span> <span>广州市xxx有限公司</span> <span>产品经理</span></p>
+						<p><span>民营企业</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>200-499人</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>产品部</span></p>
+						<div style="overflow:hidden">
+							<label style="float:left;">工作描述：</label>
+							<div style="float: left;width: 690px;line-height: 1.5;font-size: 14px">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iusto minus non quam qui totam! Adipisci alias doloribus eligendi enim ex, expedita illo, in, ipsam nobis perferendis soluta vel voluptate?
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--工作经验结束-->
+			<!--附加信息开始-->
+			<div id="additional" class="additional info_box">
+				<div class="title">附加信息</div>
+				<div class="control">
+					<a>新增附件</a>
+				</div>
+				<div style="padding-left:20px; width:836px;">
+					<div class="additional_box">
+						<label class="all_title">公司名称：</label>
+						<input class="normal_input" type="text" />
+						<div style="margin:20px 0;">
+							<label class="all_title">上传附件：</label>
+							<label><a href="#">+上传附件</a></label>
+						</div>
+						<div style="margin:20px; text-align:center;">
+							<span class="btnOrange">保存</span>
+							<span class="btnGrey">取消</span>
+						</div>
+					</div>
+					<div class="additional_box" >
+						<p><span>附件名称：</span><span>农加网首页demo</span></p>
+						<div class="control">
+							<span class="logo"></span>
+							<span class="logo_2"></span>
+						</div>
+					</div>
+					<div class="additional_box">
+						<p><span>附件名称：</span><span>农加网首页demo</span></p>
+						<div class="control">
+							<span class="logo"></span>
+							<span class="logo_2"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--附加信息结束-->
+		</div>
+	</div>
+</div>
+
+<div class="resume_review dis_none">
+	<table width="100%">
+		<tr>
+			<td>
+				<table width="100%">
+					<tr style="border:1px solid #DCDCDC;">
+						<td width="168"><img src="../../res/images/default_userImg.png" width="128" height="146" style="padding:20px;" /></td>
+						<td style="padding-top:20px;">
+							<p><h1 style="font-size:24px; color:#333; margin-top:20px;">叶小姐</h1></p>
+							<p style="margin:20px 0; font-size:14px; color:#666;">女  |  25岁  |  2年工作经验  |  现居住广州</p>
+							<p style="line-height:30px;">
+								<span style="background:url(../../res/images/Agricultural_logo.png); display:inline-block; margin-right:5px; background-position:0px -88px; width:20px; height:15px;"></span>
+								<span style="font-size:14px; color:#666; margin-right:20px; display:inline-block; line-height:15px;">abcdef@abc.com</span>
+								<span style="background:url(../../res/images/Agricultural_logo.png); display:inline-block; margin-right:5px; background-position:0px -111px; width:10px; height:15px;"></span>
+								<span style="font-size:14px; color:#666">15889900000</span>
+							</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="10"></tr>
+		<tr style="border:1px solid #DCDCDC;">
+			<td>
+				<table>
+					<tr height="48">
+						<td colspan="2" style="padding-left:20px; line-height:48px; color:#666; font-size:16px; font-weight:bold;">求职意向</td>
+					</tr>
+					<tr height="30">
+						<td width="400">
+							<label style="width:118px; display:inline-block; font-size:14px; color:#666; text-align:right;">意向工作地点：</label>
+							<label style="font-size:14px; color:#666;">梅州市</label>
+						</td>
+						<td>
+							<label style="width:132px; display:inline-block; font-size:14px; color:#666; text-align:right;">意向职位：</label>
+							<label style="font-size:14px; color:#666;">Java开发工程师</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="10"></tr>
+		<tr style="border:1px solid #DCDCDC;">
+			<td>
+				<table>
+					<tr height="48">
+						<td colspan="2" style="padding-left:20px; line-height:48px; color:#666; font-size:16px; font-weight:bold;">求职意向</td>
+					</tr>
+					<tr height="30">
+						<td>
+							<span style="padding-left:20px; padding-right:50px; font-size:14px; color:#666;">2010/10~2014/06</span>
+							<span style="padding-right:50px; font-size:14px; color:#666;">国立中山大学</span>
+							<span style="padding-right:50px; font-size:14px; color:#666;">计算机科学与技术</span>
+							<span style="font-size:14px; color:#666;">本科</span>
+						</td>
+					</tr>
+				</table>
+		</tr>
+		<tr height="10"></tr>
+		<tr style="border:1px solid #DCDCDC;">
+			<td>
+				<table width="100%">
+					<tr height="48">
+						<td colspan="2" style="padding-left:20px; line-height:48px; color:#666; font-size:16px; font-weight:bold;">工作经验</td>
+					</tr>
+					<tr>
+						<td style="padding:0 20px 20px 20px;">
+							<table width="100%" style="border:1px solid #DCDCDC;">
+								<tr height="41">
+									<td colspan="2">
+										<span style="display:block; padding:20px; font-size:14px; color:#666;">2014/10~2015/06 广州市xxx有限公司 产品经理</span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span style="display:block; padding-left:20px; font-size:14px; color:#666;">民营企业&nbsp;&nbsp;|&nbsp;&nbsp;200-499人&nbsp;&nbsp;|&nbsp;&nbsp;产品部</span>
+									</td>
+								</tr>
+								<tr>
+									<td width="90">
+										<span style="display:block; padding:20px 0 20px 20px; font-size:14px; color:#666;">工作描述：</span>
+									</td>
+									<td>
+										<span style="display:block; padding:20px 0 20px 0px; font-size:14px; color:#666; line-height:1.5;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iusto minus non quam qui totam! Adipisci alias doloribus eligendi enim ex, expedita illo, in, ipsam nobis perferendis soluta vel voluptate?</span>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding:0 20px 20px 20px;">
+							<table width="100%" style="border:1px solid #DCDCDC;">
+								<tr height="41">
+									<td colspan="2">
+										<span style="display:block; padding:20px; font-size:14px; color:#666;">2014/10~2015/06 广州市xxx有限公司 产品经理</span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span style="display:block; padding-left:20px; font-size:14px; color:#666;">民营企业&nbsp;&nbsp;|&nbsp;&nbsp;200-499人&nbsp;&nbsp;|&nbsp;&nbsp;产品部</span>
+									</td>
+								</tr>
+								<tr>
+									<td width="90">
+										<span style="display:block; padding:20px 0 20px 20px; font-size:14px; color:#666;">工作描述：</span>
+									</td>
+									<td>
+										<span style="display:block; padding:20px 0 20px 0px; font-size:14px; color:#666; line-height:1.5;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iusto minus non quam qui totam! Adipisci alias doloribus eligendi enim ex, expedita illo, in, ipsam nobis perferendis soluta vel voluptate?</span>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding:0 20px 20px 20px;">
+							<table width="100%" style="border:1px solid #DCDCDC;">
+								<tr height="41">
+									<td colspan="2">
+										<span style="display:block; padding:20px; font-size:14px; color:#666;">2014/10~2015/06 广州市xxx有限公司 产品经理</span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span style="display:block; padding-left:20px; font-size:14px; color:#666;">民营企业&nbsp;&nbsp;|&nbsp;&nbsp;200-499人&nbsp;&nbsp;|&nbsp;&nbsp;产品部</span>
+									</td>
+								</tr>
+								<tr>
+									<td width="90">
+										<span style="display:block; padding:20px 0 20px 20px; font-size:14px; color:#666;">工作描述：</span>
+									</td>
+									<td>
+										<span style="display:block; padding:20px 0 20px 0px; font-size:14px; color:#666; line-height:1.5;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iusto minus non quam qui totam! Adipisci alias doloribus eligendi enim ex, expedita illo, in, ipsam nobis perferendis soluta vel voluptate?</span>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="10"></tr>
+		<tr style="border:1px solid #DCDCDC;">
+			<td>
+				<table width="100%">
+					<tr height="48">
+						<td colspan="2" style="padding-left:20px; line-height:48px; color:#666; font-size:16px; font-weight:bold;">附加信息</td>
+					</tr>
+					<tr>
+						<td style="padding:0 20px 10px 20px;">
+							<table width="100%" style="border:1px solid #DCDCDC;">
+								<tr>
+									<td>
+										<span style="display:block; padding:12px; font-size:14px; color:#666;">附件名称：农加网首页demo</span>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding:0 20px 10px 20px;">
+							<table width="100%" style="border:1px solid #DCDCDC;">
+								<tr>
+									<td>
+										<span style="display:block; padding:12px; font-size:14px; color:#666;">附件名称：农加网首页demo</span>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<!--附加信息结束-->
+	<div style="margin:20px; text-align:center;">
+		<span class="btnOrange resume_review_close">返回</span>
+	</div>
+</div>
+
+<div class="edit_block dis_none">
+	<div class="detail">
+		<div class="detail_title">
+			<h1>职业库</h1>
+			<a class="close">&times;</a>
+		</div>
+		<div class="detail_content">
+			<table>
+				<tr>
+					<td style="background-color: #E7E7E7">
+						<div class="left">
+							<a class="select" href="javascript:void (0)">计算机 | 互联网 | 通信 | 电子| 电子| 电子| 电子| 电子| 电子</a>
+							<a href="javascript:void (0)">计算机 | 互联网 | 通信 | 电子</a>
+							<a href="javascript:void (0)">计算机 | 互联网 | 通信 | 电子</a>
+							<a href="javascript:void (0)">计算机 | 互联网 | 通信 | 电子</a>
+							<a href="javascript:void (0)">计算机 | 互联网 | 通信 | 电子</a>
+
+						</div>
+					</td>
+					<td>
+						<div class="right">
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+							<div class="type_group">
+								<div class="type">
+									<span>计算机软件</span>
+								</div>
+								<div class="type">
+									<span>计算机硬件</span>
+								</div>
+								<div class="type">
+									<span>互联网/电子商务/网游</span>
+								</div>
+							</div>
+
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="add_type">
+				<a>+ 添加职位</a>
+				<div style="float: right;margin-bottom: 20px;display: none">
+					<input type="text" id="name"/>
+					<div class="btn_group" style="margin: 0;display: inline-block;vertical-align: middle">
+						<input  type="button" class="btn small_btn" value="确定" style="margin-bottom: 2px"/>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+</div>
+<!-- content end -->
+
+<!-- footer begin -->
+<div id="loginFooter">
+	<div id="footerText">
+		<div class="link">
+			<h6>友情链接</h6>
+			<a href="#">广东农业信息网</a>
+			<a href="#">广东乡村网</a>
+			<a href="#">合算网</a>
+			<a href="#">食安达</a>
+			<a href="#">农业银行</a>
+		</div>
+		<a href="#">关于我们</a>
+		<a href="#">帮助中心</a>
+		<a href="#">管理系统</a>
+		<a href="#">用户协议</a>
+		<a class='last_noR' href="#">联系电话：400-020-8886600</a>
+	</div>
+	<p id="copyRight">Copyright ©广州神农信息技术服务有限公司主办|粤ICP备12071480-4号</p>
+</div>
+<!-- footer end -->
+
+<!-- 公共的 js -->
+<script type="text/javascript" src="../../res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../res/js/uploadImage/uploadImage.js"></script>
+<script type="text/javascript" src="../../res/js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../res/js/Identity.js"></script>
+<script type="text/javascript" src="../../res/js/common.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.review').click(function () {
+		center('resume_review');
+		$('.resume_review').removeClass('dis_none');
+		$('.locking').show();
+	});
+	$('.resume_review_close').click(function () {
+		$('.resume_review').addClass('dis_none');
+		$('.locking').hide();
+	});
+	$('.basic_info_show .logo').click(function () {
+		$('.basic_info_show').addClass('dis_none');
+		$('.basic_info_edit').removeClass('dis_none');
+	});
+	$('.basic_info .btnOrange').click(function () {
+		$('.basic_info_edit').addClass('dis_none');
+		$('.basic_info_show').removeClass('dis_none');
+	});
+	$('.job_intention .logo').click(function () {
+		$('.job_intention_show').addClass('dis_none');
+		$('.job_intention_edit').removeClass('dis_none');
+	});
+	$('.job_intention .btnOrange').click(function () {
+		$('.job_intention_edit').addClass('dis_none');
+		$('.job_intention_show').removeClass('dis_none');
+	});
+	$('.edu_exp .logo').click(function () {
+		$('.edu_exp_show').addClass('dis_none');
+		$('.edu_exp_edit').removeClass('dis_none');
+	});
+	$('.edu_exp .btnOrange').click(function () {
+		$('.edu_exp_edit').addClass('dis_none');
+		$('.edu_exp_show').removeClass('dis_none');
+	});
+	$('.work_exp a').click(function () {
+		//$('.work_exp_edit').addClass('dis_none');
+		$('.work_exp_edit').removeClass('dis_none');
+	});
+	$('.work_exp .logo_2').click(function () {
+		$(this).parents('.work_exp_show').remove();
+	});
+	$('.additional .logo_2').click(function () {
+		$(this).parents('.additional_box').remove();
+	});
+	<!--职位选择弹出-->
+	$('.jobs_list').focus(function(){
+		center('edit_block');
+		$('.edit_block').removeClass('dis_none');
+		$('.locking').show();
+		$('.type').on('click', 'span', function () {
+			var span_width = $(this).width();
+			var index = $(this).parent().index();
+			var job = ['软件工程师','需求工程师','数据库开发工程师','手机软件开发工程师','嵌入式软件开发','语音/视频/图形开发'];
+			var a = '';
+			for(var i = 0;i<job.length;i++){
+				a += '<a href="javascript:void(0)" class="occ">'+ job[i] +'</a>';
+			}
+			var more_occ = '<div class="more_occ"><div class="arrow_top"><em></em><i></i></div>'+ a +'</div>'
+			$('.more_occ').remove();
+			$(this).parents('.type_group').append(more_occ);
+			$(this).parent().siblings('.more_occ').show();
+			if(index == 0){
+				$('.arrow_top').css({'left':(span_width - 20)/2});
+			}else{
+				var tpye_width = $('.type').width();
+				$('.arrow_top').css({'left':(span_width - 20)/2 + tpye_width * index});
+			}
+		});
+		$('.add_type a').click(function () {
+			$(this).hide();
+			$(this).siblings().show();
+		});
+
+		$('.left').on('click','a',function () {
+			$(this).addClass('select').siblings().removeClass('select');
+		})
+		$(document).on('click','.occ',function () {
+			$(this).addClass('select');
+		});
+	});
+	$('.edit_block .close').click(function () {
+		$('.edit_block').addClass('dis_none');
+		$('.locking').hide();
+	});
+});
+$(window).scroll(function(){
+	var height = $('.l_main').offset().top;
+	if($(window).scrollTop() > height){
+		$('.l_main').css('top',$(window).scrollTop()-134);
+	}else{
+		$('.l_main').css('top',0);
+	}
+	var code = parseInt($(window).scrollTop());
+	if(code < $('#job_intention').offset().top){
+		console.log(1);  //基本信息变颜色，以下类推
+		return;
+	}else if(code >= $('#job_intention').offset().top  && code < $('#edu_exp').offset().top){
+		console.log(2);
+		return;
+	}else if(code >= $('#edu_exp').offset().top  && code < $('#work_exp').offset().top){
+		console.log(3);
+		return;
+	}else if(code >= $('#work_exp').offset().top  && code < $('#additional').offset().top){
+		console.log(4);
+		return;
+	}else if(code >= $('#additional').offset().top){
+		console.log(5);
+		return;
+	}
+});
+</script>
+</body>
+</html>

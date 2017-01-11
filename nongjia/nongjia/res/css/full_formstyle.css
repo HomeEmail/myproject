@@ -1,0 +1,249 @@
+.main{
+    border:1px solid #DCDCDC;
+    overflow: hidden;
+    margin-bottom:50px;
+}
+.left_main,
+.right_main{
+    float: left;
+    width:50%;
+}
+/*流转申请步骤*/
+.step{
+    width:100%;
+    text-align: center;
+    padding:35px 0;
+}
+/*流转申请步骤 -end*/
+input[type='radio']{
+    width: 20px;
+    height: 20px;
+    vertical-align: text-top;
+}
+
+ul li{
+    list-style: none;
+}
+.fill_in{
+    border-top:1px solid #DCDCDC;
+    margin:0 45px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+
+.type_title{
+    margin:30px 0;
+    overflow: hidden;
+}
+.type_title h1{
+    color: #666666;
+    font-weight: normal;
+    font-size: 16px;
+
+}
+/*.sheet{*/
+    /*margin:34px 22px 0 22px;*/
+/*}*/
+.sheet label{
+    color: #666666;
+	line-height:32px;
+}
+.sheet .input{
+    height:32px;
+    border:none;
+    width:350px;
+    padding-left:10px;
+    line-height:32px;
+    outline: none;
+}
+
+.sheet select{
+    height:34px;
+    border:none;
+    width:360px;
+    outline: none;
+}
+.sheet .account_box{
+    width:360px;
+    display: inline-block;
+    margin-bottom:20px;
+    position: relative;
+}
+.account_box .search_list{
+	width:360px;
+	display:none;
+    border:1px solid #CCCCCC;
+    position: relative;
+}
+/*.account_box .search_list p:hover{
+	background-color:#F58333;
+	cursor:pointer;
+}
+.account_box .search_list p:hover a{
+	color:#ffffff;
+}*/
+.sheet .border{
+    width:360px;
+    display: inline-block;
+    border:1px solid #CCCCCC;
+	margin-bottom:20px;
+    position: relative;
+}
+.sheet .search_list p a{
+	padding-left:10px;
+	line-height:30px;
+	/* color:#666666; */
+}
+.sheet .has_in input{
+    width:315px;
+    padding-right:25px ;
+}
+.sheet .small_select{
+    width:100px;
+    margin-right:23px;
+    font-size: 0;
+}
+.sheet .small_select select{
+    width:100px;
+}
+.sheet .in_input{
+    position: absolute;
+    top:5px;
+    right:13px;
+    display: inline-block;
+    height:21px;
+    line-height: 21px;
+}
+.sheet .date_img{
+    display: inline-block;
+    width: 21px;
+
+    background: url("../../res/images/Mine/all_logo.png");
+    background-position: -48px -40px;
+}
+.sheet .align_right{
+    display: inline-block;
+    width:145px;
+    text-align: right;
+	vertical-align:top;
+}
+.sheet .v_top{
+    vertical-align: top;
+}
+textarea{
+    resize: none;
+    width:788px;
+    border: none;
+    outline: none;
+    height:100px;
+    display: inline-block;
+}
+.btn_group{
+    clear: both;
+    text-align: center;
+    margin:50px 0;
+}
+
+
+/*上传更多*/
+.full_box{
+    display: inline-block;
+    border:1px solid #DCDCDC;
+    width: 800px;
+    min-height:60px;
+    margin-bottom:20px;
+}
+.full_box .add_file{
+    position: relative;
+    text-align: center;
+    height:60px;
+    line-height: 60px;
+}
+.full_box .add_file input{
+    width:100%;
+    height:60px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    z-index: 1;
+    position: absolute;
+    left: 0;
+}
+.full_box .add_file .add_button{
+    position: absolute;
+    width: 100%;
+    top:0;
+}
+.full_box .add_file .add_button a{
+    float: none;
+    color: #666666;
+    display: inline-block;
+    font-size: 14px;
+
+}
+.full_box .add_file .add_button span{
+    background: url("../../res/images/Mine/add.png") no-repeat;
+    width:12px;
+    height:12px;
+    display: inline-block;
+    margin-top: 24px;
+    margin-right: 5px;
+}
+
+.full_box .pos{
+    padding:22px 15px;
+    overflow: hidden;
+}
+.full_box .hide_pos{
+    display: none;
+}
+.full_box span,
+.full_box .progress,
+.upload_file{
+    float: left;
+}
+.full_box .upload_file{
+    width:300px;
+    display: inline-block;
+}
+.full_box .progress{
+    position: relative;
+    height:8px;
+    width: 400px;
+    border-radius: 8px;
+    background: #CCCCCC;
+    margin-left:15px;
+    margin-top:4px;
+    display: none;
+}
+.full_box .progress .progress_bar{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 200px;
+    height:8px;
+    border-radius: 8px;
+    background-color: #00D12C;
+}
+.full_box .pos a{
+    float: right;
+    display: none;
+    color: #688CFF;
+}
+
+
+/*上传更多 -end*/
+
+.checkP:hover{
+	background: #FD9B1F;
+	cursor: pointer;
+}
+.checkP a{
+	color:#111;
+	font-family: "微软雅黑";
+	font-size:16px;
+}
+.checkP:hover a{
+	color:#fff;
+}

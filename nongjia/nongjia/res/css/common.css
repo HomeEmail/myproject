@@ -1,9 +1,6 @@
 /******重置所有标签后，为某些标签定义自己的样式begin**************************************/
 body{
-	font-family: "Microsoft YaHei","微软雅黑","SimHei","黑体","SimSun","宋体",sans-serif;
-	font-size: 13px;
-    *letter-spacing: normal; /* reset IE < 8 */
-	word-wrap:break-word;/**允许单词内换行*/
+	
 }
 
 /******重置所有标签后，为某些标签定义自己的样式end**************************************/
@@ -160,6 +157,7 @@ body{_text-align:left;}/* IE5.5 */
 .pb25{padding-bottom:25px;}
 .pb30{padding-bottom:30px;}
 
+
 .pl5{padding-left:5px;}
 
 .pr10{padding-right:10px;}
@@ -273,8 +271,7 @@ body{_text-align:left;}/* IE5.5 */
 	visibility: hidden;
 	line-height: 0;
 	height: 0;
-}
- 
+} 
 .clearfix {
 	display: inline-block;
 }
@@ -288,10 +285,6 @@ html[xmlns] .clearfix {
 }
 /* end of clearfix */
 /*****其他CSS类 end*********************************/
-
-img{
-  vertical-align: middle;
-}
 a{
   color: #222222;
   text-decoration: none;
@@ -299,7 +292,15 @@ a{
 a:hover{
   color: #f39800;
 }
-
+.checkSelected{
+	color:#F58333;
+}
+.btnOrange{
+	background-color:#fd9c20;
+}
+.btnGreen{
+	background-color:#00d12c;
+}
 .gotop-wrapper{
   position: fixed;
   right: 30px;
@@ -311,4 +312,68 @@ a:hover{
   z-index: 1001;
   cursor: pointer;
 }
-
+.alertTitle{
+	background:#F5F5F5;
+}
+.alertTitle h1{
+	color: #666666;
+    font-weight: normal;
+    font-size: 18px;
+    padding: 15px 0 15px 20px;
+}
+.alertObj{
+	position:absolute;
+	min-width: 500px;
+    max-width: 1200px;
+    height: 240px;
+    z-index: 999;
+    display: none;
+    background: #ffffff;
+    position: absolute;
+}
+.alertContent{
+	text-align:center;
+}
+.alertContent p{
+	font-size: 14px;
+    color: #666666;
+    margin-top: 60px;
+    padding: 0 15px;
+	margin: 45px 0 15px 0;
+}
+.alertBtn_group{
+	clear: both;
+    text-align: center;
+    margin-top: 45px;
+}
+.alertBtn{
+	background: none;
+    margin-right: 20px;
+    border: none;
+    background-color: #FD9B1F;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 18px;
+    width: 160px;
+    text-align: center;
+	line-height:40px;
+    font-family: 'Microsoft YaHei';
+    outline: none;
+	cursor:pointer;
+}
+/*锁屏*/
+.locking{
+    width:10000px;
+    height:1000px;
+    background: #000000;
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+    position: absolute;
+    top:0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    display: none;
+}
+/*锁屏 -end*/

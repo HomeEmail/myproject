@@ -1,0 +1,32 @@
+
+#box{
+    margin:40px auto 120px auto;
+    width:60%;
+
+}
+
+#box div {
+    width: 200px;
+    margin:30px auto;
+    border:1px solid #CCCCCC;
+    padding:20px 80px;
+    text-align: center;
+    color: #909090;
+
+}
+#box div p{
+    display: inline-block;
+    font-size: 20px;
+    margin-left:20px;
+}
+#box div img{
+    vertical-align: middle;
+    width:48px;
+
+}
+
+#box .select{
+    border: 1px solid #EF8336;
+    color: #EF8336;
+}
+

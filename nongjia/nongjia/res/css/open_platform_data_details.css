@@ -1,0 +1,50 @@
+.content .information{
+	border:1px solid #DBDBDB;
+	width:100%;
+	overflow:hidden;
+	margin-bottom:20px;
+}
+.information .img_box{
+	margin:20px;
+	overflow:hidden;
+	display:inline-block;
+	float:left;
+}
+.information .introduce{
+	margin:20px 20px 20px 0px;
+	width:820px; 
+	overflow:hidden; 
+	display:inline-block; 
+	float:left;
+	border-bottom:1px solid #DBDBDB;
+}
+.information .introduce h1{
+	margin:10px 0 50px 0; 
+}
+.information .introduce p{
+	font-size:14px;
+	color:#666666;
+	line-height:35px; 
+}
+.information .btn{
+	font-size:18px;
+	display:inline-block;
+	color:#ffffff;
+	padding:20px 60px;
+	border-radius:5px;
+	background-color:#fd9c20;
+	margin:5px 80px 0px 0px;;
+}
+.content .resources{
+	width:100%;
+	overflow:hidden;
+	margin-bottom:20px;
+}
+.resources p{
+	padding-left:10px;
+	margin:20px 0;
+	line-height:20px;
+	width:100%;
+	font-size:14px;
+	color:#666666;
+}

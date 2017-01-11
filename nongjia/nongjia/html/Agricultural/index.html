@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>涉农就业-主页</title>
+<!-- 公共的css -->
+<link rel="stylesheet" type="text/css" href="../../res/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/head.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/Tab.css"/>
+<link rel="stylesheet" type="text/css" href="../../res/css/title_box.css"/>
+
+<!-- 当前的css -->
+<style>
+.ad_table td{
+	padding-right:9px !important;
+	padding-bottom:9px !important;
+	vertical-align:middle !important;
+}
+.main_left{
+	float:left;
+	width:840px;
+	overflow:hidden;
+	padding-bottom:50px;
+}
+.main_right{
+	float:right;
+	width:340px;
+	padding-bottom:50px;
+}
+.main_right .img{
+	margin-bottom:5px;
+	overflow:hidden;
+}
+.main_right .img a img{
+	display:inline-block;
+	float:left;
+}
+.jobs_title span{
+	display:inline-block;
+	padding:10px 30px;
+	margin:0;
+	font-size:18px;
+	color:#999999;
+	background-color:#f2f2f2;
+	cursor:pointer;
+}
+.navHidden{
+	display:none;
+}
+.jobs_title .checked{
+	color:#333333;
+	background-color:#ffffff;
+	border-top:4px solid #fd9c20;
+}
+.jobs_partTime:hover,.jobs_fullTime:hover .jobs_box{
+	cursor:pointer;
+}
+.jobs_box{
+	border:1px solid #cccccc;
+	overflow:hidden;
+	height:108px;
+	display:block;
+}
+.jobs_box .jobs span{
+	padding:5px 0;
+	font-size:18px;
+	color:#666666;
+	display:block;
+}
+.jobs_box .jobs .part_info{
+	padding-right:30px;
+}
+.flag label{
+	padding:5px 10px;
+	background-color:#edf9ff;
+	color:#3d9ccc;
+	display:inline-block;
+	border:1px solid #dbf3ff;
+	margin-right:10px;
+}
+.jobs_table{
+    width:100%;
+    border-top:2px solid #DBDBDB;
+    text-align: left;
+    margin-top:5px;
+    border-left:1px solid #DBDBDB;
+    border-right:1px solid #DBDBDB;
+}
+.jobs_table thead td{
+    color: #fd9c20;
+}
+.jobs_table th{
+    color: #333333 !important;
+}
+.jobs_table tr,.jobs_table th,.jobs_table td{
+    border-bottom:1px solid #DBDBDB;
+    font-size: 14px;
+    padding:10px 10px 10px 15px;
+    color: #656565;
+    text-align: left;
+    vertical-align: middle;
+}
+.jobs_table .bottom{
+    margin-bottom:45px !important;
+}
+</style>
+</head>
+<body>
+<!-- header begin -->
+<div id="topNav">
+    <input type="hidden" value="2" id="sessionAreaId"/>
+    <div id="TN_content">
+        <ul>
+            <li><img style="vertical-align: middle" src="../../res/images/yunxingzhong.png"/></li>
+            <li id="sn_city">广州市<a href="javascript:void(0)">[切换地区]</a></li>
+        </ul>
+        <ul class="right_list">
+            <li><a href="#" target="_blank">管理系统</a></li>
+            <li><a href="#">登录</a></li>
+            <li><a href="../Mine/Mine.html">我的农加</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <div class="choose_city_menu">
+            <div class="provide menu">
+                <h2>省份</h2>
+                <ul>
+                    <li><a data-city="1" href="http://www.nongj.com/nonjia/index.action?areaId=1">广东省</a></li>
+                </ul>
+            </div>
+            <div class="cities menu ">
+                <h2>市级</h2>
+            </div>
+            <div class="county menu">
+                <h2>县级</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- nav begin -->
+<div id="navBar">
+    <div id="NB_content">
+        <a href='#'><img src="../../res/images/logo1.png" /></a>
+        <div class="logo_wrap">
+            <span class="line"></span>
+            <div class="name_wrap">
+                <p class='T_name'>涉农就业</p>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#" class="checked">首页</a></li>
+            <li><a href="full_time_index.html">全职招聘</a></li>
+            <li><a href="part_time_index.html">兼职短工</a></li>
+            <li><a href="gov_job_index.html">政府事业单位</a></li>
+            <li><a href="resume_first.html">我的简历</a></li>
+            <li><a href="Delivery_record.html" >投递记录</a></li>
+            <li><a href="B_company_Pages.html" target="_blank">企业版</a></li>
+        </ul>
+    </div>
+</div>
+<!-- nav end -->
+<!-- banner begin -->
+<div style="padding-top:4px;">
+	<img id="bannerImg" src="../../res/images/Agricultural/banner.jpg" width="100%" />
+</div>
+<!-- banner end -->
+<div style="margin:0 auto; text-align:center; padding:30px; background-color:#f2f2f2;">
+	<span style="font-size:16px; color:#999999; padding-right:100px; border-right:1px solid #DBDBDB;">在线企业
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">1</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">2</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">3</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">4</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">5</label>
+		个
+	</span>
+	<span style="font-size:16px; color:#999999; padding-left:100px; border-right:1px solid #DBDBDDB;">在线求职
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">1</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">2</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">3</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">4</label>
+		<label style="color:#000; background-color:#FFFFFF; border:1px solid #DEDEDE; padding:5px; margin-left:2px;">5</label>
+		人
+	</span>
+</div>
+<div style="margin:0 auto; text-align:center; padding-top:30px; padding-bottom:15px; font-size:14px; overflow:hidden;">
+	<select style="padding:10px 2px; width:120px;">
+		<option>全职</option>
+		<option>兼职/短工</option>
+		<option>企业/单位</option>
+	</select>
+	<input type="text" placeholder="职位名称/关键词" style="width:600px; padding:10px 10px; font-size:12px; margin-left:10px; margin-right:-4px;" />
+	<input type="button" name="搜索" value="搜索" style="padding:9px 30px; background-color:#fd9c20; color:#ffffff; font-size:16px; border:0;" />
+</div>
+<!-- content begin -->
+<div id="container" class="container">
+    <div class="content" style="overflow:hidden;">
+		<div id="left_fixed" style="position:absolute; top:795px; width:100px; z-index:2;">
+			<a href="#"><img src="../../res/images/Agricultural/index_ad14.png" width="90" height="267" style="margin-bottom:10px; display:block;" /></a>
+			<a href="#"><img src="../../res/images/Agricultural/index_ad15.png" width="90" height="267" /></a>
+		</div>
+		<div id="right_fixed" style="position:absolute; top:795px; width:100px; z-index:2;">
+			<a href="#"><img src="../../res/images/Agricultural/index_ad16.png" width="90" height="267" style="padding-left:10px; margin-bottom:10px; display:block;" /></a>
+			<a href="#"><img src="../../res/images/Agricultural/index_ad17.png" width="90" height="267" style="padding-left:10px;" /></a>
+		</div>
+		<div style="width:1200px; height:72px; margin-bottom:10px; overflow:hidden;">
+			<a href="#"><img src="../../res/images/Agricultural/index_ad1.png" width="1200" height="72" /></a>
+		</div>
+		<div style="width:1200px; height:72px; margin-bottom:10px;">
+			<a href="#"><img src="../../res/images/Agricultural/index_ad2.png" width="1200" height="72" /></a>
+		</div>
+		<div style="width:1200px; overflow:hidden; display:block;">
+			<table class="ad_table" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td rowspan="2" width="400" height="153">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad3.png" width="394" height="153" /></a>
+					</td>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad4.png" width="394" height="72" /></a>
+					</td>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad6.png" width="394" height="72" /></a>
+					</td>
+				</tr>
+				<tr>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad5.png" width="394" height="72" /></a>
+					</td>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad7.png" width="394" height="72" /></a>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" width="400" height="153">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad8.png" width="394" height="153" /></a>
+					</td>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad9.png" width="394" height="72" /></a>
+					</td>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad11.png" width="394" height="72" /></a>
+					</td>
+				</tr>
+				<tr>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad10.png" width="394" height="72" /></a>
+					</td>
+					<td width="400" height="75">
+						<a href="#"><img src="../../res/images/Agricultural/index_ad12.png" width="394" height="72" /></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="width:1200px; height:72px; margin-bottom:10px;">
+			<a href="#"><img src="../../res/images/Agricultural/index_ad13.png" width="1200" height="97" /></a>
+		</div>
+    </div>
+	<div class="content" style="margin-top:20px;">
+		<div class="main_left">
+			<div class="jobs_title" style="font-size:0; margin-bottom:15px;">
+				<span class="checked">全职岗位</span>
+				<span>兼职/短工</span>
+			</div>
+			<div class="jobs_fullTime">
+				<div class="jobs_box">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px; border-right:1px dotted #cccccc;">
+							<span style="font-size:18px;">农化讲师</span>
+							<span style="font-size:16px;"><label style="color:#ff6a53;">3000-4500/月</label>&nbsp;&nbsp;|&nbsp;&nbsp;清远&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;|&nbsp;&nbsp;无学历工作经验要求</span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<span style="padding:5px 0; font-size:14px; color:#666666; width:360px; display:block;">金正大生态工程集团股份有限公司</span>
+						<span style="padding-bottom:25px; font-size:12px; color:#3d9ccc; display:block;">民营企业</span>
+						<span class="flag" style="font-size:12px; color:#999999; height:25px; width:360px; display:inline-block;">
+							<label>带薪年假</label>
+							<label>五险一金</label>
+							<label>包住宿</label>
+							<label>专业培训</label>
+						</span>
+					</div>
+				</div>
+				<div class="jobs_box" style="margin-top:10px;">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px; border-right:1px dotted #cccccc;">
+							<span style="font-size:18px;">农化讲师</span>
+							<span style="font-size:16px;"><label style="color:#ff6a53;">3000-4500/月</label>&nbsp;&nbsp;|&nbsp;&nbsp;清远&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;|&nbsp;&nbsp;无学历工作经验要求</span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<span style="padding:5px 0; font-size:14px; color:#666666; width:360px; display:block;">金正大生态工程集团股份有限公司</span>
+						<span style="padding-bottom:25px; font-size:12px; color:#3d9ccc; display:block;">民营企业</span>
+						<span class="flag" style="font-size:12px; color:#999999; height:25px; width:360px; display:inline-block;">
+							<label>带薪年假</label>
+							<label>五险一金</label>
+							<label>包住宿</label>
+							<label>专业培训</label>
+						</span>
+					</div>
+				</div>
+				<div class="jobs_box" style="margin-top:10px;">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px; border-right:1px dotted #cccccc;">
+							<span style="font-size:18px;">农化讲师</span>
+							<span style="font-size:16px;"><label style="color:#ff6a53;">3000-4500/月</label>&nbsp;&nbsp;|&nbsp;&nbsp;清远&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;|&nbsp;&nbsp;无学历工作经验要求</span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<span style="padding:5px 0; font-size:14px; color:#666666; width:360px; display:block;">金正大生态工程集团股份有限公司</span>
+						<span style="padding-bottom:25px; font-size:12px; color:#3d9ccc; display:block;">民营企业</span>
+						<span class="flag" style="font-size:12px; color:#999999; height:25px; width:360px; display:inline-block;">
+							<label>带薪年假</label>
+							<label>五险一金</label>
+							<label>包住宿</label>
+							<label>专业培训</label>
+						</span>
+					</div>
+				</div>
+				<div class="jobs_box" style="margin-top:10px;">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px; border-right:1px dotted #cccccc;">
+							<span style="font-size:18px;">农化讲师</span>
+							<span style="font-size:16px;"><label style="color:#ff6a53;">3000-4500/月</label>&nbsp;&nbsp;|&nbsp;&nbsp;清远&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;|&nbsp;&nbsp;无学历工作经验要求</span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<span style="padding:5px 0; font-size:14px; color:#666666; width:360px; display:block;">金正大生态工程集团股份有限公司</span>
+						<span style="padding-bottom:25px; font-size:12px; color:#3d9ccc; display:block;">民营企业</span>
+						<span class="flag" style="font-size:12px; color:#999999; height:25px; width:360px; display:inline-block;">
+							<label>带薪年假</label>
+							<label>五险一金</label>
+							<label>包住宿</label>
+							<label>专业培训</label>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="jobs_partTime navHidden">
+				<div class="jobs_box">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px;">
+							<span style="font-size:18px;">派传单</span>
+							<span style="font-size:16px;"><label class="part_info">工作地点：广州</label><label class="part_info">招聘人数：100人</label><label class="part_info">结算方式：日结</label></span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="float:right;">
+						<span style="padding-right:30px; font-size:18px; color:#fd9c20; line-height:105px; display:block;">100元/天</span>
+					</div>
+				</div>
+				<div class="jobs_box" style="margin-top:10px;">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px;">
+							<span style="font-size:18px;">派传单</span>
+							<span style="font-size:16px;"><label class="part_info">工作地点：广州</label><label class="part_info">招聘人数：100人</label><label class="part_info">结算方式：日结</label></span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="float:right;">
+						<span style="padding-right:30px; font-size:18px; color:#fd9c20; line-height:105px; display:block;">100元/天</span>
+					</div>
+				</div>
+				<div class="jobs_box" style="margin-top:10px;">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px;">
+							<span style="font-size:18px;">派传单</span>
+							<span style="font-size:16px;"><label class="part_info">工作地点：广州</label><label class="part_info">招聘人数：100人</label><label class="part_info">结算方式：日结</label></span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="float:right;">
+						<span style="padding-right:30px; font-size:18px; color:#fd9c20; line-height:105px; display:block;">100元/天</span>
+					</div>
+				</div>
+				<div class="jobs_box" style="margin-top:10px;">
+					<div style="padding:10px 0px 10px 30px; float:left;">
+						<div class="jobs" style="padding-right:20px;">
+							<span style="font-size:18px;">派传单</span>
+							<span style="font-size:16px;"><label class="part_info">工作地点：广州</label><label class="part_info">招聘人数：100人</label><label class="part_info">结算方式：日结</label></span>
+							<span style="font-size:12px; color:#999999;">2016-10-11</span>
+						</div>
+					</div>
+					<div style="float:right;">
+						<span style="padding-right:30px; font-size:18px; color:#fd9c20; line-height:105px; display:block;">100元/天</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="more_jobs" style="float:right; margin-top:10px;">
+				<a href="#" style="padding:10px 20px; display:inline-block; color:#FFFFFF; font-size:14px; background-color:#fd9c20;">查看更多</a>
+			</div>
+			
+			<div style="overflow:hidden; width:100%; padding-top:30px;">
+				<div class="title_box" style="padding-top:0px;">
+					<h1><span class="line"></span>政府/事业单位招聘</h1>
+               		<a href="#">更多&gt;</a>
+				</div>
+				<table class="jobs_table">
+					<thead>
+					<tr>
+						<th>公告名称</th>
+						<th>公司名称</th>
+						<th>发布日期</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>广州市农业局直属事业单位2016年公开招聘工作人员公告</td>
+						<td>广东省农业局</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>广州市农业局直属事业单位2016年公开招聘工作人员公告</td>
+						<td>广东省农业局</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>广州市农业局直属事业单位2016年公开招聘工作人员公告</td>
+						<td>广东省农业局</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>广州市农业局直属事业单位2016年公开招聘工作人员公告</td>
+						<td>广东省农业局</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>广州市农业局直属事业单位2016年公开招聘工作人员公告</td>
+						<td>广东省农业局</td>
+						<td>2016-10-11</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div style="overflow:hidden; width:100%; padding-top:30px;">
+				<div class="title_box" style="padding-top:0px;">
+					<h1><span class="line"></span>最新求职</h1>
+               		<a href="#">更多&gt;</a>
+				</div>
+				<table class="jobs_table">
+					<thead>
+					<tr>
+						<th>姓名</th>
+						<th>意向职位</th>
+						<th>意向地点</th>
+						<th>性别</th>
+						<th>学历</th>
+						<th>工作经验</th>
+						<th>更新时间</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>李先生</td>
+						<td>Java工程师</td>
+						<td>梅州</td>
+						<td>男</td>
+						<td>本科</td>
+						<td>工作经验</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>李先生</td>
+						<td>Java工程师</td>
+						<td>梅州</td>
+						<td>男</td>
+						<td>本科</td>
+						<td>工作经验</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>李先生</td>
+						<td>Java工程师</td>
+						<td>梅州</td>
+						<td>男</td>
+						<td>本科</td>
+						<td>工作经验</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>李先生</td>
+						<td>Java工程师</td>
+						<td>梅州</td>
+						<td>男</td>
+						<td>本科</td>
+						<td>工作经验</td>
+						<td>2016-10-11</td>
+					</tr>
+					<tr>
+						<td>李先生</td>
+						<td>Java工程师</td>
+						<td>梅州</td>
+						<td>男</td>
+						<td>本科</td>
+						<td>工作经验</td>
+						<td>2016-10-11</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="main_right">
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad18.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad19.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad20.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad21.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad22.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad23.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad24.png" width="49%" height="100%" style="padding-right:2%;" /></a>
+				<a href="#"><img src="../../res/images/Agricultural/index_ad25.png" width="49%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad26.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad27.png" width="100%" height="100%" /></a>
+			</div>
+			<div class="img">
+				<a href="#"><img src="../../res/images/Agricultural/index_ad28.png" width="100%" height="100%" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- content end -->
+
+<!-- footer begin -->
+<div id="loginFooter">
+    <div id="footerText">
+        <div class="link">
+            <h6>友情链接</h6>
+            <a href="#">广东农业信息网</a>
+            <a href="#">广东乡村网</a>
+            <a href="#">合算网</a>
+            <a href="#">食安达</a>
+            <a href="#">农业银行</a>
+        </div>
+        <a href="#">关于我们</a>
+        <a href="#">帮助中心</a>
+        <a href="#">管理系统</a>
+        <a href="#">用户协议</a>
+        <a class='last_noR' href="#">联系电话：400-020-8886600</a>
+    </div>
+    <p id="copyRight">Copyright ©广州神农信息技术服务有限公司主办|粤ICP备12071480-4号</p>
+</div>
+<!-- footer end -->
+
+<!-- 公共的 js -->
+<script type="text/javascript" src="../../res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../res/js/common.js"></script>
+<script type="text/javascript">
+var index = 0;
+$(document).ready(function () {
+	var width = document.body.clientWidth;  //1920/2  600
+	var overwidth = width/2 - 600 - 100;
+	if(overwidth > 0){
+    	document.getElementById("left_fixed").style.left = overwidth +"px";
+		document.getElementById("right_fixed").style.right = overwidth +"px";
+	}else{
+		document.getElementById("left_fixed").style.left = 0 +"px";
+		document.getElementById("right_fixed").style.right = 0 +"px";
+	}
+	if(width > 1300){
+		document.getElementById("left_fixed").style.display = "block";
+		document.getElementById("right_fixed").style.display = "block";
+	}
+	$('.jobs_title span').click(function () {
+		var index = $(this).index();
+		$(this).addClass('checked').siblings().removeClass('checked');
+		if(index != 0){
+			index = 0;
+			$('.jobs_fullTime').addClass('navHidden');
+			$('.jobs_partTime').removeClass('navHidden');
+		}else{
+			index = 1;
+			$('.jobs_partTime').addClass('navHidden');
+			$('.jobs_fullTime').removeClass('navHidden');
+		}
+	});
+	$('.jobs_partTime .jobs_box').click(function () {
+		window.location.href = "part_time_detail.html";
+	});
+	$('.jobs_fullTime .jobs_box').click(function () {
+		window.location.href = "job_detail.html";
+	});
+	$('.more_jobs').click(function () {
+		if(index == 0){
+			window.location.href = "full_time_index.html";
+		}else{
+			window.location.href = "part_time_index.html";
+		}
+	});
+});
+$(window).scroll(function(event){
+	var top = document.getElementById("container").offsetTop;
+	var documentWindow = document.body.scrollTop;
+	if(documentWindow == 0){
+		document.getElementById("left_fixed").style.top = top +"px";
+		document.getElementById("right_fixed").style.top = top +"px";
+	}else if(documentWindow > top - 1){
+		document.getElementById("left_fixed").style.top = documentWindow + 100 +"px";
+		document.getElementById("right_fixed").style.top = documentWindow + 100 +"px";
+	}
+});
+</script>
+
+</body>
+</html>

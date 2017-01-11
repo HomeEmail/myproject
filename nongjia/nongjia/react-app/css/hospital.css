@@ -1,0 +1,34 @@
+.hos_items{
+    overflow: hidden;
+}
+.hos_name{
+    color: #45a7ff;
+    font-size: 14px;
+
+}
+.hos_level{
+    display: inline-block;
+    color: #fff;
+    background-color: #ff8f45;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 3px;
+}
+.items_key{
+    color: #898989;
+    font-size: 12px;
+}
+.items_value{
+    color: #383737;
+    font-size: 12px;
+}
+ul li{
+    margin-bottom:5px;
+}
+.items_server{
+    color: #ff8f45;
+    background: #e9e9e9;
+    font-size: 12px;
+    margin-right: 5px;
+}

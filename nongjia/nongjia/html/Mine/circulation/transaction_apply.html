@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+    <title>农加网-交易鉴证详情</title>
+    <!-- 公共的css -->
+    <link rel="stylesheet" type="text/css" href="../../../res/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/button.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/full_formstyle.css"/>
+
+    <!-- 当前的css -->
+
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../../../res/js/DD_belatedPNG.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix(".ie6png");
+    </script>
+    <![endif]-->
+</head>
+<body>
+<!-- header begin -->
+<div id="topNav">
+    <input type="hidden" value="2" id="sessionAreaId"/>
+    <div id="TN_content">
+        <ul>
+            <li><img style="vertical-align: middle" src="../../../res/images/yunxingzhong.png"/></li>
+            <li id="sn_city">广州市<a href="javascript:void(0)">[切换地区]</a></li>
+        </ul>
+        <ul class="right_list">
+            <li><a href="#" target="_blank">管理系统</a></li>
+            <li><a href="#">登录</a></li>
+            <li><a href="../../Mine/Mine.html">我的农加</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <div class="choose_city_menu">
+            <div class="provide menu">
+                <h2>省份</h2>
+                <ul>
+                    <li><a data-city="1" href="http://www.nongj.com/nonjia/index.action?areaId=1">广东省</a></li>
+                </ul>
+            </div>
+            <div class="cities menu ">
+                <h2>市级</h2>
+            </div>
+            <div class="county menu">
+                <h2>县级</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- nav begin -->
+<div id="navBar">
+    <div id="NB_content">
+        <a href='#'><img src="../../../res/images/logo1.png" alt="农加网"/></a>
+        <div class="logo_wrap">
+            <span class="line"></span>
+            <div class="name_wrap">
+                <p class='T_name'>我的农加</p>
+            </div>
+        </div>
+        <div class="back" onClick="location='http://test.nongj.com/html/index.html'">
+            <span class="M_logo logo7"></span><span>返回首页</span>
+        </div>
+    </div>
+</div>
+<!-- nav end -->
+
+<!-- content begin -->
+<div class="content main_wrap">
+    <div class="content nav_list">
+        <span><a href="../../index.html">首页</a></span>>
+        <span><a href="#" class="checked">交易鉴证申请</a></span>
+    </div>
+    <div class="main">
+        <form action="">
+            <div class="fill_in">
+                <div class="type_title">
+                    <h1>项目信息</h1>
+                </div>
+                <div class="sheet">
+                    <div>
+                        <ul>
+                            <li><span class="align_right"><label>项目编号：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="fill_in">
+                <div class="type_title">
+                    <h1>合同信息</h1>
+                </div>
+                <div class="sheet">
+                    <ul>
+                        <li><span class="align_right"><label>省辖市：</label></span>
+                            <div class="border small_select"><select name="" >
+                                <option value="市">市</option>
+                            </select></div>
+                            <div class="border small_select"><select name="" >
+                                <option value="县">县</option>
+                            </select></div>
+                            <div class="border small_select"><select name="">
+                                <option value="镇">镇</option>
+                            </select></div>
+
+                        </li>
+                    </ul>
+                    <div class="left_main">
+                        <ul>
+
+                            <li><span class="align_right"><label>合同编号：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>甲方：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>甲方地址：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>转出行为批准机构：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>流转标的：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>流转期限：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>地块编码：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>成交价格：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>支付方式：</label></span>
+                                <div class="border"><select name="">
+                                    <option value="一次性支付">一次性支付</option>
+                                </select></div>
+                            </li>
+                            <li><span class="align_right"><label>合同签订日期：</label></span>
+                                <div class="border has_in"><input class="input date" type="text"/><span class="in_input date_img"></span></div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="right_main">
+                        <ul>
+                            <li><span class="align_right"><label>乙方：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>乙方地址：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>确权机构：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>流转形式：</label></span>
+                                <div class="border"><select name="">
+                                    <option value=""></option>
+                                </select></div>
+                            </li>
+                            <li><span class="align_right"><label>流转面积：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>坐落四至：</label></span>
+                                东<div class="border" style="width: 140px;margin:0 13px 20px 13px;"><input class="input" style="width: 130px;" type="text"/></div>
+                                西<div class="border" style="width: 140px;margin:0 13px 20px 13px;"><input class="input" style="width: 130px;" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label></label></span>
+                                南<div class="border" style="width: 140px;margin:0 13px 20px 13px;"><input class="input" style="width: 130px;" type="text"/></div>
+                                北<div class="border" style="width: 140px;margin:0 13px 20px 13px;"><input class="input" style="width: 130px;" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>交易底价：</label></span>
+                                <div class="border"><input class="input" type="text"/></div>
+                            </li>
+                            <li><span class="align_right"><label>是否用于抵押：</label></span>
+                                <div class="border" style="border: none;">
+                                    <input name="yrn2" type="radio"><label>是</label>
+                                    <input name="yrn2" type="radio"><label>否</label>
+                                </div>
+                            </li>
+                            <li><span class="align_right"><label>合同生效日期：</label></span>
+                                <div class="border has_in"><input class="input date" type="text"/><span class="in_input date_img"></span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul style="clear: both">
+                        <li><span class="align_right v_top"><label>合同明细：</label></span>
+                            <div class="full_box">
+                                <textarea></textarea>
+                            </div>
+
+                        </li>
+                        <li><span class="align_right v_top"><label>合同扫描件   ：</label></span>
+                            <div class="full_box">
+                                <div class="pos hide_pos">
+                                    <div class="progress">
+                                        <div class="progress_bar"></div>
+                                    </div>
+                                    <a href="javascript:void (0)">删除</a>
+                                </div>
+                                <div class="add_file">
+                                    <input class="upload_file" type="file">
+                                    <div class="add_button">
+                                        <a href="javascript:void(0)"><span></span>点击上传相关材料</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><span class="align_right v_top"><label>备注：</label></span>
+                            <div class="full_box">
+                                <textarea></textarea>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="btn_group">
+                <input type="submit" class="btn" value="提交申请">
+            </div>
+        </form>
+
+
+
+    </div>
+</div>
+
+
+<!-- content end -->
+
+<!-- footer begin -->
+<div id="loginFooter">
+    <div id="footerText">
+        <div class="link">
+            <h6>友情链接</h6>
+            <a href="#">广东农业信息网</a>
+            <a href="#">广东乡村网</a>
+            <a href="#">合算网</a>
+            <a href="#">食安达</a>
+            <a href="#">农业银行</a>
+        </div>
+        <a href="#">关于我们</a>
+        <a href="#">帮助中心</a>
+        <a href="#">管理系统</a>
+        <a href="#">用户协议</a>
+        <a class='last_noR' href="#">联系电话：400-020-8886600</a>
+    </div>
+    <p id="copyRight">Copyright ©广州神农信息技术服务有限公司主办|粤ICP备12071480-4号</p>
+</div>
+<!-- footer end -->
+
+<!-- 公共的 js -->
+<script type="text/javascript" src="../../../res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../../res/js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../../res/js/common.js"></script>
+<script type="text/javascript" src="../../../res/js/progress.js"></script>
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>

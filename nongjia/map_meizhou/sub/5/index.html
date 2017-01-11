@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>丰顺县确权统计</title>
+<style>
+body{
+	font-family: 'Microsoft YaHei';
+	width:100%;
+	min-width:1366px;
+	background-color: #000;
+	margin: 0;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+.container{
+	position: relative;
+	width: 100%;
+	min-width:1366px;
+}
+.detail_btn{
+	padding:10px 65px;
+	color:#ffffff;
+	font-size:22px;
+	background-color:#09afd3;
+	border-radius:2px;
+	text-decoration:none;
+}
+.area{
+	height:12px;
+	line-height:12px;
+	font-size:12px;
+	color:#ffffff;
+	display:block;
+	margin-bottom:3px;
+}
+.list{
+	color:#ffffff;
+	font-size:16px;
+	width:360px;
+	display:block;
+	height:12px;
+	line-height:12px;
+	margin-bottom:3px;
+}
+.progress{
+	line-height:12px;
+	float:left;
+	height:12px;
+	margin-right:10px;
+	display:inline-block;	
+}
+.dataDesc{
+	display:block;
+	line-height:15px;
+}
+.map_name{
+	display:inline-block;
+	color:#ffffff;
+	width:100px;
+	height:100px;
+	cursor:pointer;
+}
+.map_name .big_icon{
+	margin-left:20px;
+	display:block;
+	border:2px solid #ffffff;
+	width:16px;
+	height:16px;
+	border-radius:50%;
+}
+.map_name .small_icon{
+	display:block;
+	background:#ffffff;
+	width:10px;
+	height:10px;
+	margin:3px;
+	border-radius:50%;
+}
+.map_name .townName{
+	margin:20px 0 0 10px;
+	display:block;
+	font-size:21px;
+}
+.pieChart_box{
+	position:absolute;
+	left:1455px;
+	width:400px;
+	height:310px;
+	background: url('img/box.png') no-repeat;
+}
+.pie_1 {
+	width: 180px;
+	height: 180px;
+	position:absolute;
+	top:55px;
+	left:205px;
+	border-radius: 50%;
+	background: #7ECEF4;
+	background-image: linear-gradient(to right, transparent 50%, #FFF100 0); 
+}
+#pie_2{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	top: 0px;
+	left: 15px;
+}
+.progress_cycle {
+	margin-left: 50%;
+	width: 90px;
+	height: 100%;
+	border-radius: 0 100% 100% 0 / 50%;
+	background: #7ECEF4;
+	transform-origin: left;
+}
+.progress_cycle_more{
+	background: #FFF100;
+}
+ .data{
+	 position: absolute;
+	 top: 170px;
+	 left:20px;
+ }
+.data span{
+	color: #fff;
+	font-size: 12px;
+}
+.data em{
+	display: inline-block;
+	width:5px;
+	height:5px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.data2{
+	top:260px;
+	left:20px;
+}
+
+.smooth { -webkit-transition-duration:1000ms; -moz-transition-duration:1000ms; }
+.line_chart{
+	position: absolute;
+	top:40px;
+	left:15px;
+}
+#line{
+	width:362px;
+	height:234px;
+
+}
+.percentage_box{
+	position:absolute;
+	top:5px;
+	left:45px;
+	width:100px;
+	height:120px;
+	color:#ffffff;
+}
+.percentage{
+	font-size:32px;
+	color:#ffffff;
+	position:absolute;
+	bottom:10px;
+	left:47px;
+	padding-bottom:10px;
+	border-bottom:1px solid #ffffff;
+}
+.data3{
+	top:18px;
+	left:250px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+	<img src="img/bg.jpg" />
+	<div id="title" style="position:absolute; top:23px; left:0px; width:650px; height:96px; line-height:96px; font-weight:bold; background-color:#0788ab; padding-left:80px; font-size:44px; color:#ffffff;"></div>
+	<div style="position:absolute; top:120px; left:65px; color:#ffffff; font-size:30px;">完成确权面积 <span id="data_mu" style="font-size:73px;"></span> 亩</div>
+	<div style="position:absolute; top:120px; left:650px; color:#ffffff; font-size:30px; z-index:10;">已确权农户 <span id="data_family" style="font-size:73px;"></span> 户</div>
+	<div style="position:absolute; top:130px; left:1620px; width:220px; height:100px;"><a href="#" class="detail_btn">返回</a></div>
+	<div style="position:absolute;background: url('img/box.png') no-repeat; top:240px; left:65px; width:400px; height:310px;">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">确权面积</span>
+		<div style="position:absolute; top:45px; left:0px; width:50px; height:250px; border-right:2px solid #dedede;">
+			<div style="padding-top:8px; padding-left:5px; width:45px; text-align:center;">
+				<span id="name_0" class="area"></span>
+				<span id="name_1" class="area"></span>
+				<span id="name_2" class="area"></span>
+				<span id="name_3" class="area"></span>
+				<span id="name_4" class="area"></span>
+				<span id="name_5" class="area"></span>
+				<span id="name_6" class="area"></span>
+				<span id="name_7" class="area"></span>
+				<span id="name_8" class="area"></span>
+				<span id="name_9" class="area"></span>
+				<span id="name_10" class="area"></span>
+				<span id="name_11" class="area"></span>
+				<span id="name_12" class="area"></span>
+				<span id="name_13" class="area"></span>
+				<span id="name_14" class="area"></span>
+				<span id="name_15" class="area"></span>
+			</div>
+		</div>
+		<div style="position:absolute; top:45px; left:50px; width:340px; height:235px; border-top:2px solid #dedede;">
+			<div style="padding-top:8px; padding-left:2px; width:360px;">
+				<div class="list">
+					<div id="list_0" class="progress smooth" style="width:0px; background-color:#84ccc9;"></div>
+					<span id="data_0" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_1" class="progress smooth" style="width:0px; background-color:#13b5b1;"></div>
+					<span id="data_1" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_2" class="progress smooth" style="width:0px; background-color:#009e96;"></div>
+					<span id="data_2" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_3" class="progress smooth" style="width:0px; background-color:#00736d;"></div>
+					<span id="data_3" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_4" class="progress smooth" style="width:0px; background-color:#448aca;"></div>
+					<span id="data_4" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_5" class="progress smooth" style="width:0px; background-color:#fff100;"></div>
+					<span id="data_5" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_6" class="progress smooth" style="width:0px; background-color:#0068b7;"></div>
+					<span id="data_6" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_7" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_7" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_8" class="progress smooth" style="width:0px; background-color:#448aca;"></div>
+					<span id="data_8" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_9" class="progress smooth" style="width:0px; background-color:#fff100;"></div>
+					<span id="data_9" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_10" class="progress smooth" style="width:0px; background-color:#0068b7;"></div>
+					<span id="data_10" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_11" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_11" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_12" class="progress smooth" style="width:0px; background-color:#0068b7;"></div>
+					<span id="data_12" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_13" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_13" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_14" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_14" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_15" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_16" class="dataDesc"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="map" style="position:absolute; top:128px; left:235px; width:1266px; height:850px;">
+		<div id="map_0" style="position:absolute; top:24px; left:540px; width:306px; height:252px; background:url(img/map_01.png); z-index:2;">
+			<div class="map_name" style="position:absolute; top:90px; left:110px;">
+				<label class="townName">大龙华镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_1" style="position:absolute; top:2px; left:739px; width:244px; height:170px; background:url(img/map_02.png); z-index:2;">
+			<div class="map_name" style="position:absolute; top:50px; left:85px;">
+				<label class="townName">砂田镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_2" style="position:absolute; top:148px; left:826px; width:154px; height:165px; background:url(img/map_03.png); z-index:5;">
+			<div class="map_name" style="position:absolute; top:40px; left:60px;">
+				<label class="townName">小胜镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_3" style="position:absolute; top:87px; left:936px; width:346px; height:269px; background:url(img/map_04.png); z-index:2;">
+			<div class="map_name" style="position:absolute; top:105px; left:90px;">
+				<label class="townName">潭江镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_4" style="position:absolute; top:118px; left:455px; width:196px; height:243px; background:url(img/map_05.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:85px; left:55px;">
+				<label class="townName">龙岗镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_5" style="position:absolute; top:226px; left:627px; width:295px; height:183px; background:url(img/map_06.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:40px; left:110px;">
+				<label class="townName">黄金镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_6" style="position:absolute; top:238px; left:321px; width:255px; height:298px; background:url(img/map_07.png); z-index:3;">
+			<div class="map_name" style="position:absolute; top:95px; left:135px;">
+				<label class="townName">丰良镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_7" style="position:absolute; top:314px; left:556px; width:255px; height:240px; background:url(img/map_08.png); z-index:3;">
+			<div class="map_name" style="position:absolute; top:55px; left:80px;">
+				<label class="townName">潘田镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_8" style="position:absolute; top:291px; left:704px; width:466px; height:398px; background:url(img/map_09.png); z-index:1;">
+			<div class="map_name" style="position:absolute; top:150px; left:180px;">
+				<label class="townName">留隍镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_9" style="position:absolute; top:368px; left:206px; width:272px; height:141px; background:url(img/map_10.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:15px; left:100px;">
+				<label class="townName">建桥镇</label>
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_10" style="position:absolute; top:452px; left:210px; width:255px; height:130px; background:url(img/map_11.png); z-index:5;">
+			<div class="map_name" style="position:absolute; top:5px; left:75px;">
+				<label class="townName">北斗镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_11" style="position:absolute; top:465px; left:372px; width:370px; height:221px; background:url(img/map_12.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:60px; left:120px;">
+				<label class="townName">汤坑镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_12" style="position:absolute; top:553px; left:169px; width:287px; height:244px; background:url(img/map_13.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:50px; left:110px;">
+				<label class="townName">汤西镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_13" style="position:absolute; top:655px; left:352px; width:263px; height:135px; background:url(img/map_14.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:10px; left:80px;">
+				<label class="townName">汤南镇</label>
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_14" style="position:absolute; top:571px; left:-60px; width:305px; height:275px; background:url(img/map_15.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:90px; left:130px;">
+				<label class="townName">八乡山镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+		<div id="map_15" style="position:absolute; top:725px; left:212px; width:273px; height:126px; background:url(img/map_16.png); z-index:4;">
+			<div class="map_name" style="position:absolute; top:20px; left:150px;">
+				<label class="townName">埔寨镇</label><br />
+				<span class="big_icon">
+					<span class="small_icon"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--<div class="pieChart_box" style="top:230px;">
+		<div id="pie_1">
+			<div class="progress_cycle smooth"></div>
+			<div class="circle"></div>
+		</div>
+		<div class="data data2">
+			<span><em style="background:#FFF100"></em>完成部分</span>
+			<span><em style="background:#7ECEF4"></em>未完成部分</span>
+		</div>
+	</div>-->
+	<div style="position:absolute;background: url('img/box.png') no-repeat; top:585px; left:65px; width:400px; height:310px;">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">确权进度</span>
+		<div class="line_chart">
+			<div id="line">
+	
+			</div>
+			<div class="data data3">
+				<span><em style="background:pink"></em>丰顺县</span>
+				<span><em class="select_color" style="background:#84ccc9"></em><span class="select_name"></span></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="pieChart_box" style="top:240px;">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">确权占比</span>
+		<div class="pie_1">	
+			<div class="progress_cycle smooth"></div>
+		</div>
+		<div class="percentage_box mapdata_1" style="position:absolute; top:35px; left:25px; width:100px; height:140px; color:#ffffff;">
+			<div style="background-image:url(img/b_line.png); position:absolute; top:0px; left:0px; width:61px; height:130px;"></div>
+			<span class="percentage"></span>
+		</div>
+		<div class="data data2">
+			<span><em style="background:#FFF100"></em>完成部分</span>
+			<span><em style="background:#7ECEF4"></em>未完成部分</span>
+		</div>
+	</div>
+	<div class="pieChart_box" style="top:585px;">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">流转占比</span>
+		<div id="pie_2">
+			<!--<div class="progress_cycle smooth"></div>
+			<div class="circle"></div>-->
+		</div>
+		<div class="percentage_box mapdata_2" style="position:absolute; top:45px; left:25px; width:100px; height:110px; color:#ffffff;">
+			<div style="background-image:url(img/b_line.png); position:absolute; top:0px; left:0px; width:61px; height:100px;"></div>
+			<span class="percentage" style="left:37px;"></span>
+		</div>
+		<div class="data">
+			<span><em style="background:#84ccc9"></em>大龙华</span>
+			<span><em style="background:#13b5b1"></em>砂田镇</span>
+			<span><em style="background:#009e96"></em>小胜镇</span>
+			<br/>
+			<span><em style="background:#00736d"></em>潭江镇</span>
+			<span><em style="background:#448aca"></em>龙岗镇</span>
+			<span><em style="background:#fff100"></em>黄金镇</span>
+			<br/>
+			<span><em style="background:#0068b7"></em>丰良镇</span>
+			<span><em style="background:#556fb5"></em>潘田镇</span>
+			<span><em style="background:#556fb5"></em>留隍镇</span>
+			<br/>
+			<span><em style="background:#0068b7"></em>建桥镇</span>
+			<span><em style="background:#556fb5"></em>北斗镇</span>
+			<span><em style="background:#556fb5"></em>汤坑镇</span>
+			<br/>
+			<span><em style="background:#0068b7"></em>汤西镇</span>
+			<span><em style="background:#556fb5"></em>汤南镇</span>
+			<span><em style="background:#556fb5"></em>八乡山镇</span>
+			<br/>
+			<span><em style="background:#556fb5"></em>埔寨镇</span>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../js/lib.js"></script>
+<script type="text/javascript" src="../../js/echarts.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/pie.js"></script>
+<script type="text/javascript" src="js/line.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	checkName = Q.getDecoded("checkName");
+	$('#title').html("广东省梅州市"+ checkName +"确权统计");
+	showListData(checkPos);
+	changeMap(checkPos);
+	$('.mapdata_1 .percentage').html(dataList[checkPos].rate +"%");
+	$('.mapdata_2 .percentage').html(dataList[checkPos].rate +"%");
+	pie_show(dataList[checkPos].name);
+	$('#data_mu').html(dataList[checkPos].data);
+	$('#data_family').html(dataList[checkPos].family);
+	showProgress(".pie_1 .progress_cycle",dataList[checkPos].rate);
+	$('.select_name').text(dataList[checkPos].name);
+});
+function showListData(_pos){
+	for(var i = 0;i < dataList.length;i++){
+		var dataWidth = 250*parseFloat(dataList[i].data/35000) +"px";
+		$("#name_"+ i).html(dataList[i].name);
+		$("#list_"+ i).css({'width':dataWidth,'height':'8px'});
+		$("#data_"+ i).html('');
+	}
+	$("#list_"+ _pos).css({'height':'12px'});
+	$("#data_"+ _pos).html(dataList[_pos].data+'亩');
+}
+function changeMap(j){
+	for(var i = 0;i < dataList.length;i++){
+		$("#map_"+ i).css('background','url(img/'+ dataList[i].img +'.png)');
+	}
+	$("#map_"+ checkPos).css('background','url(img/'+ dataList[checkPos].checkImg +'.png)');
+	if(j==-1)return;
+	$("#map_"+ j).css('background','url(img/'+ dataList[j].checkImg +'.png)');
+}
+function showProgress(obj,_index){
+	if(_index > 50){
+		_index -= 50;
+		$(obj).addClass('progress_cycle_more');
+	}else{
+		$(obj).removeClass('progress_cycle_more');
+	}
+	$(obj).css('transform', 'rotate('+ 36*_index/10 +'deg)');
+}
+//显示饼图选中区域
+function pie_show(_name) {
+	myChart1.dispatchAction({
+		type: 'pieSelect',
+		name: _name
+	});
+}
+//显示折线图选中区域
+function line_show(_name) {
+	myChart.dispatchAction({
+		type: 'legendSelect',
+		name: _name
+	});
+}
+//隐藏折线图选中区域
+function line_hide(_name) {
+	myChart.dispatchAction({
+		type: 'legendUnSelect',
+		name: _name
+	});
+}
+var checkPos = 0;
+$(document).ready(function(){
+	line_show(dataList[checkPos].name);
+	pie_show(dataList[checkPos].name);
+	$(".map_name").mouseover(function(){
+		changeMap($(this).parent().index());
+		$(this).parent().css('background','url(img/'+ dataList[$(this).parent().index()].checkImg +'.png)');
+	}).mouseout(function(){
+		changeMap(-1);
+	});
+	$(".map_name").click(function(){
+		line_hide(dataList[checkPos].name)
+		
+		checkPos = $(this).parent().index();
+		$('.select_color').css('background',dataList[checkPos].color);
+		$('.select_name').text(dataList[checkPos].name);
+		line_show(dataList[checkPos].name);
+		pie_show(dataList[checkPos].name);
+		$('.line img').attr('src','img/line'+checkPos+'.png');
+		changeMap(checkPos);
+		$('.progress').removeClass('smooth');
+		$('#data_mu').html(dataList[checkPos].data);
+		$('#data_family').html(dataList[checkPos].family);
+		showListData(checkPos);
+		showProgress(".pie_1 .progress_cycle",dataList[checkPos].rate);
+		$('.mapdata_1 .percentage').html(dataList[checkPos].rate +"%");
+		$('.mapdata_2 .percentage').html(dataList[checkPos].rate +"%");
+	});
+	$(".detail_btn").click(function(){
+		location.href = "../../index.html";
+	});
+});
+</script>
+</body>
+</html>

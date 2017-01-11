@@ -1,0 +1,23 @@
+.crumbs{
+    padding:10px 0
+}
+.crumbs a{
+    color: #585858;
+    font-size: 14px;
+}
+.crumbs a:hover{
+    color: #45a7ff;
+}
+
+.mes_list li{
+    border-bottom: 1px dashed #efefef ;
+}
+.mes_list li a{
+    color: #585858;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.mes_list li a:hover{
+    color: #45a7ff;
+
+}

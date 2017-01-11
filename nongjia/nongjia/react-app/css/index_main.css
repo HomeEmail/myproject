@@ -1,0 +1,119 @@
+ul li{
+    list-style: none;
+}
+
+.main{
+    margin-top: 10px;
+    overflow: hidden;
+
+}
+
+.l_main{
+    width:720px;
+    float: left;
+}
+.r_main{
+    width:270px;
+    float: right;
+
+}
+.top{
+    height:250px;
+}
+.middle{
+    margin-top: 10px;
+}
+.fast_order{
+    padding:15px 15px 30px 15px;
+    font-size: 14px;
+    background-color: #fafafa;
+
+}
+.fast_order ul li{
+    margin-bottom: 10px;
+}
+.fast_order h1{
+    background: url('../image/fast_order_logo.png') 70px 0 no-repeat;
+    padding-bottom: 15px;
+    text-align: center;
+}
+.fast_order h1 span{
+    color: #ff8f45;
+    font-size: 18px;
+}
+.fast_order select{
+    width:154px;
+    font-size: 14px;
+}
+.help{
+    background: #fafafa;
+    padding:10px 20px 35px 20px;
+}
+.help h1{
+    background: url('../image/help_logo.png') 70px 0 no-repeat;
+    padding-bottom: 15px;
+    text-align: center;
+}
+.help h1 span{
+    color: #45a7ff;
+    font-size: 18px;
+}
+.help .btn_group .btn{
+    margin:8px 11px;
+}
+
+.notice{
+
+
+
+}
+.hos_title{
+    height:30px;
+    line-height: 30px;
+    background-color: #fafafa;
+}
+.notice .hos_title span{
+    display: inline-block;
+    color: #45a7ff;
+    margin-right: 5px;
+
+}
+.notice .hos_title a{
+    display: inline-block;
+    color: #45a7ff;
+}
+.notice ul li{
+    margin: 20px 0;
+}
+.notice ul li a {
+    display: inline-block;
+    width:215px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+    color: #585858;
+}
+.notice ul li a:hover {
+    color: #45a7ff;
+}
+.notice ul li span{
+    font-size: 12px;
+    color: #585858;
+    display: inline-block;
+    float: right;
+}
+.hos_label{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    color: #585858;
+    background: #f3f7fa;
+    min-width: 80px;
+    height:20px;
+    line-height: 20px;
+    padding:0 12px;
+    margin: 0 8px 10px 0;
+}
+

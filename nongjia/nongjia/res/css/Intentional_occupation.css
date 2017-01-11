@@ -1,0 +1,139 @@
+.edit_block {
+    position: absolute;
+    background: #ffffff;
+    width: 1000px;
+    z-index: 999;
+}
+
+.detail_title {
+    border-bottom: 1px solid #d2d2d2;
+    margin: 0 20px 0 20px;
+}
+
+.detail_title h1 {
+    color: #666666;
+    font-weight: normal;
+    font-size: 18px;
+    display: inline-block;
+    padding: 15px 0 15px 20px;
+}
+
+.detail_title a {
+    float: right;
+    font-size: 30px;
+    margin-top: 8px;
+    color: #666;
+}
+
+.detail_content {
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+table {
+
+}
+
+table td {
+    vertical-align: top;
+}
+
+.left {
+    width: 192px;
+    float: left;
+    background-color: #E7E7E7;
+}
+
+.right {
+    margin-left: 14px;
+    width: 754px;
+    float: left;
+    margin-top: 7px;
+}
+
+.left a {
+    display: block;
+    padding: 7px 0 7px 5px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.left .select {
+    background-color: #fff;
+}
+
+.right .type {
+    display: inline-block;
+    width: 32%;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.more_occ {
+    border: 1px solid #DCDCDC;
+    padding: 10px 0 8px 20px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.more_occ a {
+    display: inline-block;
+    padding: 5px 8px;
+    min-width: 105px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #666;
+}
+
+.more_occ .arrow_top {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    top: -20px;
+}
+
+.more_occ em {
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #DCDCDC transparent;
+    position: absolute;
+}
+
+.more_occ i {
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    bottom: -1px;
+}
+
+.add_type {
+    clear: both;
+    padding-top: 20px;
+    border-top: 1px solid #DCDCDC;
+}
+
+.add_type a {
+    float: right;
+    margin:0 15px 20px 15px;
+    font-size: 14px;
+    color: #999;
+}
+.more_occ .select{
+    border:1px solid #FD9C20;
+    border-radius: 3px;
+    text-align: center;
+}
+
+
+.add_type #name {
+    width: 300px;
+    height: 28px;
+}

@@ -34,7 +34,7 @@
         <ul class="right_list">
             <li><a href="#" target="_blank">管理系统</a></li>
             <li><a href="#">登录</a></li>
-            <li><a href="#">我的农加</a></li>
+            <li><a href="Mine/Mine.html">我的农加</a></li>
             <li><a href="#">帮助中心</a></li>
         </ul>
         <div class="choose_city_menu">
@@ -59,13 +59,22 @@
 <div id="navBar">
     <div id="NB_content">
         <a href='#'><img src="../res/images/logo1.png" alt="农加网"></a>
+		<div class="logo_wrap">
+			<span class="line"></span>
+			<div class="city_name_wrap">
+				<p class='C_name'>广东省</p>
+				<span class='pingyin'>GUANG </span>
+				<span class='pingyin'>DONG </span>
+				<span class='pingyin'>SHENG</span>
+			</div>
+		</div>
         <ul>
             <li><a href="index.html">首页</a></li>
 			<li><a href="information.html" class="checked">资讯</a></li>
 			<li><a href="circulation.html">产权流转</a></li>
 			<li><a href="financial_service_index.html">金融服务</a></li>
-			<li><a href="#">涉农就业</a></li>
-			<li><a href="#">开发平台</a></li>
+			<li><a href="Agricultural/index.html" target="_blank">涉农就业</a></li>
+			<li><a href="open_platform_index.html">开放平台</a></li>
         </ul>
     </div>
 </div>
@@ -73,15 +82,10 @@
 
 <!-- content begin -->
 <div class="content main_wrap">
-    <div id="location">
-        <p>当前位置：</p>
-        <a href="#">首页</a>
-        &gt;
-        <a href="http://localhost:8080/nonjia/inMynonJia.action">我的农加</a>
-        &gt;
-        <a href="http://localhost:8080/nonjia/front/skipLandtransferList.action?part=0&listId=0">土地流转申请列表</a>
-        &gt;
-        <a href="#">选择流转类型方式</a>
+    <div class="content nav_list">
+        <span><a href="index.html">首页</a></span>>
+        <span><a href="#">资讯</a></span>>
+        <span><a href="#" class="checked">资讯详情</a></span>
     </div>
     <div id="main">
         <div class="l_main">
@@ -118,10 +122,12 @@
                     <ul>
                         <li>
                             <div style="position: relative">
-                                <img src="../res/images/info/info_read.png" />
-                                <div class="info_read">
-                                    <a>《农村土地经营权流转交易市场运行规...</a>
-                                </div>
+								<a href="#">
+									<img src="../res/images/info/info_read.png" />
+									<div class="info_read">
+										<a>《农村土地经营权流转交易市场运行规...</a>
+									</div>
+								</a>
                             </div>
                         </li>
                         <li><span class="ranking" style="background-color: #FD9C20;color: #FFFFFF;" >2</span><a href="#">土地流转交易业务操作指引?</a></li>

@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../res/css/head.css"/>
 <link rel="stylesheet" type="text/css" href="../res/css/nav.css"/>
 <link rel="stylesheet" type="text/css" href="../res/css/title_box.css"/>
+<link rel="stylesheet" type="text/css" href="../res/css/page.css"/>
 <link rel="stylesheet" type="text/css" href="../res/css/circ_list.css"/>
 
 </head>
@@ -26,7 +27,7 @@
         <ul class="right_list">
             <li><a href="#" target="_blank">管理系统</a></li>            
             <li><a href="#">登录</a></li>
-            <li><a href="#">我的农加</a></li>
+            <li><a href="Mine/Mine.html">我的农加</a></li>
             <li><a href="#">帮助中心</a></li>
         </ul>
         <div class="choose_city_menu">
@@ -51,86 +52,141 @@
 <div id="navBar">
 	<div id="NB_content">
 		<a href='#'><img src="../res/images/logo1.png" alt="农加网"></a>
+		<div class="logo_wrap">
+			<span class="line"></span>
+			<div class="city_name_wrap">
+				<p class='C_name'>广东省</p>
+				<span class='pingyin'>GUANG </span>
+				<span class='pingyin'>DONG </span>
+				<span class='pingyin'>SHENG</span>
+			</div>
+		</div>
 		<ul>
 			<li><a href="index.html">首页</a></li>
 			<li><a href="information.html">资讯</a></li>
 			<li><a href="circulation.html" class="checked">产权流转</a></li>
 			<li><a href="financial_service_index.html">金融服务</a></li>
-			<li><a href="#">涉农就业</a></li>
-			<li><a href="#">开发平台</a></li>
+			<li><a href="Agricultural/index.html" target="_blank">涉农就业</a></li>
+			<li><a href="open_platform_index.html">开放平台</a></li>
 		</ul>
 	</div>
 </div>
 <!-- nav end -->
 
 <!-- content begin -->
-<div class="content choose_list">
+<div class="content select">
     <div class="title_div">
 		<span class="title">流转信息列表</span>
 	</div>
-	<div class="list">
-		<table border="0" cellpadding="0" cellspacing="0" width="80%" height="100%">
-			<tr>
-				<td width="12%" valign="top"><span class="title">地区筛选：</span></td>
-				<td width="8%"><a>全部</a></td>
-				<td width="80%">
-					<ul>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<td width="12%" valign="top"><span class="title">地区筛选：</span></td>
-				<td width="8%"><a>全部</a></td>
-				<td width="80%">
-					<ul>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-						<li><a>广州</a></li>
-					</ul>
-				</td>
-			</tr>
-		</table>
+	<div class="select_more dis_none">
+		<div style="float:left; width:100px; text-align:right; padding:25px 10px 0 10px;">地区筛选：</div>
+		<div style="padding-right:50px; padding-top:10px; overflow:hidden;">
+			<ul class="select_city">
+				<li><a>全部</a></li>
+				<li><a>广州</a></li>
+				<li><a>深圳</a></li>
+				<li><a>佛山</a></li>
+				<li><a>珠海</a></li>
+				<li><a>东莞</a></li>
+				<li><a>中山</a></li>
+				<li><a>肇庆</a></li>
+				<li><a>惠州</a></li>
+				<li><a>清远</a></li>
+				<li><a class="checked">梅州</a></li>
+				<li><a>阳江</a></li>
+				<li><a>河源</a></li>
+				<li><a>韶关</a></li>
+				<li><a>云浮</a></li>
+				<li><a>潮州</a></li>
+				<li><a>揭阳</a></li>
+				<li><a>汕尾</a></li>
+				<li><a>湛江</a></li>
+				<li><a>茂名</a></li>
+				<li><a>汕头</a></li>
+			</ul>
+			<ul class="select_district" style="border:1px #DBDBDB dashed; padding:0 5px;">
+				<li><a>全部</a></li>
+				<li><a>梅江区</a></li>
+				<li><a>梅县区</a></li>
+				<li><a>大埔县</a></li>
+				<li><a>兴宁市</a></li>
+				<li><a>平远县</a></li>
+				<li><a class="checked">蕉岭县</a></li>
+				<li><a>丰顺县</a></li>
+				<li><a>五华县</a></li>
+			</ul>
+		</div>
+		<div style="float:left; width:100px; text-align:right; padding:15px 10px 0 10px;">信息类型：</div>
+		<div style="padding-right:50px; overflow:hidden;">
+			<ul>
+				<li><a class="checked">全部</a></li>
+				<li><a>流转</a></li>
+				<li><a>处置</a></li>
+			</ul>
+		</div>
+		<div style="float:left; width:100px; text-align:right; padding:15px 10px 0 10px;">承包权归属：</div>
+		<div style="padding-right:50px; overflow:hidden;">
+			<ul>
+				<li><a class="checked">全部</a></li>
+				<li><a>个人</a></li>
+				<li><a>集体</a></li>
+			</ul>
+		</div>
+		<div style="float:left; width:100px; text-align:right; padding:15px 10px 0 10px;">产权类型：</div>
+		<div style="padding-right:50px; overflow:hidden;">
+			<ul>
+				<li><a class="checked">全部</a></li>
+				<li><a>土地</a></li>
+				<li><a>林地</a></li>
+				<li><a>水域</a></li>
+				<li><a>畜禽用地</a></li>
+				<li><a>四荒地</a></li>
+				<li><a>机动用地</a></li>
+				<li><a>海域</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="select_init dis_block">
+		<div style="float:left; width:100px; text-align:right; padding:15px 10px 0 10px;">流转方式：</div>
+		<div style="padding-right:50px; overflow:hidden;">
+			<ul>
+				<li><a class="checked">全部</a></li>
+				<li><a>出租</a></li>
+				<li><a>转让</a></li>
+				<li><a>转包</a></li>
+				<li><a>互换</a></li>
+				<li><a>入股</a></li>
+				<li><a>合作</a></li>
+			</ul>
+		</div>
+		<div style="float:left; width:100px; text-align:right; padding:15px 10px 0 10px;">流转面积：</div>
+		<div style="padding-right:50px; overflow:hidden;">
+			<ul>
+				<li><a class="checked">全部</a></li>
+				<li><a>10亩以下</a></li>
+				<li><a>11-50亩</a></li>
+				<li><a>51-100亩</a></li>
+				<li><a>101-300亩</a></li>
+				<li><a>300亩以上</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="select_more dis_none">
+		<div style="float:left; width:100px; text-align:right; padding:15px 10px 30px 10px;">流转年限：</div>
+		<div style="padding-right:50px; overflow:hidden;">
+			<ul>
+				<li><a class="checked">全部</a></li>
+				<li><a>5年以下</a></li>
+				<li><a>6-10年</a></li>
+				<li><a>11-15年</a></li>
+				<li><a>16-20年</a></li>
+				<li><a>20年以上</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 <div style="margin:10px auto; font-size:12px; text-align:center;">
-	<a href="#" style="border-bottom:1px solid #666666; border-left:1px solid #666666; border-right:1px solid #666666; border-radius:1px; color:#666666; padding:10px 20px;">收起Λ</a>
+	<a class="select_button" href="#" style="border-bottom:1px solid #DBDBDB; border-left:1px solid #DBDBDB; border-right:1px solid #DBDBDB; border-radius:1px; color:#666666; padding:10px 40px;">更多筛选分类&nbsp;V</a>
 </div>
 
 <div class="content" style="margin-top:50px; margin-bottom:50px;">
@@ -385,14 +441,18 @@
 		</div>
 		<div class="page">
 			<ul>
-				<li><a class="before" href="javascript:void(0)">&lt;</a></li>
+				<li><a class="before" href="javascript:void(0)">首页</a></li>
+				<li><a class="before" href="javascript:void(0)">上一页</a></li>
 				<li><a href="javascript:void(0)">1</a></li>
 				<li><a href="javascript:void(0)">2</a></li>
 				<li><a href="javascript:void(0)">3</a></li>
 				<li><a class="select" href="javascript:void(0)">4</a></li>
+				<li><a href="javascript:void(0)">5</a></li>
+				<li><a href="javascript:void(0)">6</a></li>
 				<li>...</li>
-				<li><a href="javascript:void(0)">8</a></li>
-				<li><a class="after" href="javascript:void(0)">&gt;</a></li>
+				<li><a href="javascript:void(0)">12</a></li>
+				<li><a class="before" href="javascript:void(0)">下一页</a></li>
+				<li><a class="before" href="javascript:void(0)">尾页</a></li>
 			</ul>
 		</div>
 	</div>
@@ -454,7 +514,26 @@
 <script type="text/javascript" src="../res/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="../res/js/common.js"></script>
 <script type="text/javascript">
-
+var select_status = 0;
+$(document).ready(function () {
+	$('.select_button').click(function () {
+		if(select_status == 0){
+			select_status = 1;
+			$('.select_more').removeClass('dis_none');
+			$(this).html('收起&nbsp;Λ');
+		}else{
+			select_status = 0;
+			$('.select_more').addClass('dis_none');
+			$(this).html('更多筛选分类&nbsp;V');
+		}
+	});
+	$('.select_city li a').click(function () {
+		$(".select_district li").eq(0).find('a').addClass('checked').parent().siblings().find('a').removeClass('checked');
+	});
+    $('li a').click(function () {
+		$(this).addClass('checked').parent().siblings().find('a').removeClass('checked');
+	});
+});
 </script>
 
 </body>

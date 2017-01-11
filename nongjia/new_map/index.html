@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+<title>确权统计</title>
+<style>
+body{
+	font-family: 'Microsoft YaHei';
+	width:100%;
+	min-width:1366px;
+	background-color: #000;
+	margin: 0;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+.detail_btn{
+	padding:10px 65px;
+	color:#ffffff;
+	font-size:22px;
+	background-color:#09afd3;
+	border-radius:2px;
+	text-decoration:none;
+}
+.area{
+	height:15px;
+	line-height:15px;
+	font-size:12px;
+	color:#ffffff;
+	display:block;
+	margin-bottom:2px;
+}
+.list{
+	color:#ffffff;
+	font-size:16px;
+	width:360px;
+	display:block;
+	height:15px;
+	line-height:15px;
+	margin-bottom:2px;
+}
+.progress{
+	line-height:15px;
+	float:left;
+	height:5px;
+	margin-right:10px;
+	display:inline-block;	
+}
+.dataDesc{
+	display:block;
+	line-height:15px;
+}
+.map_name{
+	display:inline-block;
+	color:#ffffff;
+	width:100px;
+	height:100px;
+	cursor:pointer;
+}
+.map_name .big_icon{
+	margin-left:20px;
+	display:block;
+	border:2px solid #ffffff;
+	width:16px;
+	height:16px;
+	border-radius:50%;
+}
+.map_name .small_icon{
+	display:block;
+	background:#ffffff;
+	width:10px;
+	height:10px;
+	margin:3px;
+	border-radius:50%;
+}
+.map_name .townName{
+	margin:20px 0 0 10px;
+	display:block;
+	font-size:21px;
+}
+.pieChart_box{
+	position:absolute;
+	width:400px;
+	height:310px;
+	background: url("img/box.png") no-repeat;
+}
+.pie_1 {
+	width: 180px;
+	height: 180px;
+	position:absolute;
+	top:70px;
+	left:205px;
+	border-radius: 50%;
+	background: #7ECEF4;
+	background-image: linear-gradient(to right, transparent 50%, #FFF100 0); 
+}
+#pie_2{
+	width: 100%;
+	height: 100%;
+}
+.progress_cycle {
+	margin-left: 50%;
+	width: 90px;
+	height: 100%;
+	border-radius: 0 100% 100% 0 / 50%;
+	background: #7ECEF4;
+	transform-origin: left;
+}
+.progress_cycle_more{
+	background: #FFF100;
+}
+ .data{
+	 position: absolute;
+	 top: 180px;
+	 left: 20px;
+ }
+.data span{
+	color: #fff;
+	font-size: 12px;
+}
+.data em{
+	display: inline-block;
+	width:5px;
+	height:5px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.data2{
+	top: 265px;
+	left: 40px;
+}
+
+.smooth { -webkit-transition-duration:1000ms; -moz-transition-duration:1000ms; }
+.line_chart{
+	position: absolute;
+	top: 614px;
+	left: 70px;
+}
+#line{
+	width:362px;
+	height:234px;
+
+}
+.percentage_box{
+	position:absolute;
+	top:5px;
+	left:45px;
+	width:100px;
+	height:120px;
+	color:#ffffff;
+}
+.percentage{
+	font-size:32px;
+	color:#ffffff;
+	position:absolute;
+	bottom:10px;
+	left:47px;
+	padding-bottom:10px;
+	border-bottom:1px solid #ffffff;
+}
+.container{
+	position: relative;
+	width: 100%;
+	min-width:1366px;
+}
+.data3{
+	top:18px;
+	left:260px;
+}
+.title{
+	width:700px;
+	height:100px;
+	position: absolute;
+	top:0;
+	text-align: center;
+	background: #0787AB;
+
+}
+.title h1{
+	color: #fff;
+	margin: 20px;
+	font-size: 44px;
+	font-family: "微软雅黑";
+}
+.middle{
+	width:484px;
+	height:646px;
+	background: url("img/box_2.png")no-repeat;
+	position: absolute;
+	top:110px;
+	left:443px;
+}
+.middle .area{
+	width: 136px;
+	height: 38px;
+	border-radius: 2px;
+	color: #fff;
+	background: #0787AB;
+	display: inline-block;
+	font-size: 20px;
+	text-align: center;
+	line-height: 38px;
+	margin:0 7px 10px 7px;
+	cursor: pointer;
+}
+.check_detail{
+	width: 217px;
+	height: 42px;
+	border-radius: 2px;
+	color: #fff;
+	background: #09AFD3;
+	display: inline-block;
+	font-size: 20px;
+	text-align: center;
+	line-height: 42px;
+	margin:10px 7px 10px 7px;
+	cursor: pointer;
+	text-decoration: none;
+}
+.middle .select{
+	background: #00C9FF;
+}
+.middle_1 {
+	padding: 30px 0;
+	overflow:hidden ;
+	margin-left: 50px;
+
+}
+.middle_1 p{
+	color: #fff;
+	font-size: 18px;
+	margin: 0;
+}
+.middle_1 span{
+	display: inline-block;
+	text-align: left;
+	margin-left: 15px;
+	font-size: 40px;
+}
+.middle_1 strong{
+	display: inline-block;
+	width: 150px;
+	font-weight: normal;
+	text-align: right;
+
+}
+	.middle_2 p{
+		color: #fff;
+
+	}
+	ul li{
+		list-style: none;
+		color: #fff;
+		font-size: 28px;
+	}
+</style>
+</head>
+
+<body>
+<div class="container" >
+	<img src="img/bg_3.jpg" width="100%" />
+	<div class="title">
+		<h1>广东省肇庆市德庆县确权统计</h1>
+	</div>
+	<div style="position:absolute;background: url('img/box.png') no-repeat; top:110px; left:15px; width:400px; height:310px;">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">确权面积</span>
+		<div style="position:absolute; top:45px; left:0px; width:50px; height:250px; border-right:2px solid #dedede;">
+			<div style="padding-top:10px; padding-left:5px; width:45px; text-align:center;">
+				<span id="name_0" class="area"></span>
+				<span id="name_1" class="area"></span>
+				<span id="name_2" class="area"></span>
+				<span id="name_3" class="area"></span>
+				<span id="name_4" class="area"></span>
+				<span id="name_5" class="area"></span>
+				<span id="name_6" class="area"></span>
+				<span id="name_7" class="area"></span>
+				<span id="name_8" class="area"></span>
+				<span id="name_9" class="area"></span>
+				<span id="name_10" class="area"></span>
+				<span id="name_11" class="area"></span>
+				<span id="name_12" class="area"></span>
+			</div>
+		</div>
+		<div style="position:absolute; top:45px; left:50px; width:340px; height:235px; border-top:2px solid #dedede;">
+			<div style="padding-top:10px; padding-left:2px; width:360px;">
+				<div class="list">
+					<div id="list_0" class="progress smooth" style="width:0px; background-color:#84ccc9;"></div>
+					<span id="data_0" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_1" class="progress smooth" style="width:0px; background-color:#13b5b1;"></div>
+					<span id="data_1" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_2" class="progress smooth" style="width:0px; background-color:#009e96;"></div>
+					<span id="data_2" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_3" class="progress smooth" style="width:0px; background-color:#00736d;"></div>
+					<span id="data_3" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_4" class="progress smooth" style="width:0px; background-color:#448aca;"></div>
+					<span id="data_4" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_5" class="progress smooth" style="width:0px; background-color:#fff100;"></div>
+					<span id="data_5" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_6" class="progress smooth" style="width:0px; background-color:#0068b7;"></div>
+					<span id="data_6" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_7" class="progress smooth" style="width:0px; background-color:#556fb5;"></div>
+					<span id="data_7" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_8" class="progress smooth" style="width:0px; background-color:#88abda;"></div>
+					<span id="data_8" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_9" class="progress smooth" style="width:0px; background-color:#005982;"></div>
+					<span id="data_9" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_10" class="progress smooth" style="width:0px; background-color:#0075a9;"></div>
+					<span id="data_10" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_11" class="progress smooth" style="width:0px; background-color:#00a0e9;"></div>
+					<span id="data_11" class="dataDesc"></span>
+				</div>
+				<div class="list">
+					<div id="list_12" class="progress smooth" style="width:0px; background-color:#7ecef4;"></div>
+					<span id="data_12" class="dataDesc"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="position:absolute;background: url('img/box.png') no-repeat; top:448px; left:15px; width:400px; height:310px;" >
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">抵押贷款统计</span>
+		<div style="margin-top: 100px">
+			<ul>
+				<li><span style="display: inline-block;font-size:28px;width: 190px;text-align: right">贷款笔数：</span><span class="moneySum"></span></li>
+				<li><span style="display: inline-block;font-size:28px;width: 190px;text-align: right">贷款金额：</span><span class="money"></span></li>
+			</ul>
+		</div>
+
+	</div>
+	<div class="middle">
+		<div style="border-bottom: 1px dashed #0787AB">
+			<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">县整体情况</span>
+			<div class="middle_1">
+				<div style="float: left">
+					<p style="line-height: 3"><strong>完成确权面积</strong></p>
+					<p style="line-height: 3"><strong>完成确权人数</strong></p>
+					<p style="line-height: 3"><strong>总贷款金额</strong></p>
+				</div>
+				<div style="float: left">
+					<p><span id="data_mu">2.61</span>万亩</p>
+					<p><span id="data_family">70901</span>人</p>
+					<p><span>3300</span>万元</p>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="middle_2" style="margin: 10px;">
+			<p>地区选择：</p>
+			<div>
+				<span class="area select">莫村镇</span>
+				<span class="area">官圩镇</span>
+				<span class="area">高良镇</span>
+				<span class="area">永丰镇</span>
+				<span class="area">武垄镇</span>
+				<span class="area">回龙镇</span>
+				<span class="area">马圩镇</span>
+				<span class="area">凤村镇</span>
+				<span class="area">播植镇</span>
+				<span class="area">新圩镇</span>
+				<span class="area">九市镇</span>
+				<span class="area">德城镇</span>
+				<span class="area">悦城镇</span>
+			</div>
+			<div style="text-align: center">
+				<a href="#" class="check_detail">查看详情</a>
+			</div>
+		</div>
+	</div>
+	<div class="pieChart_box" style="top:113px;right:15px">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">确权完成率</span>
+		<div class="pie_1">
+			<div class="progress_cycle smooth"></div>
+		</div>
+		<div class="mapdata_1" style="position:absolute; top:30px; left:8px; width:205px; height:140px; font-size:16px; color:#ffffff;">
+			<div style="width:205px; display:block; line-height:35px;"><span style="display:inline-block; width:115px; text-align:right;">原来承包面积：</span><label class="initData"></label></div>
+			<div style="width:205px; display:block; line-height:35px;"><span style="display:inline-block; width:115px; text-align:right;">实际确权面积：</span><label class="actData"></label></div>
+			<div style="width:205px; display:block; line-height:35px;"><span style="display:inline-block; width:115px; text-align:right;">完成率：</span><label class="percent"></label></div>
+		</div>
+		<div class="data data2">
+			<span><em style="background:#FFF100"></em>完成部分</span>
+			<span><em style="background:#7ECEF4"></em>未完成部分</span>
+		</div>
+	</div>
+	<div class="pieChart_box" style="top:448px;right: 15px;">
+		<span style="font-size:18px; color:#ffef7d; position:absolute; top:5px; left:10px;">流转占比</span>
+		<div id="pie_2">
+			<!--<div class="progress_cycle smooth"></div>
+			<div class="circle"></div>-->
+		</div>
+		<div class="percentage_box mapdata_2" style="position:absolute; top:40px; left:25px; width:100px; height:110px; color:#ffffff;">
+			<div style="background-image:url(img/b_line.png); position:absolute; top:0px; left:0px; width:61px; height:100px;"></div>
+			<span class="percentage" style="left:37px;"></span>
+		</div>
+		<div class="data">
+			<span><em style="background:#84ccc9"></em>莫村</span>
+			<span><em style="background:#13b5b1"></em>官圩</span>
+			<span><em style="background:#009e96"></em>高良</span>
+			<br/>
+			<span><em style="background:#00736d"></em>永丰</span>
+			<span><em style="background:#448aca"></em>武垄</span>
+			<span><em style="background:#fff100"></em>回龙</span>
+			<br/>
+			<span><em style="background:#0068b7"></em>马圩</span>
+			<span><em style="background:#556fb5"></em>凤村</span>
+			<span><em style="background:#88abda"></em>播植</span>
+			<br/>
+			<span><em style="background:#005982"></em>新圩</span>
+			<span><em style="background:#0075a9"></em>九市</span>
+			<br/>
+			<span><em style="background:#00a0e9"></em>德城</span>
+			<span><em style="background:#7ecef4"></em>悦城</span>
+		</div>
+
+	</div>
+
+
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+
+<script src="js/lib.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/pie.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	showListData(checkPos);
+	changeMap(checkPos);
+	
+	$('.moneySum').html(dataList[checkPos].moneySum +"笔");
+	$('.money').html(dataList[checkPos].money +"万元");
+	
+	$('.mapdata_1 .initData').html(dataList[checkPos].initData+"亩");
+	$('.mapdata_1 .actData').html(dataList[checkPos].data+"亩");
+	$('.mapdata_1 .percent').html(parseFloat(100*dataList[checkPos].data/dataList[checkPos].initData).toFixed(2)+"%");	
+	var mapdata_1_percent = parseFloat(100*dataList[checkPos].data/dataList[checkPos].initData);
+	mapdata_1_percent = mapdata_1_percent > 100 ? 100 : mapdata_1_percent;
+	showProgress(".pie_1 .progress_cycle",mapdata_1_percent);
+	
+	$('.mapdata_2 .percentage').html(parseFloat(dataList[checkPos].data/261291.71*100).toFixed(2) +"%");
+	pie_show(dataList[checkPos].name);
+});
+function showListData(_pos){
+	for(var i = 0;i < dataList.length;i++){
+		var dataWidth = 250*parseFloat(dataList[i].data/35000) +"px";
+		$("#name_"+ i).html(dataList[i].name);
+		$("#name_"+ i).css({'margin-bottom':'2px'});
+		$("#list_"+ i).parent().css({'margin-bottom':'2px'});
+		$("#list_"+ i).css({'width':dataWidth,'height':'5px'});
+		$("#data_"+ i).html('');
+	}
+	$("#name_"+ _pos).css({'margin-bottom':'10px'});
+	$("#list_"+ _pos).css({'height':'15px'});
+	$("#list_"+ _pos).parent().css({'margin-bottom':'10px'});
+	$("#data_"+ _pos).html(dataList[_pos].data+'亩');
+}
+var mapList = [
+	{sn:'',name:"莫村镇",top:"0",  left:"716",img:"map_01",checkImg:"map_01_c"},
+	{sn:'',name:"官圩镇",top:"163",left:"283",img:"map_02",checkImg:"map_02_c"},
+	{sn:'',name:"高良镇",top:"130",left:"508",img:"map_03",checkImg:"map_03_c"},
+	{sn:'',name:"永丰镇",top:"147",left:"791",img:"map_04",checkImg:"map_04_c"},
+	{sn:'',name:"武垄镇",top:"177",left:"972",img:"map_05",checkImg:"map_05_c"},
+	{sn:'',name:"回龙镇",top:"343",left:"0",  img:"map_06",checkImg:"map_06_c"},
+	{sn:'',name:"马圩镇",top:"303",left:"441",img:"map_07",checkImg:"map_07_c"},
+	{sn:'',name:"凤村镇",top:"358",left:"737",img:"map_08",checkImg:"map_08_c"},
+	{sn:'',name:"播植镇",top:"346",left:"917",img:"map_09",checkImg:"map_09_c"},
+	{sn:'',name:"新圩镇",top:"467",left:"276",img:"map_10",checkImg:"map_10_c"},
+	{sn:'',name:"九市镇",top:"476",left:"579",img:"map_11",checkImg:"map_11_c"},
+	{sn:'',name:"德城镇",top:"575",left:"324",img:"map_12",checkImg:"map_12_c"},
+	{sn:'',name:"悦城镇",top:"486",left:"792",img:"map_13",checkImg:"map_13_c"}
+]
+function changeMap(j){
+	for(var i = 0;i < mapList.length;i++){
+		$("#map_"+ i).css('background','url(img/'+ mapList[i].img +'.png)');
+	}
+	$("#map_"+ checkPos).css('background','url(img/'+ mapList[checkPos].checkImg +'.png)');
+	if(j==-1)return;
+	$("#map_"+ j).css('background','url(img/'+ mapList[j].checkImg +'.png)');
+}
+function showProgress(obj,_index){
+	if(_index > 50){
+		_index -= 50;
+		$(obj).addClass('progress_cycle_more');
+	}else{
+		$(obj).removeClass('progress_cycle_more');
+	}
+	$(obj).css('transform', 'rotate('+ 36*_index/10 +'deg)');
+}
+//显示饼图选中区域
+function pie_show(_name) {
+	myChart.dispatchAction({
+		type: 'pieSelect',
+		name: _name
+	});
+}
+var checkPos = 0;
+$(document).ready(function(){
+	pie_show('莫村镇');
+	$(".area").click(function(){
+		$('.progress').removeClass('smooth');
+		checkPos = $(this).index();
+		$(this).addClass('select').siblings().removeClass('select')
+		pie_show(dataList[checkPos].name);
+		
+		showListData(checkPos);
+		
+		$('.moneySum').html(dataList[checkPos].moneySum +"笔");
+		$('.money').html(dataList[checkPos].money +"万元");
+		
+		$('.mapdata_1 .initData').html(dataList[checkPos].initData+"亩");
+		$('.mapdata_1 .actData').html(dataList[checkPos].data+"亩");
+		$('.mapdata_1 .percent').html(parseFloat(100*dataList[checkPos].data/dataList[checkPos].initData).toFixed(2)+"%");
+		var mapdata_1_percent = parseFloat(100*dataList[checkPos].data/dataList[checkPos].initData);
+		mapdata_1_percent = mapdata_1_percent > 100 ? 100 : mapdata_1_percent;
+		showProgress(".pie_1 .progress_cycle",mapdata_1_percent);
+		
+		$('.mapdata_2 .percentage').html(parseFloat(dataList[checkPos].data/261291.71*100).toFixed(2) +"%");
+	});
+	$(".check_detail").click(function(){
+		location.href = "list.html?checkPos="+ checkPos +"&checkName="+ Q.encode(mapList[checkPos].name);
+	});
+	var left = (document.documentElement.clientWidth - $('.middle').width())/2;
+	//$('.middle').css({'top':'110px','left':left});
+	$(window).resize(function () { //当浏览器大小发生变化时，重新获取锁屏大小
+		var left = (document.documentElement.clientWidth - $('.middle').width())/2;
+		//$('.middle').css('left',left);       
+    });
+});
+</script>
+</body>
+</html>

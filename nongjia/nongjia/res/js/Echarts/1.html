@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<style>
+	#main{
+		height:400px;
+
+	}
+</style>
+</head>
+
+<body>
+<div id="main"></div>
+<script src="echarts-2.2.7/build/dist/echarts.js"></script>
+<script src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+require.config({
+	paths:{
+		echarts:'./echarts-2.2.7/build/dist'
+	}
+});
+require(
+	[
+		'echarts',
+		'echarts/chart/map'
+	],
+	function (ec) {
+		var cityMap = {
+			"北京市": "110100"
+		};
+		var cityIndx = 0;
+		var cityType = [];
+		//var mapGeoData = require('echarts/util/mapData/params');
+		//var myChart = ec.init(document.getElementById('main'));
+		for (var city in cityMap) {
+			cityType.push(city);
+			// 自定义扩展图表类型
+			mapGeoData.params[city] = {
+				getGeoJson: (function (c) {
+					var geoJsonName = cityMap[c];
+					return function (callback) {
+						$.getJSON('a/' + geoJsonName + '.json', callback);
+					}
+				})(city)
+			}
+		}
+		//var ecConfig = require('echarts/config');
+		//var zrEvent = require('zrender/tool/event');
+		option = {
+			title: {
+				text : '全国344个主要城市（县）地图 by Pactera 陈然',
+				link : 'http://www.pactera.com/',
+				subtext : '北京市 （滚轮或点击切换）'
+			},
+			tooltip : {
+				trigger: 'item',
+				formatter: '滚轮或点击切换<br/>{b}'
+			},
+			series : [
+				{
+					name: '全国344个主要城市（县）地图',
+					type: 'map',
+					mapType: '北京市',
+					selectedMode : 'single',
+					itemStyle:{
+						normal:{label:{show:true}},
+						emphasis:{label:{show:true}}
+					},
+					data:[]
+				}
+			]
+		};
+		myChart.setOption(option);
+	}
+);
+
+</script>
+</body>
+</html>
