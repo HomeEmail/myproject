@@ -7,12 +7,12 @@
     list-style:none;
     float:left;
 }
+
 .bannerImg{
     width:100%;
     position: relative;
     overflow:hidden;
     height:500px;
-	padding-top:4px;
 }
 .bannerImg .bg{
     width: 100%;
@@ -25,13 +25,11 @@
 .bannerImg img{
     height:500px;
     position: relative;
-	width:100%;
 }
 .apply{
     position: fixed;
     right: 0;
-    top: 128px;
-	z-index:10;
+    top: 138px;
 }
 .apply img{
     display:inline-block;
@@ -51,11 +49,11 @@
     height:30px;
     width:30px;
     margin:0 15px;
-    background: url("../res/images/dot.png") no-repeat;
+    background: url("../img/dot.png") no-repeat;
 }
 .dots .active{
     color: #FFFFFF;
-    background: url("../res/images/dot_white.png") no-repeat;
+    background: url("../img/dot_white.png") no-repeat;
 
 }
 .banner .info{

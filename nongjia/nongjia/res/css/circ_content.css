@@ -1,3 +1,16 @@
+.nav_list{ /* ¶þ¼¶µ¼º½ */
+	line-height:45px;
+}
+.nav_list a{
+	color:#666666;
+	line-height:35px;
+}
+.nav_list .checked{
+	color:#fd9c20;
+}
+.nav_list a:hover{
+	color:#fd9c20;
+}
 .circ_info{
 	border:#CCCCCC 1px solid;
 	overflow:hidden;
@@ -10,13 +23,10 @@
 	border-bottom:#CCCCCC 1px solid;
 	float:left;
 	margin-bottom:10px;
-	width:575px;
 }
 .circ_info .circ_detaile2 td{
-	padding-bottom: 15px;
+	line-height:35px;
 	color:#666666;
-	font-size:14px;
-	vertical-align: top;
 }
 .content .circ_detaile3{
 	width:590px;
@@ -35,6 +45,7 @@
 }
 .content .menu{
 	padding-top:20px;
+	overflow:hidden;
 }
 .content .menu span{
 	padding:15px 30px;
@@ -42,20 +53,16 @@
 }
 .content .menu a{
 	color:#666666;
-	display:inline-block;
-	padding:0 40px;
-	height:50px;
-	line-height:50px;
 }
 .content .menu .checked{
-	position:relative;
-	bottom:-2px;
+	padding:15px 40px;
+	line-height:30px;
 	color:#000000;
 	font-weight:bold;
+	border-bottom:none;
 	border-top:#CCCCCC 1px solid;
 	border-left:#CCCCCC 1px solid;
 	border-right:#CCCCCC 1px solid;
-	border-bottom:#ffffff 2px solid;
 }
 .content .circ_detaile4 td{
 	line-height:45px;

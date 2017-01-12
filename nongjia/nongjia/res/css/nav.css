@@ -2,7 +2,7 @@
     width:100%;
     overflow: hidden;
     border-bottom: 4px solid #F58333;
-    margin-top:10px;
+    margin-top:20px;
 }
 #NB_content{
     overflow: hidden;
@@ -24,11 +24,9 @@
 #NB_content .logo_wrap{
 	display:inline-block;
 	margin-left: 15px;
-	padding-top: 15px;
-	overflow:hidden;
 }
 #NB_content .logo_wrap .line{
-	background:url("../images/line.png")no-repeat;
+	background:url("../img/line.png")no-repeat;
 	width:1px;
 	display:inline-block;
 	height:58px;
@@ -42,7 +40,6 @@
 #NB_content .logo_wrap .city_name_wrap .C_name{
 	color:#DB4913;
 	font-size:30px;
-	text-align:center;
 	font-family:'sengnonFont';
 	
 }
@@ -52,43 +49,6 @@
 	font-size:12px;
 	display:inline-block;
 	margin:0 1px;
-}
-#NB_content .logo_wrap .name_wrap{
-	display:inline-block;
-	vertical-align: middle;
-	margin-left: 15px;
-}
-#NB_content .logo_wrap .name_wrap .T_name{
-	color:#dd4c13;
-	font-size:22px;
-	text-align:center;	
-	font-family:'΢���ź�';
-    display: inline-block;
-    float: left;
-    vertical-align: middle;
-}
-/*#NB_content .logo_wrap .name_wrap span{
-    background-color: #EF8335;
-    display: inline-block;
-    width: 36px;
-    height: 16px;
-    line-height: 16px;
-    text-align: center;
-    border-radius: 15px;
-    font-size: 10px;
-    color: #fff;
-    float: left;
-    margin-left:15px;
-    margin-top:3px;
-    -webkit-text-size-adjust:none;
-}*/
-#NB_content .logo_wrap .name_wrap span{
-    width: 44px;
-    height: 15px;
-    background: url("../../res/images/b_icon.png") no-repeat;
-    display: inline-block;
-    margin-left:15px;
-    vertical-align: middle;
 }
 #NB_content ul{
     overflow: hidden;
@@ -102,13 +62,12 @@
     font-weight:bold;
 }
 #NB_content ul li a {
-    padding:15px 27px 13px 27px;
+    padding:15px 30px 13px 30px;
     display: block;
     color: #F58333;
     font-size: 18px;
 
 }
-
 #NB_content ul li .checked{
     background: #F58333;
     color: #ffffff;
@@ -119,41 +78,3 @@
     width:1200px!important;
     margin:15px auto 0 auto;
 }
-
-.nav_list{ /* �������� �ҵ�λ�� */
-	margin-top:16px;
-	margin-bottom:22px;
-}
-.nav_list a{
-	color:#666666;
-	line-height:35px;
-}
-.nav_list .checked{
-	color:#fd9c20;
-}
-.nav_list a:hover{
-	color:#fd9c20;
-}
-
-/*Mine nav*/
-.back{
-    float: right;
-    margin-top: 25px;
-	cursor:pointer;
-}
-.back span{
-    vertical-align: middle;
-    font-size: 14px;
-    color: #FD9C20;
-}
-.logo7{
-    display: inline-block;
-    vertical-align: middle;
-    background: url("../../res/images/Mine/all_logo.png") no-repeat;
-    background-position: 0 -40px;
-    width:24px;
-    height:19px;
-    margin-right:5px;
-
-}
-/*Mine nav -end*/

@@ -1,8 +1,4 @@
 $(document).ready(function () {
-	
-	//初始化分页部分
-	loadPage();
-	
     $('.showTag div').click(function () {
         var info_arrow = $('.info_arrow');
         var index = $(this).index();
@@ -12,35 +8,32 @@ $(document).ready(function () {
         $(this).addClass('select').siblings().removeClass('select');
     });
     var times = 0;
-    var time = setInterval(animate,2500);
-    var length = $('.change_title').length - 1;
-    $('.change_title').eq(0).css('display','inline-block');
+    var time = setInterval(animate,2500)
+    var titles = [
+        {'title':"关于农村土地继承的问题有些什么法律规定?"},
+        {'title':"关于农村土地继承的问题有些什么法律规定2?"},
+        {'title':"关于农村土地继承的问题有些什么法律规定3?"},
+        {'title':"关于农村土地继承的问题有些什么法律规定4?"},
+        {'title':"关于农村土地继承的问题有些什么法律规定5?"}
+    ]
     function animate() {
         times ++;
-        if(times > length){
+        if(times > 2){
             times = 0;
         }
         $('.dots a').eq(times).addClass('choose').siblings().removeClass('choose');
         var right = (times * 100)+"%";
         $('.news_img').animate({'right':right},1000)
-        $('.change_title').eq(times).css('display','inline-block').siblings('.change_title').hide();
+        $('.change_title').html(titles[times].title)
     }
-    $('.dots').on('click','a',function () {
-        clearInterval(time)
+    $('.dots a').click(function () {
         var index = $(this).index();
         var right = (index * 100)+"%";
         $('.dots a').eq(index).addClass('choose').siblings().removeClass('choose');
-        $('.news_img').stop(true).animate({'right':right},1000);
-        $('.change_title').eq(index).css('display','inline-block').siblings('.change_title').hide();
-
+        $('.news_img').animate({'right':right},1000)
+        $('.change_title').html(titles[index].title)
+        clearInterval(time)
         times = index;
         time = setInterval(animate,2000)
     })
 });
-//切换资讯类型
-function selectInfoType(_typeId){
-	$("#pageValue").val(1);
-	$("#pageSizeValue").val(10);
-	$("#typeIdValue").val(_typeId);
-	$("#pageForm").submit();
-}

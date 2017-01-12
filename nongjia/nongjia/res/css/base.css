@@ -7,15 +7,15 @@ article, footer, header, menu, nav, section, audio, video {
     border:0;
     outline:0;
     font-size:100%;
-    /*vertical-align:baseline;*/
+    vertical-align:baseline;
     background:transparent;
 }
 body {
     line-height:1;
-    min-width:1200px;
-	_text-align:left; /* IE5.5 */
+    min-width:1400px;
     font-family: 'Microsoft YaHei';
 }
+
 button{
     cursor: pointer;
 }
@@ -44,10 +44,4 @@ table {
 }
 input, select {
     vertical-align:middle;
-    font-size:14px;
-    font-family: "微软雅黑"
-}
-textarea{
-	font-size:14px;
-    font-family: "微软雅黑"
 }

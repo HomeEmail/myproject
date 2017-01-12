@@ -10,7 +10,7 @@
 }
 #main .box a{
     color:#666666;
-    max-width:230px;
+    max-width:250px;
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
@@ -26,6 +26,8 @@
     width:260px;
     height:30px;
     line-height: 30px;
+    -ms-filter: alpha(Opacity=50);
+    filter: alpha(Opacity=50);
     background: #000000;
     background: rgba(0,0,0,0.5);
     position: absolute;

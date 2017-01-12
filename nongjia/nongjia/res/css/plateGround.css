@@ -2,15 +2,71 @@
 	width:1200px;
 	margin:0 auto;
 }
-.plate img{
-	padding-left:40px;
-	display:inline-block;
-	vertical-align:middle;
+.property{
+    font-size:0;
+    width:1015px;
+    float: left;
 }
-.plate span{
-	display:inline-block;
-	margin-left:20px;
-	vertical-align:middle;
-	font-size:20px;
-	color:#ffffff;
+.property2{
+    float: left;
+    box-shadow: 3px 3px 10px 0 #999999;
+    background: #FD9B1F;
+
+
+}
+.property2 .property_box2{
+    display: inline-block;
+    width:180px;
+    height:230px;
+    text-align: center;
+}
+.property2 .property_block span{
+    display: inline-block;
+    margin-top:50px;
+}
+.property2 .property_block .text {
+    margin-top: 20px;
+    line-height: 25px;
+
+}
+.property2 .property_block .text p{
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+.property .property_box{
+    display: inline-block;
+    width: 243px;
+    height:110px;
+    margin: 0 10px 10px 0;
+
+}
+
+.property .property_block{
+    overflow: hidden;
+    padding: 0 0 0 45px;
+}
+.property .property_block span{
+    display: inline-block;
+    float: left;
+    height: 110px;
+    line-height: 110px;
+    vertical-align: middle;
+}
+.property .property_block span img{
+    vertical-align: middle;
+}
+.property .property_block .text {
+    line-height: 22px;
+    margin-top: 33px;
+    text-align: left;
+    margin-left: 30px;
+    display: inline-block;
+
+}
+.property .property_block .text p{
+    font-size:20px;
+    color: #ffffff;
 }
