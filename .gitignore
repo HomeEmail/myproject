@@ -1,7 +1,8 @@
 /three.js-master/
 /.idea/
 /node_modules/
-
+nongjia
+map_meizhou
 *node_modules
 *.js-master
 *.zip
