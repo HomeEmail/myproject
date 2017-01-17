@@ -16,7 +16,20 @@
 	<link rel="stylesheet" href="./css/base.css?v=66" />
 	<link rel="stylesheet" href="./css/step1.css?v=66" />
 	<style type="text/css">
-		
+		#selFont,#selColor{
+			text-align: center;
+		    margin: 0px 4px;
+		    height: 30px;
+		    display: inline-block;
+		    width: 70px;
+		    border: 1px #ddd solid;
+		    vertical-align: top;
+		    background-color: #ffffff;
+		    box-shadow: 0px 0px 5px 0px #aaa inset;
+    		-webkit-box-shadow: 0px 0px 5px 0px #aaa inset;
+    		border-radius: 3px;
+
+		}
 	</style>
 	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
 	<script type="text/javascript" src="./js/fx.js"></script>
@@ -44,8 +57,8 @@
 		<!-- 高大于宽，设宽120px,反之设高120px ;width;clientWidth;naturalWidth; css width;-->
 		<div id="imgBox" style="">
 			<!-- 下面两个img的src都要有图片路径 -->
-			<img id="imgSelectSrc" onload="step1ImgSelectShowLoad(this);" src="./images/test1.jpg" style="display: none;" alt="" />
-			<img id="imgSelect" height="" width="" src="./images/test1.jpg" style="display: none;" alt="" />
+			<img id="imgSelectSrc" onload="step1ImgSelectShowLoad(this);" src="./images/test.jpg" style="display: none;" alt="" />
+			<img id="imgSelect" height="" width="" src="./images/test.jpg" style="display: none;" alt="" />
 			<canvas id="imgCanvasShow" width="320" height="480" style="display: none;">
 				Your browser does not support the canvas element.
 			</canvas>
@@ -59,7 +72,7 @@
 		<textarea id="textBox1" placeholder="编写一句不超过25个字的口号"></textarea>
 	</div>
 	
-	<div class="text-ac" id="generateBt-wrapper"><button id="generateBt"></button></div>
+	<div class="text-ac" id="generateBt-wrapper"><select id="selFont"><option value="微软雅黑">选字体</option><option value="微软雅黑">微软雅黑</option><option value="宋体">宋体</option></select><select id="selColor"><option value="#000000">选颜色</option><option value="#000000">黑色</option><option value="#ff0000">红色</option></select><button id="generateBt"></button></div>
 
 </div>
 <div id="previewBox" style="display:none;">
@@ -77,6 +90,15 @@
 // document.body.addEventListener('touchmove', function (e) { 
 // 	e.preventDefault();
 // });
+$('#selFont').change(function(){
+	var font=$(this).val();
+	$('#textBox1').css('font-family',font);
+});
+
+$('#selColor').change(function(){
+	var color=$(this).val();
+	$('#textBox1').css('color',color);
+});
 </script>
 
 </body>

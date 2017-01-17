@@ -1,0 +1,536 @@
+	body,html{
+		background: #164ca0 url(../images/red-bg.jpg) no-repeat bottom center;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	body *{
+		transform: translateZ(0px);
+		-webkit-transform: translateZ(0px);
+	}
+	#main{
+		height: 100%;
+		width: 100%;
+		background: url(../images/bg-index1.png) no-repeat bottom right;
+		background-size: contain;
+		position: relative;
+		overflow: hidden;
+	}
+	#mainText{
+		height: 100%;
+		width: 100%;
+		background: url(../images/bg-index2.png) no-repeat left top;
+		background-size: cover;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		overflow: hidden;
+	}
+	.bt-wrapper{
+		position: absolute;
+		left: 15px;
+		bottom: 7%;
+	}
+	.gameBeginBt{
+		color: #000000;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: url(../images/start.png) no-repeat center center;
+    margin-bottom: 10px;
+    background-size: contain;
+	}
+	.gameBeginBt:active{
+		color: #FBFB0F;
+	}
+	.bt1{
+		display: inline-block;
+		width: 70%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 15px;
+		background-color: #FBFB0F;
+		height: 38px;
+		line-height: 38px;
+		text-align: center;
+		color: #333;
+		border-radius: 10px;
+		box-shadow: 0px 0px 15px 0px #fdfdfd;
+		font-size: 18px;
+	}
+	.seeMyLuck{
+		    color: #000000;
+    line-height: 24px;
+    text-align: center;
+    font-size: 14px;
+    display: inline;
+    margin-left: 12px;
+	}
+	.seeMyLuck:active{
+		color: #FBFB0F;
+	}
+	.gameDesc{
+		color: #000000;
+    line-height: 24px;
+    font-size: 14px;
+    display: inline;
+	}
+	.gameDesc:active{
+		color: #FBFB0F;
+	}
+	@media (min-width: 375px){
+		.bt-wrapper{
+			left: 20px;
+		}
+	}
+	@media (min-width: 400px){
+		.gameBeginBt,.seeMyLuck{
+			margin-bottom: 20px;
+		}
+		.bt-wrapper{
+			left: 30px;
+			bottom: 7%;
+		}
+	}
+	.shuiBox-wrapper{
+		position: absolute;
+		top: 22%;
+		width: 80%;
+		left: 10%;
+		text-align: center;
+
+	}
+	.shuiBox{
+		height: 260px;
+		width: 260px;
+		border:3px #ffffff solid;
+		border-radius: 260px;
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+
+	}
+	.shui-move-wrapper{
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		left: 0px;
+	}
+	.shui-move-top{
+		height: 50px;
+		width: 100%;
+		background: url(../images/shui-top.png) no-repeat bottom center;
+		background-size: 100%;	
+	}
+
+	.shui-move-main{
+		width: 100%;
+		height: 20px;
+		background-color: #0f6aac;
+		/*transition: height 15s;
+		-webkit-transition: height 15s;
+		-moz-transition: height 15s;*/
+	}
+	.shui-bg{
+		position: absolute;
+		top: 32%;
+		left: 0px;
+		width: 100%;
+	}
+	.yiy-icon{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 260px;
+		background: url(../images/yiy-icon.png) no-repeat center center;
+		background-size: 30%;
+		animation:mymove 0.5s infinite;
+		-webkit-animation:mymove 0.5s infinite; /* Safari 和 Chrome */
+
+		transform: rotate(0deg);
+		transform-origin: center;
+		/*transition: transform 0.4s;*/
+		/*-webkit-transform: rotate(0deg);*/
+		/*-webkit-transform-origin: center;*/
+		/*-webkit-transition: -webkit-transform 0.4s;*/
+		/*-moz-transform: rotate(0deg);*/
+		/*-moz-transform-origin: center;*/
+		/*-moz-transition: -moz-transform 0.4s;*/
+	}
+
+	@keyframes mymove
+	{
+		0% {transform: rotate(0deg);}
+		25% {transform: rotate(4deg);}
+		50% {transform: rotate(0deg);}
+		75% {transform: rotate(-4deg);}
+		100% {transform: rotate(0deg);}
+	}
+
+	@-webkit-keyframes mymove /*Safari and Chrome*/
+	{
+		0% {-webkit-transform: rotate(0deg);}
+		25% {-webkit-transform: rotate(4deg);}
+		50% {-webkit-transform: rotate(0deg);}
+		75% {-webkit-transform: rotate(-4deg);}
+		100% {-webkit-transform: rotate(0deg);}
+	}
+	#resultText{
+
+	}
+	.result1{
+		width: 100%;
+		border-radius: 8px;
+		transform: scale(0,0);
+    	transform-origin: center;
+		transition: transform 0.4s;
+		-webkit-transform: scale(0,0);
+    	-webkit-transform-origin: center;
+		-webkit-transition: -webkit-transform 0.4s;
+		-moz-transform: scale(0,0);
+    	-moz-transform-origin: center;
+		-moz-transition: -moz-transform 0.4s;
+	}
+	.myCode{
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
+		color: #003366;
+		font-size: 18px;
+		display: none;
+	}
+	@media (min-width: 375px){
+		.shui-bg{
+			top: 20%;
+		}
+		.result1{
+			top: -26%;
+		}
+	}
+	#playing{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background: #164ca0 url(../images/red-bg.jpg) no-repeat bottom center;
+		background-size: cover;
+		
+	}
+	.playing-top{
+		position: absolute;
+		top: 2%;
+		right: 2%;
+		width: 98%;
+		height: 98%;
+		background: url(../images/logo.png) no-repeat top right;
+		background-size: 80px 30px;
+		z-index: 100;
+	}
+	.playing-bottom-bg{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: url(../images/playing-bottom-bg.png) no-repeat bottom center;
+		background-size: 100%;
+		z-index: 98;
+	}
+	.playing-bottom-img{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: url(../images/playing-bottom-img.png) no-repeat bottom center;
+		background-size: 100%;
+		z-index: 100;
+		transform: rotate(0deg);
+    	transform-origin: bottom;
+		transition: transform 0.4s;
+		-webkit-transform: rotate(0deg);
+    	-webkit-transform-origin: bottom;
+		-webkit-transition: -webkit-transform 0.4s;
+		-moz-transform: rotate(0deg);
+    	-moz-transform-origin: bottom;
+		-moz-transition: -moz-transform 0.4s;
+	}
+	.lemon{
+		position: absolute;
+		background: url(../images/img1.png) no-repeat;
+		background-size: contain;
+		z-index: 99;
+	}
+	.lemon .text{
+		font-size: 13px;
+		color: #ffffff;
+		text-align: center;
+	}
+
+	.lemonPian{
+		position: absolute;
+		background: url(../images/img2.png) no-repeat;
+		background-size: contain;
+		z-index: 99;
+	}
+	.lemonPian .text{
+		font-size: 13px;
+		color: red;
+		text-align: center;
+	}
+	.ye{
+		position: absolute;
+		background: url(../images/img3.png) no-repeat;
+		background-size: contain;
+		/*background-color: rgba(255,255,255,0.3);*/
+		z-index: 99;
+	}
+	.ye .text{
+		font-size: 13px;
+		color: red;
+		text-align: center;
+	}
+	.lemon0{
+		width:100px;
+		height: 80px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.lemonPian0{
+		width:110px;
+		height: 120px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.ye0{
+		width:70px;
+		height: 70px;
+		border-radius: 70px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.lemon1{
+		width:80px;
+		height: 70px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.lemonPian1{
+		width:80px;
+		height: 90px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.ye1{
+		width:50px;
+		height: 50px;
+		border-radius: 50px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.lemon2{
+		width:140px;
+		height: 100px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.lemonPian2{
+		width:70px;
+		height: 80px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+	.ye2{
+		width:80px;
+		height: 80px;
+		border-radius: 80px;
+		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
+	}
+
+	.animate{
+		transition: all 1s;
+		-webkit-transition: all 1s;
+	}
+	#cityBox,.cityContent{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	.cityContent,.schoolContent{
+		z-index: 110;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+
+	}
+	.cityContentWrapper,.schoolContentWrapper{
+		padding-top: 30%;
+		padding-bottom: 10%;
+	}
+	#schoolBox,.schoolContent{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	#playReady{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		font-size: 22px;
+		background: url(../images/bg.jpg) no-repeat bottom center;
+		background-size: cover;
+		z-index: 100;
+	}
+	#readyBg,.readyBg{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: url(../images/ready-bg.png) no-repeat bottom center;
+		background-size: 100%;
+	}
+	#readyRen{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		transform:translateX(0px);
+		width: 100%;
+		height: 100%;
+		background: url(../images/ready-ren.png) no-repeat bottom center;
+		background-size: 100%;
+	}
+	#readyText{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		transform:translateX(0px);
+		width: 100%;
+		height: 100%;
+		background: url(../images/ready-text.png) no-repeat bottom center;
+		background-size: 100%;
+	}
+	#playReadyTips{
+		text-align: center;
+		font-size: 60px;
+		color: red;
+		padding: 10px;
+	}
+	#resultBox{
+		
+	}
+	#resultText{
+		    color: #ffffff;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 60%;
+	}
+	#myCodeBtWrapper{
+		width: 100%;
+	    position: absolute;
+	    top: 79%;
+	    left: 0px;
+	    text-align: center;
+	    z-index: 111;
+	}
+	#myCodeBt{
+		width: 70px;
+	    height: 36px;
+	    background: url(../images/qr_bt.png) no-repeat center center;
+	    background-size: contain;
+	    display: inline-block;
+	}
+	#playAgain{
+		position: absolute;
+	    width: 65px;
+	    height: 36px;
+	    background: url(../images/again_bt.png) no-repeat center center;
+	    background-size: contain;
+	    top: 79%;
+	    left: 15%;
+	    z-index: 112;
+	}
+	#shareBt{
+		position: absolute;
+	    width: 65px;
+	    height: 36px;
+	    background: url(../images/share_bt.png) no-repeat center center;
+	    background-size: contain;
+	    top: 79%;
+	    right: 15%;
+	    z-index: 112;
+	}
+	#shareBt:active{
+		color: #e60111;
+	}
+	.logo{
+		position:absolute;left:20px;top:30px;
+		width: 60px;
+	}
+	.product{
+		position:absolute;left:20px;bottom:-66px;
+		width: 88px;
+	}
+	#calTime{
+		font-size: 14px;
+		color: red;
+		position: absolute;
+		right: 20px;
+		top: 40px;
+		display: none;
+	}
+	.luckResultImg{
+		position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    height: 90%;
+	    width: 100%;
+	    background: url(../images/luck-normal.png) no-repeat top center;
+	    background-size: cover;
+	    z-index: 110;
+	}
+	@media (min-width: 400px){
+		.logo{
+			width: 80px;
+		}
+		.product{
+			width: 100px;
+		}
+		#calTime{
+			font-size: 18px;
+		}
+		
+	}
+	@media (min-width: 375px){
+		#playAgain,#shareBt{
+		    width: 85px;
+		    height: 46px;
+		}
+		#playAgain{
+			left: 13%;
+		}
+		#shareBt{
+			right: 13%;
+		}
+		#myCodeBt{
+			width: 92px;
+			height: 46px;
+		}
+	}

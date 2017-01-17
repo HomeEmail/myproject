@@ -44,12 +44,14 @@ tapOn($('#previewOKBt'),function(e){
     //删除字符串前的提示信息 "data:image/png;base64,"  
 	data = data.substring(22); 
     //console.log(data);
+    var fontStyle=$('#selFont').val();//css字体值,如"宋体"
+    var color=$('#selColor').val();//css颜色值，如#000000
     $bt.html('正在上传...');
     /*$.ajax({
 	  type: 'POST',
 	  url: 'http://182.254.201.33/201506/handupload.ashx',
 	  // data to be added to query string:
-	  data: { hand: data },
+	  data: { hand: data,fontStyle:fontStyle,color:color },
 	  // type of data we are expecting in return:
 	  dataType: 'json',//(“json”, “jsonp”, “xml”, “html”, or “text”)
 	  success: function(data){
@@ -61,8 +63,8 @@ tapOn($('#previewOKBt'),function(e){
 	    $bt.html('已预览，确定提交');
 	  }
 	});*/
-	$bt.html('已预览，确定提交');
-	$('#previewBox').hide();
+	//$bt.html('已预览，确定提交');
+	//$('#previewBox').hide();
 });
 // tapOn($('#fileSelectInput'),function(e){
 // 	alert('aa');
@@ -289,7 +291,8 @@ function addText(ctx,str,x,y){
 	ctx.fillText(str,x,y);
 }
 tapOn($('#generateBt'),function(e){
-	var username=$('#textBox1').val();
+	//var username=$('#textBox1').val();
+	var username='';
 	var bumen='';
 	// var bumen=$('#textBox2').val();
 	// if(username==''||bumen==''){
@@ -308,7 +311,7 @@ tapOn($('#generateBt'),function(e){
 	var height=step1ImgObj.scalePerV*step1ImgObj.selectBoxBaseSize;
 	//画布宽高
     crop_canvas.width = step1ImgObj.generateW;
-    crop_canvas.height = step1ImgObj.generateH+100;
+    crop_canvas.height = step1ImgObj.generateH+0;
     var ctx=crop_canvas.getContext('2d');
 
     //添加底色
@@ -319,8 +322,8 @@ tapOn($('#generateBt'),function(e){
     ctx.drawImage(document.getElementById('imgSelectSrc'), left, top, width, height, 0, 0, step1ImgObj.generateW, step1ImgObj.generateH);
 
     //添加文字
-    addText(ctx,username,step1ImgObj.generateW/2,step1ImgObj.generateH+40);
-    addText(ctx,bumen,step1ImgObj.generateW/2,step1ImgObj.generateH+80);
+    //addText(ctx,username,step1ImgObj.generateW/2,step1ImgObj.generateH+40);
+   //addText(ctx,bumen,step1ImgObj.generateW/2,step1ImgObj.generateH+80);
 
     canvasStep1OK=crop_canvas;
     
