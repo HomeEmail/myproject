@@ -75,12 +75,11 @@
 <script type="text/javascript" src="./js/fx_methods.js"></script>
 <script type="text/javascript">
 
-/**实现与pc端同样的el:active效果只需要额外添加下面一行代码即可**/
 
-document.body.addEventListener('click', function (e) {
+
+$('#playing').tap(function(e){
 	getLuck();
-	e.preventDefault(); 
-}); 
+});
 
 	var $audio=document.getElementById('audio');
 	var isPlayMp3=false;
@@ -126,6 +125,12 @@ document.body.addEventListener('click', function (e) {
 	//如果有需要进入页面你就调用一次这个函数
 	function getLuck(){
 		if(req) return;
+		clearInterval(calTimerId);
+		calTimerId=null;
+		calTimerId=setInterval(function(){
+			runGame();
+			//$('#calTime').html('剩余'+totalTime+'秒');
+		},500);
 		var luckId=fRandomBy(0,1);
 		/*req=$.ajax({
 		  type: 'POST',
@@ -135,7 +140,7 @@ document.body.addEventListener('click', function (e) {
 		  // type of data we are expecting in return:
 		  dataType: 'text',//(“json”, “jsonp”, “xml”, “html”, or “text”)
 		  success: function(data){
-		  	req=null;
+		  	
 		  	$('#resultText').html('恭喜抽中电子秤一台！');
 			showLuck();
 		  },
@@ -146,7 +151,7 @@ document.body.addEventListener('click', function (e) {
 		});*/
 
 		//用于测试，使用ajax后请注释
-		$('#resultText').html('恭喜抽中电子秤一台！');
+		$('#resultText').html('恭喜抽中男朋友一枚！');
 		showLuck();
 	}
 
@@ -168,7 +173,7 @@ document.body.addEventListener('click', function (e) {
 		calTimerId=setInterval(function(){
 			runGame();
 			//$('#calTime').html('剩余'+totalTime+'秒');
-		},100);
+		},330);
 	}
 
 	var area=[[winW*0.1,winW*0.25],[winW*0.25,winW*0.45],[winW*0.45,winW*0.65]];
