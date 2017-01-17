@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/sign.css?v=66" />
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+	
+	<style type="text/css">
+		body,html{
+			height: 100%;
+		}
+		#main{
+			bottom: 20%;
+		    position: absolute;
+		    width: 100%;
+		    left: 0px;
+		    z-index: 999;
+		    height: auto;
+		}
+	</style>
+
+	<title>我要签到</title>
+</head>
+<body>
+<div class="bg-top" style="width:100%;height:100%;"><img src="./images/bg.jpg" style="width:100%;height:100%;"></div>
+
+<div id="main">
+	
+	<div class="step1-input-text-wrapper">
+		<div class="step1-input-text-item" id="textBox1-wrapper"><input type="text" id="textBox1" placeholder="输入姓名" value="" /></div>
+		<div class="step1-input-text-item" id="textBox2-wrapper">
+			<!-- <input type="text" id="textBox2" placeholder="输入部门" value="" /> -->
+			<select id="textBox2">
+				<option value="-1">请选择</option>
+				<option value="1">研发</option>
+				<option value="2">运营</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="text-ac" id="generateBt-wrapper"><button id="generateBt"></button></div>
+
+</div>
+
+
+
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+</script>
+
+</body>
+</html>
