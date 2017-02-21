@@ -83,7 +83,7 @@
 	font-size: 12px;
 }
 .personImgItem.pos-1{
-	top: 290px;
+	top: 90px;
 	left: 102px;
 	-webkit-transition:-webkit-transform 2s linear 0s;
 }
@@ -95,7 +95,7 @@
 }
 
 .personImgItem.pos-2{
-	top: 311px;
+	top: 111px;
 	right: 94px;
 	-webkit-transition:-webkit-transform 2s linear 0s;
 }
@@ -110,7 +110,7 @@
 
 
 .personImgItem.pos-3{
-	top: 480px;
+	top: 280px;
 	left: 67px;
 
 	background: url(../images/mingpian-item-bg2.png) no-repeat;
@@ -118,7 +118,7 @@
 }
 
 .personImgItem.pos-4{
-	top: 498px;
+	top: 298px;
 	right: 98px;
 
 	background: url(../images/mingpian-item-bg2.png) no-repeat;
@@ -126,14 +126,14 @@
 }
 
 .personImgItem.pos-5{
-	top: 478px;
-	left: 50px;
+	top: 498px;
+	left: 87px;
 	-webkit-transition:-webkit-transform 2s linear 0s;
 }
 
 .personImgItem.pos-6{
-	top: 478px;
-	right: 50px;
+	top: 498px;
+	right: 98px;
 	-webkit-transition:-webkit-transform 2s linear 0s;
 }
 
