@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="1280x720;text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title> 播放 </title>
+    <style>
+        body {
+            width: 1280px;
+            height: 720px;
+            color: white;
+            font-size: 22px;
+            padding: 0;
+            margin: 0;
+            background-image: url(./images/h1.png);
+            background-repeat: no-repeat;
+        }
+
+
+
+        .info {
+            width: 280px;
+            height: 114px;
+            position: absolute;
+            top: 134px;
+            left: 940px;
+            overflow: hidden;
+        }
+
+        .scan {
+            width: 239px;
+            height: 239px;
+            position: absolute;
+            top: 340px;
+            left: 960px;
+        }
+
+        .ot {
+            width: 820px;
+            height: 50px;
+            position: absolute;
+            top: 610px;
+            left: 62px;
+        }
+
+        .name {
+            float: left;
+            width: 270px;
+            margin-left: 130px;
+            line-height: 50px;
+            font-size: 30px;
+        }
+
+        .type {
+            float: left;
+            width: 270px;
+            margin-left: 150px;
+            line-height: 50px;
+            font-size: 30px;
+        }
+
+        .img {
+            width: 92px;
+            height: 40px;
+            position: absolute;
+            top: 620px;
+            left: 1138px;
+        }
+        .msg {
+            width: 700px;
+            height: 23px;
+            position: absolute;font-size: 25px;
+            top: 670px;
+            left: 50px;
+        }
+    </style>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+var req=null;
+
+var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
+if(user_id=='null'){
+    user_id=104734528;
+}
+
+function getRtspUrl(id){
+
+    ///play/getPlayUrl.action?gameId=1
+    if(req != null){
+        req.abort();
+        req=null;
+    }
+    var url=serverUrl+'/play/getPlayUrl.action?gameId='+id+'&userNo='+user_id;
+    showLoadingDiv();
+    req = ajax({
+        url: url,
+        type: "GET", //HTTP 请求类型,GET或POST
+        dataType: "html", //请求的文件类型html/xml
+        onSuccess: function(html){ //请求成功后执行[可选]
+            req=null;
+            hideLoadingDiv();
+            var json = eval("(" + html + ")");
+            if(!!!json.url){
+                alert(json.msg);
+                return;
+            }
+            
+            var state=json.state;
+            //if(parseInt(state,10)==0){
+                var url=json.url;
+                window.location.href=url;
+            //}else{
+            //    alert(json.reason);
+            //}
+        },
+        onComplete : function(){
+            req = null;
+        },
+        onError:function(){ //请求失败后执行[可选]
+            req=null;
+        },
+        post:"",
+        timeout:30000
+    });
+}
+
+var loadingDiv=null;
+window.onload = init;
+
+var hlsplay = Q.getDecoded('url')||'';
+
+hlsplay = "http://192.168.0.101/webstorm/myproject/dianfeng-nanjing/ntest/high/vd/NJtestBFCZN.ts";
+
+function init(){
+
+	loadingDiv=$('loadingDiv');
+	var gameId=Q.getInt('gameId',0);
+	if(!!gameId){
+		 //getRtspUrl(gameId);
+	}else{
+		//var url = Q.getDecoded("url");
+		//window.location.href=url||'404.html';
+	}
+}
+
+
+</script>
+</head>
+
+<body bgcolor="transparent" style=" width:1280px; height:720px; overflow:hidden;">
+
+    <div class="info">  一款高度还原魔兽风格的3D策略卡牌手游.十年经典重现,引爆你指尖的战斗渴望!你还等什么?</div>
+    <img class="scan" src="./images/NJSCANbaofengchengzhinu.png" />
+    <div class="ot">
+        <div class="name">暴风城之怒</div>
+        <div class="type">安卓</div>
+    </div>
+    <a href="index.html"><img class="img" src="./images/return.png" /></a>
+    <div class="msg">温馨提示:免费下载手游 , 请用手机扫描屏幕中的二维码!</div>
+
+    <div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
+        <img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />
+    </div>
+</body>
+<script type="text/javascript" src="js/play.js"></script>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="page-view-size" content="1280*720"/>
+<title> </title>
+<style>
+.smooth { -webkit-transition-duration:300ms,300ms,300ms,300ms;-webkit-transition-property: width,height,top,left; }
+body,html{
+    padding: 0px;
+    margin: 0px;
+}
+</style>
+<script type="text/javascript" src="js/keyEvent.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/param.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+document.onkeydown = grabEvent;
+if(document.onkeypress!==null){
+	document.onkeypress = grabEvent;
+}
+document.onsystemevent = grabEvent;
+function grabEvent(_event){
+	if(_event.type=='keydown'){
+		document.onkeypress = null;
+	}
+	var code = Event(_event);
+	switch(code){
+		case "KEY_UP": //
+			control.clickTop();
+			return 0;
+			break;
+		case "KEY_DOWN": //
+			control.clickDown();
+			return 0;
+			break;
+		case "KEY_LEFT": //
+			control.clickLeft();
+			return 0;
+			break;
+		case "KEY_RIGHT": //
+			control.clickRight();
+			return 0;
+			break;
+		case "KEY_PAGE_UP": //
+			
+			return 0;
+			break;		
+		case "KEY_PAGE_DOWN": //
+			return 0;
+			break;
+		case "KEY_NUMBER1":
+			//audio_control.player.next();
+			return 0;
+			break;			
+		case "KEY_SELECT": //	
+			control.doSelect();
+			return 0;
+			break;
+		case "KEY_EXIT":
+		case "KEY_BACK":
+			//window.location.href = "../index.html";
+			return false;
+			break;
+		default:
+			//
+			break;
+	}
+}
+
+
+var loadingDiv=null;
+var folderId=Q.getInt('id',0);
+var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
+if(user_id=='null'){
+    user_id=104734528;
+}
+
+window.onload = init;
+function init(){
+	loadingDiv=$('loadingDiv');
+	showLoadingDiv();
+	//control.init();
+	getData();
+}
+function getData(){
+	var url=serverUrl+'/inter/getGameLists.action?folderId='+folderId;
+	//url='getGameLists.json';//test
+	fetch(url,function(data){
+		formatData(data);
+		renderData();
+		control.init();
+	},function(){
+		//alert('网络错误');
+	});
+}
+function formatData(data){
+	control.contentList.datas=[];
+	for(var i=0,len=data.data.length;i<len;i++){
+		control.contentList.datas.push({
+			gameId:data.data[i].gameId,
+			gameImg:data.data[i].gameBigImg,
+			playUrl:data.data[i].playUrl,
+			gameFolderBgImg:data.data[i].gameFolderBgImg
+		});
+	}
+}
+function renderData(){
+    if(!!control.contentList.datas[0]){
+        $('bg').style.backgroundImage='url('+imgBasePath+control.contentList.datas[0].gameFolderBgImg+')';//gameFolderBgImg
+    }
+	for(var i=0,len=control.contentList.datas.length;i<len;i++){
+		$('listImg_'+i).src=imgBasePath+control.contentList.datas[i].gameImg;
+	}
+}
+
+var req=null;
+function fetch(url,successFn,failFn){
+	if(req != null){
+		req.abort();
+		req=null;
+	}
+	showLoadingDiv();
+	req = ajax({
+		url: url,
+		type: "GET", //HTTP 请求类型,GET或POST
+		dataType: "html", //请求的文件类型html/xml
+		onSuccess: function(html){ //请求成功后执行[可选]
+			req=null;
+			hideLoadingDiv();
+			var json = eval("(" + html + ")");
+			!!successFn&&successFn(json);
+		},
+		onComplete : function(){
+			req = null;
+		},
+		onError:function(){ //请求失败后执行[可选]
+			req=null;
+			!!failFn&&failFn();
+		},
+		post:"",
+		timeout:30000
+	});
+}
+
+function getGameUrl(id){
+	getRtspUrl(id);
+
+    /*var url=serverUrl+'/inter/getTyeps.action?userNo='+user_id;
+    fetch(url,function(data){
+        getRtspUrl(id);
+    },function(){
+        ///alert('网络错误');
+    });*/
+}
+function getRtspUrl(id){
+
+    ///play/getPlayUrl.action?gameId=1
+    if(req != null){
+        req.abort();
+        req=null;
+    }
+    var url=serverUrl+'/play/getPlayUrl.action?gameId='+id+'&userNo='+user_id;
+    showLoadingDiv();
+    req = ajax({
+        url: url,
+        type: "GET", //HTTP 请求类型,GET或POST
+        dataType: "html", //请求的文件类型html/xml
+        onSuccess: function(html){ //请求成功后执行[可选]
+            req=null;
+            hideLoadingDiv();
+            var json = eval("(" + html + ")");
+            if(!!!json.url){
+                alert(json.msg);
+                return;
+            }
+            
+            var state=json.state;
+            //if(parseInt(state,10)==0){
+                var url='play.html?url='+encodeURIComponent(json.url);
+                window.location.href=url;
+            //}else{
+            //    alert(json.reason);
+            //}
+        },
+        onComplete : function(){
+            req = null;
+        },
+        onError:function(){ //请求失败后执行[可选]
+            req=null;
+        },
+        post:"",
+        timeout:30000
+    });
+}
+
+var control = {
+	focusArea : 0,//0:主内容，1:顶部右上角菜单
+	init : function(){
+		this.contentList.init();
+	},
+	contentList : {
+		x : 0,
+		y : 0,
+		dataPos : 0,
+		datas : [
+			//{gameId:0,gameImg:'',playUrl:''}
+		],
+		dataList : [
+			{
+				"focusArea" : [
+					{top:30,left:34,width:538,height:295},
+					{top:30,left:588,width:392,height:220}
+				]
+			},
+			{
+				"focusArea" : [
+					{top:338,left:34,width:264,height:150},
+					{top:338,left:308,width:264,height:150},
+					{top:265,left:588,width:392,height:220}
+				]
+			}
+		],
+		init : function(){
+			this.focusOn();
+		},
+		changeX : function(_num){
+			if(_num > 0 && this.x == 2 || _num < 0 && this.x == 0)return;
+			this.x += _num;
+			this.focusOn();
+		},
+		changeY : function(_num){
+			if(_num > 0 && this.y == 1)return;
+			if(_num < 0 && this.y == 0){//到顶了
+				control.focusArea=1;
+				this.blur();
+				topTips.init();
+				return;
+			}
+			this.y += _num;
+			if(this.y == 0 && this.x == 1)this.x=0;
+			if(this.y == 0 && this.x == 2)this.x=1;
+			if(this.y == 1 && this.x == 1)this.x=2;
+			this.focusOn();
+		},
+		focusOn : function(){
+			if(this.dataList[this.y]&&this.dataList[this.y].focusArea[this.x]){
+
+			}else{
+				return;
+			}
+			this.dataPos = this.x + this.y*2;
+			var focusObj = $("content_focus");
+			focusObj.style.visibility='visible';
+			focusObj.style.top = this.dataList[this.y].focusArea[this.x].top +"px";
+			focusObj.style.left = this.dataList[this.y].focusArea[this.x].left +"px";
+			focusObj.style.width = this.dataList[this.y].focusArea[this.x].width +"px";
+			focusObj.style.height = this.dataList[this.y].focusArea[this.x].height +"px";
+		},
+		blur : function(){
+			$("content_focus").style.visibility='hidden';
+		}
+	},
+	doSelect : function(){
+		if(this.focusArea===0){
+			//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
+			//alert(this.contentList.dataPos);
+			//this.contentList.datas[this.contentList.dataPos].gameId;//playUrl
+			getGameUrl(this.contentList.datas[this.contentList.dataPos].gameId);
+			//var url='play.html?url='+encodeURIComponent(this.contentList.datas[this.contentList.dataPos].playUrl);
+			//alert(url);
+			//window.location.href=url;
+		}else{
+			//右上角菜单
+			topTips.enter();
+		}
+	},
+	clickTop : function(){
+		if(this.focusArea===1){
+
+			return;
+		}
+		this.contentList.changeY(-1);
+	},
+	clickDown : function(){
+		if(this.focusArea==1){
+			this.focusArea=0;
+			topTips.blur();
+			this.init();
+			return;
+		}
+		this.contentList.changeY(1);
+	},
+	clickLeft : function(){
+		if(this.focusArea==1){
+			topTips.left();
+			return;	
+		}
+		this.contentList.changeX(-1);
+	},
+	clickRight : function(){
+		if(this.focusArea==1){
+			topTips.right();
+			return;	
+		}
+		this.contentList.changeX(1);
+	}
+};
+
+
+//右上角顶部按钮控制对象
+var topTips= {
+    menuPos: 0,
+    menuList: [1037, 1092, 1147],
+    init : function(){
+        //this.menuPos=0;
+        $("topTipsFocus").style.left = this.menuList[this.menuPos] + "px";
+        this.focus();
+        return this;
+    },
+    focus: function () {
+        $("topTipsFocus").style.visibility = "visible";
+    },
+    blur: function () {
+        $("topTipsFocus").style.visibility = "hidden";
+    },
+    changeFocus: function (_num) {
+        if (this.menuPos == 0 && _num < 0)return;
+        if (this.menuPos == 2 && _num > 0)return;
+        this.menuPos += _num;
+        $("topTipsFocus").style.left = this.menuList[this.menuPos] + "px";
+
+    },
+    left: function(){
+        this.changeFocus(-1);
+    },
+    right: function(){
+        this.changeFocus(1);
+    },
+    down: function(){
+    },
+    enter: function() {
+        if (this.menuPos == 0) {
+            //首页//返回portal页
+       		window.location.href = 'http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
+        }
+        else if (this.menuPos == 1) {
+            //sp主页
+            history.back();
+            return;
+        } else if (this.menuPos == 2) {
+            //返回
+            history.back();
+            return 0;
+        }
+        
+
+    }
+};
+
+
+
+</script>
+</head>
+
+<body>
+<div id="bg" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/bg.jpg);background-repeat: no-repeat; overflow:hidden;">
+
+
+
+<img src="./images/df-tips-icon.png" style="position:absolute;top: 30px;left: 1040px;height: 64px;width: auto;" />
+<div id="topTipsFocus" class="smooth" style="position: absolute;top: 30px;left: 1037px;height: 56px;x;width: 50px;border: 3px #ffffff solid;visibility: hidden;-webkit-border-radius: 6px;-webkit-box-shadow: 0px 0px 22px 1px #ffffff;"></div>
+
+
+<div style="position:absolute; top:0px; left:0px; width:1280px; height:100px;">
+	<!--<img id="logo" src="images/activity/logo.png" width="300" height="33" style="position:absolute; top:35px; left:65px;" />-->
+</div>
+<div style="position:absolute; top:139px; left:20px; width:1030px; height:510px;">
+	<div style="position:absolute; top:30px; left:35px; width:535px; height:295px;">
+		<img id="listImg_0" src="images/tm.gif" width="535" height="295" />
+	</div>
+	<div style="position:absolute; top:30px; left:590px; width:388px; height:218px;">
+		<img id="listImg_1" src="images/tm.gif" width="388" height="218" />
+	</div>
+	<div style="position:absolute; top:340px; left:35px; width:260px; height:145px;">
+		<img id="listImg_2" src="images/tm.gif" width="260" height="145" />
+	</div>
+	<div style="position:absolute; top:340px; left:310px; width:260px; height:145px;">
+		<img id="listImg_3" src="images/tm.gif" width="260" height="145" />
+	</div>
+	<div style="position:absolute; top:267px; left:590px; width:388px; height:218px;">
+		<img id="listImg_4" src="images/tm.gif" width="388" height="218" />
+	</div>
+	<div id="content_focus" class="smooth" style="position:absolute; top:30px; left:34px; width:530px; height:287px; border:4px #ffffff solid; visibility: hidden;border-radius:16px;-webkit-border-radius:16px;-webkit-box-shadow: 0px 0px 28px 1px #ffffff;"> </div>
+	
+	<!-- <div id="content_focus" style="position:absolute; top:30px; left:34px; width:538px; height:295px;visibility: hidden;">
+		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="16" height="16" style="background:url(images/activity/focus_lt.png); background-repeat:no-repeat;"></td>
+				<td style="background:url(images/activity/focus_t.png);background-repeat:repeat-x;"></td>
+				<td width="16" style="background:url(images/activity/focus_rt.png);background-repeat:no-repeat;"></td>
+			</tr>
+			<tr>
+				<td style="background:url(images/activity/focus_l.png);background-repeat:repeat-y;"></td>
+				<td>&nbsp;</td>
+				<td style="background:url(images/activity/focus_r.png);background-repeat:repeat-y;"></td>
+			</tr>
+			<tr>
+				<td width="16" height="16" style="background:url(images/activity/focus_lb.png);background-repeat:no-repeat;"></td>
+				<td style="background:url(images/activity/focus_b.png);background-repeat:repeat-x;"></td>
+				<td style="background:url(images/activity/focus_rb.png);background-repeat:no-repeat;"></td>
+			</tr>
+		</table>
+	</div> -->
+</div>
+
+<div id="page" style="position:absolute; top:622px; left:1130px; width:50px; height:55px; font-size:24px; color:#FFFFFF; font-weight:bold;"></div>
+
+
+<div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
+	<img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />
+</div>
+
+</div>
+</body>
+</html>
