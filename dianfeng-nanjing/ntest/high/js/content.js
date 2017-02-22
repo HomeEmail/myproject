@@ -13,7 +13,7 @@ var KEY_PAGEUP = 306;
 var KEY_PAGEDOWN = 307;
 var KEY_INFO = 73;
 var KEY_BACK = 640;
-var KEY_POSITION = 3864; // ¶¨Î»¼ü
+var KEY_POSITION = 3864; // å®šä½é”®
 var MUTE_FLAG;
 var SEEK_SHOW_FLAG;
 var VOLUME_SHOW_FLAG;
@@ -115,8 +115,8 @@ function grabPress(e) {
 			}
 			break;
 		case 40201:
-			//alert("²¥·Å¿ªÊ¼");
-			Utility.println("²¥·Å¿ªÊ¼");
+			//alert("æ’­æ”¾å¼€å§‹");
+			Utility.println("æ’­æ”¾å¼€å§‹");
 			//showDuration();
 			break;
 		case 40202:
@@ -127,31 +127,31 @@ function grabPress(e) {
 				var errCode = JsonObj.errcode;
 				switch (errCode) {
 					case 35:
-						Utility.println("½âÂëÆ÷³ö´í");
+						Utility.println("è§£ç å™¨å‡ºé”™");
 						break;
 					case 36:
-						Utility.println(" Ã½ÌåÎÄ¼ş²»´æÔÚ»òÎÄ¼ş¸ñÊ½³ö´í");
+						Utility.println(" åª’ä½“æ–‡ä»¶ä¸å­˜åœ¨æˆ–æ–‡ä»¶æ ¼å¼å‡ºé”™");
 						break;
 					case 37:
-						Utility.println("²¥·Å¶¨Î»³ö´í");
+						Utility.println("æ’­æ”¾å®šä½å‡ºé”™");
 						break;
 					case 38:
-						Utility.println("ÔİÍ£²Ù×÷Ê§°Ü");
+						Utility.println("æš‚åœæ“ä½œå¤±è´¥");
 						break;
 					case 39:
-						Utility.println("×´Ì¬»Ö¸´Ê§°Ü");
+						Utility.println("çŠ¶æ€æ¢å¤å¤±è´¥");
 						break;
 					case 40:
-						Utility.println("ÉèÖÃËÙÂÊÊ§°Ü");
+						Utility.println("è®¾ç½®é€Ÿç‡å¤±è´¥");
 						break;
 					case 41:
 						{
 							var httpcode = JsonObj.httpCode;
-							Utility.println("ÍøÂçÒì³£ " + "http code" + httpcode);
+							Utility.println("ç½‘ç»œå¼‚å¸¸ " + "http code" + httpcode);
 						}
 						break;
 					case 42:
-						Utility.println("¶ÁÈ¡Êı¾İ³¬Ê±");
+						Utility.println("è¯»å–æ•°æ®è¶…æ—¶");
 						break;
 					default:
 						break;
@@ -165,20 +165,20 @@ function grabPress(e) {
 				Utility.println(errJson);
 				var JsonObj = eval("(" + errJson + ")");
 				var value = JsonObj.value;
-				Utility.println("µÈ´ı²¥·Å£¬»º´æÊı¾İµÄ½ø¶ÈÖµ£º " + value);
+				Utility.println("ç­‰å¾…æ’­æ”¾ï¼Œç¼“å­˜æ•°æ®çš„è¿›åº¦å€¼ï¼š " + value);
 			}
 			break;
 		case 40407:
-			Utility.println("Í£Ö¹²¥·ÅÆ÷²Ù×÷³É¹¦");
+			Utility.println("åœæ­¢æ’­æ”¾å™¨æ“ä½œæˆåŠŸ");
 			break;
 		case 40408:
-			Utility.println("Æô¶¯²¥·ÅÆ÷²Ù×÷³É¹¦");
+			Utility.println("å¯åŠ¨æ’­æ”¾å™¨æ“ä½œæˆåŠŸ");
 			break;
 		case 40409:
-			Utility.println("ÔİÍ£²¥·ÅÆ÷²Ù×÷³É¹¦");
+			Utility.println("æš‚åœæ’­æ”¾å™¨æ“ä½œæˆåŠŸ");
 			break;
 		case 40410:
-			Utility.println("Ñ¡Ê±²¥·Å¶¨Î»³É¹¦");
+			Utility.println("é€‰æ—¶æ’­æ”¾å®šä½æˆåŠŸ");
 			break;
 		default:
 			break;
