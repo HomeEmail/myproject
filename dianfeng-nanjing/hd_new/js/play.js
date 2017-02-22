@@ -32,7 +32,7 @@ var SEEK_TIMER;
 var VOLUME_TIMER;
 var PAUSE_TIMER;
 var isShowPosition;
-var mp = new MediaPlayer();
+//var mp = new MediaPlayer();
 var duration = 0;;
 SEEK_SHOW_FLAG = false;
 VOLUME_SHOW_FLAG = false;
@@ -47,7 +47,9 @@ var mp = new MediaPlayer();
 mp.setVideoDisplayMode(0);
 mp.setSingleMedia(hlsplay);
 mp.setCurrentAudioChannel("Stereo");
-mp.setVideoDisplayArea(69, 75, 819, 507);
+//mp.setVideoDisplayArea(69, 75, 819, 507);
+mp.setVideoDisplayArea(0, 0, 1280, 720);
+
 mp.refreshVideoDisplay();
 mp.playFromStart();
 
