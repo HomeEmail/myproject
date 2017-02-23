@@ -12,8 +12,6 @@
             font-size: 22px;
             padding: 0;
             margin: 0;
-            background-image: url(./images/h1.png);
-            background-repeat: no-repeat;
         }
 
 
@@ -147,6 +145,9 @@ function init(){
 	}
 }
 
+function playBegin(){
+    loadingDiv.style.visibility='hidden';
+}
 
 </script>
 </head>
@@ -162,7 +163,7 @@ function init(){
     <a href="index.html"><img class="img" src="./images/return.png" /></a>
     <div class="msg">温馨提示:免费下载手游 , 请用手机扫描屏幕中的二维码!</div>-->
 
-    <div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:hidden;">
+    <div id="loadingDiv" style="position:absolute; top:320px; left:600px; width:80px; height:80px; background:url(images/loading_bg.png); opacity:0.6; z-index:9; visibility:visible;">
         <img src="./images/loading.gif" width="37" height="37" style="position:absolute; top:21px; left:21px;" />
     </div>
 </body>

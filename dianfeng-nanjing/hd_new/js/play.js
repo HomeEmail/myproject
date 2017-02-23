@@ -119,6 +119,7 @@ function grabPress(e) {
 			//alert("播放开始");
 			Utility.println("播放开始");
 			//showDuration();
+            !!playBegin&&playBegin();
 			break;
 		case 40202:
 			{
