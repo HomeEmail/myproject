@@ -1,0 +1,782 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0091)http://172.31.170.130/hls/fyplay1.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>videoPlay</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<SCRIPT type=text/javascript src=""></SCRIPT>
+
+<STYLE>.transitionseek {
+	WIDTH: 1037px; HEIGHT: 162px; TOP: 720px; opacity: 0
+}
+.transition {
+	opacity: 0
+}
+#location_bg {
+	POSITION: absolute; TOP: 300px; LEFT: 470px
+}
+#location {
+	POSITION: absolute; WIDTH: 129px; HEIGHT: 26px; TOP: 324px; LEFT: 581px
+}
+</STYLE>
+
+<SCRIPT>
+
+var $ = function(id){
+	var o = document.getElementById(id);
+	return o;
+};
+
+var $G = {};
+
+var KEY_UP = 38;
+var KEY_DOWN = 40;
+var KEY_LEFT = 37;
+var KEY_RIGHT = 39;
+var KEY_VOLUP = 447;
+var KEY_VOLDOWN = 448;
+var KEY_OK = 13;
+var KEY_MUTE = 449;
+var KEY_EXIT = 27;
+var KEY_PAGEUP = 306;
+var KEY_PAGEDOWN = 307;
+var KEY_INFO = 73;
+var KEY_BACK = 640;
+var KEY_POSITION = 3864;  // 定位键
+var MUTE_FLAG;
+var SEEK_SHOW_FLAG;
+var VOLUME_SHOW_FLAG;
+var PLAYING_FLAG;
+var PAUSE_SHOW_FLAG;
+var PRE_SEEK_FLAG;
+var EXIT_SHOW_FLAG;
+var REPLAY_SHOW_FLAG;
+var FOCUS_FLAG;
+var PRESEEK_TIMER;
+var CURRTIME_TIMER;
+var SEEK_TIMER;
+var VOLUME_TIMER;
+var PAUSE_TIMER;
+var isShowPosition;
+var mp = new MediaPlayer();
+var duration = 0;;
+
+mp.setVideoDisplayMode(1); // 设置全屏模式
+mp.refreshVideoDisplay();
+
+function init(){
+	showProcess();
+	SEEK_SHOW_FLAG = false;
+	VOLUME_SHOW_FLAG = false;
+	PAUSE_SHOW_FLAG = false;
+	PRE_SEEK_FLAG = false;
+	EXIT_SHOW_FLAG = false;
+	REPLAY_SHOW_FLAG = false;
+	FOCUS_FLAG = true;
+	
+	setDisplay_loc(0);
+	beginToPlay();
+}
+
+function grabPress(e){
+	var val = e.which || e.keyCode;
+	Utility.println("val  " + val);
+	switch(val){
+		case KEY_VOLUP:
+			e.preventDefault();
+    		doVolUp();
+			break;
+		case KEY_VOLDOWN:
+			e.preventDefault();
+    		doVolDown();
+			break;
+		case KEY_RIGHT:
+    		e.preventDefault();
+     		doRight();
+			break;
+		case KEY_LEFT:
+    		e.preventDefault();
+    		doLeft();
+			break;
+		case KEY_MUTE:
+		    e.preventDefault();
+			doMute();
+			break;
+		case KEY_OK:
+			e.preventDefault();
+			doOK();
+			break
+		case 114:
+		case KEY_EXIT:
+		case KEY_BACK:
+			e.preventDefault();
+			doExit();
+			break;
+		case KEY_INFO:
+			e.preventDefault();
+			showInfo();
+			break;
+		case KEY_POSITION:
+            isShowPosition = true;
+            setDisplay_loc(isShowPosition);
+			hiddenVolume();
+            break;
+		case 40200:
+		{
+			preConfirmIfReplay();
+			Utility.println("播放结束");
+		}
+			break;
+		case 40201:
+			//alert("播放开始");
+			Utility.println("播放开始");	
+			showDuration();
+			break;
+		case 40202:
+		{
+			var eventId = event.userInt;
+			var errJson = Utility.getEvent(40202, eventId);
+        	var JsonObj = eval("("+errJson+")");
+        	var errCode = JsonObj.errcode;
+			switch(errCode){
+				case 35:
+					Utility.println("解码器出错");
+				break;
+				case 36:
+					Utility.println(" 媒体文件不存在或文件格式出错");
+				break;
+				case 37:
+					Utility.println("播放定位出错");
+				break;
+				case 38:
+					Utility.println("暂停操作失败");
+				break;
+				case 39:
+					Utility.println("状态恢复失败");
+				break;
+				case 40:
+					Utility.println("设置速率失败");
+				break;
+				case 41:
+				{
+					var httpcode = JsonObj.httpCode;
+					Utility.println("网络异常 " + "http code" + httpcode);
+				}
+				break;
+				case 42:
+					Utility.println("读取数据超时");
+				break;
+				default:
+				break;
+			}
+		}
+		break;
+		case 40400:
+		Utility.println("缓存开始");
+			break
+		case 40401:
+		Utility.println("缓存结束");
+			break
+		case 40402:
+		Utility.println("能够获取一些基本信息，如片长");
+			break
+		case 40403:
+		Utility.println("有足够的数据进行播放，如进行快进快退都操作");
+			break;
+		case 40404:
+		Utility.println("节目总时长发生变化，需要播放器更新时长");
+			break;
+		case 40405:
+		Utility.println("节目总播放倍数发生变化");
+			break;
+		case 40406:
+		{
+			var eventId = event.userInt;
+			var errJson = Utility.getEvent(40406, eventId);
+			Utility.println(errJson);
+        	var JsonObj = eval("("+errJson+")");
+        	var value = JsonObj.value;
+			Utility.println("等待播放，缓存数据的进度值： " + value);
+		}
+			break;
+		case 40407:
+		Utility.println("停止播放器操作成功");
+			break;
+		case 40408:
+		Utility.println("启动播放器操作成功");
+			break;
+		case 40409:
+		Utility.println("暂停播放器操作成功");
+			break;
+		case 40410:
+		Utility.println("选时播放定位成功");
+			break;
+		default:
+		    break;
+		}
+}
+
+function play(time){
+	if(time == 0)
+		mp.playFromStart();
+	else 
+		playBySetTime(time);
+}
+
+function dostop(){
+	mp.stop();
+	//Utility.ioctlWrite("NM_HLS","nAction:"+0+",fileName:"+ hlsplay);
+}
+
+function beginToPlay(){
+	var locationUrl = location.href;
+    var hlsplays= locationUrl.split("hlsplay=") ;
+	//var hlsplay = getQueryStr("hlsplay", location.href);
+	if(hlsplay == NULL){
+		alert("The media src is NUll");
+		history.back();
+		return;
+	}
+	hlsplay = hlsplays[1];
+	hlsplay="http://172.31.153.234:8080";
+	hiddenProcess();
+	mp.setAllowTrickmodeFlag(0);
+	//alert(hlsplay);
+    mp.setSingleMedia(hlsplay);
+    mp.setCurrentAudioChannel("Stereo"); //set channel to Stereo when start
+    mp.setVideoDisplayMode(1);
+    //mp.setVideoDisplayArea("800px","500px","300px","900px");
+	//mp.setVideoDisplayMode(0);
+    mp.refreshVideoDisplay();
+    mp.playFromStart();
+	
+	PLAYING_FLAG = true;
+	MUTE_FLAG = mp.getMuteFlag();
+	if(MUTE_FLAG == true)
+		$("g_static").style.visibility = "visible";
+		
+	duration = mp.getMediaDuration();	
+	showSeekControl();
+	SEEK_SHOW_FLAG = true;
+	showPauseControl();
+	$("pause_control").style.background = 'url("images/button_q.png")';
+	clearTimeout(PAUSE_TIMER);
+	PAUSE_TIMER = setTimeout("hiddenPauseControl()", 8000);
+	//Utility.ioctlWrite("NM_HLS","nAction:"+1+",fileName:"+ hlsplay);
+}
+
+function preConfirmIfReplay(){
+	setTimeout("confirmIfReplay()", 3000);	
+}
+
+function showProcess(){
+	$("process").style.visibility = "visible";	
+}
+
+function hiddenProcess(){
+	$("process").style.visibility = "hidden";	
+}
+
+function confirmIfReplay(){
+	if(PRE_SEEK_FLAG == true){
+		hiddenSeekControl();
+		PRE_SEEK_FLAG = false;
+	}
+	$("text").innerHTML = "Play to the end, replay?"
+	$("exit_control").style.opacity = 1;
+	REPLAY_SHOW_FLAG = true;	
+}
+
+function doExit(){
+	if(PLAYING_FLAG == false){
+		if(PRE_SEEK_FLAG == true){
+			showSeekControl();
+			PRE_SEEK_FLAG = false;
+		}else{
+			hiddenSeekControl();
+			hiddenVolume();
+			showExit();
+		}
+	}else if(SEEK_SHOW_FLAG == true){
+		clearTimeout(SEEK_TIMER);
+		hiddenSeekControl();
+		if(PLAYING_FLAG == true)
+			hiddenPauseControl();
+	}else if(VOLUME_SHOW_FLAG == true){
+		clearTimeout(VOLUME_TIMER);
+		hiddenVolume();
+	}else if(PRE_SEEK_FLAG == true){
+		clearTimeout(SEEK_TIMER);
+		hiddenSeekControl();
+		PRE_SEEK_FLAG = false;
+	}else if(EXIT_SHOW_FLAG == false){
+		hiddenSeekControl();
+		hiddenVolume();
+		showExit();
+	} else{
+		showSeekControl();
+		hiddenExit();	
+	}
+}
+
+function showExit(){
+	$("text").innerHTML = "Are you sure exit?"
+	$("exit_control").style.opacity = 1;
+	EXIT_SHOW_FLAG = true;	
+}
+
+function hiddenExit(){
+	$("exit_control").style.opacity = 0;
+	EXIT_SHOW_FLAG = false;
+	REPLAY_SHOW_FLAG = false;
+}
+
+function doReplay(){
+	document.location.reload();
+}
+
+function doOK(){
+  if(EXIT_SHOW_FLAG == true || REPLAY_SHOW_FLAG == true){
+		if(FOCUS_FLAG == true){
+			if(REPLAY_SHOW_FLAG == true){
+				doReplay();
+			}else{
+				history.back();
+			}
+		}else{
+			if(REPLAY_SHOW_FLAG == true)
+				history.back();
+			else
+				hiddenExit();	
+		}
+	}else if(PRE_SEEK_FLAG == true){
+			clearTimeout(SEEK_TIMER);
+			clearTimeout(PRESEEK_TIMER);
+			clearTimeout(CURRTIME_TIMER);
+			var currentTime;
+			var duration = mp.getMediaDuration();
+			currentTime = Math.floor((parseInt($("proSeek").style.width) / 708) * Math.floor(duration));
+			playAfterSeek(currentTime);
+			if(PAUSE_SHOW_FLAG == true){
+				clearTimeout(PAUSE_TIMER);
+				PAUSE_TIMER = setTimeout("hiddenPauseControl()", 8000);
+			}
+			PRE_SEEK_FLAG = false;
+	}
+	else if(getDisplay_loc()){
+		 clearTimeout(SEEK_TIMER);
+		 var txtTime = $("txtInput").value;
+		 var time = txtTime * 60;
+		 if (txtTime == "" || txtTime == null) { setDisplay_loc(0); return; }
+		 if (time > mp.getMediaDuration()){alert("The input time is longer than total time！"); setDisplay_loc(0); return;}
+		 TimeTranfrom(time);
+		 playBySetTime(0);
+		 $("play_time").innerHTML =" " +  hours + " : " + minutes + " : " + seconds; 
+		 setDisplay_loc(0);
+		 showSeekControl();
+	}
+	else{
+		doPlayOrPause();	
+	}
+}
+function playBySetTime(time)
+{   
+    var normalTime = 1;
+	var beginTime;
+	var Speed =0;
+	if(time != 0)
+		beginTime = time;
+	else
+		beginTime = $("txtInput").value * 60;
+
+	beginTime = beginTime.toString();
+	Utility.println("playBySetTime " + beginTime);
+	var nReturn = mp.playByTime(normalTime, beginTime, Speed);
+    if (nReturn == 0) {
+		clearTimeout(SEEK_TIMER);
+		clearTimeout(PAUSE_TIMER);
+		showSeekControl();
+		$("pause_control").style.background = 'url("images/button_q.png")';
+		showPauseControl();
+		clearTimeout(PAUSE_TIMER);
+			PAUSE_TIMER = setTimeout("hiddenPauseControl()", 8000);
+	}
+	else {
+		//alert("定位播放失败");
+	}
+}
+function playAfterSeek(time){
+	play(time);
+	PLAYING_FLAG = true;
+	if(PAUSE_SHOW_FLAG = true)
+		$("pause_control").style.background = 'url("images/button_q.png")';
+}
+
+function doPlayOrPause(){
+	clearTimeout(SEEK_TIMER);
+	clearTimeout(PAUSE_TIMER);
+	clearTimeout(CURRTIME_TIMER);
+	if(PLAYING_FLAG == false){
+		mp.resume();
+		showSeekControl();
+		PLAYING_FLAG = true;
+		if(PAUSE_SHOW_FLAG = true){
+			$("pause_control").style.background = 'url("images/button_q.png")';
+			showPauseControl();
+			clearTimeout(PAUSE_TIMER);
+			PAUSE_TIMER = setTimeout("hiddenPauseControl()", 8000);
+		}
+	}else{
+		mp.pause();
+		showSeekControl();
+		clearTimeout(PAUSE_TIMER);
+		$("pause_control").style.background = 'url("images/button_s.png")';
+		showPauseControl();
+		PLAYING_FLAG = false;
+	}
+}
+
+function showPauseControl(){
+	$("pause_control").style.visibility = "visible";
+	PAUSE_SHOW_FLAG = true;
+}
+
+function hiddenPauseControl(){
+	$("pause_control").style.visibility = "hidden";	
+	PAUSE_SHOW_FLAG = false;
+}
+var hours = 0;
+var minutes = 0;
+var seconds = 0;
+
+function doRight(){
+	if(EXIT_SHOW_FLAG == true || REPLAY_SHOW_FLAG == true){
+		$("sure").style.background = 'url("images/y_button.png") no-repeat';
+		$("cancle").style.background = 'url("images/c_button_s.png") no-repeat';	
+		FOCUS_FLAG = false;
+	}else{
+		if(VOLUME_SHOW_FLAG == true){
+			hiddenVolume();
+		}
+		if(SEEK_SHOW_FLAG == true || PRE_SEEK_FLAG == true){
+			clearTimeout(SEEK_TIMER);	
+			clearTimeout(CURRTIME_TIMER);
+			Utility.println("clearTimeout(CURRTIME_TIMER)");
+			hiddenSeekControl();
+			SEEK_SHOW_FLAG = false;
+		}
+
+		//return;
+		$("proSeek").style.width = parseInt($("proSeek").style.width) + 708 / 20 + "px";
+		$("curSeek").style.left = parseInt($("curSeek").style.left) + 708 / 20 + "px";
+		if(parseInt($("proSeek").style.width) >= 708){
+			$("proSeek").style.width = 700 +"px";
+			$("curSeek").style.left = 132 + 700 + "px";
+		}
+		if(parseInt($("proSeek").style.width) <= 110){
+			$("proSeek").style.width = 116 +"px";
+			$("curSeek").style.left = 242 + 6 + "px";
+		}
+		
+		var seekTime = Math.floor((parseInt($("proSeek").style.width) / 708) * Math.floor(duration));
+		TimeTranfrom(seekTime);
+		$("play_time").innerHTML =" " +  hours + " : " + minutes + " : " + seconds; 
+		justShowSeekControl();	
+		PRE_SEEK_FLAG = true;
+		if(PLAYING_FLAG == true){
+			clearTimeout(PRESEEK_TIMER);
+			PRESEEK_TIMER = setTimeout("hiddenSeekControl()", 4000);
+		}
+		 
+	}
+}
+
+function doLeft(){
+	if(EXIT_SHOW_FLAG == true || REPLAY_SHOW_FLAG == true){
+		$("sure").style.background = 'url("images/y_button_s.png") no-repeat';
+		$("cancle").style.background = 'url("images/c_button.png") no-repeat';
+		FOCUS_FLAG = true;
+	}else{
+		if(VOLUME_SHOW_FLAG == true){
+			hiddenVolume();
+		}
+		if(SEEK_SHOW_FLAG == true || PRE_SEEK_FLAG == true){
+			clearTimeout(SEEK_TIMER);	
+			clearTimeout(CURRTIME_TIMER);
+			Utility.println(" clearTimeout(CURRTIME_TIMER)");
+			hiddenSeekControl();
+			SEEK_SHOW_FLAG = false;
+		}
+
+		$("proSeek").style.width = Math.floor(parseInt($("proSeek").style.width) - 708 / 20) + "px";
+		$("curSeek").style.left = Math.floor(parseInt($("curSeek").style.left) - 708 / 20) + "px";
+		if(parseInt($("proSeek").style.width) <= 110){
+			$("proSeek").style.width = 6 +"px";
+			$("curSeek").style.left = 132 + 6 + "px";
+		}
+		
+		var seekTime = Math.floor((parseInt($("proSeek").style.width) / 708) * Math.floor(duration));
+		TimeTranfrom(seekTime);
+		
+		$("play_time").innerHTML =" " +  hours + " : " + minutes + " : " + seconds; 
+		justShowSeekControl();
+		PRE_SEEK_FLAG = true;
+		if(PLAYING_FLAG == true){
+			clearTimeout(PRESEEK_TIMER);
+			PRESEEK_TIMER = setTimeout("hiddenSeekControl()", 4000);
+		}	
+	}
+}
+function TimeTranfrom(Time)
+{
+	if(Time >= 3600){
+		hours = Math.floor(Time / 3600);
+		minutes = Math.floor((Time - hours * 3600) / 60);
+		seconds = Math.floor(Time - hours * 3600 - minutes * 60);
+	}else if(Time < 3600 && Time >= 60){
+		minutes = Math.floor(Time / 60);
+		seconds = Math.floor(Time - minutes * 60);
+	}else{
+		seconds = Math.floor(Time);	
+	}
+	seconds = seconds - seconds%10;
+}
+
+function justShowSeekControl(){
+	$("seek_control").style.top = 488 + "px";
+	$("seek_control").style.opacity = 1;
+	showDuration();
+}
+
+function doVolUp(){
+	var intVolume = mp.getVolume();
+	if(PRE_SEEK_FLAG == true || SEEK_SHOW_FLAG == true){
+		hiddenSeekControl();
+	}
+	clearTimeout(VOLUME_TIMER);
+	
+	if (intVolume >= 31) {
+		//alert("It is the max volume!") ;
+	}
+	else{
+		intVolume += 1;
+		mp.setVolume(intVolume);
+	}
+	showVolume();
+}
+
+function doVolDown(){
+	var intVolume = mp.getVolume();
+	if(PRE_SEEK_FLAG == true || SEEK_SHOW_FLAG == true){
+		hiddenSeekControl();
+	}
+	clearTimeout(VOLUME_TIMER);
+	
+	if (intVolume <= 0) {
+		//alert("It is the min volume !" );
+	}
+	else{
+		intVolume -= 1;
+		mp.setVolume(intVolume);
+	}
+	showVolume();
+}
+
+function $(val){
+	return document.getElementById(val);	
+}
+
+function doMute(){
+	if(MUTE_FLAG == false){
+		$("g_static").style.visibility = "visible";
+		if(VOLUME_SHOW_FLAG == true)
+			hiddenVolume();
+	   	mp.setMuteFlag(1);	
+		MUTE_FLAG = true;
+	}else{
+		$("g_static").style.visibility = "hidden";
+		if(VOLUME_SHOW_FLAG == false && SEEK_SHOW_FLAG == false)
+			showVolume();
+	    mp.setMuteFlag(0);
+		MUTE_FLAG = false;
+	}
+}
+
+function showDuration(){
+	var hours = 0;
+	var minutes = 0;
+	var seconds = 0;
+	duration = mp.getMediaDuration();
+	if(duration >= 3600){
+		hours = Math.floor(duration / 3600);
+		minutes = Math.floor((duration - hours * 3600) / 60);
+		seconds = Math.floor(duration - hours * 3600 - minutes * 60);
+	}else if(duration < 3600 && duration >= 60){
+		minutes = Math.floor(duration / 60);
+		seconds = Math.floor(duration - minutes * 60);
+	}else{
+		seconds = Math.floor(duration);	
+	}
+	$("end_time").innerText = hours + " : " + minutes + " : " + seconds;
+	//alert(23);
+	
+	
+}
+
+function showCurrentTime(){	
+	var currTime = mp.getCurrentPlayTime();
+	var hours = 0;
+	var minutes = 0;
+	var seconds = 0;
+	Utility.println("showCurrentTime currTime " + currTime);
+	if(PRE_SEEK_FLAG == true)
+		return;
+		
+	if(currTime >= 3600){
+		hours = Math.floor(currTime / 3600);
+		minutes = Math.floor((currTime - hours * 3600) / 60);
+		seconds = Math.floor(currTime - hours * 3600 - minutes * 60);
+	}else if(currTime < 3600 && currTime >= 60){
+		minutes = Math.floor(currTime / 60);
+		seconds = Math.floor(currTime - minutes * 60);
+	}else{
+		seconds = Math.floor(currTime);	
+	}
+	$("play_time").innerHTML = hours + " : " + minutes + " : " + seconds;
+	$("proSeek").style.width = currTime / duration * 708 + "px";
+	$("curSeek").style.left = 132 + currTime / duration * 708 + "px";
+	if(SEEK_SHOW_FLAG == true)
+		CURRTIME_TIMER = setTimeout("showCurrentTime()", 1000);	
+}
+
+function showSeekControl(){
+	SEEK_SHOW_FLAG = true;
+	if(VOLUME_SHOW_FLAG = true)
+		hiddenVolume();
+	$("seek_control").style.top = 488 + "px";
+	$("seek_control").style.opacity = 1;
+	showDuration();
+	Utility.println("showSeekControl showCurrentTime");
+	clearTimeout(SEEK_TIMER);
+	CURRTIME_TIMER = setTimeout("showCurrentTime()", 500);
+	clearTimeout(SEEK_TIMER);
+	SEEK_TIMER = setTimeout("hiddenSeekControl()", 8000);
+}
+
+function hiddenSeekControl(){
+	//if it is pause status, do not hide seek control///
+	if(PLAYING_FLAG == false)
+		return;
+	$("seek_control").style.top = 488 + "px";
+	$("seek_control").style.opacity = 0;
+	SEEK_SHOW_FLAG = false;
+	PRE_SEEK_FLAG = false;
+}
+
+function showVolume(){
+	VOLUME_SHOW_FLAG = true;
+	if(SEEK_SHOW_FLAG == true)
+		hiddenSeekControl();
+	var volume = mp.getVolume();
+	$("proVol").style.width = (607 * volume)/31 + "px";
+	$("curVol").style.left = 105 + (607 * volume)/31 + "px";
+	$("showVol").innerHTML = volume;
+	$("voice_control").style.opacity = 1;
+	VOLUME_TIMER = setTimeout("hiddenVolume()", 5000);
+}
+
+function hiddenVolume(){
+	$("voice_control").style.opacity = 0;
+	VOLUME_SHOW_FLAG = false;
+}
+var pSeconds = 0;
+var checkPos;
+//check position control if show
+function getDisplay_loc() { return ($("input_box").style.visibility != "hidden"); }
+//set position control display, 1=show, 0=hidden
+function setDisplay_loc(isdisplay) {
+    if (isdisplay == 1) {
+        pSeconds = 0;
+        $("input_box").style.visibility = "visible";
+        $("txtInput").focus();
+        checkPos = setInterval("checkPosition()", 1000);
+    } else {
+        $("input_box").style.visibility = "hidden";
+        $("txtInput").blur();
+        isShowPosition = 0;
+        clearInterval(checkPos);
+    }
+}
+
+function checkPosition() {
+    pSeconds++;
+    if (pSeconds > 15) { setDisplay_loc(0); clearInterval(checkPos); }
+}
+
+function getQueryStr(qs, allStr){
+	var rs = new RegExp("(^|)"+qs+"=([^\&]*)(\&|$)","gi").exec(allStr), tmp;
+	if(tmp = rs) return tmp[2];
+	return "";
+}
+
+document.onkeypress = grabPress;
+window.onload = init;
+window.onunload = dostop;
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 9.00.8112.16717"></HEAD>
+<BODY bgColor=transparent><!--videoƵ-->
+<DIV id=p_player class=video_control></DIV><!--ͼ-->
+<DIV 
+style="POSITION: absolute; WIDTH: 78px; BACKGROUND: url(images/static_bg.png) no-repeat; HEIGHT: 64px; VISIBILITY: hidden; TOP: 80px; LEFT: 1100px" 
+id=g_static></DIV><!--ͣͼ-->
+<DIV 
+style="POSITION: absolute; WIDTH: 76px; BACKGROUND: url(images/button_s.png) no-repeat; HEIGHT: 75px; VISIBILITY: hidden; TOP: 80px; LEFT: 1000px" 
+id=pause_control></DIV>
+<DIV style="VISIBILITY: hidden" id=input_box>
+<DIV id=location_bg><IMG src="videoPlay_files/l_position.png"></DIV>
+<DIV id=location><INPUT 
+style="BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; WIDTH: 85px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: #fff; BORDER-LEFT-WIDTH: 0px" 
+id=txtInput>min </DIV></DIV><!---->
+<DIV 
+style="POSITION: absolute; WIDTH: 1037px; BACKGROUND: url(images/vo.png) no-repeat; HEIGHT: 162px; TOP: 568px; LEFT: 200px" 
+id=voice_control class=transition>
+<DIV 
+style="POSITION: absolute; WIDTH: 50px; BACKGROUND: url(images/g_c.png) repeat-x; HEIGHT: 8px; TOP: 22px; LEFT: 105px" 
+id=proVol></DIV>
+<DIV style="POSITION: absolute; TOP: 20px; LEFT: 300px" id=curVol><IMG 
+src="videoPlay_files/vo_g.png"></DIV>
+<DIV 
+style="POSITION: absolute; TEXT-ALIGN: center; COLOR: #fff; FONT-SIZE: 20px; TOP: 18px; LEFT: 745px" 
+id=showVol></DIV></DIV><!--ſ-->
+<DIV 
+style="POSITION: absolute; BACKGROUND: url(images/g_bg_1.png) no-repeat; LEFT: 100px" 
+id=seek_control class=transitionseek>
+<DIV 
+style="POSITION: absolute; TEXT-ALIGN: center; COLOR: #fff; FONT-SIZE: 20px; TOP: 65px; LEFT: 37px" 
+id=begin_time>0 : 0 : 0</DIV>
+<DIV 
+style="POSITION: absolute; TEXT-ALIGN: center; COLOR: #fff; FONT-SIZE: 20px; TOP: 65px; LEFT: 873px" 
+id=end_time>0 : 0 : 0</DIV>
+<DIV 
+style="POSITION: absolute; TEXT-ALIGN: center; COLOR: #fff; FONT-SIZE: 20px; TOP: 18px; LEFT: 440px" 
+id=play_time>0 : 0 : 0</DIV>
+<DIV 
+style="POSITION: absolute; WIDTH: 20px; BACKGROUND: url(images/g_c.png); HEIGHT: 12px; TOP: 73px; LEFT: 132px" 
+id=proSeek></DIV>
+<DIV style="POSITION: absolute; TOP: 60px; LEFT: 132px" id=curSeek><IMG 
+src="videoPlay_files/circle.png"></DIV></DIV><!--˳ʾ-->
+<DIV 
+style="POSITION: absolute; WIDTH: 382px; BACKGROUND: url(images/tip.png) no-repeat; HEIGHT: 226px; TOP: 248px; LEFT: 449px" 
+id=exit_control class=transition>
+<DIV 
+style="POSITION: absolute; TEXT-ALIGN: center; WIDTH: 325px; HEIGHT: 80px; COLOR: #fff; FONT-SIZE: 28px; TOP: 70px; LEFT: 25px" 
+id=text></DIV>
+<DIV 
+style="POSITION: absolute; WIDTH: 101px; BACKGROUND: url(images/y_button_s.png) no-repeat; HEIGHT: 43px; TOP: 180px; LEFT: 40px" 
+id=sure></DIV>
+<DIV 
+style="POSITION: absolute; WIDTH: 101px; BACKGROUND: url(images/c_button.png) no-repeat; HEIGHT: 43px; TOP: 180px; LEFT: 220px" 
+id=cancle></DIV></DIV><!---->
+<DIV 
+style="POSITION: absolute; WIDTH: 48px; HEIGHT: 48px; VISIBILITY: hidden; TOP: 330px; LEFT: 610px" 
+id=process>
+<DIV><IMG src="videoPlay_files/process.gif"></DIV></DIV></BODY></HTML>
