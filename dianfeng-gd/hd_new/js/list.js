@@ -45,7 +45,7 @@ function grabEvent(_event){
         case "KEY_EXIT":
         case "KEY_BACK":
             //window.location.href = "../index.html";
-            window.history.back();
+            //window.history.back();
             return false;
             break;
         default:
@@ -157,8 +157,8 @@ function getRtspUrl(id){
 }
 
 function getMenuData(){
-    var url=serverUrl+'/inter/getTyeps.action?userNo='+user_id;
-    url='getTyep.json';//test
+    var url=serverUrl+'/inter/getTyepsByList.action?userNo='+user_id;
+    url='getTyepsByList.json';//test
     fetch(url,function(data){
         formatMenuData(data);
         menuObj.render();
@@ -170,162 +170,21 @@ function getMenuData(){
 function formatMenuData(data){
     menuObj.data=[];
     menuObj.menuList=[];
-    for(var i=0,len=4;i<len;i++){
+    contentList.data={};
+    for(var i=4,len=data.data.length;i<len;i++){
         menuObj.data.push({
             name:data.data[i].typeName,
             id:data.data[i].typeId
         });
-        menuObj.menuList.push(menuObj.initLeft+(menuObj.stepLeft*i));
+        menuObj.menuList.push(menuObj.initLeft+(menuObj.stepLeft*(i-4))-60);
+        contentList.data['menu'+(i-4)]={
+            currentPage:1,
+            totalPage:1,
+            lists:[]
+        };
     }
 }
 
-
-
-//内容首页控制对象
-var indexHome = {
-    uiPos: 0,
-    dataPos : 0,
-    data:[
-        {top:0,left:42,width:506,height:312,leftTo:'',rightTo:3,upTo:'touchUp',downTo:1,img:'images/img1.png',link:'#'},
-        {top:326,left:42,width:246,height:152,leftTo:'',rightTo:2,upTo:0,downTo:'',img:'images/img2.png',link:'#'},
-        {top:326,left:302,width:246,height:152,leftTo:1,rightTo:5,upTo:0,downTo:'',img:'images/img2.png',link:'#'},
-
-        {top:16,left:590,width:228,height:140,leftTo:0,rightTo:6,upTo:'touchUp',downTo:4,img:'images/img3.png',link:'#'},
-        {top:168,left:590,width:228,height:140,leftTo:0,rightTo:8,upTo:3,downTo:5,img:'images/img3.png',link:'#'},
-        {top:320,left:590,width:228,height:140,leftTo:2,rightTo:10,upTo:4,downTo:'',img:'images/img3.png',link:'#'},
-
-        {top:16,left:868,width:104,height:104,leftTo:3,rightTo:7,upTo:'touchUp',downTo:8,img:'images/img4.png',link:'#'},
-        {top:16,left:986,width:104,height:104,leftTo:6,rightTo:'',upTo:'touchUp',downTo:9,img:'images/img4.png',link:'#'},
-        {top:130,left:868,width:104,height:104,leftTo:3,rightTo:9,upTo:6,downTo:10,img:'images/img4.png',link:'#'},
-        {top:130,left:986,width:104,height:104,leftTo:8,rightTo:'',upTo:7,downTo:11,img:'images/img4.png',link:'#'},
-        {top:244,left:868,width:104,height:104,leftTo:4,rightTo:11,upTo:8,downTo:12,img:'images/img4.png',link:'#'},
-        {top:244,left:986,width:104,height:104,leftTo:10,rightTo:'',upTo:9,downTo:13,img:'images/img4.png',link:'#'},
-        {top:357,left:868,width:104,height:104,leftTo:5,rightTo:13,upTo:10,downTo:'',img:'images/img4.png',link:'#'},
-        {top:357,left:986,width:104,height:104,leftTo:12,rightTo:'',upTo:11,downTo:'',img:'images/img4.png',link:'#'}
-
-    ],
-    getData : function(){
-        var url=serverUrl+'/inter/getIndexLists.action?typeId='+menuObj.data[menuObj.menuPos].id;
-        url='getIndexLists.json';//test
-        var that=this;
-        fetch(url,function(data){
-            that.formatData(data);
-            that.render();
-        },function(){
-            //alert('网络错误');
-        });
-    },
-    formatData : function(data){
-        for(var i=0,len=data.data.length;i<len;i++){
-            this.data[i].id=data.data[i].indexId;
-            this.data[i].name=data.data[i].indexName;
-            this.data[i].img=imgBasePath+data.data[i].indexImg;
-            this.data[i].link=data.data[i].indexUrl;
-        }
-    },
-    show: function(){
-        $('contentBox').style.backgroundImage = "url(images/index-bg1.png)";
-        $('l_icon').style.visibility="hidden";
-        $('r_icon').style.visibility="hidden";
-        $('pageNav').style.visibility="hidden";
-        $('content').innerHTML='';
-        if(!!this.data[0].id){
-            this.render();
-        }else{
-            this.getData();
-        }
-    },
-    init: function () {
-        this.focus();
-        return this;
-    },
-    focus : function(){
-        $('content_focus').style.visibility="visible";
-        $('content_focus').style.width=this.data[this.dataPos].width+'px';
-        $('content_focus').style.height=this.data[this.dataPos].height+'px';
-        $('content_focus').style.left=(this.data[this.dataPos].left-6)+'px';
-        $('content_focus').style.top=(this.data[this.dataPos].top-6)+'px';
-    },
-    blur : function(){
-        $('content_focus').style.visibility="hidden";
-    },
-    render: function(){
-        var s='';
-        for(var i= 0,len=this.data.length;i<len;i++){
-            s+='<div style="position: absolute;top: '+this.data[i].top+'px;left: '+this.data[i].left+'px;width: '+this.data[i].width+'px;height: '+this.data[i].height+'px;background: url('+this.data[i].img+') no-repeat;"></div>';
-        }
-        $('content').innerHTML=s;
-    },
-    left : function(){
-        var to=this.data[this.dataPos].leftTo;
-        if(to==='') return;
-        if(to=='touchLeft'){
-            this.touchLeft();
-            return;
-        }
-        //this.blur();
-        this.uiPos=to;
-        this.dataPos=to;
-        this.focus();
-    },
-    right : function(){
-        var to=this.data[this.dataPos].rightTo;
-        if(to==='') return;
-        if(to=='touchRight'){
-            this.touchRight();
-            return;
-        }
-        this.uiPos=to;
-        this.dataPos=to;
-        this.focus();
-    },
-    up : function(){
-        var to=this.data[this.dataPos].upTo;
-        if(to==='') return;
-        if(to=='touchUp'){
-            this.touchUp();
-            return;
-        }
-        this.uiPos=to;
-        this.dataPos=to;
-        this.focus();
-    },
-    down : function(){
-        var to=this.data[this.dataPos].downTo;
-        if(to==='') return;
-        if(to=='touchDown'){
-            this.touchDown();
-            return;
-        }
-        this.uiPos=to;
-        this.dataPos=to;
-        this.focus();
-    },
-    enter : function(){
-        //alert(this.data[this.dataPos].link);
-        var url=this.data[this.dataPos].link;
-        if(url.indexOf('?')>-1){
-            url+='&user_id='+user_id;
-        }else{
-            url+='?user_id='+user_id;
-        }
-        location.href=url;//'activity.html';
-    },
-    touchLeft : function(){
-
-    },
-    touchUp : function(){
-        this.blur();
-        ctr=menuObj.init();
-    },
-    touchRight : function(){
-
-    },
-    touchDown : function(){
-
-    }
-
-};
 
 
 //内容列表控制对象
@@ -333,7 +192,7 @@ var contentList = {
     uiPos : 0,
     dataPos : 0,
     hasData : false,
-    pageSize : 24,
+    pageSize : 18,
     data : {
         menu1 : {
             currentPage : 1,
@@ -359,21 +218,10 @@ var contentList = {
     },
     getData : function(isTurnPage){
         var url='';
-        if(menuObj.menuPos==1){//最热
-            //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=2&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            //url='getGameListByTypeId.json';//test
-        }
-        if(menuObj.menuPos==2){//最新
-            //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=1&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            //url='getGameListByTypeId.json';//test
-        }
-        //menuObj.data[menuObj.menuPos].id
-        if(menuObj.menuPos==3){//收藏列表
-            url=serverUrl+'/inter/getScList.action?userNo='+user_id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            //url='getScList.json';//test
-        }
+        
+        url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=2&page='+this.data['menu'+menuObj.menuPos].currentPage;
+        url='getGameListByTypeId.json';//test
+        
         var that=this;
         that.hasData=false;
         fetch(url,function(data){
@@ -392,22 +240,14 @@ var contentList = {
             this.data['menu'+menuObj.menuPos].currentPage=data.page||1;
             this.data['menu'+menuObj.menuPos].totalPage=Math.ceil(data.total/this.pageSize)||1;
             for(var i=0,len=data.data.length;i<len;i++){
-                if(menuObj.menuPos==3){
-                    //收藏列表
-                    this.data['menu'+menuObj.menuPos].lists.push({
-                        scid:data.data[i].scId,
-                        id:data.data[i].gameId,
-                        name:data.data[i].gameTitle,
-                        img:imgBasePath+data.data[i].gameImg
-                    });
-                }else{
-                    this.data['menu'+menuObj.menuPos].lists.push({
-                        id:data.data[i].gameId,
-                        name:data.data[i].gameTitle,
-                        img:imgBasePath+data.data[i].gameImg
-                        //img:data.data[i].gameImg //for test
-                    });
-                }
+                
+                this.data['menu'+menuObj.menuPos].lists.push({
+                    id:data.data[i].gameId,
+                    name:data.data[i].gameTitle,
+                    //img:imgBasePath+data.data[i].gameImg
+                    img:data.data[i].gameImg //for test
+                });
+                
             }
         }
     },
@@ -521,19 +361,9 @@ var contentList = {
         this.focus();
     },
     enter : function(){
-        var url='play.html?url='+encodeURIComponent('');
-        window.location.href=url;
-        return 0;
-        if(menuObj.menuPos==3){
-            //收藏列表
-            //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
-            getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
-        }else{
-            //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
-            getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
-            //location.href='activity.html?id='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].id;
-        }
-        //this.data['menu'+menuObj.menuPos].lists[this.uiPos].link
+        
+        getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
+           
     },
     touchLeft : function(){
         //上一页
@@ -562,19 +392,19 @@ var contentList = {
 //菜单控制对象
 var menuObj = {
     menuPos: 0,
-    menuList: [100, 350, 600, 850],
+    menuList: [60, 200, 600, 850],
     data : [
         {name:'首页推荐',id:0},
         {name:'热门游戏',id:0},
         {name:'最新游戏',id:0},
         {name:'收藏夹',id:0}
     ],
-    stepLeft:250,
-    initLeft:100,
+    stepLeft:140,
+    initLeft:60,
     render : function(){
         var s='';
         for(var i= 0,len=this.data.length;i<len;i++){
-            s+='<div id="menu_'+i+'" class="menu" style="position:absolute; font-size:26px; top:0px; left:'+(this.initLeft+i*this.stepLeft)+'px; width:250px; height:50px;text-align: center;color:#ffffff;">'+this.data[i].name+'</div>';
+            s+='<div id="menu_'+i+'" class="menu" style="position:absolute; font-size:26px; top:0px; left:'+(this.initLeft+i*this.stepLeft)+'px; width:140px; height:50px;text-align: center;color:#ffffff;">'+this.data[i].name+'</div>';
         }
         $('menuItems').innerHTML=s;
     },
@@ -614,32 +444,12 @@ var menuObj = {
     },
     down: function () {
         this.selected();
-        if (this.menuPos == 0) {
-            ctr=indexHome.init();
-        }else{
-            if(!!!contentList.data['menu'+menuObj.menuPos].lists||contentList.data['menu'+menuObj.menuPos].lists.length<=0) return;//没数据
-            ctr=contentList.init();
-        }
+        if(!!!contentList.data['menu'+menuObj.menuPos].lists||contentList.data['menu'+menuObj.menuPos].lists.length<=0) return;//没数据
+        ctr=contentList.init();
     },
     enter: function () {
-        if (this.menuPos == 0) {
-            //首页推荐
-            //alert('home');
-            indexHome.show();
-            //indexHome.init();
-        } else if (this.menuPos == 1) {
-            //热门游戏
-            contentList.show();
-            return;
-        } else if (this.menuPos == 2) {
-            //最新游戏
-            contentList.show();
-            return 0;
-        } else if (this.menuPos == 3) {
-            //收藏夹
-            contentList.show();
-            return 0;
-        }
+       
+        contentList.show();
 
     }
 };
@@ -680,18 +490,18 @@ var topTips= {
     },
     enter: function() {
         if (this.menuPos == 0) {
-            //首页
+             //首页//返回portal页
+            window.location.href = 'http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
         }
         else if (this.menuPos == 1) {
-            //主页
+            //主页 sp首页
+            history.back();
             return;
         } else if (this.menuPos == 2) {
             //返回
-            //history.back();
+            history.back();
             return 0;
         }
-        //返回portal页
-        window.location.href = 'http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
 
     }
 };
