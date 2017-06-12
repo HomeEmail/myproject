@@ -62,11 +62,16 @@ var ctr={//事件控制对象
     enter : function(){},
     back : function(){}
 };
+
 //从portal页进入此页面会携带user_id参数
 var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
 if(user_id=='null'){
-    user_id=104734528;
+    user_id=keyNo;
 }
+//8002003646694252
+
+
+
 //菜单初始化在哪个
 var menuPos= Q.getInt('menuPos',0);
 
@@ -158,7 +163,7 @@ function getRtspUrl(id){
 
 function getMenuData(){
     var url=serverUrl+'/inter/getTyeps.action?userNo='+user_id;
-    url='getTyep.json';//test
+    //url='getTyep.json';//test
     fetch(url,function(data){
         formatMenuData(data);
         menuObj.render();
@@ -206,7 +211,7 @@ var indexHome = {
     ],
     getData : function(){
         var url=serverUrl+'/inter/getIndexLists.action?typeId='+menuObj.data[menuObj.menuPos].id;
-        url='getIndexLists.json';//test
+        //url='getIndexLists.json';//test
         var that=this;
         fetch(url,function(data){
             that.formatData(data);
@@ -398,13 +403,15 @@ var contentList = {
                         scid:data.data[i].scId,
                         id:data.data[i].gameId,
                         name:data.data[i].gameTitle,
-                        img:imgBasePath+data.data[i].gameImg
+                        img:imgBasePath+data.data[i].gameImg,
+                        playUrl:data.data[i].playUrl
                     });
                 }else{
                     this.data['menu'+menuObj.menuPos].lists.push({
                         id:data.data[i].gameId,
                         name:data.data[i].gameTitle,
-                        img:imgBasePath+data.data[i].gameImg
+                        img:imgBasePath+data.data[i].gameImg,
+                        playUrl:data.data[i].playUrl
                         //img:data.data[i].gameImg //for test
                     });
                 }
@@ -521,10 +528,11 @@ var contentList = {
         this.focus();
     },
     enter : function(){
-        var url='play.html?url='+encodeURIComponent('');
+        var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
+        url=this.data['menu'+menuObj.menuPos].lists[this.uiPos].playUrl;
         window.location.href=url;
         return 0;
-        if(menuObj.menuPos==3){
+        /*if(menuObj.menuPos==3){
             //收藏列表
             //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
             getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
@@ -532,7 +540,7 @@ var contentList = {
             //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
             getGameUrl(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);
             //location.href='activity.html?id='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].id;
-        }
+        }*/
         //this.data['menu'+menuObj.menuPos].lists[this.uiPos].link
     },
     touchLeft : function(){
@@ -681,17 +689,18 @@ var topTips= {
     enter: function() {
         if (this.menuPos == 0) {
             //首页
+            //return 0;
         }
         else if (this.menuPos == 1) {
             //主页
-            return;
+           // return 0;
         } else if (this.menuPos == 2) {
             //返回
             //history.back();
-            return 0;
+            //return 0;
         }
         //返回portal页
-        window.location.href = 'http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
+        window.location.href = portalUrl;
 
     }
 };

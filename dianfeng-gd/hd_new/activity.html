@@ -75,7 +75,7 @@ var loadingDiv=null;
 var folderId=Q.getInt('id',0);
 var user_id=Q.getDecoded('user_id')||'108601998';//测试:'104734528';正式：108601998
 if(user_id=='null'){
-    user_id=104734528;
+    user_id=keyNo;
 }
 
 window.onload = init;
@@ -265,13 +265,17 @@ var control = {
 	},
 	doSelect : function(){
 		if(this.focusArea===0){
-			//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
+			var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
+	        url=this.contentList.datas[this.contentList.dataPos].playUrl;
+	        window.location.href=url;
+	        
+			/*//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
 			//alert(this.contentList.dataPos);
 			//this.contentList.datas[this.contentList.dataPos].gameId;//playUrl
 			getGameUrl(this.contentList.datas[this.contentList.dataPos].gameId);
 			//var url='play.html?url='+encodeURIComponent(this.contentList.datas[this.contentList.dataPos].playUrl);
 			//alert(url);
-			//window.location.href=url;
+			//window.location.href=url;*/
 		}else{
 			//右上角菜单
 			topTips.enter();
@@ -344,7 +348,7 @@ var topTips= {
     enter: function() {
         if (this.menuPos == 0) {
             //首页//返回portal页
-       		window.location.href = 'http://10.1.15.43/nn_cms/nn_cms_view/gxcatv20/go_idc_v2.1.php?page=linux_home_hd';
+       		window.location.href = portalUrl;
         }
         else if (this.menuPos == 1) {
             //sp主页
