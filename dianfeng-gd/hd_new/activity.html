@@ -103,6 +103,8 @@ function formatData(data){
 			gameId:data.data[i].gameId,
 			gameImg:data.data[i].gameBigImg,
 			playUrl:data.data[i].playUrl,
+			name:'',
+			vodId:data.data[i].playVodId,
 			gameFolderBgImg:data.data[i].gameFolderBgImg
 		});
 	}
@@ -266,9 +268,10 @@ var control = {
 	doSelect : function(){
 		if(this.focusArea===0){
 			var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
-	        url=this.contentList.datas[this.contentList.dataPos].playUrl;
+	        //url=this.contentList.datas[this.contentList.dataPos].playUrl;
+	        url='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.contentList.datas[this.contentList.dataPos].vodId+'&videoName='+this.contentList.datas[this.contentList.dataPos].name;
 	        window.location.href=url;
-	        
+
 			/*//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
 			//alert(this.contentList.dataPos);
 			//this.contentList.datas[this.contentList.dataPos].gameId;//playUrl

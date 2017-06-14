@@ -404,14 +404,16 @@ var contentList = {
                         id:data.data[i].gameId,
                         name:data.data[i].gameTitle,
                         img:imgBasePath+data.data[i].gameImg,
-                        playUrl:data.data[i].playUrl
+                        playUrl:data.data[i].playUrl,
+                        vodId:data.data[i].playVodId
                     });
                 }else{
                     this.data['menu'+menuObj.menuPos].lists.push({
                         id:data.data[i].gameId,
                         name:data.data[i].gameTitle,
                         img:imgBasePath+data.data[i].gameImg,
-                        playUrl:data.data[i].playUrl
+                        playUrl:data.data[i].playUrl,
+                        vodId:data.data[i].playVodId
                         //img:data.data[i].gameImg //for test
                     });
                 }
@@ -529,7 +531,8 @@ var contentList = {
     },
     enter : function(){
         var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
-        url=this.data['menu'+menuObj.menuPos].lists[this.uiPos].playUrl;
+        //http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId=GDGZ3320170608002318&videoName=555
+        url='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].vodId+'&videoName='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].name;//this.data['menu'+menuObj.menuPos].lists[this.uiPos].playUrl;
         window.location.href=url;
         return 0;
         /*if(menuObj.menuPos==3){
