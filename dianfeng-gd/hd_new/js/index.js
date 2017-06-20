@@ -338,7 +338,7 @@ var contentList = {
     uiPos : 0,
     dataPos : 0,
     hasData : false,
-    pageSize : 24,
+    pageSize : 18,
     data : {
         menu1 : {
             currentPage : 1,
