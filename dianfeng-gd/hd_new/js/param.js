@@ -9,6 +9,9 @@ var keyNo=(typeof (CA) != 'undefined' && CA.icNo) || "8002003646694252";
 var regionCodeInt =  (typeof (CA) != 'undefined' && CA.regionCode) || 1;
 
 var portalUrl=(typeof (SysSetting) != 'undefined' && SysSetting.getEnv("PORTAL_ADDR")) || '';
+if(location.href.indexOf('in=portal')>-1){
+	portalUrl='http://172.16.130.101/gzzq/?in=third';
+}
 
 var loadingDiv = null;
 function showLoadingDiv(){
