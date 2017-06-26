@@ -45,7 +45,8 @@ function grabEvent(_event){
         case "KEY_EXIT":
         case "KEY_BACK":
             //window.location.href = "../index.html";
-            window.history.back();
+            //window.history.back();
+            window.location.href = portalUrl;
             return false;
             break;
         default:
@@ -704,7 +705,7 @@ var topTips= {
         }
         //返回portal页
         window.location.href = portalUrl;
-
+        return 0;
     }
 };
 

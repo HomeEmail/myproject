@@ -178,11 +178,11 @@
 }
 .fileSelectInput{
   position: absolute;
-  height: 30px;
+  height: 100%;
   width: 70%;
   top: 0px;
   left: 15%;
-  z-index: 100;
+  z-index: 2000;
   background: none;
   border: 0;
   margin-top: 14px;

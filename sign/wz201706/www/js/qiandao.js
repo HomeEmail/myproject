@@ -35,7 +35,7 @@ var boxImg={
 };
 //设置图片位置高宽
 var tplBox1=$('#tplBox1')
-	,tplBox1Action=$('#tplBox1Action')
+	//,tplBox1Action=$('#tplBox1Action')
 	,tplId=1
 	,tplBoxSelect=tplBox[tplId]
 ;
@@ -45,7 +45,7 @@ tplBox1.css({
 	,'width':tplBoxSelect.box1.w+'px'
 	,'height':tplBoxSelect.box1.h+'px'
 });
-tplBox1Action.css({
+$('#tplBox1Action').css({
 	'left':tplBoxSelect.box1Action.x+'px'
 	,'top':tplBoxSelect.box1Action.y+'px'
 	,'width':tplBoxSelect.box1Action.w+'px'
@@ -77,6 +77,8 @@ function fileChange(el,boxId){
 		}
 		$('#selectImgBt'+boxId+'Tips').html('正在读取图片，请稍等...');
 		uploadImgInitStep1(file,boxId);//表单形式提交	
+		//下句是测试用的
+		//setImgSrc('./images/test.jpg',boxId);
 
 	} else {
 		alert('Please select a file!');	
@@ -111,7 +113,7 @@ function uploadImgInitStep1(file,boxId){
 		};
 		
 		//xhr.open("POST", "../handupload.ashx");//../handupload.ashx
-		xhr.open("POST", "testUpload.php");
+		xhr.open("POST", "testUpload.php");//请更改上传地址
 		fd.append("hand", file);
 		xhr.send(fd);
 	} catch(err){
@@ -198,9 +200,9 @@ hammerbox1.add( new Hammer.Tap() );
 hammerbox1.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
 hammerbox1.add( new Hammer.Pinch() );
 
-// $('#uploadImgBt').on('tap',function(e){
-// 	tplBoxTapAction(1);
-// });
+$('#selectImgBt1-wrapper').on('tap',function(e){
+	//tplBoxTapAction(1);
+});
 
 
 hammerbox1.get('pan').set({ direction: Hammer.DIRECTION_ALL });
@@ -373,6 +375,11 @@ tapOn($('#previewImgBt'),function(e){
 	if($('#liuyanMailAddress').val()==''){
 		alert('请先输入邮箱');
 		return;
+	}
+	var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	if(!reg.test($('#liuyanMailAddress').val())){
+		alert('请填写正确的邮件地址');
+		return 0;
 	}
 	if($('#liuyanDepartment').val()=='0'){
 		alert('请先输入部门');
