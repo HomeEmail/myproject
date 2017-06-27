@@ -351,13 +351,15 @@ var topTips= {
     },
     enter: function() {
         if (this.menuPos == 0) {
+        	history.back();
+            return 0;
             //首页//返回portal页
-       		window.location.href = portalUrl;
+       		//window.location.href = portalUrl;
         }
         else if (this.menuPos == 1) {
             //sp主页
             history.back();
-            return;
+            return 0;
         } else if (this.menuPos == 2) {
             //返回
             history.back();

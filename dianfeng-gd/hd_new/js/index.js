@@ -45,8 +45,11 @@ function grabEvent(_event){
         case "KEY_EXIT":
         case "KEY_BACK":
             //window.location.href = "../index.html";
-            //window.history.back();
-            window.location.href = portalUrl;
+           if(location.href.indexOf('in=portal')>-1){
+                window.location.href = portalUrl;
+            }else{
+                history.back();
+            }
             return false;
             break;
         default:
@@ -78,7 +81,7 @@ var menuPos= Q.getInt('menuPos',0);
 
 window.onload=function(){
     getMenuData();
-
+    //alert(location.href+'||'+portalUrl);
 };
 var loadingDiv=$('loadingDiv');
 showLoadingDiv();
@@ -703,8 +706,13 @@ var topTips= {
             //history.back();
             //return 0;
         }
+        if(location.href.indexOf('in=portal')>-1){
+            window.location.href = portalUrl;
+        }else{
+            history.back();
+        }
         //返回portal页
-        window.location.href = portalUrl;
+        
         return 0;
     }
 };
