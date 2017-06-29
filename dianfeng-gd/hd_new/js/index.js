@@ -45,8 +45,11 @@ function grabEvent(_event){
         case "KEY_EXIT":
         case "KEY_BACK":
             //window.location.href = "../index.html";
-            //window.history.back();
-            window.location.href = portalUrl;
+           if(location.href.indexOf('in=portal')>-1){
+                window.location.href = portalUrl;
+            }else{
+                history.back();
+            }
             return false;
             break;
         default:
@@ -77,8 +80,9 @@ if(user_id=='null'){
 var menuPos= Q.getInt('menuPos',0);
 
 window.onload=function(){
+    $('keyNo').innerHTML=user_id;
     getMenuData();
-
+    //alert(location.href+'||'+portalUrl);
 };
 var loadingDiv=$('loadingDiv');
 showLoadingDiv();
@@ -211,7 +215,7 @@ var indexHome = {
 
     ],
     getData : function(){
-        var url=serverUrl+'/inter/getIndexLists.action?typeId='+menuObj.data[menuObj.menuPos].id;
+        var url=serverUrl+'/inter/getIndexLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&userNo='+user_id;
         //url='getIndexLists.json';//test
         var that=this;
         fetch(url,function(data){
@@ -367,12 +371,12 @@ var contentList = {
         var url='';
         if(menuObj.menuPos==1){//最热
             //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=2&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=2&page='+this.data['menu'+menuObj.menuPos].currentPage+'&userNo='+user_id;
             //url='getGameListByTypeId.json';//test
         }
         if(menuObj.menuPos==2){//最新
             //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
-            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=1&page='+this.data['menu'+menuObj.menuPos].currentPage;
+            url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=1&page='+this.data['menu'+menuObj.menuPos].currentPage+'&userNo='+user_id;
             //url='getGameListByTypeId.json';//test
         }
         //menuObj.data[menuObj.menuPos].id
@@ -660,7 +664,8 @@ var menuObj = {
 //右上角顶部按钮控制对象
 var topTips= {
     menuPos: 0,
-    menuList: [1037, 1092, 1147],
+    //menuList: [1037, 1092, 1147],
+    menuList:[1148],
     init : function(){
         //this.menuPos=0;
         $("topTipsFocus").style.left = this.menuList[this.menuPos] + "px";
@@ -703,8 +708,13 @@ var topTips= {
             //history.back();
             //return 0;
         }
+        if(location.href.indexOf('in=portal')>-1){
+            window.location.href = portalUrl;
+        }else{
+            history.back();
+        }
         //返回portal页
-        window.location.href = portalUrl;
+        
         return 0;
     }
 };

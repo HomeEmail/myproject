@@ -87,7 +87,7 @@ function init(){
 	getData();
 }
 function getData(){
-	var url=serverUrl+'/inter/getGameLists.action?folderId='+folderId;
+	var url=serverUrl+'/inter/getGameLists.action?folderId='+folderId+'&userNo='+user_id;
 	//url='getGameLists.json';//test
 	fetch(url,function(data){
 		formatData(data);
@@ -321,7 +321,8 @@ var control = {
 //右上角顶部按钮控制对象
 var topTips= {
     menuPos: 0,
-    menuList: [1037, 1092, 1147],
+    //menuList: [1037, 1092, 1147],
+    menuList: [1148],
     init : function(){
         //this.menuPos=0;
         $("topTipsFocus").style.left = this.menuList[this.menuPos] + "px";
@@ -351,13 +352,15 @@ var topTips= {
     },
     enter: function() {
         if (this.menuPos == 0) {
+        	history.back();
+            return 0;
             //首页//返回portal页
-       		window.location.href = portalUrl;
+       		//window.location.href = portalUrl;
         }
         else if (this.menuPos == 1) {
             //sp主页
             history.back();
-            return;
+            return 0;
         } else if (this.menuPos == 2) {
             //返回
             history.back();
@@ -377,8 +380,9 @@ var topTips= {
 <div id="bg" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url(images/bg.jpg);background-repeat: no-repeat; overflow:hidden;">
 
 
+<div style="width:60px;height:64px;position:absolute;top: 30px;left: 1148px;background:url(./images/df-tips-icon.png) no-repeat right center;"></div>
+<!-- <img src="./images/df-tips-icon.png" style="position:absolute;top: 30px;left: 1040px;height: 64px;width: auto;" /> -->
 
-<img src="./images/df-tips-icon.png" style="position:absolute;top: 30px;left: 1040px;height: 64px;width: auto;" />
 <div id="topTipsFocus" class="smooth" style="position: absolute;top: 30px;left: 1037px;height: 56px;x;width: 50px;border: 3px #ffffff solid;visibility: hidden;-webkit-border-radius: 6px;-webkit-box-shadow: 0px 0px 22px 1px #ffffff;"></div>
 
 

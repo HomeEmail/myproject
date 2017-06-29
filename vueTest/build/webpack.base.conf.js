@@ -38,9 +38,14 @@ module.exports = {
         loader: 'eslint-loader',
         enforce: "pre",
         include: [resolve('src'), resolve('test')],
+        exclude: [/node_modules/, /components/,/router/],//这些目录下的js不进行语法检测
         options: {
           formatter: require('eslint-friendly-formatter')
         }
+      },
+      {
+        test:/\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
       },
       {
         test: /\.vue$/,
