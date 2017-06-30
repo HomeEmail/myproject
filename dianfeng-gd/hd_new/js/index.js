@@ -126,6 +126,7 @@ function getGameUrl(id){
         ///alert('网络错误');
     });*/
 }
+
 function getRtspUrl(id){
     ///play/getPlayUrl.action?gameId=1
     if(req != null){
@@ -163,6 +164,16 @@ function getRtspUrl(id){
         },
         post:"",
         timeout:30000
+    });
+}
+
+function getGameDetail(gameId,fn){
+    var url=serverUrl+'/inter/getGame.action?gameId='+gameId+'&userNo='+user_id;
+    fetch(url,function(data){
+        !!fn&&fn(data);
+    },function(){
+        //alert('网络错误');
+        !!fn&&fn();
     });
 }
 
@@ -313,13 +324,21 @@ var indexHome = {
     },
     enter : function(){
         //alert(this.data[this.dataPos].link);
-        var url=this.data[this.dataPos].link;
-        if(url.indexOf('?')>-1){
-            url+='&user_id='+user_id;
+        var urlPage=this.data[this.dataPos].link;
+        if(urlPage.indexOf('?')>-1){
+            urlPage+='&user_id='+user_id;
         }else{
-            url+='?user_id='+user_id;
+            urlPage+='?user_id='+user_id;
         }
-        location.href=url;//'activity.html';
+        if(!!Q.getFromURL(urlPage,'gameId')){
+            var gameId=Q.getFromURL(urlPage,'gameId');
+            getGameDetail(gameId,function(data){
+                location.href=urlPage;
+            });
+        }else{
+            location.href=urlPage;//'activity.html';
+        }
+        
     },
     touchLeft : function(){
 
@@ -537,9 +556,13 @@ var contentList = {
     enter : function(){
         var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
         //http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId=GDGZ3320170608002318&videoName=555
-        url='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].vodId+'&videoName='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].name;//this.data['menu'+menuObj.menuPos].lists[this.uiPos].playUrl;
-        window.location.href=url;
+        var urlPage='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].vodId+'&videoName='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].name;//this.data['menu'+menuObj.menuPos].lists[this.uiPos].playUrl;
+        getGameDetail(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id,function(data){
+            window.location.href=urlPage;
+        });
+        
         return 0;
+
         /*if(menuObj.menuPos==3){
             //收藏列表
             //alert(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id);

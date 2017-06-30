@@ -97,6 +97,7 @@ function getData(){
 		//alert('网络错误');
 	});
 }
+
 function formatData(data){
 	control.contentList.datas=[];
 	for(var i=0,len=data.data.length;i<len;i++){
@@ -199,6 +200,17 @@ function getRtspUrl(id){
     });
 }
 
+function getGameDetail(gameId,fn){
+    var url=serverUrl+'/inter/getGame.action?gameId='+gameId+'&userNo='+user_id;
+    fetch(url,function(data){
+        !!fn&&fn(data);
+    },function(){
+        //alert('网络错误');
+        !!fn&&fn();
+    });
+}
+
+
 var control = {
 	focusArea : 0,//0:主内容，1:顶部右上角菜单
 	init : function(){
@@ -270,9 +282,12 @@ var control = {
 		if(this.focusArea===0){
 			var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
 	        //url=this.contentList.datas[this.contentList.dataPos].playUrl;
-	        url='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.contentList.datas[this.contentList.dataPos].vodId+'&videoName='+this.contentList.datas[this.contentList.dataPos].name;
-	        window.location.href=url;
-
+	        urlPage='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.contentList.datas[this.contentList.dataPos].vodId+'&videoName='+this.contentList.datas[this.contentList.dataPos].name;
+	        getGameDetail(this.contentList.datas[this.contentList.dataPos].gameId,function(){
+	        	window.location.href=urlPage;
+	        });
+	        return 0;
+	        
 			/*//window.location.href = "content.html?contentId="+ this.contentList.dataPos;
 			//alert(this.contentList.dataPos);
 			//this.contentList.datas[this.contentList.dataPos].gameId;//playUrl
