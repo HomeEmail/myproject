@@ -16,6 +16,7 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
     "muse-ui": "^2.0.3",
+    "style-loader": "^0.18.2",
     "vue": "^2.1.10",
     "vue-router": "^2.2.0",
     "vuex": "^2.2.1"

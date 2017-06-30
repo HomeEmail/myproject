@@ -6,8 +6,10 @@ import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import AppIndex from 'components/AppIndex'
 import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
-Vue.use(MuseUI)
 
+import '../assets/iconfont/iconfont.css' //导入字体样式
+
+Vue.use(MuseUI)
 Vue.use(Router)
 
 export default new Router({
