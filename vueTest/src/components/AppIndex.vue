@@ -3,23 +3,11 @@
 
 <!-- 中间内容 -->
 <div class="contentWrapper">
-	<mu-content-block v-if="bottomNav==='movies'">
-		<h1>视频</h1>
-	    散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-	</mu-content-block>
-	<mu-content-block v-if="bottomNav==='music'">
-		<h1>音乐</h1>
-		<img src="../assets/logo.png">
-	    散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-	</mu-content-block>
-	<mu-content-block v-if="bottomNav==='books'">
-		<h1>图书</h1>
-	    散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-	</mu-content-block>
-	<mu-content-block v-if="bottomNav==='pictures'">
-		<h1>相册</h1>
-	    散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-	</mu-content-block>
+	<router-view class="" name="indexMovies"></router-view>
+	<router-view class="" name="indexMusic"></router-view>
+	<router-view class="" name="indexBooks"></router-view>
+	<router-view class="" name="indexPictures"></router-view>
+	<router-view class=""></router-view>
 </div>
 
 <div class="topBarWrapper">
@@ -37,13 +25,13 @@
 
 <div class="bottomMenuWrapper">
 	<mu-bottom-nav :value="bottomNav" shift @change="handleChange">
-	    <mu-bottom-nav-item value="movies" title="视频" icon="ondemand_video"/>
+	    <mu-bottom-nav-item value="movies" to="indexMovies" replace title="视频" icon="ondemand_video"/>
 	    <!-- <mu-bottom-nav-item value="music" title="音乐" icon="music_note"/> -->
-	    <mu-bottom-nav-item value="music" title="音乐">
+	    <mu-bottom-nav-item value="music" to="indexMusic" replace title="音乐">
 	    	<i class="mu-bottom-item-icon iconfont icon-home" style=""></i><!-- 使用自定义图标库图标 -->
 	    </mu-bottom-nav-item>
-	    <mu-bottom-nav-item value="books" title="图书" icon="books"/>
-	    <mu-bottom-nav-item value="pictures" title="相册" icon="photo"/>
+	    <mu-bottom-nav-item value="books" to="indexBooks" replace title="图书" icon="books"/>
+	    <mu-bottom-nav-item value="pictures" to="indexPictures" replace title="相册" icon="photo"/>
 	</mu-bottom-nav>
 </div>
 
@@ -87,13 +75,30 @@ export default {
 		}
 	},
 	methods: {
-		handleChange (val) {
+		handleChange(val) {
 			this.bottomNav = val
+			console.log(this.$route.path);
 		},
 		leftMenuToggle(){
 			this.leftMenuOpen=!this.leftMenuOpen;
 			
 		}
+	},
+	beforeMount(){
+		console.log(this.$route.path);
+		if(this.$route.path.indexOf('indexMovies')>-1){
+			this.bottomNav='movies';
+		}
+		if(this.$route.path.indexOf('indexMusic')>-1){
+			this.bottomNav='music';
+		}
+		if(this.$route.path.indexOf('indexBooks')>-1){
+			this.bottomNav='books';
+		}
+		if(this.$route.path.indexOf('indexPictures')>-1){
+			this.bottomNav='books';
+		}
+
 	}
 }
 </script>
