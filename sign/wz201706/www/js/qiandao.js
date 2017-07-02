@@ -59,9 +59,12 @@ function tplBoxTapAction(boxId){
 	//alert(boxId);
 	//$('#fileSelectInput'+boxId).trigger('click');
 }
-
+function uploadFile(){
+	var el=document.getElementById('fileSelectInput1');
+	fileChange(el,1);
+}
 function fileChange(el,boxId){
-
+	//alert('file');
 	if (el.files && el.files.length > 0 && el.files[0].size > 0) {
 		
 		//generateUploadInit(el.files,callback);
