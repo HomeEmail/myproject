@@ -9,6 +9,9 @@ import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
 Vue.use(MuseUI)
 
+import '../assets/material/font.css'
+import '../assets/material/icon.css'
+
 import '../assets/iconfont/iconfont.css' //导入字体样式
 
 import AppIndex from 'components/AppIndex'
@@ -72,7 +75,7 @@ export default new Router({
 		}
 	],
   	scrollBehavior (to, from, savedPosition) {//通过浏览器的前进后退按钮才有效 路由有transition时不生效，需要独自手动处理
-  		
+
 		if (savedPosition) {
 			// setTimeout(() => {
 	  //           window.scrollTo(savedPosition.x, savedPosition.y)
