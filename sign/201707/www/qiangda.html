@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	
+    <title>抢答</title>
+	<link rel="stylesheet" href="./css/base.css?v=666" />
+    <style type="text/css">
+    body,html{
+    	
+    }
+    .page{
+    	text-align: center;
+    	padding: 20px;
+    }
+    .titleWrapper{
+    	padding-bottom: 100px;
+    }
+	.qiangda-bt{
+	    display: inline-block;
+	    width: 200px;
+	    height: 200px;
+	    text-align: center;
+	    border: 0;
+	    background: none;
+	    background-image: url(./images/dati-bt.png);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    opacity: 1;
+	}
+	.qiangda-bt:active{
+		opacity: 0.9;
+	}
+	@media (min-width:375px){
+		
+	}
+    </style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
+</head>
+<!-- 注：加ontouchstart使css：active生效 -->
+<body style="" ontouchstart>
+<div id="web_bg" style="position:absolute; width:100%; height:100%; z-index:-1;background: url(./images/dati-bg1.jpg) no-repeat center top;background-size: cover;"> 
+	<!-- <img style="position:fixed;display: block;" id="datiIng" src="./images/score-bg.jpg" height="100%" width="100%" /> --> 
+</div>
+<div class="page">
+	<div class="titleWrapper">
+		<img src="./images/dati-title.png" width="320" />
+	</div>
+	<div class="qiangda-bt"></div>
+</div>
+
+
+<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+<!-- <script type="text/javascript" src="./js/fx.js"></script>
+<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+<script type="text/javascript">
+	var req=null;
+	$('.qiangda-bt').on('tap',function(e){
+		
+		if(!!req){
+			return;//防止重复提交
+		}
+
+		//这里ajax提交，抢答
+		/*req=$.ajax({
+			type: 'POST',
+			url: 'http://182.254.201.33/201506/handupload.ashx',
+			// data to be added to query string:
+			data: {},//你的传参
+			// type of data we are expecting in return:
+			dataType: 'json',//(“json”, “jsonp”, “xml”, “html”, or “text”)
+			success: function(data){
+				//提交成功
+				req=null;
+				//处理抢答结果
+			},
+			error: function(xhr, type){
+				//alert('失败,请重试');
+				req=null;
+
+			}
+		});*/
+	});
+
+</script>
+</body>
+</html>
