@@ -9,13 +9,20 @@
 </template>
 
 <script>
+
 export default {
-  name: 'indexBooks',
-  data () {
-    return {
-      msg: ''
-    }
-  }
+	name: 'indexBooks',
+	data () {
+		return {
+			msg: ''
+		}
+	},
+	methods:{
+		getData(){
+			//http://fshk.96956.com.cn/utvgoClient/tvutvgo/channel/ajaxDetail.action?channelId=10086&boxId=9311&zoneId=17&pagesize=1000
+
+		}
+	}
 }
 </script>
 

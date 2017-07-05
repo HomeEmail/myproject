@@ -12,7 +12,7 @@ Vue.use(MuseUI)
 //import '../assets/material/font.css'
 //import '../assets/material/icon.css'
 
-import '../assets/iconfont/iconfont.css' //导入字体样式
+import '../assets/iconfont/iconfont.css' //导入自定义字体图标样式
 
 import AppIndex from 'components/AppIndex'
 import indexMovies from 'components/indexMovies'
