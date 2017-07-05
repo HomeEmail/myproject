@@ -25,30 +25,37 @@
 
 <div class="bottomMenuWrapper">
 	<mu-bottom-nav :value="bottomNav" shift @change="handleChange">
-	    <mu-bottom-nav-item value="movies" to="/indexMovies" replace title="视频" icon="ondemand_video"/>
+	    <mu-bottom-nav-item value="movies" to="/indexMovies" replace title="视频">
+			<i class="mu-bottom-item-icon iconfont icon-home" style=""></i><!-- 使用自定义图标库图标 -->
+	    </mu-bottom-nav-item>
 	    <!-- <mu-bottom-nav-item value="music" title="音乐" icon="music_note"/> -->
 	    <mu-bottom-nav-item value="music" to="/indexMusic" replace title="音乐">
 	    	<i class="mu-bottom-item-icon iconfont icon-home" style=""></i><!-- 使用自定义图标库图标 -->
 	    </mu-bottom-nav-item>
-	    <mu-bottom-nav-item value="books" to="/indexBooks" replace title="图书" icon="books"/>
-	    <mu-bottom-nav-item value="pictures" to="/indexPictures" replace title="相册" icon="photo"/>
+	    <mu-bottom-nav-item value="books" to="/indexBooks" replace title="图书">
+			<i class="mu-bottom-item-icon iconfont icon-home" style=""></i><!-- 使用自定义图标库图标 -->
+	    </mu-bottom-nav-item>
+	    <mu-bottom-nav-item value="pictures" to="/indexPictures" replace title="相册">
+			<i class="mu-bottom-item-icon iconfont icon-home" style=""></i><!-- 使用自定义图标库图标 -->
+	    </mu-bottom-nav-item>
 	</mu-bottom-nav>
 </div>
 
 <!-- 左侧边栏菜单 -->
 <mu-drawer :open="leftMenuOpen" :docked="false" @close="leftMenuToggle()">
 	<mu-appbar title="菜单">
-		<mu-icon-button icon="close" @click="leftMenuToggle()" slot="right" />
+		<mu-flat-button label="关闭" @click="leftMenuToggle()" slot="right" />
+		<!-- <mu-icon-button icon="close" @click="leftMenuToggle()" slot="right" /> -->
 	</mu-appbar>
 
 	<mu-list @itemClick="leftMenuToggle()">
 		<mu-list-item title="菜单1">
 			<!-- <mu-icon slot="left" value="inbox"></mu-icon> -->
-			<i slot="left" class="iconfont icon-home"></i>
+			<i slot="left" class="iconfont icon-home"></i><!-- 使用自定义图标库图标 -->
 		</mu-list-item>
 		<mu-list-item title="菜单2">
-			<mu-icon slot="left" value="grade"></mu-icon>
-			<!-- <i slot="left" class="iconfont icon-home"></i> -->
+			<!-- <mu-icon slot="left" value="grade"></mu-icon> -->
+			<i slot="left" class="iconfont icon-home"></i><!-- 使用自定义图标库图标 -->
 		</mu-list-item>
 		<mu-list-item title="菜单3菜单3菜单3菜单3菜单3">
 			<!-- <mu-icon slot="left" value="send" color="red"></mu-icon> -->
@@ -57,7 +64,7 @@
 		<mu-divider />
 		<mu-list-item title="菜单4">
 			<!-- <mu-icon slot="left" value="drafts"></mu-icon> -->
-			<i slot="left" class="iconfont icon-home"></i>
+			<i slot="left" class="iconfont icon-home"></i><!-- 使用自定义图标库图标 -->
 		</mu-list-item>
 	</mu-list>
 </mu-drawer>

@@ -9,8 +9,8 @@ import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
 Vue.use(MuseUI)
 
-import '../assets/material/font.css'
-import '../assets/material/icon.css'
+//import '../assets/material/font.css'
+//import '../assets/material/icon.css'
 
 import '../assets/iconfont/iconfont.css' //导入字体样式
 
