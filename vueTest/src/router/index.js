@@ -9,6 +9,9 @@ import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
 Vue.use(MuseUI)
 
+// import msgBox from 'components/msgBox' //如何作为全局来做呢？
+// Vue.prototype.$msgBox=msgBox
+
 //import '../assets/material/font.css'
 //import '../assets/material/icon.css'
 

@@ -27,7 +27,15 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {//开发模式，配置接口代理
+        '/utvgoClient': {
+            target: 'http://fshk.96956.com.cn/',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/utvgoClient': '/utvgoClient'
+            }
+        }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
