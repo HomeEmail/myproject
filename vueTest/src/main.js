@@ -5,6 +5,25 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
+Vue.use(MuseUI)
+
+
+//import './assets/material/font.css'
+//import './assets/material/icon.css'
+
+import './assets/iconfont/iconfont.css' //导入自定义字体图标样式
+
+
+import msgBox from './components/msgBox/index.js' //如何作为全局来做呢？
+Vue.component('msgBox', msgBox);
+Vue.prototype.$msgBox=msgBox;
+console.log('msgBox----------');
+console.log(msgBox);
+
+
 import axios from 'axios'
 //下面是设置每个ajax实例基本的配置
 const instance = axios.create({

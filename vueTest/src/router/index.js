@@ -4,18 +4,7 @@ Vue.use(Router)
 
 // import Hello from 'components/Hello'
 
-import MuseUI from 'muse-ui'
-import 'muse-ui/dist/muse-ui.css'
-import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
-Vue.use(MuseUI)
 
-// import msgBox from 'components/msgBox' //如何作为全局来做呢？
-// Vue.prototype.$msgBox=msgBox
-
-//import '../assets/material/font.css'
-//import '../assets/material/icon.css'
-
-import '../assets/iconfont/iconfont.css' //导入自定义字体图标样式
 
 import AppIndex from 'components/AppIndex'
 import indexMovies from 'components/indexMovies'

@@ -28,10 +28,20 @@ export default {
         console.log('url:'+ajaxUrlDemo1);
         this.getData();
     },
+    updated(){
+        console.log('------------books updated-------');
+        
+    },
+    activated(){
+        console.log('------------books activated-------');
+        this.getData();//拿最新的数据
+    },
+    deactivated(){
+        console.log('------------books deactivated-------');
+    },
 	methods:{
 		getData(){
-            
-
+            this.$msgBox('正在加载内容');
 			let url=ajaxUrlDemo1;//'http://fshk.96956.com.cn/utvgoClient/tvutvgo/channel/ajaxDetail.action?channelId=10086&boxId=9311&zoneId=17&pagesize=1000';
             this.isLoading=true;
             this.$ajax({
@@ -57,6 +67,7 @@ export default {
             .catch((error) => {
                 //this.isLoading=false;
                 console.log(error);
+                this.$msgBox('网络错误');
             });
 		}
 	}
