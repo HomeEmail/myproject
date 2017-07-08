@@ -72,7 +72,8 @@
 <div>
 </template>
 
-<script>
+<script type="es6">
+
 export default {
 	name: 'AppIndex',
 	data () {
@@ -93,7 +94,7 @@ export default {
 		},
 		leftMenuToggle(){
 			this.leftMenuOpen=!this.leftMenuOpen;
-			
+
 		}
 	},
 	watch:{
@@ -151,7 +152,7 @@ export default {
 	},
 	activated(){
 		console.log('activated');
-		
+
 	},
 	deactivated(){
 		console.log('deactivated');

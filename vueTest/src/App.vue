@@ -4,13 +4,14 @@
     <!-- <transition name="fade" mode="out-in"> -->
     <!-- <keep-alive> -->
     <router-view></router-view>
-    
+
     <!-- </keep-alive> -->
     <!-- </transition> -->
+
 </div>
 </template>
 
-<script>
+<script type="es6">
 
 export default {
     name: 'app'
@@ -19,7 +20,8 @@ export default {
 </script>
 
 <style>
-    #app {
+
+#app {
     /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

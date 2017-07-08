@@ -27,9 +27,9 @@ console.log(msgBox);
 import axios from 'axios'
 //下面是设置每个ajax实例基本的配置
 const instance = axios.create({
-    timeout: 30 * 1000,
-    //baseURL: 'https://localhost.com/api/',
-    headers: {'customHeader': 'customHeader'}
+	timeout: 30 * 1000,
+	//baseURL: 'https://localhost.com/api/',
+	headers: {'customHeader': 'customHeader'}
 });
 Vue.prototype.$ajax = instance //axios 不是vue的插件，使用原型链来使用
 
@@ -52,8 +52,8 @@ router.beforeEach((to, from, next) => {
 });
 
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+	el: '#app',
+	router,
+	template: '<App/>',
+	components: { App }
 })

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div>>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -20,7 +20,7 @@
 </div>
 </template>
 
-<script>
+<script type="es6">
 export default {
     name: 'hello1',
     data () {

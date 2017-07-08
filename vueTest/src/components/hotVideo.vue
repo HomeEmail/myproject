@@ -17,7 +17,7 @@
 </div>
 </template>
 
-<script>
+<script type="es6">
 export default {
     name: 'hotVideo',
     data () {
