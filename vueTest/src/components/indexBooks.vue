@@ -18,7 +18,7 @@ export default {
     name: 'indexBooks',
     data () {
         return {
-            isLoading:true,
+            isLoading:false,
             contentText:''
         }
     },
@@ -33,15 +33,18 @@ export default {
     activated(){
         console.log('------------books activated-------');
         this.getData();//拿最新的数据
+        //this.$loading().show();
     },
     deactivated(){
         console.log('------------books deactivated-------');
     },
     methods:{
         getData(){
-            this.$msgBox({msg:'正在加载内容',duration:2000});
+            //this.$msgBox({msg:'正在加载内容',duration:2000});
             let url=ajaxUrlDemo1;//'http://fshk.96956.com.cn/utvgoClient/tvutvgo/channel/ajaxDetail.action?channelId=10086&boxId=9311&zoneId=17&pagesize=1000';
-            this.isLoading=true;
+            //this.isLoading=true;
+            let loading=this.$loading();
+            loading.show();
             this.$ajax({
                 method:'get',
                 url:url,
@@ -55,7 +58,8 @@ export default {
                 responseType:'json' //'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
             })
             .then((response) => {
-                this.isLoading=false;
+                //this.isLoading=false;
+                loading.hide();
                 console.log(response);
                 if(response.status==200){//请求成功
                     console.log(response.data);

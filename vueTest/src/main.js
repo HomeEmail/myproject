@@ -17,11 +17,15 @@ Vue.use(MuseUI)
 import './assets/iconfont/iconfont.css' //导入自定义字体图标样式
 
 
-import msgBox from './components/msgBox/index.js' //如何作为全局来做呢？
+import msgBox from './components/msgBox/index.js' //作为全局来做
 Vue.component('msgBox', msgBox);
 Vue.prototype.$msgBox=msgBox;
 console.log('msgBox----------');
 console.log(msgBox);
+
+import loading from './components/Loading/index.js'
+Vue.component('loading',loading);
+Vue.prototype.$loading=loading;
 
 
 import axios from 'axios'
