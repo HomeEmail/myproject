@@ -5,6 +5,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import store from './store'
+
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-teal.css' // 使用 teal 主题
@@ -14,7 +16,10 @@ Vue.use(MuseUI)
 //import './assets/material/font.css'
 //import './assets/material/icon.css'
 
+//import './assets/material/material-icons.css' //导入material本地图标
+
 import './assets/iconfont/iconfont.css' //导入自定义字体图标样式
+
 
 
 import msgBox from './components/msgBox/index.js' //作为全局来做
@@ -58,6 +63,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
 	el: '#app',
 	router,
+    store,
 	template: '<App/>',
 	components: { App }
 })
