@@ -4,73 +4,73 @@
     {
       "typeId": 1,
       "typeName": "首页推荐",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "热门游戏",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "最新游戏",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "收藏夹",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "消除",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "动作",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "角色扮演",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "解密",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "竞速",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "策略",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "跑酷",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     },
     {
       "typeId": 1,
       "typeName": "棋牌",
-      "typeImg": "/upload/1.img",
+      "typeImg": "images/img4.png",
       "typeIndex": 1
     }
   ]

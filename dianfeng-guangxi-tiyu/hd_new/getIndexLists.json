@@ -5,7 +5,7 @@
       "indexId": 1,
       "indexName": "首页第一个游戏",
       "indexUrl": "activity.html",
-      "indexImg": "/upload/index_1.jpg",
+      "indexImg": "./images/img1.png",
       "indexs": 1
     }
   ]

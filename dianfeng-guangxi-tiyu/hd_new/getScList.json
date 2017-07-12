@@ -11,7 +11,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -24,7 +24,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -37,7 +37,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -50,7 +50,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -63,7 +63,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -76,7 +76,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -89,7 +89,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -102,7 +102,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -115,7 +115,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -128,7 +128,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -141,7 +141,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         },
         {
@@ -154,7 +154,7 @@
             "qrCodeImg": "/upload/erweim.jpg",
             "gameStatus": 0,
             "gameBigImg":"",
-            "gameImg": "/upload/game_text.jpg",
+            "gameImg": "images/img4.png",
             "gameIndex": 1 
         }
     ],
