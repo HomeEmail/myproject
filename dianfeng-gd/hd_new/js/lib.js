@@ -2,6 +2,204 @@ function $(id) {
 	return document.getElementById(id);
 }
 
+function $append(n,node){
+	if(!!!node){
+		node=document.body;
+	}
+	node.appendChild(n);
+}
+
+var utv={};
+(function(){
+	var doc = document;
+	var obj_type={},core_toString=obj_type.toString,hasOwn = obj_type.hasOwnProperty;;
+	var type_arr = "Boolean Number String Function Array Date RegExp Object Error".split(" ");
+	for(var i in type_arr){
+		obj_type[ "[object " + type_arr[i] + "]" ] = type_arr[i].toLowerCase();
+	};
+	//常用方法
+	utv={
+		type:function(obj){
+			if ( obj == null ) {
+				return String( obj );
+			}
+			return (typeof obj === "object" || typeof obj === "function")?(obj_type[ core_toString.call(obj) ] || "object") :typeof obj;
+		},
+		isStr:function(obj){
+			return utv.type(obj)==="string";
+		},
+		isFn:function(obj){
+			return utv.type(obj)==="function";
+		},
+		isObj:function(obj){
+			return utv.type(obj) === "object";
+		},
+		isDate:function(obj){
+			return utv.type(obj) === "date";
+		},
+		isEmptyObj:function(obj){
+			var name;
+			for ( name in obj ) {
+				return false;
+			}
+			return true;
+		},
+		isNum:function(obj){
+			return !isNaN( parseFloat(obj) ) && isFinite( obj );
+		},
+		isArr:function(obj){
+			return utv.type(obj) === "array";
+		},
+		trim:function(obj){
+			return obj.replace(/^\s+|\s+$/g, "");
+		},
+		now:function(){
+			return new Date().getTime();
+		}
+	};
+	
+	utv.version = "1.1";//版本号
+
+	utv.extend = function(_destination,_source) {
+		  for (var property in _source) {
+		    _destination[property] = _source[property];
+		  }
+		  return _destination;
+	};
+	/*
+		针对cookie的操作
+	*/
+	utv.cookie = {
+		set:function(name, value){
+			var expires = (arguments.length > 2) ? arguments[2] : null,strExpires = "";
+			if(expires && utv.isDate(expires)){
+				strExpires =  "; expires=" + expires.toGMTString();
+			}else if(expires && utv.isObj(expires)){
+				var nD = utv.now(),
+					nObj = {
+						day:0,hours:0,minutes:0,seconds:0
+					},
+					dArr={
+						secondes:1000,
+						minutes:1000*60,
+						hours:1000*60*60,
+						day:1000*60*60*24
+					},
+					_val;
+				nObj = utv.extend(nObj,expires);
+				for(var n in expires){
+					_val = nObj[n];
+					if(utv.isNum(_val) && _val>0){
+						nD = nD + _val * dArr[n];
+					}
+				}
+				if(utv.isNum(nD) && nD>0){
+					nD = new Date(nD);
+					strExpires =  "; expires=" + nD.toGMTString();
+				}
+			}else{
+				strExpires = "";
+			}
+
+			doc.cookie = name + "=" + encodeURIComponent(value) + strExpires + ";path=/" ;
+		},
+		get:function(name){
+			var value = doc.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+			if (value != null) {
+				return decodeURIComponent(value[2]);
+			} else {
+				return null;
+			}
+		},
+		remove:function(name){
+			var expires = new Date();
+			expires.setTime(expires.getTime() - 1000 * 60);
+			this.set(name, "", expires);
+		}
+	};
+
+	/**
+		将json对象转换成url参数
+	**/
+	utv.obj2query=function(o){
+		if(!!!o){
+			return '';
+		}
+		var key,ary=[];
+		for(key in o){
+			ary.push(key+'='+o[key]);
+		}
+		if(ary.length>0){
+			return ary.join('&');
+		}
+		return '';
+	};
+	/*
+		从URL中获取参数 返回object
+		参数rem为截取字符的标记，从哪个字符之后截取参数
+	*/
+	utv.getRequest=function(rem,href){
+		var url = href||window.location.href //获取url
+			,request = {}
+			,str=''
+			,remStr = rem || '?' 
+			,index = url.indexOf(remStr)
+		;
+	   if (index != -1) {
+	   	  url=url.slice(index);
+	      str = url.substr(1);
+	      strs = str.split("&");
+	      for(var i = 0; i < strs.length; i ++) {
+	         request[strs[i].split("=")[0]]=strs[i].split("=")[1];
+	      }
+	   }
+	   return request;
+	};
+
+	/*
+	获取字符串的真实长度（px）;
+	engLen:单个英文字母所占的宽度;
+	chiLen:单个中文字母所占的宽度
+	*/
+	utv.getStrTrueLength = function(str,engLen,chiLen){
+		var str=str||''
+			,len = str.length
+			,engLen = engLen || 16
+			,chiLen = chiLen || 26
+			,truelen = 0
+		;
+		for(var x = 0; x < len; x++){
+			if(str.charCodeAt(x) > 128){
+				truelen += chiLen;
+			}else{
+				truelen += engLen;
+			}
+		}
+		return truelen;
+	};
+	utv.getStringTrueSize=function(str){
+		var str=str||''
+			,len = str.length
+			,engLen = 1
+			,chiLen = 2
+			,truelen = 0
+		;
+		for(var x = 0; x < len; x++){
+			if(str.charCodeAt(x) > 128){
+				truelen += chiLen;
+			}else{
+				truelen += engLen;
+			}
+		}
+		return truelen;
+	};
+
+})();
+
+
+
+
+
 // ---------------------------------------------------
 // 日期格式化
 // 格式 YYYY/yyyy/YY/yy 表示年份

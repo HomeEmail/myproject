@@ -78,9 +78,30 @@ if(user_id=='null'){
 
 //菜单初始化在哪个
 var menuPos= Q.getInt('menuPos',0);
+var pageNo = 1;//初始页码
+var contentFocusIndex = -1 ;//初始光标 -1表示光标不在内容上，默认在菜单上
 
 window.onload=function(){
     $('keyNo').innerHTML=user_id;
+    menuPos=utv.cookie.get('menuPos');
+    utv.cookie.remove('menuPos');
+    if(!!!menuPos){
+        menuPos=0;
+    }
+    menuPos=parseInt(menuPos,10);
+    pageNo=utv.cookie.get('pageNo');
+    utv.cookie.remove('pageNo');
+    if(!!!pageNo){
+        pageNo=1;
+    }
+    pageNo=parseInt(pageNo,10);
+    contentFocusIndex=utv.cookie.get('contentFocusIndex');
+    utv.cookie.remove('contentFocusIndex');
+    if(!!!contentFocusIndex){
+        contentFocusIndex=-1;
+    }
+    contentFocusIndex=parseInt(contentFocusIndex,10);
+
     getMenuData();
     //alert(location.href+'||'+portalUrl);
 };
@@ -183,6 +204,7 @@ function getMenuData(){
     fetch(url,function(data){
         formatMenuData(data);
         menuObj.render();
+        menuObj.menuPos=menuPos;
         ctr=menuObj.init();//事件交给菜单控制对象
     },function(){
         //alert('网络错误');
@@ -232,6 +254,14 @@ var indexHome = {
         fetch(url,function(data){
             that.formatData(data);
             that.render();
+            if(contentFocusIndex!=-1){//内容光标初始在这里
+                menuObj.selected();
+                ctr=indexHome.init();
+                indexHome.uiPos=contentFocusIndex;
+                indexHome.dataPos=contentFocusIndex;
+                indexHome.focus();
+                contentFocusIndex=-1;
+            }
         },function(){
             //alert('网络错误');
         });
@@ -330,6 +360,8 @@ var indexHome = {
         }else{
             urlPage+='?user_id='+user_id;
         }
+        utv.cookie.set('contentFocusIndex',this.dataPos);//设置光标
+
         if(!!Q.getFromURL(urlPage,'gameId')){
             var gameId=Q.getFromURL(urlPage,'gameId');
             getGameDetail(gameId,function(data){
@@ -388,6 +420,10 @@ var contentList = {
     },
     getData : function(isTurnPage){
         var url='';
+        if(!!pageNo){
+            this.data['menu'+menuObj.menuPos].currentPage=pageNo;
+            pageNo=0;
+        }
         if(menuObj.menuPos==1){//最热
             //url=serverUrl+'/inter/getFolderLists.action?typeId='+menuObj.data[menuObj.menuPos].id+'&page='+this.data['menu'+menuObj.menuPos].currentPage;
             url=serverUrl+'/inter/getGameListsByTypeId.action?typeId=2&page='+this.data['menu'+menuObj.menuPos].currentPage+'&userNo='+user_id;
@@ -410,6 +446,14 @@ var contentList = {
             that.formatData(data);
             that.render();
             !!isTurnPage&&that.focus();
+            if(contentFocusIndex!=-1){//内容光标初始在这里
+                menuObj.selected();
+                ctr=contentList.init();
+                contentList.uiPos=contentFocusIndex;
+                contentList.dataPos=contentFocusIndex;
+                contentList.focus();
+                contentFocusIndex=-1;
+            }
         },function(){
             that.hasData=true;
             //alert('网络错误');
@@ -557,6 +601,10 @@ var contentList = {
         var url='http://172.16.159.152:80/NewFrameWork/newWeb/html/play_panel.v2.html?groupId=&providerId=&assetId=&progtime=&programName=&programInfo=&purchaseToken=&type=1&resumePoint=&operType=';
         //http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId=GDGZ3320170608002318&videoName=555
         var urlPage='http://172.16.130.226/gzzq/fullVideo.shtml?titleAssetId='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].vodId+'&videoName='+this.data['menu'+menuObj.menuPos].lists[this.uiPos].name;//this.data['menu'+menuObj.menuPos].lists[this.uiPos].playUrl;
+
+        utv.cookie.set('contentFocusIndex',this.uiPos);//设置光标
+        utv.cookie.set('pageNo',this.data['menu'+menuObj.menuPos].currentPage);//页码
+
         getGameDetail(this.data['menu'+menuObj.menuPos].lists[this.uiPos].id,function(data){
             window.location.href=urlPage;
         });
@@ -661,6 +709,8 @@ var menuObj = {
         }
     },
     enter: function () {
+        utv.cookie.set('menuPos',this.menuPos);//设置光标
+
         if (this.menuPos == 0) {
             //首页推荐
             //alert('home');
