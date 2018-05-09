@@ -36,12 +36,13 @@
 
 <div id="tplContent" class=""><!--tpl1Content-wrapper-->
 	<div id="tplBox1" class="tplBox-wrapper">
-		<img id="starBg" src="./images/star-bg.png?v=1" style="" />
+		<img id="starBg" src="./images/star-bg.png?v=1" style="display: none;" />
 		<div class="tplImgBox">
 			<img src="./images/test.jpg" id="img1SelectSrc" onload="step1ImgSelectShowLoad(this,1);" style="display:none;">
 			<img src="./images/test.jpg" id="img1Select" class="imgSelect" style="display:none;">
 		</div>
-		<img id="starMask" src="./images/star-mask.png?v=1" style="" />
+		<img id="starMask" src="./images/star-mask.png?v=1" style="display: none;" />
+		<div id="resultImgBox" style="position: absolute; z-index: 999999; left: 0; top: 0; width: 100%; height: 100%;"></div>
 	</div>
 	<div id="tplBox1Action" style="" class="tplBoxAction-wrapper"></div>
 </div>

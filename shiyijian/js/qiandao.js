@@ -35,7 +35,7 @@ var boxImg={
 };
 //设置图片位置高宽
 var tplBox1=$('#tplBox1')
-	,tplBox1Action=$('#tplBox1Action')
+	//,tplBox1Action=$('#tplBox1Action')
 	,tplId=1
 	,tplBoxSelect=tplBox[tplId]
 ;
@@ -45,14 +45,17 @@ tplBox1.css({
 	,'width':tplBoxSelect.box1.w+'px'
 	,'height':tplBoxSelect.box1.h+'px'
 });
-tplBox1Action.css({
-	'left':tplBoxSelect.box1Action.x+'px'
-	,'top':tplBoxSelect.box1Action.y+'px'
-	,'width':tplBoxSelect.box1Action.w+'px'
-	,'height':tplBoxSelect.box1Action.h+'px'
-});
-
-
+// tplBox1Action.css({
+// 	'left':tplBoxSelect.box1Action.x+'px'
+// 	,'top':tplBoxSelect.box1Action.y+'px'
+// 	,'width':tplBoxSelect.box1Action.w+'px'
+// 	,'height':tplBoxSelect.box1Action.h+'px'
+// });
+var tplBox1Action=document.getElementById('tplBox1Action');
+tplBox1Action.style.left=tplBoxSelect.box1Action.x+'px';
+tplBox1Action.style.top=tplBoxSelect.box1Action.y+'px';
+tplBox1Action.style.width=tplBoxSelect.box1Action.w+'px';
+tplBox1Action.style.height=tplBoxSelect.box1Action.h+'px';
 
 //box select img bt
 function tplBoxTapAction(boxId){
@@ -160,7 +163,7 @@ function getImgSize(el){
 //图片载入操作
 function step1ImgSelectShowLoad(el,boxId){
 	setStep1ImgSizeInit(boxId);
-	$('#selectImgBt'+boxId+'-wrapper').hide();
+	//$('#selectImgBt'+boxId+'-wrapper').hide();
 }
 function setStep1ImgSizeInit(boxId){
 	var boxImging=boxImg[boxId];
@@ -168,28 +171,22 @@ function setStep1ImgSizeInit(boxId){
 	boxImging.trueW=naturalSize.w;
 	boxImging.trueH=naturalSize.h;
 
-	//var imgShow=$('#img'+boxId+'Select');
 	var curW=tplBoxSelect['box'+boxId].w;
 	
 	boxImging.curScaleVal=curW/boxImging.trueW;
-	//boxImging.minScaleVal=boxImging.curScaleVal;
 
 	boxImging.showW=curW;
 	boxImging.showH=boxImging.curScaleVal*boxImging.trueH;
 	boxImging.initW=boxImging.showW;
 	boxImging.initH=boxImging.showH;
-	//boxImging.$el.height(boxImging.showH);
-	//boxImging.$el.width(boxImging.showW);
 	boxImging.$el.animate({'height':boxImging.showH,'width':boxImging.showW},350,'linear');
 
-	boxImging.$el.show();
+	//boxImging.$el.show();
 
 	boxImging.curScaleVal=1;
-	//boxImging.minScaleVal=1;
 
-	//boxImging.$el.animate({'scale':boxImging.curScaleVal+','+boxImging.curScaleVal},100,'linear');
-	
-	
+	previewImgFn();
+
 }
 
 var hammerbox1 = new Hammer.Manager(document.getElementById('tplBox1Action'));
@@ -268,10 +265,11 @@ function panHandler(boxId,ev){
 	}
 	boxImging.left=left;
 	boxImging.top=top;
-	boxImging.$el.css({
-		'left':left+'px'
-		,'top':top+'px'
-	});
+	// boxImging.$el.css({
+	// 	'left':left+'px'
+	// 	,'top':top+'px'
+	// });
+	previewImgFn();
 }
 
 
@@ -296,10 +294,9 @@ function scaleHandler(boxId,scaleV,typeV){
 		boxImging.showH=boxImging.showW/boxImging.trueW*boxImging.trueH;
 	}
 
-	boxImging.$el.animate({'height':boxImging.showH,'width':boxImging.showW},26,'linear');
+	//boxImging.$el.animate({'height':boxImging.showH,'width':boxImging.showW},26,'linear');
 
-	// var top=parseInt(boxImging.$el.css('top')||0,10);
- //    var left=parseInt(boxImging.$el.css('left')||0,10);
+	previewImgFn();
 
 }
 
@@ -365,28 +362,28 @@ function previewImgFn(e){
 		alert('有图片未完成上传！');
 		return;
 	}
-	if($liuyanName.val()==''){
-		alert('请先完善姓名');
-		return;
-	}
-	if($('#liuyanDepartment').val()==''){
-		alert('请先输入部门');
-		return;
-	}
+	// if($liuyanName.val()==''){
+	// 	alert('请先完善姓名');
+	// 	return;
+	// }
+	// if($('#liuyanDepartment').val()==''){
+	// 	alert('请先输入部门');
+	// 	return;
+	// }
 
-	$('#previewBox').show();
-	$('#generateBtTips').show();
+	//$('#previewBox').show();
+	//$('#generateBtTips').show();
 	var crop_canvas = document.createElement('canvas');
 	var width=tplBoxSelect.width;
-	var height=tplBoxSelect.height+50;//50是放文字位置
+	var height=tplBoxSelect.height;//+50;//50是放文字位置
 	//画布宽高
     crop_canvas.width = width;
     crop_canvas.height = height;
     var ctx=crop_canvas.getContext('2d');
 
    
-		var starMaskImg=document.getElementById('starMask');
-		var starBgImg=document.getElementById('starBg');
+	var starMaskImg=document.getElementById('starMask');
+	var starBgImg=document.getElementById('starBg');
 
 
     //画图box1
@@ -408,8 +405,6 @@ function previewImgFn(e){
 	var imgLeft=0;
     var imgTop=0;
 
-   // imgLeft=tplBoxSelect['box1'].x;
-    //imgTop=tplBoxSelect['box1'].y;
 
 	c_left=0;
     c_top=0;
@@ -427,46 +422,30 @@ function previewImgFn(e){
     }
 
    
-		ctx.drawImage(starBgImg, 0, 0, 597, 552);//bg
-		ctx.globalCompositeOperation = 'source-in';
+	ctx.drawImage(starBgImg, 0, 0, 597, 552);//bg
+	ctx.globalCompositeOperation = 'source-in';
   
 
-		//ctx.drawImage(crop_canvas_box1, 0, 0, 597, 552);//img
     ctx.drawImage(crop_canvas_box1, c_left, c_top, imgW, imgH,imgLeft, imgTop, imgW, imgH);
 
-		ctx.globalCompositeOperation = 'source-over';
-		ctx.drawImage(starMaskImg, 0, 0, 597, 552);//mask
+	ctx.globalCompositeOperation = 'source-over';
+	ctx.drawImage(starMaskImg, 0, 0, 597, 552);//mask
 
 
-    //画遮罩
-    //ctx.drawImage(document.getElementById('tplMaskImg'),0,0,width,height);
-
-    // 添加姓名文字
-  //   writeTextOnCanvas({
-  //   	canvasEl:crop_canvas
-		// ,lh:50
-		// ,rw:50//每行字节长度
-		// ,text:$liuyanName.val()
-		// ,fontSize:32
-		// ,fillStyle:'#ffffff'
-		// ,top:552//这段文字绘制开始的Y值
-		// ,left:50//这段文字绘制开始的X值
-		// ,fontFamily:'Microsoft YaHei'
-  //   });
    
-	addText(ctx,$liuyanName.val(),300,512);
-	addText(ctx,$('#liuyanDepartment').val(),300,562);
+	//addText(ctx,$liuyanName.val(),300,512);
+	//addText(ctx,$('#liuyanDepartment').val(),300,562);
 
     canvasLiuyanOK=crop_canvas;
     
-	var main=$('#previewImgBox');
+	var main=$('#resultImgBox');
     main.html(crop_canvas);
-    $(crop_canvas).css({'max-width': '100%','max-height':'76%'});
+    //$(crop_canvas).css({'max-width': '100%','max-height':'76%'});
     crop_canvas_box1=null;
     ctx_box1=null;
     crop_canvas=null;
     ctx=null;
-    $('#generateBtTips').hide();
+    //$('#generateBtTips').hide();
 }
 
 function addText(ctx,str,x,y){
