@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="640" />
+	<meta name="viewport" content="width=640, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/qiandao.css?v=99" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script>
+	<script type="text/javascript" src="./js/hammer.js"></script>
+
+
+	<title>画布图片测试</title>
+</head>
+<body>
+
+<div id="web_bg" style="position:fixed; width:100%; height:100%; z-index:-1"> 
+<!-- <img style="position:fixed;" src="./images/qd-bg.jpg" height="100%" width="100%" />  -->
+</div>
+
+<div id="main">
+
+<div id="tplContent" class=""><!--tpl1Content-wrapper-->
+	<div id="tplBox1" class="tplBox-wrapper">
+		<img id="starBg" src="./images/star-bg.png?v=1" style="display: none;" />
+		<div class="tplImgBox">
+			<img src="./images/test.jpg" id="img1SelectSrc" onload="step1ImgSelectShowLoad(this,1);" style="display:none;">
+			<img src="./images/test.jpg" id="img1Select" class="imgSelect" style="display:none;">
+		</div>
+		<img id="starMask" src="./images/star-mask.png?v=1" style="display: none;" />
+		<div id="resultImgBox" style="position: absolute; z-index: 999999; left: 0; top: 0; width: 100%; height: 100%;"></div>
+	</div>
+	<div id="tplBox1Action" style="" class="tplBoxAction-wrapper"></div>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript" src="./js/qiandao.js?v=333"></script>
+<script type="text/javascript">
+// document.body.addEventListener('touchmove', function (e) { 
+// 	e.preventDefault();
+// });
+
+</script>
+
+</body>
+</html>
