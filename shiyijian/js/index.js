@@ -138,12 +138,13 @@ hammerbox1.on('pan', function(ev) {
 });
 
 function panHandler(ev){
+
 	//var deltaX=ev.deltaX;//移动的相对距离，正数表示向右
 	//var deltaY=ev.deltaY;//移动的相对距离，正数表示向下
 	//console.log(deltaX,deltaY);
 	$('#debug').html('x:'+ev.deltaX+' , y:'+ev.deltaY);
-	var deltaX=ev.deltaX<0? -(resultImg.w/$main.width()):(resultImg.w/$main.width());
-	var deltaY=ev.deltaY<0? -(resultImg.h/$main.height()):(resultImg.h/$main.height());
+	var deltaX=ev.deltaX<0? -(resultImg.w/$main.width()*2):(resultImg.w/$main.width()*2);
+	var deltaY=ev.deltaY<0? -(resultImg.h/$main.height()*2):(resultImg.h/$main.height()*2);
 	leftMianliao+=deltaX;
 	topMianliao+=deltaY;
 	if(leftMianliao<=(10-resultImg.w)){

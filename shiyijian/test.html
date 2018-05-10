@@ -26,31 +26,56 @@
 <link rel="stylesheet" href="./css/base.css?v=66" />
 <style type="text/css">
 body,html{
-	overflow: hidden;
-	/*position: absolute;
+	position: relative;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	height: 100%;
 	width: 100%;
+	background-color: #ffffff;
 	-webkit-overflow-scrolling: auto;
-	overflow: hidden;*/
+	overflow: hidden;
+	z-index: 0;
 }
 #main{
 	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
+	left: 0%;
+	top: 10%;
+	right: 0%;
+	bottom: 10%;
 	width: 100%;
-	height: 500px;
+	height: 80%;
 	text-align: center;
-	background-color: #eee;
-	z-index: 0;
+	background-color: #ddd;
+	z-index: 10;
+}
+.wrapper{
 	/**局部有滚动**/
-	overflow: auto;
+	position: static;
+	height: 100%;
+	width: 100%;
     -webkit-overflow-scrolling: touch;
+	overflow: auto;
+}
+.sub-wrapper{
+	min-height: calc(100% + 1px);
+	padding: 20px;
+}
+.sub-wrapper p{
+	margin:10px;
+	background-color: #eee;
+	color: #222;
+	line-height: 30px;
+}
+
+/**原理上还是使用3d效果来开启硬件加速**/
+.speed-up{
+   -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
 }
 
 
@@ -65,45 +90,46 @@ body,html{
 
 
 <div id="main">
+<div class="wrapper">
+	<div class="sub-wrapper">
+		<div class="scroller">
+			<p>这种组织全局滚动方式不好,目前没有完美的方式，用滚动插件吧 sdf df dsfsdf df dsfdf </p>
+			<p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p><p>sdfdfsf sdf df dsfsdf df dsfdf </p>
 
+		</div>
+	</div>
 	
-
+</div>
 </div>
 
 
 <script type="text/javascript">
-document.body.addEventListener('touchmove', function (e) { 
-	e.preventDefault();
+document.addEventListener('touchmove', function (e) { 
+	//var target = e.target
+	
+	e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
 
-},false);
+},{passive: false});//passive 参数不能省略，用来兼容ios和android
 
-/**
- * 禁止浏览器下拉回弹
- */
-// function stopDrop() {
-//     var lastY;//最后一次y坐标点
-//     $(document.body).on('touchstart', function(event) {
-//         lastY = event.originalEvent.changedTouches[0].clientY;//点击屏幕时记录最后一次Y度坐标。
-//     });
-//     $(document.body).on('touchmove', function(event) {
-//         var y = event.originalEvent.changedTouches[0].clientY;
-//         var st = $(this).scrollTop(); //滚动条高度
-//         console.log("st = "+st);
-//         if (y >= lastY && st <= 0) {//如果滚动条高度小于0，可以理解为到顶了，且是下拉情况下，阻止touchmove事件。
-//             lastY = y;
-//             event.preventDefault();
-//         }
-//         lastY = y;
+function isScroller(el) {
+  // 判断元素是否为 scroller
+  return el.classList.contains('scroller')
+}
 
-//         //方法三
-//         // var abc=$(document.body).scrollTop();
-//         // console.log("abc = "+abc);
-//         // if (abc>0) {
-//         //   $(document.body).scrollTop(0);
-//         // }
-//     });
-// }
-// stopDrop();
+document.body.addEventListener('touchmove', function (e) {
+	var target = e.target
+
+  // 在 scroller 上滑动，阻止事件冒泡，启用浏览器默认行为。
+  if (isScroller(target)) {
+    e.stopPropagation()
+  }
+}, false); 
+
+// 作者：song
+// 链接：https://www.zhihu.com/question/22256539/answer/357240488
+// 来源：知乎
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 
 
 //完美解决safari、微信浏览器下拉回弹效果，只保留局部回弹效果。
