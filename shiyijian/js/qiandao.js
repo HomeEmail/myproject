@@ -179,7 +179,7 @@ function setStep1ImgSizeInit(boxId){
 	boxImging.showH=boxImging.curScaleVal*boxImging.trueH;
 	boxImging.initW=boxImging.showW;
 	boxImging.initH=boxImging.showH;
-	boxImging.$el.animate({'height':boxImging.showH,'width':boxImging.showW},350,'linear');
+	//boxImging.$el.animate({'height':boxImging.showH,'width':boxImging.showW},350,'linear');
 
 	//boxImging.$el.show();
 
