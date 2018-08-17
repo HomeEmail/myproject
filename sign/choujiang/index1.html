@@ -130,7 +130,7 @@ DD_belatedPNG.fix(".ie6png");
 
 
 </div>
-<div id="actionBox" style="display:none;">
+<div id="actionBox" style="display:block;">
 	<button id="openActionBoxBt">操作面板</button>
 	<div style="text-align:right;">
 		<button id="closeActionBoxBt">x</button>
@@ -402,12 +402,12 @@ DD_belatedPNG.fix(".ie6png");
 	var isReTransition=false;
 	var isOning=false;
 	$('#startBt').on('click',function(e){
-		//selectCount=$('#selectCount').val();
+		selectCount=$('#selectCount').val();
 		if(!isReTransition){
 			//$imgs.css({'-webkit-transition-duration':'0ms','-webkit-transition-delay':'0ms','transition-delay':'0ms'});
 			isReTransition=true;
 		}
-		$('#actionBox').css('right','-200px');
+		//$('#actionBox').css('right','-200px');
 		isOning=true;
 		addOnWho();
 		$('#luckMask').hide();
