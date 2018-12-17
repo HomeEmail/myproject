@@ -53,7 +53,7 @@ function Car(params){
     this.isBrake = false;//刹车
 
     
-    this.dirRotation = 0; // 方向上的旋转
+    this.dirRotation = 0; // 方向上的旋转的弧度，弧度是用PI表示的,不是角度单位
 
     var mtlLoader = new THREE.MTLLoader();//材质加载器
     mtlLoader.setPath('../assets/');
