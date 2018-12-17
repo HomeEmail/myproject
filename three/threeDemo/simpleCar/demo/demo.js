@@ -3,7 +3,9 @@ var camera = new THREE.PerspectiveCamera(90,window.innerWidth/window.innerHeight
 camera.position.z = 0;
 camera.position.x = 0;
 
-var webGLRenderer = new THREE.WebGLRenderer();
+var webGLRenderer = new THREE.WebGLRenderer({
+    antialias : true //抗锯齿
+});
 
 webGLRenderer.setPixelRatio(window.devicePixelRatio);
 webGLRenderer.setSize(window.innerWidth, window.innerHeight);
@@ -68,20 +70,38 @@ function Car(params){
             car.children.forEach(function(item) {
                 item.castShadow = true;
             });
-            car.position.z = -20;
+            car.position.x = 0;
             car.position.y = -5;
+            car.position.z = -20;
             
-            params.scene.add(car);
+            params.scene.add(car);//车的前轮是与车分开加载了
             self.car = car;
 
             !!params.cb&&params.cb();
 
         }, function() {
-            console.log('progress');
+            console.log('progress car4');
         }, function() {
             console.log('error');
         });
     });
+
+    self.frontLeftWheel = new Wheel({ //前轮胎
+        mtl: 'front_wheel.mtl',
+        obj: 'front_wheel.obj',
+        parent: car,
+        offsetX: -2.79475,
+        offsetZ: -3.28386
+    });
+    self.frontRightWheel = new Wheel({ //前轮胎
+        mtl: 'front_wheel.mtl',
+        obj: 'front_wheel.obj',
+        parent: car,
+        offsetX: 2.79475,
+        offsetZ: -3.28386
+    });
+
+
 }
 Car.prototype.tick = function(){
 
@@ -112,7 +132,67 @@ Car.prototype.tick = function(){
     this.car.position.x += speedX;
     console.log('this.car.position:',this.car.position.x,this.car.position.y,this.car.position.z,'this.car.rotation',this.car.rotation.x,this.car.rotation.y,this.car.rotation.z);
 
+
+    //前轮跟着车动
+    this.frontLeftWheel.wrapper.rotation.y = rotation;
+    this.frontRightWheel.wrapper.rotation.y = rotation;
+    
+    this.frontLeftWheel.wheel.rotation.y = (rotation) / 2;
+    this.frontRightWheel.wheel.rotation.y = (rotation) / 2;
+
+
+    this.frontLeftWheel.wrapper.position.z += speedZ;
+    this.frontLeftWheel.wrapper.position.x += speedX;
+    this.frontRightWheel.wrapper.position.z += speedZ;
+    this.frontRightWheel.wrapper.position.x += speedX;
+
+    //相机跟着车动
+    camera.rotation.y=rotation;
+    camera.position.x=this.car.position.x+Math.sin(rotation) * 20;//取20因为是车开始就与摄像机相距20
+    camera.position.z=this.car.position.z+Math.cos(rotation) * 20;//取20因为是车开始就与摄像机相距20
+    
+
 };
+function rr(r){
+    car.frontLeftWheel.wrapper.rotation.x+=r;
+    car.frontLeftWheel.wrapper.rotation.y+=r;
+    car.frontLeftWheel.wrapper.rotation.z+=r;
+}
+
+function Wheel(params) {
+    var mtlLoader = new THREE.MTLLoader();
+    var self = this;
+
+    mtlLoader.setPath('../assets/');
+    mtlLoader.load(params.mtl, function(materials) {
+
+        materials.preload();
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(materials);
+        objLoader.setPath('../assets/');
+        objLoader.load(params.obj, function(object) {
+
+            object.children.forEach(function(item) {
+                item.castShadow = true;
+            });
+            var wrapper = new THREE.Object3D();
+            wrapper.position.set(0,-5,-20);
+            wrapper.add(object);
+
+            object.position.set(params.offsetX, 0, params.offsetZ);
+
+            scene.add(wrapper);
+            self.wheel = object;
+            self.wrapper = wrapper;
+
+        }, function() {
+            console.log('progress Wheel');
+        }, function() {
+            console.log('error');
+        });
+    });
+
+}
 
 var car=new Car({
     scene:scene,
