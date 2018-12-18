@@ -37,6 +37,8 @@ scene.add(pointLight);
 var light = new THREE.AmbientLight( 0xccbbaa, 0.5 );
 scene.add( light );
 
+document.body.appendChild(webGLRenderer.domElement);
+
 //赛道
 function Ground() {
     // var meshBasicMaterial = new THREE.MeshLambertMaterial({
@@ -256,8 +258,6 @@ function Wheel(params) {
     });
 
 }
-
-document.body.appendChild(webGLRenderer.domElement);
 
 var car=new Car({
     scene:scene,
