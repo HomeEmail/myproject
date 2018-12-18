@@ -12,8 +12,8 @@ webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 webGLRenderer.setClearColor(0x27bcff, 1);
 
 var pointLight = new THREE.PointLight(0xccbbaa, 1, 0, 0);  
-pointLight.position.set(-10, 20, -20);
-
+pointLight.position.set(-10, 30, -20);
+pointLight.castShadow = true;
 scene.add(pointLight);
 
 
@@ -37,6 +37,31 @@ scene.add(pointLight);
 var light = new THREE.AmbientLight( 0xccbbaa, 0.5 );
 scene.add( light );
 
+//赛道
+function Ground() {
+    // var meshBasicMaterial = new THREE.MeshLambertMaterial({
+    //     color: 0xff0000,
+    //     side: THREE.DoubleSide
+    // });
+    var objLoader = new THREE.OBJLoader();
+
+    objLoader.setPath('../assets/');
+    objLoader.load('ground.obj', function(object) {
+        object.children.forEach(function(item) {
+            item.receiveShadow = true;
+        });
+        object.position.y = -5;
+
+        
+        scene.add(object);
+
+    }, function() {
+        console.log('progress Ground');
+    }, function() {
+        console.log('error');
+    });
+}
+
 function Car(params){
     var self = this;
     var car;
@@ -55,7 +80,8 @@ function Car(params){
     this.isBrake = false;//刹车
 
     
-    this.dirRotation = 0; // 方向上的旋转的弧度，弧度是用PI表示的,不是角度单位
+    this.dirRotation = 0; // 车身方向 旋转的弧度，弧度是用PI表示的,不是角度单位
+    this.realRotation = 0;//真正的方向，包含刹车（偏移）方向
 
     var mtlLoader = new THREE.MTLLoader();//材质加载器
     mtlLoader.setPath('../assets/');
@@ -121,26 +147,51 @@ Car.prototype.tick = function(){
         return ;
     }
 
+    var time = Date.now();
+
     this.dirRotation += this.rSpeed;
     var rotation = this.dirRotation;
+    //新步长
     var speedX = Math.sin(rotation) * speed;
     var speedZ = Math.cos(rotation) * speed;
 
-    this.car.rotation.y = rotation;
+    //车新的坐标点
+    var tempX = this.car.position.x + speedX;
+    var tempZ = this.car.position.z + speedZ;
 
-    this.car.position.z += speedZ;
-    this.car.position.x += speedX;
-    console.log('this.car.position:',this.car.position.x,this.car.position.y,this.car.position.z,'this.car.rotation',this.car.rotation.x,this.car.rotation.y,this.car.rotation.z);
+    this.realRotation+=this.rSpeed;
+
+    if(this.isBrake){
+        this.realRotation+=this.rSpeed*(this.speed/2);
+    } else {
+        if(this.realRotation !== this.dirRotation) { //漂移后 方向要统一 dirRotation 逐渐向 realRotation 靠;促使摄像机调整方向位置
+            this.dirRotation += (this.realRotation - this.dirRotation) / 2000 * (this.speed) * (time - this.cancelBrakeTime); //2000这个数值控制漂移恢复正确方向的速度
+           // console.log('漂移后 方向要统一',(this.realRotation - this.dirRotation) / 20000 * (this.speed) * (time - this.cancelBrakeTime));
+        }
+    }
 
 
-    //前轮跟着车动
-    this.frontLeftWheel.wrapper.rotation.y = rotation;
-    this.frontRightWheel.wrapper.rotation.y = rotation;
-    
+
+    //更新光的坐标
+    this.light.position.set(-10+tempX, 30, tempZ);
+    this.light.shadow.camera.updateProjectionMatrix();
+
+    this.car.rotation.y = this.realRotation;//rotation; //车身方向
+
+
+
+    //前轮跟着方向转动
+    this.frontLeftWheel.wrapper.rotation.y = this.realRotation;
+    this.frontRightWheel.wrapper.rotation.y = this.realRotation;
     this.frontLeftWheel.wheel.rotation.y = (rotation) / 2;
     this.frontRightWheel.wheel.rotation.y = (rotation) / 2;
 
 
+    this.car.position.x = tempX;
+    this.car.position.z = tempZ;
+    ///console.log('this.car.position:',this.car.position.x,this.car.position.y,this.car.position.z,'this.car.rotation',this.car.rotation.x,this.car.rotation.y,this.car.rotation.z);
+
+    //前轮跟着车移动
     this.frontLeftWheel.wrapper.position.z += speedZ;
     this.frontLeftWheel.wrapper.position.x += speedX;
     this.frontRightWheel.wrapper.position.z += speedZ;
@@ -153,6 +204,18 @@ Car.prototype.tick = function(){
     
 
 };
+
+Car.prototype.brake = function() {
+   
+    this.isBrake = true;
+};
+
+Car.prototype.cancelBrake = function() {
+    this.cancelBrakeTime = Date.now();
+    this.isBrake = false;
+};
+
+
 function rr(r){
     car.frontLeftWheel.wrapper.rotation.x+=r;
     car.frontLeftWheel.wrapper.rotation.y+=r;
@@ -194,16 +257,19 @@ function Wheel(params) {
 
 }
 
+document.body.appendChild(webGLRenderer.domElement);
+
 var car=new Car({
     scene:scene,
     light:pointLight,
     cb:start
 });
+var ground;
 
 // start();
 
-document.body.appendChild(webGLRenderer.domElement);
 function start(){
+    ground = new Ground();
 
     render();
 }
@@ -231,7 +297,7 @@ document.body.addEventListener('keydown', function(e) {
             car.backward=true;
             break;
         case 32: // space
-            //car.brake();
+            car.brake();
             break;
     }
 });
@@ -252,7 +318,7 @@ document.body.addEventListener('keyup', function(e) {
             car.backward=false;
             break;
         case 32: // space
-            //car.cancelBrake();
+            car.cancelBrake();
             break;
     }
 });
