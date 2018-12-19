@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>payload 测试</title>
+<style>
+html,body{background-color:#f1f1f1;font-family: cursive,微软雅黑;}
+#hello{
+	font-size:80px; color:#555; text-align:center;
+	text-shadow: 0px 2px 2px #333;
+	
+}
+     a{
+        text-decoration: none;
+        
+    }
+       
+</style>
+<script type="text/javascript" src="./zhuoyue/www/js/jquery-1.8.2.min.js"></script>
+<script>
+</script>
+</head>
+<body>
+<h1>payload</h1>
+</body>
+<script type="text/javascript">
+	var data={
+		xx : 'yue'
+		,oo : 'pao'
+	};
+	$.ajax({
+	    url: 'payloadAction.php',
+	    type: 'POST',// 必须是POST
+	    contentType:'application/json; charset=UTF-8',
+	    data: JSON.stringify(data),// 数据 必须是字符串
+	    dataType: 'text',// 期望返回类型 json, xml
+	    processData: false,// 防止 data 被预处理
+	    success: function (data) {
+	          alert(data);
+	    }
+	});
+
+</script>
+</html>

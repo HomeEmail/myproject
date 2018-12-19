@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/index.css?v=66" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<!-- <script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+
+
+	<title>测一测你2016年遇到真爱的概率吧！</title>
+</head>
+<body>
+<div style="display:none;">
+<img src="./images/bg.png" alt="奔爱" style="">
+</div>
+<div id="content">
+	<div class="title"><img src="./images/title.png"></div>
+	<div class="desc">人海茫茫，遇上真爱需要多少缘分？也许你们曾经插肩而过，也许你们素未谋面。快来测测2016年你遇到真爱的概率吧。</div>
+
+	<div class="inputWrapper">
+		<table cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+					<td class="inputLable">姓名 : </td>
+					<td class="inputBox"><input type="text" id="username" value="" placeholder="输入你的姓名" /></td>
+				</tr>
+				<tr>
+					<td class="inputLable">年龄 : </td>
+					<td class="inputBox"><input type="number" id="age" value="" placeholder="" /> 岁</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="submitBt">开始测试</div>
+
+	<div class="bottom-bar">
+		<div class="bottom-left"><img src="./images/logo.png" class="bottom-logo" > 关注“奔爱”，收获满满的爱！</div>
+		<div class="guanzhuBt">+关注</div>
+	</div>
+
+</div>
+
+<div id="guanzhuPop">
+	<img src="./images/qr.jpg" class="qr">
+	<p>长按识别此二维码</p>
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$('#submitBt').on('tap',function(e){
+		//console.log('cc');
+		//开始测试
+		var username=$('#username').val();
+		var age=$('#age').val();
+		if(!!!username||!!!age){
+			alert('请输入你的姓名和年龄！');
+			return;
+		}
+		//跳转到结果页
+		window.location.href='./result.html?username='+username+'&age='+age;
+	});
+	$('.guanzhuBt').on('tap',function(e){
+		//console.log($('#guanzhuPop'));
+		$('#guanzhuPop').show();
+	});
+	$('#guanzhuPop').on('tap',function(e){
+		$(this).hide();
+	})
+</script>
+
+
+
+</body>
+</html>

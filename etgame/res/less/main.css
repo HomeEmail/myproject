@@ -1,0 +1,544 @@
+/********css reset*********/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body { font-size: 62.5%; line-height: 1; font-family: Arial, Tahoma, sans-serif; }
+body{
+    -webkit-overflow-scrolling: touch;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong { font-weight: bold; } 
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+p { font-size: 13px; line-height: 20px; color: #333; }
+
+a,input,button,textarea{outline:none; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+input[type=button]{
+    -webkit-appearance:none;
+}
+body > * {
+    /*
+    transform: translateZ(0px);
+    -webkit-transform: translateZ(0px);
+    */
+}
+/*******css reset end************************/
+/* Clear Fix */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clearfix {
+    display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
+}
+.ellipsis{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;    
+}
+
+html,body { 
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust:100%;
+    -webkit-user-select:none;
+}
+
+
+/***coustom***/
+
+html,body { 
+    height: 100%;
+    width: 100%;
+    background-color:#7a0000;
+    overflow: hidden;
+}
+
+
+
+#body{
+   /* max-width: 640px;*/
+}
+#loadingBox{
+    position: fixed;
+    top: 0px;
+    left: 0px; 
+    width: 100%;
+    height: 100%;
+    background-color: #21292b;
+    overflow: hidden;
+    text-align: center;
+    color:#fff;
+    font-size: 18px;
+    padding-top: 43%;
+}
+#gameBox,body{
+	position: fixed;
+	top: 0px;
+	left: 0px; 
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/bg.jpg);
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #21292b;
+    overflow: hidden;
+}
+#scoreTips,.scoreTips{  
+    color: red;
+  font-size: 28px;
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  text-shadow: 0px 0px 4px #FFE110;
+  z-index: 99999;
+  opacity: 0;
+}
+.pp-item{
+    position:absolute;
+    left:100px;
+    top:200px;
+    width:124px;
+    height:124px;
+    background-image: url(../images/paopao-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index:10;
+}
+.pp-item:active{
+    /*background-image: url(../images/paopao-bg-on.png);*/
+}
+.pp-item:after{
+    z-index:9;
+    position:absolute;
+    width:100%;
+    height:100%;
+    content:'';
+    background-image: url(../images/icon-ufo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    left:0px;
+    top:0px;
+}
+.pp-ufo:after{
+    background-image: url(../images/icon-ufo.png);
+}
+.pp-gou:after{
+    background-image: url(../images/icon-gou.png);
+}
+.pp-ren:after{
+    background-image: url(../images/icon-ren.png);
+}
+.pp-xin:after{
+    background-image: url(../images/icon-xin.png);
+}
+
+#paihangBt{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 62px;
+    height: 62px;
+    display: inline-block;
+    background: url(../images/paopao-bg.png) no-repeat center center;
+    background-size: cover;
+}
+#paihangBt:after{
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 62px;
+    height: 62px;
+    background: url(../images/icon-xin.png) no-repeat center center;
+    background-size: cover;
+}
+#paihangBt a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color:#fff;
+}
+#paihangBt span{
+  display: inline-block;
+  color: #fff;
+  position: absolute;
+  bottom: -14px;
+  left: 0px;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px #666;
+  width: 100%;
+  text-align: center;
+}
+
+/**progresss**/
+.progress-wrapper{
+    position: fixed;
+    bottom: 10%;
+    left: 0px;
+    width: 100%;
+    height: 23px;
+    text-align: center;
+}
+.progress-bg{
+    display:inline-block;
+    width: 224px;
+    height: 23px;
+    background: url(../images/progress-bar-bg.png) no-repeat center center;
+    background-size: cover;
+    padding-left: 12px;
+    padding-right: 12px;
+    overflow: hidden;
+    text-align: left;
+    position: relative;
+
+}
+.progress-bg:after{
+    content: '';
+    width: 51px;
+    height: 23px;
+    background: url(../images/time-text.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.progress-on{
+    display:inline-block;
+    width: 230px;
+    max-width: 230px;
+    min-width: 40px;
+    height: 23px;
+    background: url(../images/progress-bar-on.png) no-repeat right center;
+    background-size: cover;
+}
+
+#welcome{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../images/welcome-bg.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+.welcome-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 44px;
+    left: 0px;
+    bottom: 9%;
+    text-align: center;
+}
+#welcomeBt{
+    width: 114px;
+    height: 100%;
+    display: inline-block;
+    background: url(../images/begin.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+
+}
+#welcomeBt:active{
+    background-image: url(../images/begin-on.png);
+}
+#playtips{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(../images/playtips.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+.playtips-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 29px;
+    left: 0px;
+    bottom: 14%;
+    text-align: center;
+
+}
+#playtipsBt{
+    width: 82px;
+    height: 100%;
+    display: inline-block;
+    background: url(../images/letsgo.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+#playtipsBt:active{
+    background-image: url(../images/letsgo-on.png);
+}
+
+#scoreBox{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(../images/score-bg.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+.score-bt-bg{
+    position: relative;
+    top: 19%;
+    display: inline-block;
+    width: 174px;
+    height: 55px;
+    line-height: 55px;
+    overflow: hidden;
+    background: url(../images/score-bt-bg.png) no-repeat center center;
+    background-size: cover;
+    color: #7a0000;
+    font-size: 20px;
+    text-shadow: 0px 0px 1px #eee;
+      font-weight: bold;
+}
+.score-descript{
+
+    position: fixed;
+  width: 100%;
+  height: 128px;
+  left: -5px;
+  top: 31%;
+  /*background: url(../images/descript.jpg) no-repeat center center;*/
+    background-size: contain;
+    overflow: hidden;
+    text-align: center;
+}
+.descript-tr{
+    width: 100%;
+     
+}
+.descript-space{
+    width: 100%;
+    height: 3px;
+}
+.clearfl{
+    clear: both;
+}
+.descript-td{
+    display: inline-block;
+    width: 48px;
+    height: 60px;
+    position: relative;
+   /* float: left;*/
+}
+
+@media screen and (min-width: 361px){
+
+    .descript-td{ 
+        margin:0px 5px;
+    }
+
+}
+@media screen and (min-width: 414px){
+
+    .descript-td{ 
+        margin:0px 10px;
+    }
+
+}
+.descript-icon{
+    width: 100%;
+    height: 48px;
+    top: 0px;
+    left: 0px;
+    background-image: url(../images/paopao-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.descript-text{
+    color: #7a0000;
+    font-size: 12px;
+    text-shadow: 0px 0px 1px #eee;
+      font-weight: bold;
+    display: block;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+
+}
+
+.again-bt{
+    position: fixed;
+
+    width: 99px;
+    height: 40px;
+    background: url(../images/again-bt.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    bottom: 9%;
+    text-align: center;
+  left: 50%;
+  margin-left: -50px;
+
+}
+.again-bt:active{
+    background-image: url(../images/again-bt-on.png);
+}
+.score-text{
+    position: fixed;
+  width: 60%;
+  left: 19%;
+  bottom: 13%;
+  height: 100px;
+  text-align: left;
+    color: #7a0000;
+    font-size: 12px;
+  text-shadow: 0px 0px 1px #eee;
+    font-weight: bold;
+  /*-webkit-text-stroke: 1px red;
+    text-stroke: 1px red;*/
+
+  line-height: 14px;
+}
+
+.share-bt{
+    position: fixed;
+
+    width: 99px;
+    height: 40px;
+    background: url(../images/share-bt.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    bottom: 32%;
+    text-align: center;
+  left: 50%;
+  margin-left: -50px;
+
+}
+.share-bt:active{
+    background-image: url(../images/share-bt-on.png);
+}
+#shareBox{
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(../images/guide.png) no-repeat center top;
+    background-color: rgba(0,0,0,0.88);
+    background-size: contain;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+
+/***排行***/
+#paihangBox{
+     position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(../images/paihang-bg1.png) no-repeat center top;
+    background-size: contain;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+#letsgoBt{
+    position: fixed;
+
+    width: 82px;
+    height: 29px;
+    background: url(../images/letsgo.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    bottom: 16%;
+    text-align: center;
+  left: 50%;
+  margin-left: -41px;
+}
+#letsgoBt:active{
+    background-image: url(../images/letsgo-on.png);
+}
+#paihangShare{
+    position: fixed;
+
+    width: 30px;
+    height: 81px;
+    background: url(../images/sharebt1.png) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    top: 50%;
+    left: 7%;
+    margin-top: -41px;
+    text-align: center;
+
+}
+#paihangShare:active{
+    background-image: url(../images/sharebt1-on.png);
+}
+#paihangContent{
+  width: 49%;
+  height: 38%;
+  /*background-color: #ccc;*/
+  margin-top: 58%;
+  margin-left: 26%;
+}
+.paihang-item{
+    width: 100%;
+}
+.paihang-td{
+  color: #94731A;
+  font-size: 12px;
+  text-shadow: 0px 0px 2px rgb(255, 255, 255);
+  width: 33.333%;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+  height: 15px;
+  line-height: 15px;
+  font-weight: bold;
+}
+
+#sound{
+    display: none;
+    opacity: 0;
+}

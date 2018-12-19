@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../icon.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../icon.png" />
+	<link rel="shortcut icon" href="../icon.png" />
+	<link rel="apple-touch-startup-image" href="../res/images/bg.jpg"><!--全屏启动时候的启动画面图像, 尺寸320X460 px-->
+	
+    <title>戳泡泡！解救疯狂外星人！正版星钻积木等你拿！</title>
+    <link rel="stylesheet" href="../res/css/main.css?v=33" />
+    <style type="text/css"></style>
+    <!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript">
+
+    	window.shareData = {
+	        "timeLineLink": "http://www.tailg.com.cn/kz/yx/html/index.html",   
+	        "sendFriendLink": "http://www.tailg.com.cn/kz/yx/html/index.html",
+	        "weiboLink": "http://www.tailg.com.cn/kz/yx/html/index.html",
+	        "tTitle": "戳泡泡！解救疯狂外星人！正版星钻积木等你拿！",
+	        "tContent": "戳泡泡！解救疯狂外星人！正版星钻积木等你拿！",
+	        "fTitle": "戳泡泡！解救疯狂外星人！正版星钻积木等你拿！",
+	        "fContent": "戳泡泡！解救疯狂外星人！正版星钻积木等你拿！",
+	        "wContent": "戳泡泡！解救疯狂外星人！正版星钻积木等你拿！"
+        };
+        function changeShareData(str){
+        	window.shareData.tTitle=str||'解救疯狂外星人！抢星钻积木！';
+        	window.shareData.tContent=str||'解救疯狂外星人！抢星钻积木！';
+        	window.shareData.fTitle=str||'解救疯狂外星人！抢星钻积木！';
+        	window.shareData.fContent=str||'解救疯狂外星人！抢星钻积木！';
+        	window.shareData.wContent=str||'解救疯狂外星人！抢星钻积木！';
+        }
+    </script>
+</head>
+<body style="">
+	<div id="gameBox" style="display:none;">
+		<!-- <span id="scoreTips" class="scoreTips">+22</span> -->
+		<!-- <div class="pp-item pp-ufo" style="width:80px;height: 80px;left:100px;top: 100px;"></div>
+		<div class="pp-item pp-ufo" style="width:100px;height: 100px;left:180px;top: 180px;"></div>
+		<div class="pp-item pp-ren" style="width:100px;height: 100px;left:240px;top: 240px;"></div>
+		<div class="pp-item pp-xin" style="width:100px;height: 100px;left:100px;top: 430px;"></div>
+		<div class="pp-item pp-gou" style="width:100px;height: 100px;left:100px;top: 300px;"></div> -->
+		<div class="progress-wrapper">
+			<div class="progress-bg"><span class="progress-on"></span></div>
+		</div>
+	</div>
+	
+	<div id="welcome" style="display:none;">
+		<div class="welcome-wrapper"><div id="welcomeBt"></div></div>
+	</div>
+	<div id="playtips" style="display:none;">
+		<div class="playtips-wrapper"><div id="playtipsBt"></div></div>
+	</div>
+	<div id="scoreBox" style="display: none;">
+		<div class="score-bt-bg"></div>
+		<div class="score-descript">
+			<div class="descript-tr">
+				<div class="descript-td"><span class="descript-icon pp-item pp-ufo"></span><span class="descript-text" id="ufoScore">1500</span></div>
+				<div class="descript-td"><span class="descript-icon pp-item pp-ren"></span><span class="descript-text" id="renScore">1000</span></div>
+				<div class="descript-td"><span class="descript-icon pp-item pp-gou"></span><span class="descript-text" id="gouScore">1800</span></div>
+				<div class="descript-td"><span class="descript-icon pp-item pp-xin"></span><span class="descript-text" id="xinScore">2500</span></div><div class="clearfl"></div>
+			</div>
+			<div class="descript-space"></div>
+			<div class="descript-tr">
+				<div class="descript-td"><span class="descript-icon pp-item pp-ufo"></span><span class="descript-text" id="ufoScoreCal">150*22</span></div>
+				<div class="descript-td"><span class="descript-icon pp-item pp-ren"></span><span class="descript-text" id="renScoreCal">120*22</span></div>
+				<div class="descript-td"><span class="descript-icon pp-item pp-gou"></span><span class="descript-text" id="gouScoreCal">60*34</span></div>
+				<div class="descript-td"><span class="descript-icon pp-item pp-xin"></span><span class="descript-text" id="xinScoreCal">200*6</span></div><div class="clearfl"></div>
+			</div>
+		</div>
+		<div class="share-bt"></div>
+		<div class="score-text">分享分数到朋友圈，得到全国排名。将截图发送至“星钻积木”公众号，活动期间，每周都有机会获得《疯狂外星人》正版授权的星钻积木奖品一套。<br/>星钻积木公众号：xingzuan111</div>
+		<div class="again-bt"></div>
+	</div>
+	<div id="paihangBt" onmousedown="gotoGZH();">
+		<!-- <a href="http://weixin.qq.com/r/X0wCGorEqtfVrc559xlN">星钻公众号2</a> -->
+		<span>星钻公众号</span>
+		<!-- <a href="http://www.baidu.com">baidu</a> -->
+	</div>
+	<div id="paihangBox" style="display:none;">
+		<div id="paihangContent">
+			<!-- <div class="paihang-item">
+				<span class="paihang-td">1</span><span class="paihang-td">小苹果的大</span><span class="paihang-td">65625</span>
+			</div> -->
+		</div>
+		<div id="letsgoBt"></div>
+		<div id="paihangShare"></div>
+	</div>
+	<div id="shareBox" style="display:none;"></div>
+	<audio id="sound" src="../res/images/ok.mp3" preload="auto">
+		您的浏览器不支持 audio 标签。
+	</audio>
+	<div id="shareImg" style="display: none;">
+			<img width="100%" src="../icon.jpg" style="position: fixed; z-index: 9999; top: 0; left: 0; display: " ontouchstart="document.getElementById('shareImg').style.display='none';">
+	</div>
+	<div id="loadingBox">
+		正在为您准备资源...2%
+	</div>
+<script type="text/javascript" src="../res/js/zepto-1.1.6.js"></script>
+<script type="text/javascript" src="../res/js/fx.js"></script>
+<script type="text/javascript" src="../res/js/fx_methods.js"></script>
+<script type="text/javascript" src="../res/js/main.js?v=55"></script>
+
+</body>
+</html>

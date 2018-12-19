@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=640, user-scalable=0"/>
+<title>circleLoading canvas</title>
+<style>
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	-ms-touch-action: none;
+}
+
+body,ul,li {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+body{
+	background-color:#CCCCCC;
+	width:640px;
+	overflow:hidden;
+	font-family:Tahoma, Arial, MingLiU;
+}
+canvas {
+    /**
+     * Set transparent to let any other canvases render through
+     */
+    background-color: transparent;
+}
+
+#guagualeBox{
+	width:300px;
+	height:300px;
+	margin:100px;
+	position:relative;
+	border:1px #999 solid;
+	border-radius:8px;
+	background-color:#E7A300;
+	padding:50px;
+}
+#guagualeWrapper{
+	position:relative;
+}
+#jiangPing{
+	width:160px;
+	height:50px;
+	text-align:center;
+	color:#333;
+	line-height:50px;
+	background:#fefefe;
+}
+#guaguaArea{
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+</style>
+</head>
+
+<body>
+<div id="guagualeBox">
+<div id="guagualeWrapper">
+	<div id="jiangPing">10000000萬</div>
+	<canvas id="guaguaArea" width="160" height="50"></canvas>
+</div>
+</div>
+</body>
+<script>
+document.addEventListener('touchmove',function(e){
+	e.stopPropagation();
+	e.preventDefault();
+},false);
+
+var canvas=document.getElementById('guaguaArea');
+var ctx=canvas.getContext('2d');
+ctx.clearArc = function(){
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.arc(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+    ctx.strokeStyle = "rgba(255,255,255,0)";
+    ctx.fill();
+    ctx.globalCompositeOperation = "source-over";
+};
+ctx.fillStyle="#777";
+ctx.fillRect(0,0,160,50);
+canvas.addEventListener("touchmove", function(e){
+   
+    var X = e.targetTouches[0].pageX - 150;//150為畫布到頁面左上角的距離x
+    var Y = e.targetTouches[0].pageY - 150;
+    ctx.clearArc(X, Y, 10, 0, Math.PI*2);
+}, false);
+canvas.addEventListener("mousemove", function(e){
+   
+    var X = e.clientX - 150;
+    var Y = e.clientY - 150;
+	console.log(X);
+    ctx.clearArc(X, Y, 5, 0, Math.PI*2);
+}, false);
+
+</script>
+</html>

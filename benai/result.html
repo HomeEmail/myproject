@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	<link rel="stylesheet" href="./css/base.css?v=66" />
+	<link rel="stylesheet" href="./css/index.css?v=66" />
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./js/zepto-1.1.6.js"></script>
+	<!-- <script type="text/javascript" src="./js/fx.js"></script>
+	<script type="text/javascript" src="./js/fx_methods.js"></script> -->
+
+
+	<title>王小二2016年遇到真爱的概率是98%！</title>
+</head>
+<body>
+<div style="display:none;">
+<img src="./images/bg.png" alt="奔爱" style="">
+</div>
+<div id="resultBox">
+	<div class="username">王小二</div>
+	<div class="result-desc">2016年遇到真爱的概率是：</div>
+	<div class="result-value-box"><div class="result-value">98%</div></div>
+	
+	<div class="result-words">
+		<p>爱是生命的火焰，没有它，一切变成黑暗。</p>
+		<div class="author">——罗兰</div>
+	</div>
+	<div class="result-bt-bar">
+		<!-- 结果 自己看 begin -->
+		<div class="resultBt reStartBt">重新测试</div>
+		<div class="resultBt shareBt">分享出去</div>
+		<!-- 结果 自己看 end -->
+
+		<!-- 结果 别人看 begin -->
+		<!-- <div class="resultBt playMe">我也测测</div>
+		<div class="resultBt moreBt">更多好玩</div> -->
+		<!-- 结果 别人看 end -->
+	</div>
+	
+</div>
+
+<div id="morePop">
+	<div class="moreContent">
+		<p>长按识别此二维码</p>
+		<img src="./images/qr.jpg" class="qr">
+		<p>获得更多精彩内容</p>
+		<div class="moreBottom">
+			<p>奔向幸福，勇敢逐爱</p>
+			<p>Run for Love, Run for You!</p>
+		</div>
+	</div>
+</div>
+
+<div id="sharePop">
+	<img src="./images/guide.png" class="shareImg">
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$('.reStartBt').on('tap',function(e){
+		//重新测试 
+		 window.location.href='./index.html';
+	});
+	$('.playMe').on('tap',function(e){
+		//我也测测  
+		 window.location.href='./index.html';
+	});
+	$('.shareBt').on('tap',function(e){
+		//console.log('cc');
+		//分享出去
+		$('#sharePop').show();
+	});
+	$('#sharePop').on('tap',function(e){
+		$(this).hide();
+	});
+	$('.moreBt').on('tap',function(e){
+		//console.log($('#guanzhuPop'));
+		$('#morePop').show();
+	});
+	$('#morePop').on('tap',function(e){
+		$(this).hide();
+	});
+</script>
+
+
+
+</body>
+</html>

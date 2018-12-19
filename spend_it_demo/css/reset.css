@@ -1,0 +1,51 @@
+/* CSS Document */
+* {
+	font-family:helvetica;
+}
+/********css reset*********/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input, button, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  /* font: inherit; */
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,body { 
+	/* height: 100%; */
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust:100%;
+	-webkit-user-select:none;
+}
+body { font-size: 62.5%; line-height: 1; font-family: helvetica; }
+body{
+	/*-webkit-overflow-scrolling: touch;*/
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+/*ol, ul { list-style: none; }*/
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong { font-weight: bold; } 
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+p { font-size: 13px; line-height: 20px; color: #333; }
+
+a,input,button,textarea{outline:none; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+input[type=button],input[type=text],input[type=search],input[type=password]{
+	-webkit-appearance:none;
+}
+body > * {
+	/*
+	transform: translateZ(0px);
+	-webkit-transform: translateZ(0px);
+	*/
+}
+/*******css reset end************************/
