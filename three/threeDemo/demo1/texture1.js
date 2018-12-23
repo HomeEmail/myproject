@@ -60,17 +60,18 @@ function initCube(){
 
 	//加载纹理
 	var texture = THREE.ImageUtils.loadTexture("textures/a.jpg",null,function(t){
-
+        console.log('loadTexture 1',t);
 	});
 	//将纹理应用于材质
 	var material = new THREE.MeshBasicMaterial({map:texture});
 	cube = new THREE.Mesh(geometry,material);
 	scene.add(cube);
 
-	var geometry2 = new THREE.CubeGeometry(150, 150, 150);
+	var geometry2 = new THREE.CubeGeometry(200, 200, 200);
     // 纹理坐标怎么弄
     var texture2 = THREE.ImageUtils.loadTexture("textures/2.jpg",null,function(t)
     {
+        console.log('loadTexture 2',t);
     });
     var material2 = new THREE.MeshBasicMaterial({map:texture2});
     cube2 = new THREE.Mesh( geometry2,material2 );

@@ -10,6 +10,15 @@ var webGLRenderer = new THREE.WebGLRenderer({
 webGLRenderer.setPixelRatio(window.devicePixelRatio);
 webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 webGLRenderer.setClearColor(0x27bcff, 1);
+webGLRenderer.shadowMap.enabled = true;
+webGLRenderer.shadowMap.type = THREE.PCFShadowMap;
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    webGLRenderer.setSize( window.innerWidth, window.innerHeight );
+}
 
 var pointLight = new THREE.PointLight(0xccbbaa, 1, 0, 0);  
 pointLight.position.set(-10, 30, -20);
