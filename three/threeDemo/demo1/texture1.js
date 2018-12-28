@@ -50,6 +50,24 @@ function initLight() {
 
 var cube=null,cube2=null;//物品
 function initCube(){
+    var loader = new THREE.TextureLoader();
+
+
+    var groundTexture = loader.load( 'textures/grasslight-big.jpg' ); //图片大小最好用2的次方
+    groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+    groundTexture.repeat.set( 25, 25 );
+    groundTexture.anisotropy = 16;
+
+    var groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
+
+    var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 20000, 20000 ), groundMaterial );
+    mesh.position.y = - 250;
+    mesh.rotation.x = - Math.PI / 2;
+    mesh.receiveShadow = true;
+    scene.add( mesh );
+
+    //threejs换成v99版本就不行
+    /*
 	//一个平面
 	var geometry = new THREE.PlaneGeometry(300,300,1,1);
 	//为平面赋予纹理坐标,在正常的情况下，你在0.0到1.0的范围内指定纹理坐标
@@ -59,9 +77,7 @@ function initCube(){
 	geometry.vertices[3].uv = new THREE.Vector2(0,2);
 
 	//加载纹理
-	var texture = THREE.ImageUtils.loadTexture("textures/a.jpg",null,function(t){
-        console.log('loadTexture 1',t);
-	});
+	var texture = loader.load("textures/2.jpg");
 	//将纹理应用于材质
 	var material = new THREE.MeshBasicMaterial({map:texture});
 	cube = new THREE.Mesh(geometry,material);
@@ -69,18 +85,36 @@ function initCube(){
 
 	var geometry2 = new THREE.CubeGeometry(200, 200, 200);
     // 纹理坐标怎么弄
-    var texture2 = THREE.ImageUtils.loadTexture("textures/2.jpg",null,function(t)
-    {
-        console.log('loadTexture 2',t);
-    });
+    var texture2 = loader.load("textures/2.jpg");
     var material2 = new THREE.MeshBasicMaterial({map:texture2});
     cube2 = new THREE.Mesh( geometry2,material2 );
     cube2.position.x=300;
     cube2.position.y=200;
     cube2.position.z=0;
     scene.add( cube2 );
-}
+    */
 
+   
+
+}
+function initTween(){
+    tween1=new TWEEN.Tween(cube.position)
+        .to({ x : -200 },3000)
+        .delay(1000)
+        .easing(TWEEN.Easing.Elastic.InOut)
+        //tween1.repeat(Infinity)
+    ;
+
+    tweenBack=new TWEEN.Tween(cube.position)
+        .to({x:0},2000)
+        .easing(TWEEN.Easing.Elastic.InOut)
+
+    ;
+
+    tween1.chain(tweenBack);//下一个动画是 tweenBack
+    tweenBack.chain(tween1);
+    tween1.start()
+}
 
 //初始化统计fps
 var stats=null;
@@ -96,9 +130,10 @@ function initStats(){
 function animation() {
     //renderer.clear();
     //cube.rotation.y += 0.01;
-    cube2.rotation.y += 0.01;
-    cube2.rotation.x += 0.01;
-    cube2.rotation.z += 0.01;
+
+    //cube2.rotation.y += 0.01;
+    //cube2.rotation.x += 0.01;
+    //cube2.rotation.z += 0.01;
     renderer.render(scene, camera);
     requestAnimationFrame(animation);
 
