@@ -5,7 +5,7 @@ function initRenderer(){
         antialias : true //抗锯齿
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xFFFFFF, 1);
+    //renderer.setClearColor(0xFFFFFF, 1);
     document.body.appendChild(renderer.domElement);
 
     window.addEventListener( 'resize', onWindowResize, false );
@@ -48,11 +48,7 @@ function initCamera(){
     camera.up.x = 0;
     camera.up.y = 1;
     camera.up.z = 0;
-    camera.lookAt({
-        x : 0,
-        y : 0,
-        z : 0
-    });
+    camera.lookAt(new THREE.Vector3(0,0,0));
 }
 
 var light1=null,light2=null,light3=null,light4=null;//光源

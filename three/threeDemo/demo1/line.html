@@ -39,13 +39,9 @@
         camera.position.y = 0;
         camera.position.z = 500;
         camera.up.x = 0;
-        camera.up.y = 0;
+        camera.up.y = 1;
         camera.up.z = 0;
-        camera.lookAt({
-            x : 0,
-            y : 0,
-            z : 0
-        });
+        camera.lookAt(new THREE.Vector3(0,0,0));//v99 参数改成vector3类型
     }
 
     var scene;
@@ -78,13 +74,14 @@
         //geometry.vertices.push(p1);
         //geometry.vertices.push(p2);
         //geometry.vertices.push(p3);
-        //geometry.colors.push( color1, color2 );
+        geometry.colors.push( color1, color2,color1 );
 
         // var line = new THREE.Line( geometry, material, THREE.LinePieces );
         var line = new THREE.Line( geometry, material );
         scene.add(line);
 
-        /*//二维线
+        /*
+        //二维线
         //A 2D path representation. The class provides methods for creating paths and contours of 2D shapes similar to the 2D Canvas API.
         //var a1 = new THREE.Vector2( 0, 1 );
         //var a2 = new THREE.Vector2( 1, 5 );
@@ -93,11 +90,11 @@
         path.quadraticCurveTo( 0, 1, 0.2, 1 );
         path.lineTo( 1, 1 );
         var points = path.getPoints();
-        var geometry1 = new THREE.BufferGeometry().setFromPoints( points );
         var material1 = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+        var geometry1 = new THREE.BufferGeometry().setFromPoints( points );
         var line1 = new THREE.Line( geometry1, material1 );
-        scene.add( line1 );*/
-
+        scene.add( line1 );
+        */
     }
     function render()
     {
