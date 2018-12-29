@@ -104,7 +104,7 @@ function initCube(){
     var groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
     var plane = new THREE.PlaneBufferGeometry( 20000, 20000 );
     var mesh = new THREE.Mesh( plane, groundMaterial );
-    mesh.position.y = - 250;
+    mesh.position.y = -250;
     mesh.rotation.x = - Math.PI / 3;
     mesh.receiveShadow = true;
     scene.add( mesh );
