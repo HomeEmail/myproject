@@ -17,6 +17,84 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
+
+var targetRotation = 0;
+var targetRotationOnMouseDown = 0;
+
+var mouseX = 0;
+var mouseXOnMouseDown = 0;
+
+var windowHalfX = window.innerWidth / 2;
+
+function initEvent(){
+    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+    document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+    document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+}
+
+function onDocumentMouseDown( event ) {
+
+    event.preventDefault();
+
+    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.addEventListener( 'mouseout', onDocumentMouseOut, false );
+
+    mouseXOnMouseDown = event.clientX - windowHalfX;
+    targetRotationOnMouseDown = targetRotation;
+
+}
+
+function onDocumentMouseMove( event ) {
+
+    mouseX = event.clientX - windowHalfX;
+
+    targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
+
+}
+
+function onDocumentMouseUp() {
+
+    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+}
+
+function onDocumentMouseOut() {
+
+    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+}
+
+function onDocumentTouchStart( event ) {
+
+    if ( event.touches.length == 1 ) {
+
+        event.preventDefault();
+
+        mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+        targetRotationOnMouseDown = targetRotation;
+
+    }
+
+}
+
+function onDocumentTouchMove( event ) {
+
+    if ( event.touches.length == 1 ) {
+
+        event.preventDefault();
+
+        mouseX = event.touches[ 0 ].pageX - windowHalfX;
+        targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+    }
+
+}
+
 var scene = null;//场景
 function initScene(){
     scene=new THREE.Scene();
@@ -105,22 +183,30 @@ function initLight() {
 
 var cube=null;//物品
 var cube2=null;
+var group=null;
 function initCube(){
+    group = new THREE.Group();
+    group.position.y = 0;
+
+    scene.add( group );
+
     var geometry = new THREE.CubeGeometry(100,100,100);
     //var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
     var material = new THREE.MeshLambertMaterial( { color:0x990000} );
 
     cube = new THREE.Mesh(geometry, material);
     cube.position = new THREE.Vector3(0,0,0);
-
-    scene.add(cube);
+    group.add(cube);
 
     var geometry2 = new THREE.CubeGeometry(100,100,100);
     var material2 = new THREE.MeshLambertMaterial({color:0xFFFFFF});
     cube2 = new THREE.Mesh(geometry2,material2);
     //cube2.position = new THREE.Vector3(0,120,0);
     cube2.position.set(10,150,0);
-    scene.add(cube2);
+    group.add(cube2);
+
+   
+                
 }
 //动画控制引擎
 var tween1=null,tweenBack=null;
@@ -148,10 +234,16 @@ function animation() {
     cube.rotation.y += 0.01;
     //cube.rotation.z += 0.01;
 
+    group.rotation.y += ( targetRotation - group.rotation.y ) * 0.05; //鼠标拖动旋转
+
+    camera.lookAt(new THREE.Vector3(0,0,0));
+
     renderer.clear();
     renderer.render(scene, camera);
+
+    
     requestAnimationFrame(animation);
-    camera.updateProjectionMatrix();
+
     
     stats.update();//更新监控的fps数据
 
@@ -181,4 +273,6 @@ function initPage(){
     initStats();//初始化监控fps
     initTween();//初始化动画引擎
     animation();//动起来
+    
+    initEvent();
 }
