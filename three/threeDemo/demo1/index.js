@@ -30,8 +30,21 @@ function initEvent(){
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
     document.addEventListener( 'touchstart', onDocumentTouchStart, false );
     document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+    document.addEventListener('click',onDocumentClick,false);
 }
 
+function onDocumentClick(event){
+    event.preventDefault();
+    var obj=getInteractiveObj({
+        clientX:event.clientX,
+        clientY:event.clientY,
+        camera:camera,
+        scene:group
+    });
+    
+    console.log('当前交互对象是:',obj);
+}
 function onDocumentMouseDown( event ) {
 
     event.preventDefault();
@@ -93,6 +106,32 @@ function onDocumentTouchMove( event ) {
 
     }
 
+}
+
+
+function getInteractiveObj(obj){ //获得当前的鼠标交互对象{clientX,clientY,camera,scene} 返回对象，如没有返回null
+    var raycaster;
+    var mouse = new THREE.Vector2(), INTERSECTED=null;
+    if(!!!obj) obj={};
+
+
+    raycaster = new THREE.Raycaster();
+    mouse.x = ( obj.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( obj.clientY / window.innerHeight ) * 2 + 1;
+    
+    raycaster.setFromCamera( mouse, obj.camera );
+
+    var intersects = raycaster.intersectObjects( obj.scene.children );
+
+    if ( intersects.length > 0 ) {//当前交互中有对象
+        //intersects[ 0 ].object;//当前交互的对象
+        INTERSECTED = intersects[ 0 ].object;
+    } else { //没对象
+        //if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+        INTERSECTED = null;
+    }
+    return INTERSECTED;
+                
 }
 
 var scene = null;//场景
