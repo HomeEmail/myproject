@@ -245,7 +245,7 @@ function initCube(){
     group.add(cube2);
 
     //辅助工具
-    var helper = new THREE.AxisHelper(10);
+    var helper = new THREE.AxisHelper(20);
     group.add(helper);
                 
 }
