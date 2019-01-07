@@ -152,16 +152,16 @@ function initCamera(){
 
         4、纵横比aspect：实际窗口的纵横比，即宽度除以高度。这个值越大，说明你宽度越大，那么你可能看的是宽银幕电影了，如果这个值小于1，那么可能你看到的是如下的图中的LED屏幕了。
     */
-    camera = new THREE.PerspectiveCamera(120, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 1000);
     //camera.position.z = 5;
 
     //正投影
     //var camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000 );//相机正好在窗口的中心点上
     //scene.add( camera );
 
-    camera.position.x = 200;
+    camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 200;
+    camera.position.z = 1;
     camera.up.x = 0;
     camera.up.y = 1;
     camera.up.z = 0;
@@ -226,39 +226,41 @@ var group=null;
 function initCube(){
     group = new THREE.Group();
     group.position.y = 0;
+    group.position.z=-50;
 
     scene.add( group );
 
-    var geometry = new THREE.CubeGeometry(100,100,100);
+    var geometry = new THREE.CubeGeometry(20,20,20);
     //var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
     var material = new THREE.MeshLambertMaterial( { color:0x990000} );
 
     cube = new THREE.Mesh(geometry, material);
-    cube.position = new THREE.Vector3(0,0,0);
+    cube.position.set(20,0,0);
     group.add(cube);
 
-    var geometry2 = new THREE.CubeGeometry(100,100,100);
+    var geometry2 = new THREE.CubeGeometry(20,20,20);
     var material2 = new THREE.MeshLambertMaterial({color:0xFFFFFF});
     cube2 = new THREE.Mesh(geometry2,material2);
-    //cube2.position = new THREE.Vector3(0,120,0);
-    cube2.position.set(10,150,0);
+    cube2.position.set(-50,0,0);
     group.add(cube2);
 
-   
+    //辅助工具
+    var helper = new THREE.AxisHelper(10);
+    group.add(helper);
                 
 }
 //动画控制引擎
 var tween1=null,tweenBack=null;
 function initTween(){
     tween1=new TWEEN.Tween(cube.position)
-        .to({ x : -200 },3000)
+        .to({ x : 100 },3000)
         .delay(1000)
         .easing(TWEEN.Easing.Elastic.InOut)
         //tween1.repeat(Infinity)
     ;
 
     tweenBack=new TWEEN.Tween(cube.position)
-        .to({x:0},2000)
+        .to({x:20},2000)
         .easing(TWEEN.Easing.Elastic.InOut)
 
     ;
