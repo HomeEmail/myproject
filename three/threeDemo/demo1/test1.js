@@ -35,6 +35,10 @@ function initScene() {
     //随着距离呈指数增长的雾化效果，只需要设置雾的颜色和浓度即可
     //scene.fog = new THREE.FogExp2(0xff00ff,0.02);
 
+    //场景内所有模型都使用同一种材质
+    //scene.overrideMaterial = new THREE.MeshStandardMaterial({color:0x00ffff});
+
+
 }
 
 
