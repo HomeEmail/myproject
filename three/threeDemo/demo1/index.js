@@ -108,6 +108,19 @@ function onDocumentTouchMove( event ) {
 
 }
 
+//随机生成颜色
+function randomColor() {
+    var arrHex = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d","e","f"],
+        strHex = "0x",
+        index;
+    for(var i = 0; i < 6; i++) {
+        index = Math.round(Math.random() * 15);
+        strHex += arrHex[index];
+    }
+    return strHex;
+}
+
+
 
 function getInteractiveObj(obj){ //获得当前的鼠标交互对象{clientX,clientY,camera,scene} 返回对象，如没有返回null
     var raycaster;
