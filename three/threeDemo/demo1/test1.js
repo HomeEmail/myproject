@@ -227,7 +227,7 @@ function animate() {
 
 
 
-function draw(){
+function initPage(){
     initGui();
     initRender();
     initScene();
@@ -242,4 +242,4 @@ function draw(){
     window.onresize = onWindowResize;
 
 }
-draw();
+//initPage();
