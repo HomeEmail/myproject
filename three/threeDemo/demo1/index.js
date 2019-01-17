@@ -150,6 +150,16 @@ function getInteractiveObj(obj){ //获得当前的鼠标交互对象{clientX,cli
 var scene = null;//场景
 function initScene(){
     scene=new THREE.Scene();
+    //添加天空 //给场景添加天空盒子纹理
+    var cubeTextureLoader = new THREE.CubeTextureLoader();
+    cubeTextureLoader.setPath('./textures/skybox/');
+    //六张图片分别是朝前的（posz）、朝后的（negz）、朝上的（posy）、朝下的（negy）、朝右的（posx）和朝左的（negx）。
+    var cubeTexture = cubeTextureLoader.load( [
+        'px.jpg', 'nx.jpg',
+        'py.jpg', 'ny.jpg',
+        'pz.jpg', 'nz.jpg'
+    ] );
+    scene.background = cubeTexture;
 }
 
 var camera = null;//摄像机

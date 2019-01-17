@@ -38,6 +38,16 @@ function initScene() {
     //场景内所有模型都使用同一种材质
     //scene.overrideMaterial = new THREE.MeshStandardMaterial({color:0x00ffff});
 
+    //添加天空 //给场景添加天空盒子纹理
+    var cubeTextureLoader = new THREE.CubeTextureLoader();
+    cubeTextureLoader.setPath('./textures/skybox/');
+    //六张图片分别是朝前的（posz）、朝后的（negz）、朝上的（posy）、朝下的（negy）、朝右的（posx）和朝左的（negx）。
+    var cubeTexture = cubeTextureLoader.load( [
+        'px.jpg', 'nx.jpg',
+        'py.jpg', 'ny.jpg',
+        'pz.jpg', 'nz.jpg'
+    ] );
+    scene.background = cubeTexture;
 
 }
 
@@ -177,10 +187,10 @@ function initControls() {
     controls.autoRotate = false;
 
     //设置相机距离原点的最远距离
-    controls.minDistance  = 100;
+    controls.minDistance  = 1;
 
     //设置相机距离原点的最远距离
-    controls.maxDistance  = 200;
+    controls.maxDistance  = 2000;
 
     //是否开启右键拖拽
     controls.enablePan = true;
